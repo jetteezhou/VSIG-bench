@@ -15,7 +15,7 @@ class Config:
     MODEL_NAME = "gemini-3-pro-preview"  # "gemini-3-pro-preview", gpt-5.2
 
     # --- 数据路径配置 ---
-    DATA_ROOT_DIR = "data"  # 数据根目录，会遍历其下所有子目录（支持多个数据集）
+    DATA_ROOT_DIR = "data_new"  # 数据根目录，会遍历其下所有子目录（支持多个数据集）
     # 如果设置为 "data"，会自动扫描 data/ 下所有包含指令文件夹的子目录
 
     # --- 输出配置 ---

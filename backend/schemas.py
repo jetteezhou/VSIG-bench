@@ -18,7 +18,7 @@ class EvaluationRequest(BaseModel):
     max_tokens: int = Field(1000, description="Max tokens for generation")
     
     # Evaluation Config
-    data_root_dir: str = Field("data", description="Root directory of the dataset")
+    data_root_dir: str = Field("data_new", description="Root directory of the dataset")
     test_mode: bool = Field(False, description="Whether to run in test mode (one sample per instruction)")
     num_workers: int = Field(4, ge=1, le=30, description="Number of concurrent workers (max 30)")
     

@@ -91,7 +91,7 @@ export default function Benchmark() {
     system_prompt: '',
     temperature: 0.2,
     max_tokens: 1000,
-    data_root_dir: 'data',
+    data_root_dir: 'data_new',
     test_mode: false
   });
 

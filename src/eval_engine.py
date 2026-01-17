@@ -216,12 +216,12 @@ class EvaluationEngine:
         try:
             self.init_models()
 
-            data_root = self.config.get("data_root_dir", "data")
+            data_root = self.config.get("data_root_dir", "data_new")
             output_dir = self.config.get("output_dir", "results/web_run")
 
             # Simple scan logic (simplified from main.py)
             dataset_dirs = []
-            if os.path.basename(data_root) in ["data", "data_new"] or data_root.endswith("/data"):
+            if os.path.basename(data_root) in ["data_new", "data"] or data_root.endswith("/data_new"):
                 for d in os.listdir(data_root):
                     dp = os.path.join(data_root, d)
                     if os.path.isdir(dp):
