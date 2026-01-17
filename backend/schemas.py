@@ -3,7 +3,7 @@ from typing import Optional, List, Union
 
 class EvaluationRequest(BaseModel):
     # API Configuration
-    api_provider: str = Field(..., description="API Provider: 'openai' or 'gemini'")
+    model_provider: str = Field(..., description="API Provider: 'openai' or 'gemini'")
     api_base_url: Optional[str] = Field(None, description="API Base URL (for OpenAI compatible)")
     api_key: str = Field(..., description="API Key")
     model_name: str = Field(..., description="Model Name (e.g., gpt-4o, gemini-1.5-pro)")
@@ -19,6 +19,8 @@ class EvaluationRequest(BaseModel):
     
     # Evaluation Config
     data_root_dir: str = Field("data", description="Root directory of the dataset")
+    test_mode: bool = Field(False, description="Whether to run in test mode (one sample per instruction)")
+    num_workers: int = Field(4, ge=1, le=30, description="Number of concurrent workers (max 30)")
 
 class TaskResponse(BaseModel):
     task_id: str

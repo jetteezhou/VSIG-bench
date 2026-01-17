@@ -143,7 +143,7 @@ class OpenAIVLM(BaseVLM):
 
         except Exception as e:
             logger.error(f"API 调用出错: {e}")
-            return {}
+            raise e
 
     def generate_from_video(self, video_path, prompt, system_prompt=None):
         """
@@ -198,7 +198,7 @@ class OpenAIVLM(BaseVLM):
 
         except Exception as e:
             logger.error(f"API 调用出错: {e}")
-            return {}
+            raise e
 
 
 class GeminiVLM(BaseVLM):
@@ -277,7 +277,7 @@ class GeminiVLM(BaseVLM):
 
         except Exception as e:
             logger.error(f"Gemini 视频推理出错: {e}")
-            return {}
+            raise e
 
     def _parse_json_response(self, content):
         """
@@ -339,4 +339,4 @@ class GeminiVLM(BaseVLM):
 
         except Exception as e:
             logger.error(f"Gemini API 调用出错: {e}")
-            return {}
+            raise e

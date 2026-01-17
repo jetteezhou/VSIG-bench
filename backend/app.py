@@ -5,6 +5,7 @@ import asyncio
 import logging
 from fastapi import FastAPI, BackgroundTasks, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from datetime import datetime
 
 # Configure Logging
@@ -30,6 +31,12 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Mount results directory for static access
+# Assuming the app is run from the project root
+results_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "results"))
+os.makedirs(results_dir, exist_ok=True)
+app.mount("/results", StaticFiles(directory=results_dir), name="results")
 
 # In-memory task store
 tasks = {}
@@ -71,8 +78,10 @@ async def submit_evaluation(request: EvaluationRequest, background_tasks: Backgr
     output_dir = os.path.join("results", "web_runs", task_id)
     os.makedirs(output_dir, exist_ok=True)
     
-    config = request.dict()
+    config = request.model_dump()
     config["output_dir"] = output_dir
+    # Ensure test_mode is explicitly in config
+    config["test_mode"] = request.test_mode
     
     tasks[task_id] = {
         "task_id": task_id,

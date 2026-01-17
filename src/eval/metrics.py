@@ -545,9 +545,43 @@ class Evaluator:
         avg_temporal = sum(all_temporal) / \
             len(all_temporal) if all_temporal else 0.0
 
+        # 按指令类型统计 (Instruction-wise breakdown)
+        instruction_breakdown = {}
+        for score, (_, gt, _, _) in zip(all_scores, eval_args):
+            instr = gt.get("task_template", "Unknown")
+            if instr not in instruction_breakdown:
+                instruction_breakdown[instr] = {
+                    "intent_accuracy": [],
+                    "spatial_grounding": [],
+                    "temporal_grounding": [],
+                    "count": 0
+                }
+            
+            ib = instruction_breakdown[instr]
+            ib["count"] += 1
+            ib["intent_accuracy"].append(score["intent_accuracy"])
+            ib["spatial_grounding"].extend(score["spatial_grounding"])
+            if score["temporal_grounding"] is not None:
+                ib["temporal_grounding"].extend(score["temporal_grounding"])
+
+        breakdown_results = {}
+        for instr, data in instruction_breakdown.items():
+            avg_i = sum(data["intent_accuracy"]) / len(data["intent_accuracy"])
+            avg_s = sum(data["spatial_grounding"]) / len(data["spatial_grounding"]) if data["spatial_grounding"] else 0.0
+            avg_t = sum(data["temporal_grounding"]) / len(data["temporal_grounding"]) if data["temporal_grounding"] else 0.0
+            
+            breakdown_results[instr] = {
+                "intent_accuracy": avg_i,
+                "spatial_grounding": avg_s,
+                "temporal_grounding": avg_t,
+                "overall": (avg_i + avg_s + avg_t) / 3 if avg_t > 0 else (avg_i + avg_s) / 2,
+                "count": data["count"]
+            }
+
         return {
             "intent_grounding_accuracy": avg_intent,
             "spatial_grounding_accuracy": avg_spatial,
             "temporal_grounding_accuracy": avg_temporal,
-            "overall_score": (avg_intent + avg_spatial + avg_temporal) / 3 if avg_temporal > 0 else (avg_intent + avg_spatial) / 2
+            "overall_score": (avg_intent + avg_spatial + avg_temporal) / 3 if avg_temporal > 0 else (avg_intent + avg_spatial) / 2,
+            "instruction_breakdown": breakdown_results
         }

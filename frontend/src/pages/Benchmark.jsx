@@ -1,27 +1,98 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import { Play, Terminal as TerminalIcon, Settings, Cpu, FileJson, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { Play, Terminal as TerminalIcon, Settings, Cpu, FileJson, AlertCircle, CheckCircle2, BarChart3 } from 'lucide-react';
 
 const API_BASE = '/api';
+
+const MetricsCharts = ({ results }) => {
+  if (!results?.instruction_breakdown) return null;
+
+  const instructions = Object.keys(results.instruction_breakdown).sort();
+  const metrics = ['overall', 'intent_accuracy', 'spatial_grounding', 'temporal_grounding'];
+  const colors = {
+    overall: 'bg-white',
+    intent_accuracy: 'bg-green-500',
+    spatial_grounding: 'bg-blue-500',
+    temporal_grounding: 'bg-purple-500'
+  };
+
+  return (
+    <div className="mt-8 space-y-8">
+      <div className="flex items-center gap-2 border-b border-zinc-800 pb-2">
+        <BarChart3 className="w-5 h-5 text-white" />
+        <h3 className="text-white font-semibold">Metrics Analysis by Instruction</h3>
+      </div>
+
+      <div className="grid gap-6">
+        {instructions.map(instr => {
+          const data = results.instruction_breakdown[instr];
+          return (
+            <div key={instr} className="bg-zinc-900/30 rounded-lg border border-zinc-800 p-4 space-y-4">
+              <div className="flex justify-between items-center">
+                <span className="text-white font-medium">{instr} <span className="text-zinc-500 text-xs ml-2">({data.count} samples)</span></span>
+                <span className="text-xl font-mono text-white">{(data.overall * 100).toFixed(1)}%</span>
+              </div>
+              
+              <div className="space-y-3">
+                {metrics.filter(m => m !== 'overall').map(m => (
+                  <div key={m} className="space-y-1">
+                    <div className="flex justify-between text-[10px] uppercase font-bold tracking-wider">
+                      <span className="text-zinc-500">{m.replace('_', ' ')}</span>
+                      <span className="text-zinc-300">{(data[m] * 100).toFixed(1)}%</span>
+                    </div>
+                    <div className="w-full bg-zinc-800/50 rounded-full h-1.5 overflow-hidden">
+                      <div 
+                        className={`${colors[m]} h-full rounded-full transition-all duration-500`}
+                        style={{ width: `${data[m] * 100}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Summary Stats */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
+        {[
+          { label: 'Overall', val: results.overall_score, color: 'text-white' },
+          { label: 'Intent', val: results.intent_grounding_accuracy, color: 'text-green-400' },
+          { label: 'Spatial', val: results.spatial_grounding_accuracy, color: 'text-blue-400' },
+          { label: 'Temporal', val: results.temporal_grounding_accuracy, color: 'text-purple-400' },
+        ].map(stat => (
+          <div key={stat.label} className="bg-zinc-900/50 border border-zinc-800 rounded p-3 text-center">
+            <div className="text-[10px] text-zinc-500 uppercase font-bold mb-1">{stat.label}</div>
+            <div className={`text-xl font-mono ${stat.color}`}>{(stat.val * 100).toFixed(1)}%</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default function Benchmark() {
   const [loading, setLoading] = useState(false);
   const [taskId, setTaskId] = useState(null);
   const [taskStatus, setTaskStatus] = useState(null);
   const [logs, setLogs] = useState([]);
+  const [results, setResults] = useState(null);
   
   // Form State
   const [config, setConfig] = useState({
-    api_provider: 'gemini',
+    model_provider: 'gemini',
     api_base_url: '',
     api_key: '',
-    model_name: 'gemini-1.5-pro',
+    model_name: 'gemini-3-flash-preview',
     input_mode: 'video',
     num_frames: 8,
+    num_workers: 4,
     system_prompt: '',
     temperature: 0.2,
     max_tokens: 1000,
-    data_root_dir: 'data'
+    data_root_dir: 'data',
+    test_mode: false
   });
 
   const logEndRef = useRef(null);
@@ -44,6 +115,10 @@ export default function Benchmark() {
           if (res.data.status === 'completed' || res.data.status === 'failed') {
             setLoading(false);
             clearInterval(interval);
+            if (res.data.status === 'completed') {
+              const resultRes = await axios.get(`${API_BASE}/results/${taskId}`);
+              setResults(resultRes.data);
+            }
           }
         } catch (e) {
           console.error("Polling error", e);
@@ -71,10 +146,23 @@ export default function Benchmark() {
 
   const handleChange = (e) => {
     const { name, value, type } = e.target;
-    setConfig(prev => ({
-      ...prev,
-      [name]: type === 'number' ? Number(value) : value
-    }));
+    setConfig(prev => {
+      const newConfig = {
+        ...prev,
+        [name]: (type === 'number' || type === 'range') ? Number(value) : value
+      };
+      
+      // Update default model name when provider changes
+      if (name === 'model_provider') {
+        if (value === 'gemini') {
+          newConfig.model_name = 'gemini-3-flash-preview';
+        } else if (value === 'openai') {
+          newConfig.model_name = 'gpt-4o';
+        }
+      }
+      
+      return newConfig;
+    });
   };
 
   return (
@@ -92,8 +180,8 @@ export default function Benchmark() {
             <div className="space-y-3">
               <label className="text-xs font-bold text-zinc-500 uppercase tracking-wider">Model Provider</label>
               <select 
-                name="api_provider" 
-                value={config.api_provider}
+                name="model_provider" 
+                value={config.model_provider}
                 onChange={handleChange}
                 className="w-full bg-black border border-zinc-800 rounded px-3 py-2 text-sm text-white focus:border-white outline-none transition-colors"
               >
@@ -115,7 +203,7 @@ export default function Benchmark() {
               />
             </div>
 
-            {config.api_provider === 'openai' && (
+            {config.model_provider === 'openai' && (
               <div className="space-y-3">
                 <label className="text-xs font-bold text-zinc-500 uppercase tracking-wider">Base URL</label>
                 <input 
@@ -173,6 +261,38 @@ export default function Benchmark() {
                   />
                 </div>
              )}
+
+             <div className="space-y-3">
+               <div className="flex justify-between items-center">
+                 <label className="text-xs font-bold text-zinc-500 uppercase tracking-wider">Concurrency Limit</label>
+                 <span className="text-xs text-zinc-500">{config.num_workers} workers</span>
+               </div>
+               <input 
+                 type="range"
+                 name="num_workers"
+                 min="1"
+                 max="30"
+                 step="1"
+                 value={config.num_workers}
+                 onChange={handleChange}
+                 className="w-full accent-white cursor-pointer"
+               />
+               <p className="text-[10px] text-zinc-500">Max 30.</p>
+             </div>
+
+            <div className="pt-4 border-t border-zinc-800 space-y-3">
+               <div className="flex items-center justify-between">
+                 <label className="text-xs font-bold text-zinc-500 uppercase tracking-wider">Test Mode</label>
+                 <input 
+                    type="checkbox"
+                    name="test_mode"
+                    checked={config.test_mode}
+                    onChange={(e) => setConfig(c => ({...c, test_mode: e.target.checked}))}
+                    className="w-4 h-4 bg-black border-zinc-800 rounded text-white focus:ring-0"
+                 />
+               </div>
+               <p className="text-[10px] text-zinc-500">Only evaluates one task per instruction.</p>
+            </div>
 
             <div className="pt-4">
               <button 
@@ -263,6 +383,51 @@ export default function Benchmark() {
                         </a>
                     </div>
                 </div>
+
+                <MetricsCharts results={results} />
+
+                {results?.detailed_results && (
+                  <div className="mt-8 space-y-6">
+                    <h3 className="text-white font-semibold border-b border-zinc-800 pb-2">Test Mode Detailed Results</h3>
+                    {results.detailed_results.map((item, idx) => (
+                      <div key={idx} className="bg-zinc-900/50 rounded-lg border border-zinc-800 p-4 space-y-4">
+                        <div className="flex justify-between items-center border-b border-zinc-800 pb-2">
+                          <span className="text-white font-mono text-sm">{item.instruction} - {item.video_name}</span>
+                          <div className="flex gap-4 text-xs">
+                             <span className="text-zinc-400">Intent: <span className="text-green-400">{(item.scores.intent_accuracy * 100).toFixed(0)}%</span></span>
+                             <span className="text-zinc-400">Spatial: <span className="text-blue-400">{(item.scores.spatial_grounding.reduce((a,b)=>a+b, 0) / item.scores.spatial_grounding.length * 100 || 0).toFixed(0)}%</span></span>
+                          </div>
+                        </div>
+                        
+                        {/* Visualization Image */}
+                        {item.prediction.visualization_rel_path && (
+                            <div className="w-full">
+                                <img 
+                                    src={`/results/${item.prediction.visualization_rel_path}`} 
+                                    alt={`Visualization for ${item.video_name}`}
+                                    className="w-full rounded border border-zinc-800"
+                                />
+                            </div>
+                        )}
+                        
+                        <div className="grid md:grid-cols-2 gap-4">
+                          <div className="space-y-2">
+                            <span className="text-[10px] font-bold text-zinc-500 uppercase">Model Prediction</span>
+                            <pre className="bg-black p-3 rounded text-[10px] text-zinc-300 overflow-x-auto">
+                              {JSON.stringify(item.prediction, null, 2)}
+                            </pre>
+                          </div>
+                          <div className="space-y-2">
+                            <span className="text-[10px] font-bold text-zinc-500 uppercase">Evaluation Scores</span>
+                            <pre className="bg-black p-3 rounded text-[10px] text-zinc-300 overflow-x-auto">
+                              {JSON.stringify(item.scores, null, 2)}
+                            </pre>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
             </div>
         )}
 
