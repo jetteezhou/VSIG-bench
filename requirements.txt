@@ -1,0 +1,16 @@
+torch
+numpy
+opencv-python-headless
+Pillow
+transformers
+scipy
+tqdm
+
+openai
+google-generativeai
+
+fastapi
+uvicorn
+pydantic
+python-multipart
+requests
