@@ -387,45 +387,54 @@ export default function Benchmark() {
                 <MetricsCharts results={results} />
 
                 {results?.detailed_results && (
-                  <div className="mt-8 space-y-6">
+                  <div className="mt-8 space-y-8">
                     <h3 className="text-white font-semibold border-b border-zinc-800 pb-2">Test Mode Detailed Results</h3>
-                    {results.detailed_results.map((item, idx) => (
-                      <div key={idx} className="bg-zinc-900/50 rounded-lg border border-zinc-800 p-4 space-y-4">
-                        <div className="flex justify-between items-center border-b border-zinc-800 pb-2">
-                          <span className="text-white font-mono text-sm">{item.instruction} - {item.video_name}</span>
-                          <div className="flex gap-4 text-xs">
-                             <span className="text-zinc-400">Intent: <span className="text-green-400">{(item.scores.intent_accuracy * 100).toFixed(0)}%</span></span>
-                             <span className="text-zinc-400">Spatial: <span className="text-blue-400">{(item.scores.spatial_grounding.reduce((a,b)=>a+b, 0) / item.scores.spatial_grounding.length * 100 || 0).toFixed(0)}%</span></span>
-                          </div>
+                    {(() => {
+                      // Group by instruction
+                      const grouped = {};
+                      results.detailed_results.forEach(item => {
+                        const instr = item.instruction || "Unknown";
+                        if (!grouped[instr]) grouped[instr] = [];
+                        grouped[instr].push(item);
+                      });
+                      
+                      // Sort instructions
+                      const sortedInstrs = Object.keys(grouped).sort();
+                      
+                      return sortedInstrs.map(instr => (
+                        <div key={instr} className="space-y-4">
+                           <div className="flex items-center gap-2 text-zinc-400">
+                              <span className="px-2 py-0.5 bg-zinc-800 rounded text-xs font-mono">{instr}</span>
+                              <span className="text-xs">{grouped[instr].length} samples</span>
+                           </div>
+                           
+                           <div className="grid gap-4">
+                              {grouped[instr].map((item, idx) => (
+                                <div key={idx} className="bg-zinc-900/50 rounded-lg border border-zinc-800 p-4 space-y-4">
+                                  <div className="flex justify-between items-center border-b border-zinc-800 pb-2">
+                                    <span className="text-white font-mono text-sm">{item.video_name}</span>
+                                    <div className="flex gap-4 text-xs">
+                                      <span className="text-zinc-400">Intent: <span className="text-green-400">{(item.scores.intent_accuracy * 100).toFixed(0)}%</span></span>
+                                      <span className="text-zinc-400">Spatial: <span className="text-blue-400">{(item.scores.spatial_grounding.reduce((a,b)=>a+b, 0) / item.scores.spatial_grounding.length * 100 || 0).toFixed(0)}%</span></span>
+                                    </div>
+                                  </div>
+                                  
+                                  {/* Visualization Image */}
+                                  {item.prediction.visualization_rel_path && (
+                                      <div className="w-full">
+                                          <img 
+                                              src={`/results/${item.prediction.visualization_rel_path}`} 
+                                              alt={`Visualization for ${item.video_name}`}
+                                              className="w-full rounded border border-zinc-800"
+                                          />
+                                      </div>
+                                  )}
+                                </div>
+                              ))}
+                           </div>
                         </div>
-                        
-                        {/* Visualization Image */}
-                        {item.prediction.visualization_rel_path && (
-                            <div className="w-full">
-                                <img 
-                                    src={`/results/${item.prediction.visualization_rel_path}`} 
-                                    alt={`Visualization for ${item.video_name}`}
-                                    className="w-full rounded border border-zinc-800"
-                                />
-                            </div>
-                        )}
-                        
-                        <div className="grid md:grid-cols-2 gap-4">
-                          <div className="space-y-2">
-                            <span className="text-[10px] font-bold text-zinc-500 uppercase">Model Prediction</span>
-                            <pre className="bg-black p-3 rounded text-[10px] text-zinc-300 overflow-x-auto">
-                              {JSON.stringify(item.prediction, null, 2)}
-                            </pre>
-                          </div>
-                          <div className="space-y-2">
-                            <span className="text-[10px] font-bold text-zinc-500 uppercase">Evaluation Scores</span>
-                            <pre className="bg-black p-3 rounded text-[10px] text-zinc-300 overflow-x-auto">
-                              {JSON.stringify(item.scores, null, 2)}
-                            </pre>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
+                      ));
+                    })()}
                   </div>
                 )}
             </div>

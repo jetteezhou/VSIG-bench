@@ -34,12 +34,11 @@ def process_single_sample(item, video_dir, output_dir, model, logger, idx, total
 
     # 获取 ASR 文本，如果没有则使用任务模板描述
     asr_result = item.get("asr_result")
-    if asr_result and isinstance(asr_result, dict) and "text" in asr_result:
-        transcript = asr_result["text"]
-    else:
-        # 指令1 通常没有 ASR
-        transcript = "用户没有说话，只是做出了指向性动作。" if item.get(
-            "task_template") == "指令1" else item.get("task_template")
+    transcript = asr_result["text"] if (
+        asr_result and isinstance(asr_result, dict) and "text" in asr_result) else item.get("task_template")
+
+    if item.get("task_template") == "指令1":
+        transcript = "用户没有说话，只是做出了指向性动作。"
 
     # 4.1 提取帧 / 准备输入
     last_frame_path = None
@@ -54,8 +53,8 @@ def process_single_sample(item, video_dir, output_dir, model, logger, idx, total
                 _, last_frame_path = VideoProcessor.extract_frame(
                     video_path, timestamp_sec=None)
             except Exception as vid_e:
-                 logger.warning(f"无法提取可视化帧 (非致命错误): {vid_e}")
-                 last_frame_path = None
+                logger.warning(f"无法提取可视化帧 (非致命错误): {vid_e}")
+                last_frame_path = None
         else:
             # 默认或不支持视频输入时，使用抽帧模式
             if Config.USE_VIDEO_INPUT:
@@ -109,12 +108,28 @@ def process_single_sample(item, video_dir, output_dir, model, logger, idx, total
     # 将视频名称添加到预测结果中
     result["video_name"] = video_id
 
+    # Post-process: Swap coordinates from [x, y] (Prompt/Model) to [y, x] (Eval/Vis/GT)
+    # The prompt asks for [x, y] (Width, Height), but the evaluator and visualizer expect [y, x] (Height, Width).
+    if "point_list" in result:
+        for pred_item in result["point_list"]:
+            if "point" in pred_item and isinstance(pred_item["point"], list):
+                pt = pred_item["point"]
+                # Case 1: Single point [x, y]
+                if len(pt) == 2 and isinstance(pt[0], (int, float)):
+                    pred_item["point"] = [pt[1], pt[0]]
+                # Case 2: Multiple points [[x1, y1], [x2, y2]]
+                elif len(pt) > 0 and isinstance(pt[0], list) and len(pt[0]) == 2:
+                    pred_item["point"] = [[p[1], p[0]] for p in pt]
+
     vis_path = os.path.join(output_dir, f"vis_{video_id}.jpg")
     # 可视化依然使用最后一帧（最接近指令结束时刻）
-    # 传入 ground_truth (item) 进行对比可视化
+    # 传入 processed_gt (gt_items) 进行对比可视化
     try:
+        # Process GT items to match evaluation logic (skip objects, merge names etc.)
+        processed_gt = Evaluator.process_gt_by_template(item)
+        gt_items = processed_gt.get("items", [])
         VideoProcessor.visualize_points(
-            last_frame_path, result, vis_path, gt_json=item)
+            last_frame_path, result, vis_path, gt_json=item, gt_items=gt_items)
     except Exception as e:
         logger.error(f"样本 {video_id} 可视化失败: {e}")
 
@@ -312,7 +327,8 @@ def main():
         # 单个数据集目录
         dataset_dirs.append((os.path.basename(data_root_dir), data_root_dir))
 
-    logger.info(f"找到 {len(dataset_dirs)} 个数据集目录: {[d[0] for d in dataset_dirs]}")
+    logger.info(
+        f"找到 {len(dataset_dirs)} 个数据集目录: {[d[0] for d in dataset_dirs]}")
 
     # 扫描所有数据集中的指令文件夹
     for dataset_name, dataset_path in dataset_dirs:
@@ -320,7 +336,7 @@ def main():
         if not os.path.exists(dataset_path):
             logger.warning(f"数据集路径不存在: {dataset_path}，跳过")
             continue
-        
+
         items_found = []
         for item in os.listdir(dataset_path):
             item_path = os.path.join(dataset_path, item)
@@ -329,10 +345,12 @@ def main():
                 if item.startswith("指令") and item in ["指令1", "指令2", "指令3", "指令4", "指令5", "指令6"]:
                     if item not in instruction_dirs:
                         instruction_dirs[item] = []
-                    instruction_dirs[item].append((dataset_name, dataset_path, item_path))
+                    instruction_dirs[item].append(
+                        (dataset_name, dataset_path, item_path))
                     items_found.append(item)
-        
-        logger.info(f"数据集 {dataset_name} 中找到 {len(items_found)} 个指令文件夹: {items_found}")
+
+        logger.info(
+            f"数据集 {dataset_name} 中找到 {len(items_found)} 个指令文件夹: {items_found}")
 
     if not instruction_dirs:
         logger.warning(f"未找到任何指令文件夹（指令1-指令6）")
@@ -345,17 +363,18 @@ def main():
     for inst_name, dirs_list in instruction_dirs.items():
         dataset_names = [d[0] for d in dirs_list]
         logger.info(f"  {inst_name}: {len(dirs_list)} 个数据集 - {dataset_names}")
-    
+
     # 验证是否所有数据集都被扫描到
     all_scanned_datasets = set()
     for dirs_list in instruction_dirs.values():
         for dataset_name, _, _ in dirs_list:
             all_scanned_datasets.add(dataset_name)
-    
+
     logger.info(f"\n扫描到的数据集列表: {sorted(all_scanned_datasets)}")
     logger.info(f"期望的数据集数量: {len(dataset_dirs)}")
     if len(all_scanned_datasets) < len(dataset_dirs):
-        missing_datasets = set(d[0] for d in dataset_dirs) - all_scanned_datasets
+        missing_datasets = set(d[0]
+                               for d in dataset_dirs) - all_scanned_datasets
         logger.warning(f"⚠️  警告：以下数据集没有被扫描到: {missing_datasets}")
     logger.info(f"{'='*60}\n")
 
@@ -371,9 +390,10 @@ def main():
     # 按指令类型处理
     for instruction_name in sorted(instruction_dirs.keys()):
         instruction_paths = instruction_dirs[instruction_name]
-        
+
         logger.info(f"\n{'='*60}")
-        logger.info(f"处理指令类型: {instruction_name} (共 {len(instruction_paths)} 个数据集)")
+        logger.info(
+            f"处理指令类型: {instruction_name} (共 {len(instruction_paths)} 个数据集)")
         logger.info(f"{'='*60}")
 
         instruction_predictions = []
@@ -382,7 +402,8 @@ def main():
         # 处理该指令类型下的所有数据集
         for dataset_idx, (dataset_name, dataset_path, instruction_path) in enumerate(instruction_paths):
             logger.info(f"\n{'='*40}")
-            logger.info(f"处理数据集 [{dataset_idx+1}/{len(instruction_paths)}]: {dataset_name}/{instruction_name}")
+            logger.info(
+                f"处理数据集 [{dataset_idx+1}/{len(instruction_paths)}]: {dataset_name}/{instruction_name}")
             logger.info(f"数据集路径: {dataset_path}")
             logger.info(f"指令路径: {instruction_path}")
             logger.info(f"{'='*40}")
@@ -406,7 +427,7 @@ def main():
             # 为每个数据集单独保存结果文件（用于追踪）
             dataset_results_file = os.path.join(
                 output_dir, f"results_{dataset_name}_{model_name_safe}.json")
-            
+
             # 检查是否已有结果文件
             has_results = os.path.exists(dataset_results_file)
             logger.info(f"结果文件路径: {dataset_results_file}")
@@ -431,7 +452,8 @@ def main():
                             f"✓ 已加载 {dataset_name}/{instruction_name} 的已有结果，共 {len(predictions)} 个样本")
                         skip_inference = True
                 except Exception as e:
-                    logger.warning(f"✗ 加载 {dataset_name}/{instruction_name} 的结果文件失败: {e}，将重新推理")
+                    logger.warning(
+                        f"✗ 加载 {dataset_name}/{instruction_name} 的结果文件失败: {e}，将重新推理")
                     skip_inference = False
 
             if not skip_inference:
@@ -453,12 +475,16 @@ def main():
                             "ground_truths": ground_truths
                         }
                         with open(dataset_results_file, "w", encoding="utf-8") as f:
-                            json.dump(results_data, f, indent=2, ensure_ascii=False)
-                        logger.info(f"✓ {dataset_name}/{instruction_name} 的推理结果已保存至: {dataset_results_file}")
+                            json.dump(results_data, f, indent=2,
+                                      ensure_ascii=False)
+                        logger.info(
+                            f"✓ {dataset_name}/{instruction_name} 的推理结果已保存至: {dataset_results_file}")
                     else:
-                        logger.warning(f"✗ {dataset_name}/{instruction_name} 推理后没有有效结果")
+                        logger.warning(
+                            f"✗ {dataset_name}/{instruction_name} 推理后没有有效结果")
                 except Exception as e:
-                    logger.error(f"✗ 处理 {dataset_name}/{instruction_name} 时发生错误: {e}")
+                    logger.error(
+                        f"✗ 处理 {dataset_name}/{instruction_name} 时发生错误: {e}")
                     import traceback
                     logger.error(traceback.format_exc())
                     continue
@@ -467,9 +493,11 @@ def main():
             if predictions:
                 instruction_predictions.extend(predictions)
                 instruction_ground_truths.extend(ground_truths)
-                logger.info(f"✓ {dataset_name}/{instruction_name} 已累积到指令级别，当前指令总样本数: {len(instruction_predictions)}")
+                logger.info(
+                    f"✓ {dataset_name}/{instruction_name} 已累积到指令级别，当前指令总样本数: {len(instruction_predictions)}")
             else:
-                logger.warning(f"✗ {dataset_name}/{instruction_name} 没有有效结果，无法累积")
+                logger.warning(
+                    f"✗ {dataset_name}/{instruction_name} 没有有效结果，无法累积")
 
         # 保存该指令类型下所有数据集的合并结果
         logger.info(f"\n指令 {instruction_name} 处理完成:")
@@ -477,10 +505,10 @@ def main():
         logger.info(f"  累积的样本数量: {len(instruction_predictions)}")
         processed_datasets = [d[0] for d in instruction_paths]
         logger.info(f"  处理的数据集: {processed_datasets}")
-        
+
         if len(instruction_predictions) == 0:
             logger.warning(f"⚠️  警告：指令 {instruction_name} 没有累积到任何样本！")
-        
+
         if instruction_predictions:
             all_predictions_by_instruction[instruction_name] = instruction_predictions
             all_ground_truths_by_instruction[instruction_name] = instruction_ground_truths
@@ -497,10 +525,12 @@ def main():
             logger.info(json.dumps(instruction_metrics, indent=2))
 
             # 保存指令级别的评估结果
-            instruction_metrics_path = os.path.join(base_output_dir, instruction_name, "metrics.json")
+            instruction_metrics_path = os.path.join(
+                base_output_dir, instruction_name, "metrics.json")
             with open(instruction_metrics_path, "w", encoding="utf-8") as f:
                 json.dump(instruction_metrics, f, indent=2, ensure_ascii=False)
-            logger.info(f"指令 {instruction_name} 的评估结果已保存至: {instruction_metrics_path}")
+            logger.info(
+                f"指令 {instruction_name} 的评估结果已保存至: {instruction_metrics_path}")
         else:
             logger.warning(f"指令 {instruction_name} 没有有效的预测结果，无法进行评估。")
 
@@ -535,7 +565,8 @@ def main():
         # 收集各指令的评估结果
         instruction_metrics_dict = {}
         for inst_name in sorted(all_predictions_by_instruction.keys()):
-            inst_metrics_path = os.path.join(base_output_dir, inst_name, "metrics.json")
+            inst_metrics_path = os.path.join(
+                base_output_dir, inst_name, "metrics.json")
             if os.path.exists(inst_metrics_path):
                 try:
                     with open(inst_metrics_path, 'r', encoding='utf-8') as f:
@@ -562,7 +593,8 @@ def main():
         summary_metrics_path = os.path.join(
             base_output_dir, "metrics_summary.json")
         with open(summary_metrics_path, "w", encoding="utf-8") as f:
-            json.dump(summary_metrics_complete, f, indent=2, ensure_ascii=False)
+            json.dump(summary_metrics_complete, f,
+                      indent=2, ensure_ascii=False)
         logger.info(f"汇总评估结果已保存至: {summary_metrics_path}")
     else:
         logger.warning("没有有效的预测结果，无法进行评估。")

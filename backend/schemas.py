@@ -21,6 +21,12 @@ class EvaluationRequest(BaseModel):
     data_root_dir: str = Field("data", description="Root directory of the dataset")
     test_mode: bool = Field(False, description="Whether to run in test mode (one sample per instruction)")
     num_workers: int = Field(4, ge=1, le=30, description="Number of concurrent workers (max 30)")
+    
+    # Evaluation Model Config (Optional - if not provided, uses inference model)
+    eval_model_provider: Optional[str] = Field(None, description="Evaluation Model Provider: 'openai' or 'gemini'")
+    eval_model_name: Optional[str] = Field(None, description="Evaluation Model Name")
+    eval_api_key: Optional[str] = Field(None, description="Evaluation Model API Key")
+    eval_api_base_url: Optional[str] = Field(None, description="Evaluation Model API Base URL (for OpenAI compatible)")
 
 class TaskResponse(BaseModel):
     task_id: str

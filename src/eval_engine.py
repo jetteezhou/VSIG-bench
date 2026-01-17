@@ -63,8 +63,51 @@ class EvaluationEngine:
         else:
             raise ValueError(f"Unsupported provider: {provider}")
 
-        # Initialize Eval Model (Use same as inference for now to simplify)
-        self.eval_model = self.model
+        # Initialize Eval Model (Use separate eval model if configured, otherwise use inference model)
+        eval_model_provider = self.config.get("eval_model_provider")
+        eval_model_name = self.config.get("eval_model_name")
+
+        if eval_model_provider and eval_model_name:
+            # Use separate evaluation model
+            self.log(
+                f"Initializing Evaluation Model: {eval_model_provider}/{eval_model_name}")
+
+            eval_api_key = self.config.get("eval_api_key") or api_key
+            eval_base_url = self.config.get("eval_api_base_url") or base_url
+
+            if eval_model_provider == "openai":
+                if not eval_api_key:
+                    self.log("未找到评估用 OpenAI API Key，将使用推理模型进行评估", "warning")
+                    self.eval_model = self.model
+                else:
+                    self.eval_model = OpenAIVLM(
+                        api_key=eval_api_key,
+                        base_url=eval_base_url,
+                        model_name=eval_model_name,
+                        accepts_video_files=False  # Eval model typically doesn't need video input
+                    )
+                    self.log(f"评估模型已设置为: {eval_model_name} (OpenAI)")
+
+            elif eval_model_provider == "gemini":
+                if not eval_api_key:
+                    self.log("未找到评估用 Gemini API Key，将使用推理模型进行评估", "warning")
+                    self.eval_model = self.model
+                else:
+                    self.eval_model = GeminiVLM(
+                        api_key=eval_api_key,
+                        model_name=eval_model_name
+                    )
+                    self.log(f"评估模型已设置为: {eval_model_name} (Gemini)")
+
+            else:
+                self.log(
+                    f"不支持的评估模型提供商: {eval_model_provider}，将使用推理模型进行评估", "warning")
+                self.eval_model = self.model
+        else:
+            # No separate eval model configured, use inference model
+            self.log("未配置单独的评估模型，将使用推理模型进行评估")
+            self.eval_model = self.model
+
         # Note: We do NOT set Evaluator.set_eval_model here anymore to avoid race conditions.
         # It will be set inside the locked evaluation block.
 
@@ -77,7 +120,8 @@ class EvaluationEngine:
         # ASR handling
         asr_result = item.get("asr_result")
         transcript = asr_result["text"] if (
-            asr_result and "text" in asr_result) else item.get("task_template")
+            asr_result and isinstance(asr_result, dict) and "text" in asr_result) else item.get("task_template")
+        
         if item.get("task_template") == "指令1":
             transcript = "用户没有说话，只是做出了指向性动作。"
 
@@ -86,7 +130,7 @@ class EvaluationEngine:
         last_frame_path = None
 
         use_video_input = (self.config.get("input_mode") == "video")
-        num_frames = self.config.get("num_frames", 8)
+        num_frames = self.config.get("num_frames", 15)
 
         try:
             if use_video_input and hasattr(self.model, 'generate_from_video') and getattr(self.model, 'accepts_video_files', False):
@@ -129,25 +173,42 @@ class EvaluationEngine:
 
         result["video_name"] = video_id
 
-        # Visualize (Enabled for web mode)
-        vis_filename = f"vis_{video_id}.jpg"
-        vis_path = os.path.join(output_dir, vis_filename)
-        try:
-            VideoProcessor.visualize_points(
-                last_frame_path, result, vis_path, gt_json=item)
-            # Add relative path for frontend access (relative to 'results' directory)
-            # output_dir is like "results/web_runs/..."
-            # We want "web_runs/..."
-            if "results" in vis_path:
-                rel_parts = vis_path.split("results/")
-                if len(rel_parts) > 1:
-                    result["visualization_rel_path"] = rel_parts[-1]
+        # Post-process: Swap coordinates from [x, y] (Prompt/Model) to [y, x] (Eval/Vis/GT)
+        # The prompt asks for [x, y] (Width, Height), but the evaluator and visualizer expect [y, x] (Height, Width).
+        if "point_list" in result:
+            for pred_item in result["point_list"]:
+                if "point" in pred_item and isinstance(pred_item["point"], list):
+                    pt = pred_item["point"]
+                    # Case 1: Single point [x, y]
+                    if len(pt) == 2 and isinstance(pt[0], (int, float)):
+                        pred_item["point"] = [pt[1], pt[0]]
+                    # Case 2: Multiple points [[x1, y1], [x2, y2]]
+                    elif len(pt) > 0 and isinstance(pt[0], list) and len(pt[0]) == 2:
+                        pred_item["point"] = [[p[1], p[0]] for p in pt]
+
+        # Visualize (Only enabled in test mode to save time/space)
+        if self.config.get("test_mode", False):
+            vis_filename = f"vis_{video_id}.jpg"
+            vis_path = os.path.join(output_dir, vis_filename)
+            try:
+                # Process GT items to match evaluation logic (skip objects, merge names etc.)
+                processed_gt = Evaluator.process_gt_by_template(item)
+                gt_items = processed_gt.get("items", [])
+
+                VideoProcessor.visualize_points(
+                    last_frame_path, result, vis_path, gt_json=item, gt_items=gt_items)
+
+                # Add relative path for frontend access (relative to 'results' directory)
+                if "results" in vis_path:
+                    rel_parts = vis_path.split("results/")
+                    if len(rel_parts) > 1:
+                        result["visualization_rel_path"] = rel_parts[-1]
+                    else:
+                        result["visualization_rel_path"] = vis_path
                 else:
                     result["visualization_rel_path"] = vis_path
-            else:
-                result["visualization_rel_path"] = vis_path
-        except Exception as e:
-            self.log(f"Visualization failed for {video_id}: {e}", "warning")
+            except Exception as e:
+                self.log(f"Visualization failed for {video_id}: {e}", "warning")
 
         return result, item
 
@@ -191,7 +252,7 @@ class EvaluationEngine:
                 return None
 
             # Parallel Execution for Inference
-            num_workers = self.config.get("num_workers", 4)
+            num_workers = self.config.get("num_workers", 20)
             self.log(
                 f"Starting inference for {len(all_tasks)} total samples with {num_workers} workers...")
 
@@ -220,7 +281,7 @@ class EvaluationEngine:
                     self.log(
                         f"Calculating metrics for {len(all_predictions)} samples...")
                     metrics = Evaluator.evaluate_batch(
-                        all_predictions, all_ground_truths, num_workers=4)
+                        all_predictions, all_ground_truths, num_workers=10)
 
                     # If in test mode, include detailed per-sample results
                     if self.config.get("test_mode", False):
@@ -239,7 +300,7 @@ class EvaluationEngine:
                                 "scores": scores
                             }
 
-                        with ThreadPoolExecutor(max_workers=4) as eval_executor:
+                        with ThreadPoolExecutor(max_workers=10) as eval_executor:
                             results = list(eval_executor.map(
                                 eval_worker, zip(all_predictions, all_ground_truths)))
                             detailed_samples.extend(results)

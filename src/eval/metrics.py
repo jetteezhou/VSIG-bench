@@ -62,7 +62,7 @@ class Evaluator:
             px = int(x_norm * width / 1000)
 
             # 2. 基础检查：是否在 bbox 内
-            y1, x1, y2, x2 = bbox
+            x1, y1, x2, y2 = bbox
             if not (y1 <= py <= y2 and x1 <= px <= x2):
                 return False
 
@@ -496,37 +496,45 @@ class Evaluator:
             eval_args.append((pred, gt, width, height))
 
         # 并行评估
-        all_scores = []
+        results_with_gt = []  # Store (score, gt) pairs to keep association
         if num_workers and num_workers > 1 and len(eval_args) > 1:
             with ThreadPoolExecutor(max_workers=min(num_workers, len(eval_args))) as executor:
                 futures = {executor.submit(Evaluator._evaluate_single_sample_wrapper, args): args
                            for args in eval_args}
                 for future in as_completed(futures):
+                    # Retrieve the original args (specifically GT) associated with this future
+                    _, gt, _, _ = futures[future]
                     try:
                         score = future.result()
-                        all_scores.append(score)
+                        results_with_gt.append((score, gt))
                     except Exception as e:
                         # 如果评估失败，添加默认分数
-                        all_scores.append({
+                        default_score = {
                             "intent_accuracy": 0.0,
                             "spatial_grounding": [],
                             "temporal_grounding": None
-                        })
+                        }
+                        results_with_gt.append((default_score, gt))
         else:
             # 单线程模式
             for args in eval_args:
+                _, gt, _, _ = args
                 try:
                     score = Evaluator._evaluate_single_sample_wrapper(args)
-                    all_scores.append(score)
+                    results_with_gt.append((score, gt))
                 except Exception as e:
-                    all_scores.append({
+                    default_score = {
                         "intent_accuracy": 0.0,
                         "spatial_grounding": [],
                         "temporal_grounding": None
-                    })
+                    }
+                    results_with_gt.append((default_score, gt))
 
-        if not all_scores:
+        if not results_with_gt:
             return {}
+
+        # Separate scores for global calculation
+        all_scores = [x[0] for x in results_with_gt]
 
         avg_intent = sum(s["intent_accuracy"]
                          for s in all_scores) / len(all_scores)
@@ -547,7 +555,8 @@ class Evaluator:
 
         # 按指令类型统计 (Instruction-wise breakdown)
         instruction_breakdown = {}
-        for score, (_, gt, _, _) in zip(all_scores, eval_args):
+        # NOTE: We must use results_with_gt because all_scores (from as_completed) is not in sync with eval_args
+        for score, gt in results_with_gt:
             instr = gt.get("task_template", "Unknown")
             if instr not in instruction_breakdown:
                 instruction_breakdown[instr] = {
@@ -556,7 +565,7 @@ class Evaluator:
                     "temporal_grounding": [],
                     "count": 0
                 }
-            
+
             ib = instruction_breakdown[instr]
             ib["count"] += 1
             ib["intent_accuracy"].append(score["intent_accuracy"])
@@ -567,9 +576,13 @@ class Evaluator:
         breakdown_results = {}
         for instr, data in instruction_breakdown.items():
             avg_i = sum(data["intent_accuracy"]) / len(data["intent_accuracy"])
-            avg_s = sum(data["spatial_grounding"]) / len(data["spatial_grounding"]) if data["spatial_grounding"] else 0.0
-            avg_t = sum(data["temporal_grounding"]) / len(data["temporal_grounding"]) if data["temporal_grounding"] else 0.0
-            
+            avg_s = sum(data["spatial_grounding"]) / \
+                len(data["spatial_grounding"]
+                    ) if data["spatial_grounding"] else 0.0
+            avg_t = sum(data["temporal_grounding"]) / \
+                len(data["temporal_grounding"]
+                    ) if data["temporal_grounding"] else 0.0
+
             breakdown_results[instr] = {
                 "intent_accuracy": avg_i,
                 "spatial_grounding": avg_s,
