@@ -6,6 +6,7 @@ import logging
 from fastapi import FastAPI, BackgroundTasks, HTTPException, APIRouter
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import RedirectResponse
 from datetime import datetime
 
 # Configure Logging
@@ -40,6 +41,17 @@ app.add_middleware(
 results_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "results"))
 os.makedirs(results_dir, exist_ok=True)
 app.mount("/embodied_benchmark/results", StaticFiles(directory=results_dir), name="results")
+
+# Mount frontend static files (for production deployment)
+frontend_dist_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "frontend", "dist"))
+if os.path.exists(frontend_dist_dir):
+    # Mount frontend static files at /embodied_benchmark
+    app.mount("/embodied_benchmark", StaticFiles(directory=frontend_dist_dir, html=True), name="frontend")
+    
+    # Redirect root to /embodied_benchmark
+    @app.get("/")
+    async def root():
+        return RedirectResponse(url="/embodied_benchmark/")
 
 # Include API router
 app.include_router(api_router)
@@ -132,5 +144,6 @@ async def get_task_results(task_id: str):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="127.0.0.1", port=6006)
+    # Use 0.0.0.0 to allow external access (for public deployment)
+    uvicorn.run(app, host="0.0.0.0", port=6006)
 

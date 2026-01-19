@@ -7,7 +7,7 @@ import Dataset from './pages/Dataset';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/embodied_benchmark">
       <div className="min-h-screen bg-black">
         <Navbar />
         <Routes>

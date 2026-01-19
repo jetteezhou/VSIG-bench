@@ -689,6 +689,87 @@ python main.py
 
 如果未提供 API Key，程序会报错退出。建议通过环境变量设置 Key，或者临时在 `config.py` 中修改。
 
+## Web 服务部署
+
+项目提供了 Web 界面用于可视化管理评估任务。服务部署在端口 6006，访问路径为 `/embodied_benchmark`。
+
+### 统一部署（推荐）
+
+前后端统一部署在服务器上，通过一个服务提供完整的 Web 应用。这种方式适合生产环境部署，可以通过公网地址访问。
+
+#### 1. 构建前端
+
+首先需要构建前端应用：
+
+```bash
+cd frontend
+npm install
+npm run build
+```
+
+构建产物将生成在 `frontend/dist` 目录。
+
+#### 2. 启动后端服务（包含前端）
+
+后端服务会自动检测并挂载前端构建产物。直接启动后端即可：
+
+```bash
+cd backend
+python app.py
+```
+
+或者使用 uvicorn：
+
+```bash
+uvicorn backend.app:app --host 0.0.0.0 --port 6006
+```
+
+**注意**：使用 `0.0.0.0` 作为 host 以允许外部访问（公网部署）。
+
+#### 3. 访问服务
+
+服务启动后，可以通过以下地址访问：
+
+- **Web 界面**：`http://服务器IP:6006/embodied_benchmark/` 或 `http://公网地址:6006/embodied_benchmark/`
+- **API 端点**：`http://服务器IP:6006/embodied_benchmark/api/...`
+- **结果文件**：`http://服务器IP:6006/embodied_benchmark/results/...`
+
+访问根路径 `http://服务器IP:6006/` 会自动重定向到 `/embodied_benchmark/`。
+
+### 开发模式部署
+
+如果需要分别启动前后端进行开发调试：
+
+#### 启动后端服务
+
+```bash
+cd backend
+python app.py
+```
+
+或者：
+
+```bash
+uvicorn backend.app:app --host 127.0.0.1 --port 6006
+```
+
+#### 启动前端开发服务器
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+前端开发服务器默认运行在 `http://localhost:5173`，并通过代理将 `/embodied_benchmark/api` 和 `/embodied_benchmark/results` 请求转发到后端服务。
+
+### 部署注意事项
+
+1. **防火墙配置**：确保服务器防火墙开放端口 6006
+2. **公网访问**：使用 `0.0.0.0` 作为 host 以允许外部连接
+3. **反向代理**（可选）：可以通过 Nginx 等反向代理服务器转发请求，提供 HTTPS 支持
+4. **Node.js 版本**：前端构建需要 Node.js 14+ 版本，如果遇到语法错误，请升级 Node.js
+
 ## 部分结果
 
 ### Qwen3-Omni-30B-A3B-Instruct
