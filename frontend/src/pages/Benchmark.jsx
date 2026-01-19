@@ -174,7 +174,7 @@ export default function Benchmark() {
             <Settings className="w-5 h-5" />
             <h2 className="font-semibold text-lg">Configuration</h2>
           </div>
-          
+
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* API Settings */}
             <div className="space-y-3">
@@ -303,6 +303,12 @@ export default function Benchmark() {
                 {loading ? <Cpu className="animate-spin" size={18} /> : <Play size={18} />}
                 {loading ? 'Evaluating...' : 'Start Evaluation'}
               </button>
+            </div>
+
+            <div className="pt-4 text-center">
+              <p className="text-[10px] text-zinc-600 leading-relaxed">
+                Coordinate Note: 0-1000 normalized, <code className="text-zinc-500">[x, y]</code> order.
+              </p>
             </div>
           </form>
         </div>

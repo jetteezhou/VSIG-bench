@@ -55,6 +55,12 @@ export default function Home() {
             </pre>
         </div>
       </section>
+
+      <footer className="pt-8 border-t border-zinc-800">
+        <p className="text-xs text-zinc-500 text-center">
+          Note: Normalized coordinates <code className="text-zinc-400">[x, y]</code> in range <code className="text-zinc-400">0-1000</code>. Origin <code className="text-zinc-400">(0,0)</code> at top-left.
+        </p>
+      </footer>
     </div>
   );
 }
