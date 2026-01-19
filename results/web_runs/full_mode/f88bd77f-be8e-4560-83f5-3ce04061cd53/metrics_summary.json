@@ -1,0 +1,4171 @@
+{
+  "model_name": "gemini-robotics-er-1.5-preview",
+  "model_provider": "gemini",
+  "overall": {
+    "intent_grounding_accuracy": 0.45625,
+    "spatial_grounding_accuracy": 0.06770833333333333,
+    "temporal_grounding_accuracy": 0.16,
+    "overall_score": 0.2279861111111111,
+    "instruction_breakdown": {
+      "指令1": {
+        "intent_accuracy": 0.41333333333333333,
+        "spatial_grounding": 0.13333333333333333,
+        "temporal_grounding": 0.0,
+        "overall": 0.2733333333333333,
+        "count": 15
+      },
+      "指令2": {
+        "intent_accuracy": 0.5142857142857143,
+        "spatial_grounding": 0.0,
+        "temporal_grounding": 0.0,
+        "overall": 0.2571428571428572,
+        "count": 14
+      },
+      "指令3": {
+        "intent_accuracy": 0.5066666666666667,
+        "spatial_grounding": 0.03333333333333333,
+        "temporal_grounding": 0.0,
+        "overall": 0.27,
+        "count": 15
+      },
+      "指令4": {
+        "intent_accuracy": 0.5071428571428572,
+        "spatial_grounding": 0.10714285714285714,
+        "temporal_grounding": 0.0,
+        "overall": 0.30714285714285716,
+        "count": 14
+      },
+      "指令5": {
+        "intent_accuracy": 0.4066666666666666,
+        "spatial_grounding": 0.044444444444444446,
+        "temporal_grounding": 0.0,
+        "overall": 0.22555555555555554,
+        "count": 15
+      },
+      "指令6": {
+        "intent_accuracy": 0.39666666666666667,
+        "spatial_grounding": 0.08333333333333333,
+        "temporal_grounding": 0.25,
+        "overall": 0.24333333333333332,
+        "count": 15
+      }
+    },
+    "detailed_results": [
+      {
+        "video_name": "VID20251227151827.mp4",
+        "instruction": "指令2",
+        "prediction": {
+          "explicit_command": "把黑色的方块拿起来",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "黑色的方块",
+              "point": [
+                448,
+                524
+              ],
+              "timestamp": [
+                3000,
+                5000
+              ]
+            }
+          ],
+          "reasoning": "用户在说“把这个拿起来”的同时，用手指着桌上的黑色方块，因此“这个“这个”指代的就是该方块。",
+          "video_name": "VID20251227151827.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令2/vis_VID20251227151827.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.8,
+          "spatial_grounding": [
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227151403.mp4",
+        "instruction": "指令1",
+        "prediction": {
+          "explicit_command": "请注意桌上的绿色数字万用表。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "绿色的数字万用表",
+              "point": [
+                553,
+                500
+              ],
+              "timestamp": null
+            }
+          ],
+          "reasoning": "用户在视频中用手指指向了桌子上的绿色数字万用表，该动作表明了对该物体的意图。",
+          "video_name": "VID20251227151403.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令1/vis_VID20251227151403.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 1.0,
+          "spatial_grounding": [
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227151730.mp4",
+        "instruction": "指令1",
+        "prediction": {
+          "explicit_command": "指向桌上的橙色物体。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "桌上的橙色物体，形似齿轮。",
+              "point": [
+                520,
+                570
+              ],
+              "timestamp": null
+            }
+          ],
+          "reasoning": "用户在视频中做出了指向桌上橙色物体的动作，但没有发出语音指令。根据指令要求，识别被指向的物体并标记其位置。",
+          "video_name": "VID20251227151730.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令1/vis_VID20251227151730.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.0,
+          "spatial_grounding": [
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227151440.mp4",
+        "instruction": "指令1",
+        "prediction": {
+          "explicit_command": "指向左侧的橙色万用表",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "橙色的万用表",
+              "point": [
+                287,
+                506
+              ],
+              "timestamp": null
+            }
+          ],
+          "reasoning": "用户在视频中没有发出语音指令，但做出了指向动作。该动作明确指向了桌面上左侧的橙色万用表。因此，目标物体是橙色万用表。",
+          "video_name": "VID20251227151440.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令1/vis_VID20251227151440.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.0,
+          "spatial_grounding": [
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227151906.mp4",
+        "instruction": "指令2",
+        "prediction": {
+          "explicit_command": "把这个银色的电子元件拿起来",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "银色的电子元件",
+              "point": [
+                604,
+                707
+              ],
+              "timestamp": [
+                4000,
+                4500
+              ]
+            }
+          ],
+          "reasoning": "用户在00:03-00:04期间用手指指向桌面上一个银色的电子元件，同时说出“把这个拿起来”。“这个”代词结合指向动作，明确指示了要操作的目标物体是该电子元件。指令要求执行“拿起来”动作。",
+          "video_name": "VID20251227151906.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令2/vis_VID20251227151906.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.0,
+          "spatial_grounding": [
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227151338.mp4",
+        "instruction": "指令1",
+        "prediction": {
+          "explicit_command": "指向桌面上的金属网格盒",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "金属网格盒",
+              "point": [
+                378,
+                785
+              ],
+              "timestamp": null
+            }
+          ],
+          "reasoning": "用户在视频中通过指向动作将注意力集中在桌面上放置的金属网格盒上。",
+          "video_name": "VID20251227151338.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令1/vis_VID20251227151338.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.0,
+          "spatial_grounding": [
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227151632.mp4",
+        "instruction": "指令1",
+        "prediction": {
+          "explicit_command": "指向控制面板上的组件。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "控制面板上的组件",
+              "point": [
+                300,
+                400
+              ],
+              "timestamp": null
+            }
+          ],
+          "reasoning": "用户在视频中没有发出语音指令，而是通过肢体动作（指向）来表达意图，目标指向了工作台后方控制面板上的一个组件。",
+          "video_name": "VID20251227151632.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令1/vis_VID20251227151632.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.2,
+          "spatial_grounding": [
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227151549.mp4",
+        "instruction": "指令1",
+        "prediction": {
+          "explicit_command": "指向黑色的方块",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "黑色的方块",
+              "point": [
+                423,
+                592
+              ],
+              "timestamp": null
+            }
+          ],
+          "reasoning": "用户在视频中做无语音指令时，用手指指向了桌上的黑色方块物体。",
+          "video_name": "VID20251227151549.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令1/vis_VID20251227151549.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.8,
+          "spatial_grounding": [
+            1.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227151936.mp4",
+        "instruction": "指令2",
+        "prediction": {
+          "explicit_command": "把白色的焊锡卷拿起来",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "白色的焊锡卷",
+              "point": [
+                248,
+                606
+              ],
+              "timestamp": [
+                3000,
+                4000
+              ]
+            }
+          ],
+          "reasoning": "用户在说“这个”的同时，用手指指向了桌上的白色焊锡卷，因此“这个”指代的就是该焊锡卷，指令是要求拿起这个物体。",
+          "video_name": "VID20251227151936.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令2/vis_VID20251227151936.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.9,
+          "spatial_grounding": [
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227151557.mp4",
+        "instruction": "指令1",
+        "prediction": {
+          "explicit_command": "指向桌上的黑色长方形盒子。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "黑色长方形盒子",
+              "point": [
+                603,
+                666
+              ],
+              "timestamp": null
+            }
+          ],
+          "reasoning": "用户在视频中没有发出语音指令，仅用手指指向了桌上的一个黑色长方形盒子。根据指向动作，确定目标物体为该盒子。",
+          "video_name": "VID20251227151557.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令1/vis_VID20251227151557.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.3,
+          "spatial_grounding": [
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227151411.mp4",
+        "instruction": "指令1",
+        "prediction": {
+          "explicit_command": "指向桌上的焊锡丝卷",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "银色的焊锡丝卷",
+              "point": [
+                403,
+                412
+              ],
+              "timestamp": null
+            }
+          ],
+          "reasoning": "用户在视频中伸出左手，指向桌面上一个银色的焊锡丝卷。该动作是在没有语音指令的情况下完成的，因此其意图是通过指向来定位物体。",
+          "video_name": "VID20251227151411.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令1/vis_VID20251227151411.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 1.0,
+          "spatial_grounding": [
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227151623.mp4",
+        "instruction": "指令1",
+        "prediction": {
+          "explicit_command": "指向控制面板上的红色按钮",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "控制面板上的红色按钮",
+              "point": [
+                206,
+                351
+              ],
+              "timestamp": null
+            }
+          ],
+          "reasoning": "用户在视频中做出了指向动作，其手指指向了工作台左侧控制面板上的一个红色按钮。用户没有提供语音指令。",
+          "video_name": "VID20251227151623.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令1/vis_VID20251227151623.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.6,
+          "spatial_grounding": [
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227151837.mp4",
+        "instruction": "指令2",
+        "prediction": {
+          "explicit_command": "按下这个红色按钮",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "红色按钮",
+              "point": [
+                373,
+                400
+              ],
+              "timestamp": [
+                4000,
+                5000
+              ]
+            }
+          ],
+          "reasoning": "用户在视频中伸出手指向控制面板上的一个红色按钮，同时说出“把这个按一下”，指代词“这个”与指向动作相对应，明确目标是红色按钮，意图是按下它。",
+          "video_name": "VID20251227151837.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令2/vis_VID20251227151837.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.8,
+          "spatial_grounding": [
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227151419.mp4",
+        "instruction": "指令1",
+        "prediction": {
+          "explicit_command": "指向桌子上的橙色万用表",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "桌子上的橙色万用表",
+              "point": [
+                258,
+                689
+              ],
+              "timestamp": null
+            }
+          ],
+          "reasoning": "用户在视频中做出了指向桌面上橙色万用表的动作，但没有发出语音指令。",
+          "video_name": "VID20251227151419.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令1/vis_VID20251227151419.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 1.0,
+          "spatial_grounding": [
+            1.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227151926.mp4",
+        "instruction": "指令2",
+        "prediction": {
+          "explicit_command": "按下这个红色的按钮",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "红色的按钮",
+              "point": [
+                374,
+                463
+              ],
+              "timestamp": [
+                4000,
+                5000
+              ]
+            }
+          ],
+          "reasoning": "根据用户手指指向的动作和语音指令“把这个按一下”，确定目标物体是用户手指正指向的控制面板上的红色按钮，指令要求执行“按下”操作。",
+          "video_name": "VID20251227151926.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令2/vis_VID20251227151926.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.7,
+          "spatial_grounding": [
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227151540.mp4",
+        "instruction": "指令1",
+        "prediction": {
+          "explicit_command": "识别被指向的物体",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "黑色的方块",
+              "point": [
+                480,
+                480
+              ],
+              "timestamp": null
+            }
+          ],
+          "reasoning": "用户在视频中伸出右手食指，指向桌面上放置的黑色方块物体。根据指向性动作，确定目标被定位为该黑色方块。",
+          "video_name": "VID20251227151540.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令1/vis_VID20251227151540.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.4,
+          "spatial_grounding": [
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227151818.mp4",
+        "instruction": "指令2",
+        "prediction": {
+          "explicit_command": "把这个黑色的设备打开",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "黑色的遥控器状设备",
+              "point": [
+                376,
+                705
+              ],
+              "timestamp": [
+                3000,
+                4500
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "打开这个设备",
+              "point": [
+                376,
+                705
+              ],
+              "timestamp": [
+                3000,
+                4500
+              ]
+            }
+          ],
+          "reasoning": "用户在说“把这个打开”时，用手指指向了桌上的黑色遥控器状设备。因此，“这个”指代的就是该设备。指令要求对该设备执行“打开”操作，操作位置即为设备本身。",
+          "video_name": "VID20251227151818.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令2/vis_VID20251227151818.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.0,
+          "spatial_grounding": [
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227151606.mp4",
+        "instruction": "指令1",
+        "prediction": {
+          "explicit_command": "指向白色带K字母的积木",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "白色带K字母的积木",
+              "point": [
+                560,
+                560
+              ],
+              "timestamp": null
+            }
+          ],
+          "reasoning": "用户在视频中做出了指向动作，其手指明确指向桌面上一个白色的、带有字母K的积木。根据非语音指令的规则，将该积木识别为目标物体，并确定其位置坐标。",
+          "video_name": "VID20251227151606.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令1/vis_VID20251227151606.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.0,
+          "spatial_grounding": [
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227151915.mp4",
+        "instruction": "指令2",
+        "prediction": {
+          "explicit_command": "把这个蓝色的圆柱形物体拿起来",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "蓝色的圆柱形物体",
+              "point": [
+                522,
+                493
+              ],
+              "timestamp": [
+                4000,
+                5000
+              ]
+            }
+          ],
+          "reasoning": "用户在说'把这个拿起来'时，手指向了桌面上蓝色的圆柱形物体，因此'这个'指的是该物体。",
+          "video_name": "VID20251227151915.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令2/vis_VID20251227151915.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 1.0,
+          "spatial_grounding": [
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227153213.mp4",
+        "instruction": "指令2",
+        "prediction": {
+          "explicit_command": "把橙色万用表拿起来",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "橙色万用表",
+              "point": [
+                260,
+                580
+              ],
+              "timestamp": [
+                3000,
+                4500
+              ]
+            }
+          ],
+          "reasoning": "用户的手指向桌上的橙色万用表，同时发出“把这个拿起来”的指令。根据手势和指令中的“这个”，目标物体被确定为橙色万用表。指令要求执行“拿起来”的操作。",
+          "video_name": "VID20251227153213.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令2/vis_VID20251227153213.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 1.0,
+          "spatial_grounding": [
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227153232.mp4",
+        "instruction": "指令2",
+        "prediction": {
+          "explicit_command": "把绿黑色的设备拿起来",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "绿黑色的设备",
+              "point": [
+                600,
+                500
+              ],
+              "timestamp": [
+                3000,
+                5000
+              ]
+            }
+          ],
+          "reasoning": "根据语音指令“把这个拿起来”和同时进行的指向动作，判断用户意图是拿起手指指向的绿黑色的设备。",
+          "video_name": "VID20251227153232.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令2/vis_VID20251227153232.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.7,
+          "spatial_grounding": [
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227151346.mp4",
+        "instruction": "指令1",
+        "prediction": {
+          "explicit_command": "指向红柄螺丝刀",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "红柄螺丝刀",
+              "point": [
+                382,
+                752
+              ],
+              "timestamp": null
+            }
+          ],
+          "reasoning": "用户在视频中通过指向动作将注意力集中在桌上的红柄螺丝刀上。虽然没有语音指令，但指向动作清晰地表达了对该物体的意图。",
+          "video_name": "VID20251227151346.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令1/vis_VID20251227151346.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 1.0,
+          "spatial_grounding": [
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227151355.mp4",
+        "instruction": "指令1",
+        "prediction": {
+          "explicit_command": "指向焊锡丝",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "焊锡丝",
+              "point": [
+                580,
+                650
+              ],
+              "timestamp": null
+            }
+          ],
+          "reasoning": "用户在视频中做出了指向动作，其手指明确指向了桌上的焊锡丝卷。",
+          "video_name": "VID20251227151355.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令1/vis_VID20251227151355.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.0,
+          "spatial_grounding": [
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227153203.mp4",
+        "instruction": "指令2",
+        "prediction": {
+          "explicit_command": "把橙色的物体拿起来",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "橙色的3D打印物体",
+              "point": [
+                448,
+                513
+              ],
+              "timestamp": [
+                3000,
+                5000
+              ]
+            }
+          ],
+          "reasoning": "用户在说“把这个拿起来”的同时，用手指指向了桌上的橙色3D打印物体。因此，指令中的“这个”指代的是橙色物体，意图是拿起它。",
+          "video_name": "VID20251227153203.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令2/vis_VID20251227153203.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.0,
+          "spatial_grounding": [
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227153315.mp4",
+        "instruction": "指令3",
+        "prediction": {
+          "explicit_command": "把这个绿色的圆柱体放到左边的空位上",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "绿色的圆柱体",
+              "point": [
+                376,
+                425
+              ],
+              "timestamp": [
+                3000,
+                4000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "桌子上的空位",
+              "point": [
+                378,
+                281
+              ],
+              "timestamp": [
+                4500,
+                5500
+              ]
+            }
+          ],
+          "reasoning": "用户首先用手指向桌上的绿色圆柱体（对应'这个'），然后将手指向圆柱体左侧的空旷区域（对应'这里'），表达了将圆柱体移动到该区域的意图。",
+          "video_name": "VID20251227153315.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令3/vis_VID20251227153315.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.8,
+          "spatial_grounding": [
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227151615.mp4",
+        "instruction": "指令1",
+        "prediction": {
+          "explicit_command": "指向控制面板上的屏幕",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "控制面板上的屏幕",
+              "point": [
+                490,
+                300
+              ],
+              "timestamp": null
+            }
+          ],
+          "reasoning": "用户在视频中没有说话，但通过伸出手指向了工作台上的控制面板屏幕。根据任务要求，静默指向的timestamp设为null。",
+          "video_name": "VID20251227151615.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令1/vis_VID20251227151615.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.5,
+          "spatial_grounding": [
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227153151.mp4",
+        "instruction": "指令2",
+        "prediction": {
+          "explicit_command": "把绿色的圆柱体拿起来。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "绿色的圆柱体",
+              "point": [
+                422,
+                822
+              ],
+              "timestamp": [
+                3190,
+                3750
+              ]
+            }
+          ],
+          "reasoning": "用户在说“把这个拿起来”的同时，用手指指向了桌上的绿色圆柱体。因此，指令中的“这个”指代的就是绿色的圆柱体，意图是拿起它。",
+          "video_name": "VID20251227153151.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令2/vis_VID20251227153151.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 1.0,
+          "spatial_grounding": [
+            0.0
+          ],
+          "temporal_grounding": [
+            0.0
+          ]
+        }
+      },
+      {
+        "video_name": "VID20251227151857.mp4",
+        "instruction": "指令2",
+        "prediction": {
+          "explicit_command": "把绿色的焊锡丝拿起来",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "绿色的焊锡丝卷轴",
+              "point": [
+                376,
+                403
+              ],
+              "timestamp": [
+                4000,
+                5500
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "拿起来的位置",
+              "point": [
+                376,
+                403
+              ],
+              "timestamp": [
+                4000,
+                5500
+              ]
+            }
+          ],
+          "reasoning": "用户在说“把这个拿起来”的同时，用手指指向了桌上的绿色焊锡丝卷轴。指令中的“这个”结合视觉指向，明确了目标物体为焊锡丝卷轴。指令“拿起来”的操作是针对该物体的，因此空间定位点即为物体当前的位置。",
+          "video_name": "VID20251227151857.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令2/vis_VID20251227151857.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.0,
+          "spatial_grounding": [
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227153325.mp4",
+        "instruction": "指令3",
+        "prediction": {
+          "explicit_command": "把橙色的3D打印物体放到桌子右侧的空闲区域",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "橙色的3D打印物体",
+              "point": [
+                412,
+                490
+              ],
+              "timestamp": [
+                3000,
+                4000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "桌子右侧的空闲区域",
+              "point": [
+                712,
+                542
+              ],
+              "timestamp": [
+                5000,
+                6000
+              ]
+            }
+          ],
+          "reasoning": "用户首先用手指向橙色的3D打印物体，并说出“这个”，将其指定为目标物体。随后用户将手移向桌子右侧的空白区域，并说出“这里”，将其指定为放置位置。指令意图是把目标物体移动到指定位置。",
+          "video_name": "VID20251227153325.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令3/vis_VID20251227153325.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.4,
+          "spatial_grounding": [
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227153347.mp4",
+        "instruction": "指令3",
+        "prediction": {
+          "explicit_command": "把白色的零件放到桌子上的指定位置",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "白色的零件",
+              "point": [
+                357,
+                476
+              ],
+              "timestamp": [
+                4000,
+                4500
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "桌子上的空白区域",
+              "point": [
+                504,
+                506
+              ],
+              "timestamp": [
+                5000,
+                6000
+              ]
+            }
+          ],
+          "reasoning": "用户先指向白色的零件作为目标物体，然后指向桌子上的空白区域作为放置位置，指令是把这个物体放到这里。",
+          "video_name": "VID20251227153347.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令3/vis_VID20251227153347.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.0,
+          "spatial_grounding": [
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227153336.mp4",
+        "instruction": "指令3",
+        "prediction": {
+          "explicit_command": "把万用表放置到桌子右侧的空白区域",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "桌上的万用表",
+              "point": [
+                166,
+                509
+              ],
+              "timestamp": [
+                3400,
+                4200
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "桌子右侧的空白区域",
+              "point": [
+                675,
+                610
+              ],
+              "timestamp": [
+                5100,
+                6300
+              ]
+            }
+          ],
+          "reasoning": "用户首先用手指向万用表（'这个'），然后将手移向桌子右侧的桌面上一个空区域并指向那里（'这里'），并口述'把这个放在这里'。因此，意图是将万用表移动到桌子右侧的空白区域。",
+          "video_name": "VID20251227153336.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令3/vis_VID20251227153336.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.7,
+          "spatial_grounding": [
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227151846.mp4",
+        "instruction": "指令2",
+        "prediction": {
+          "explicit_command": "把这个关上",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "控制面板上的白色按钮",
+              "point": [
+                490,
+                410
+              ],
+              "timestamp": [
+                3000,
+                5000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "按钮的位置",
+              "point": [
+                490,
+                410
+              ],
+              "timestamp": [
+                3000,
+                5000
+              ]
+            }
+          ],
+          "reasoning": "用户在说“把这个关上”的同时，用手指向了控制面板上的一个白色按钮。因此，目标物体是这个按钮，而操作位置就是这个按钮本身。",
+          "video_name": "VID20251227151846.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令2/vis_VID20251227151846.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.0,
+          "spatial_grounding": [
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227153802.mp4",
+        "instruction": "指令3",
+        "prediction": {
+          "explicit_command": "把白色的圆形物体放到桌子上的空闲位置",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "白色的圆形物体",
+              "point": [
+                445,
+                417
+              ],
+              "timestamp": [
+                3000,
+                5000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "桌子上的空闲位置",
+              "point": [
+                550,
+                600
+              ],
+              "timestamp": [
+                5000,
+                6000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指向桌上白色的圆形物体，并说出“这个”，然后指向其右侧的空白区域，并说出“这里”，意图是将该物体放置在指定区域。",
+          "video_name": "VID20251227153802.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令3/vis_VID20251227153802.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.7,
+          "spatial_grounding": [
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227153358.mp4",
+        "instruction": "指令3",
+        "prediction": {
+          "explicit_command": "把绿黑色的设备放到桌面上空旷的区域",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "绿黑色的设备",
+              "point": [
+                480,
+                480
+              ],
+              "timestamp": [
+                3000,
+                4000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "桌面上空旷的区域",
+              "point": [
+                400,
+                700
+              ],
+              "timestamp": [
+                5000,
+                6000
+              ]
+            }
+          ],
+          "reasoning": "用户首先用手指向桌上的绿黑色的设备（“这个”），表明这是要操作的物体。接着，用户将手移向桌面上的一处空旷区域（“这里”），指明这是放置目标的位置。指令的意图是将该设备移动到指定区域。",
+          "video_name": "VID20251227153358.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令3/vis_VID20251227153358.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.6,
+          "spatial_grounding": [
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227153728.mp4",
+        "instruction": "指令3",
+        "prediction": {
+          "explicit_command": "把金属网状盒放到桌子上的空位",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "金属网状盒",
+              "point": [
+                700,
+                550
+              ],
+              "timestamp": [
+                3000,
+                4000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "桌子上的空位",
+              "point": [
+                350,
+                600
+              ],
+              "timestamp": [
+                5000,
+                6000
+              ]
+            }
+          ],
+          "reasoning": "用户首先用手指向金属网状盒，同时说“这个”，表明这是要操作的目标物体。接着，用户将手移动到桌子左侧的空位，同时说“这里”，表明这是放置物体的位置。指令“把这个放在这里”结合手势，构成了一个完整的“放置”动作指令。",
+          "video_name": "VID20251227153728.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令3/vis_VID20251227153728.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.8,
+          "spatial_grounding": [
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227153907.mp4",
+        "instruction": "指令3",
+        "prediction": {
+          "explicit_command": "把这个白色的物体放到桌上的空闲区域",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "白色的物体",
+              "point": [
+                311,
+                497
+              ],
+              "timestamp": [
+                3000,
+                4000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "桌子上的空白区域",
+              "point": [
+                520,
+                530
+              ],
+              "timestamp": [
+                5000,
+                6000
+              ]
+            }
+          ],
+          "reasoning": "用户首先用手指向左侧的白色物体并说“把这个”，随后将手指向桌子中间的空白区域并说“放到这里”。因此，目标物体是白色物体，放置位置是桌子上的空白区域。",
+          "video_name": "VID20251227153907.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令3/vis_VID20251227153907.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.8,
+          "spatial_grounding": [
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227153836.mp4",
+        "instruction": "指令3",
+        "prediction": {
+          "explicit_command": "把这个白色的圆形小部件放到旁边的空地上",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "白色圆形小部件",
+              "point": [
+                415,
+                550
+              ],
+              "timestamp": [
+                2000,
+                3000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "桌面上空地",
+              "point": [
+                610,
+                550
+              ],
+              "timestamp": [
+                4000,
+                5000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指向桌面上一个白色的圆形小部件作为目标物体，然后指向该物体旁边的桌面空地作为放置位置，并发出“把这个放到这里”的指令。",
+          "video_name": "VID20251227153836.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令3/vis_VID20251227153836.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.8,
+          "spatial_grounding": [
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227153824.mp4",
+        "instruction": "指令3",
+        "prediction": {
+          "explicit_command": "把黑色长条物体放到桌子上的空旷区域",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "黑色长条物体",
+              "point": [
+                320,
+                560
+              ],
+              "timestamp": [
+                2740,
+                3480
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "桌子上的空旷区域",
+              "point": [
+                420,
+                480
+              ],
+              "timestamp": [
+                4240,
+                5100
+              ]
+            }
+          ],
+          "reasoning": "用户首先指向桌上的黑色长条物体，并说出“这个”，表示这是要操作的目标物体。随后用户指向物体右侧的桌面上一个空旷区域，并说出“这里”，表示这是放置目标物体的位置。因此，指令是把黑色长条物体移动到该空旷区域。",
+          "video_name": "VID20251227153824.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令3/vis_VID20251227153824.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.0,
+          "spatial_grounding": [
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227153223.mp4",
+        "instruction": "指令2",
+        "prediction": {
+          "explicit_command": "把这个白色的物体拿起来",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "白色物体",
+              "point": [
+                370,
+                520
+              ],
+              "timestamp": [
+                3000,
+                4000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "物体所在的位置",
+              "point": [
+                370,
+                520
+              ],
+              "timestamp": null
+            }
+          ],
+          "reasoning": "用户在00:02到00:04之间用手指指向桌上的白色物体。同时在00:03到00:04之间发出“把这个拿起来”的指令。手势和代词“这个”共同指代白色的物体为目标对象。指令意图是拾取该物体，没有指定放置位置，因此空间参照点为物体当前位置。",
+          "video_name": "VID20251227153223.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令2/vis_VID20251227153223.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.7,
+          "spatial_grounding": [
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227153739.mp4",
+        "instruction": "指令3",
+        "prediction": {
+          "explicit_command": "把银色圆形物体放到白色区域的空白位置",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "银色圆形物体",
+              "point": [
+                480,
+                580
+              ],
+              "timestamp": [
+                3500,
+                4500
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "白色区域上的空白位置",
+              "point": [
+                350,
+                600
+              ],
+              "timestamp": [
+                5000,
+                6000
+              ]
+            }
+          ],
+          "reasoning": "用户首先用手指向银色圆形物体（“这个”），然后将手移到旁移指向白色区域的空白位置（“这里”），同时说出“把这个放到这里”。因此，目标物体是银色圆形物体，放置位置是白色区域的白色区域的空白处。",
+          "video_name": "VID20251227153739.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令3/vis_VID20251227153739.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.2,
+          "spatial_grounding": [
+            0.0,
+            1.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227153750.mp4",
+        "instruction": "指令3",
+        "prediction": {
+          "explicit_command": "把桌子上的白色圆形零件放到右侧的空地上",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "白色圆形零件",
+              "point": [
+                453,
+                550
+              ],
+              "timestamp": [
+                3000,
+                4000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "桌子上的空地",
+              "point": [
+                600,
+                500
+              ],
+              "timestamp": [
+                5000,
+                6000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指向桌上的白色圆形零件（这个），然后指向其右侧的一块空地（这里），并口述“把这个放到这里”，意图是将该零件移动到指定空地。",
+          "video_name": "VID20251227153750.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令3/vis_VID20251227153750.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.0,
+          "spatial_grounding": [
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227154123.mp4",
+        "instruction": "指令3",
+        "prediction": {
+          "explicit_command": "把绿色的线轴放到桌子上的空位上",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "绿色的线轴",
+              "point": [
+                380,
+                480
+              ],
+              "timestamp": [
+                2400,
+                3600
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "桌子上的空位",
+              "point": [
+                550,
+                550
+              ],
+              "timestamp": [
+                4000,
+                5000
+              ]
+            }
+          ],
+          "reasoning": "用户先指向绿色的线轴并说“这个”，然后指向桌上的空位并说“这里”，表明意图是将线轴移动到该空位。",
+          "video_name": "VID20251227154123.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令3/vis_VID20251227154123.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.3,
+          "spatial_grounding": [
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227153612.mp4",
+        "instruction": "指令3",
+        "prediction": {
+          "explicit_command": "把白色不规则物体放到桌面上绿色圆柱体旁边的空地上。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "桌上的白色不规则物体",
+              "point": [
+                373,
+                490
+              ],
+              "timestamp": [
+                3000,
+                4000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "桌面上绿色圆柱体旁边的空地",
+              "point": [
+                358,
+                654
+              ],
+              "timestamp": [
+                5000,
+                6000
+              ]
+            }
+          ],
+          "reasoning": "用户在说“这个”时，手指指向桌上的白色不规则物体，确定了目标物体。接着，用户在说“这里”时，手指指向绿色圆柱体旁边的空白区域，确定了放置位置。",
+          "video_name": "VID20251227153612.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令3/vis_VID20251227153612.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.8,
+          "spatial_grounding": [
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227154155.mp4",
+        "instruction": "指令4",
+        "prediction": {
+          "explicit_command": "把绿色焊锡丝卷轴放到黑色方块的左边",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "绿色焊锡丝卷轴",
+              "point": [
+                484,
+                480
+              ],
+              "timestamp": [
+                3000,
+                4000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "黑色方块左边的桌面位置",
+              "point": [
+                400,
+                500
+              ],
+              "timestamp": [
+                4000,
+                5000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指向绿色焊锡丝卷轴，并说“把这个”，确定了目标物体。接着指向黑色方块，并说“放到它的左面”，确定了参考物体和空间位置关系。指令要求将焊锡丝卷轴放置在黑色方块的左侧区域。",
+          "video_name": "VID20251227154155.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令4/vis_VID20251227154155.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.0,
+          "spatial_grounding": [
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227153814.mp4",
+        "instruction": "指令3",
+        "prediction": {
+          "explicit_command": "把这个黑色方块放到桌子上的空余位置",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "黑色方块",
+              "point": [
+                310,
+                500
+              ],
+              "timestamp": [
+                3000,
+                4000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "桌子上的空余位置",
+              "point": [
+                700,
+                550
+              ],
+              "timestamp": [
+                5000,
+                6000
+              ]
+            }
+          ],
+          "reasoning": "用户通过第一次指向动作（00:03-00:04）指定了目标物体——黑色的方块。随后通过第二次指向动作（00:05-00:06）指定了放置位置——桌面上的一片空地。结合语音指令“把这个放到这里”，意图是将黑方块移动到指定空地。",
+          "video_name": "VID20251227153814.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令3/vis_VID20251227153814.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.8,
+          "spatial_grounding": [
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227154442.mp4",
+        "instruction": "指令4",
+        "prediction": {
+          "explicit_command": "把白色物体放到绿色圆筒后面",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "白色物体",
+              "point": [
+                284,
+                723
+              ],
+              "timestamp": [
+                3000,
+                4000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "绿色圆筒的后面",
+              "point": [
+                525,
+                650
+              ],
+              "timestamp": [
+                5000,
+                6000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指向一个白色物体，接着指向一个绿色圆筒，并要求将第一个物体放到第二个物体后面。因此，目标物体是白色物体，放置位置是绿色圆筒后方的区域。",
+          "video_name": "VID20251227154442.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令4/vis_VID20251227154442.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.5,
+          "spatial_grounding": [
+            0.0,
+            1.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227154301.mp4",
+        "instruction": "指令4",
+        "prediction": {
+          "explicit_command": "把白色塑料件放到绿色线圈的右边",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "白色塑料件",
+              "point": [
+                260,
+                610
+              ],
+              "timestamp": [
+                4000,
+                5000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "绿色线圈右侧的空桌面",
+              "point": [
+                550,
+                550
+              ],
+              "timestamp": [
+                5000,
+                6000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指向白色塑料件，并说“把这个”（target_object）。接着指向绿色线圈，并说“放到它的右面”（spatial_affordance），意图是将白色塑料件放置到绿色线圈的右侧。",
+          "video_name": "VID20251227154301.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令4/vis_VID20251227154301.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.1,
+          "spatial_grounding": [
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227154228.mp4",
+        "instruction": "指令4",
+        "prediction": {
+          "explicit_command": "把黑色方块放到绿色焊锡丝卷轴的后面。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "黑色方块",
+              "point": [
+                520,
+                450
+              ],
+              "timestamp": [
+                2000,
+                3000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "绿色焊锡丝卷轴后面",
+              "point": [
+                400,
+                450
+              ],
+              "timestamp": [
+                4000,
+                5000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指向黑色方块并说“这个”，表明黑色方块是目标物体。随后指向绿色焊锡丝卷轴并说“它的后面”，表明放置”，表明放置位置是焊锡丝卷轴的后方区域。",
+          "video_name": "VID20251227154228.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令4/vis_VID20251227154228.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.3,
+          "spatial_grounding": [
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227154430.mp4",
+        "instruction": "指令4",
+        "prediction": {
+          "explicit_command": "把万用表放到白色物体后面",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "万用表",
+              "point": [
+                400,
+                800
+              ],
+              "timestamp": [
+                4000,
+                6000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "白色物体后面的区域",
+              "point": [
+                500,
+                500
+              ],
+              "timestamp": [
+                3000,
+                4000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指向白色物体（[3000, 4000]ms）作为参照物，然后指向万用表（[4000, 6000]ms）作为目标物体，并说“把这个放到它的后面”。根据指令，目标物体是万用表，放置区域是白色物体后面。",
+          "video_name": "VID20251227154430.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令4/vis_VID20251227154430.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.9,
+          "spatial_grounding": [
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227154238.mp4",
+        "instruction": "指令4",
+        "prediction": {
+          "explicit_command": "把白色塑料件放到白色线圈的右边",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "白色塑料件",
+              "point": [
+                300,
+                410
+              ],
+              "timestamp": [
+                3000,
+                4000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "白色线圈右侧的空闲区域",
+              "point": [
+                450,
+                600
+              ],
+              "timestamp": [
+                5000,
+                6000
+              ]
+            }
+          ],
+          "reasoning": "用户先指向白色塑料件，说“把这个”，确定了目标物体。然后用户指向白色线圈，说“放到它的右面”，确定了参考物体和放置位置。因此指令是把白色塑料件放到白色线圈的右侧。",
+          "video_name": "VID20251227154238.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令4/vis_VID20251227154238.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.3,
+          "spatial_grounding": [
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227154250.mp4",
+        "instruction": "指令4",
+        "prediction": {
+          "explicit_command": "把白色焊锡丝卷轴放到金属网格方块的左边。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "白色焊锡丝卷轴",
+              "point": [
+                430,
+                490
+              ],
+              "timestamp": [
+                3000,
+                4000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "金属网格方块左侧区域",
+              "point": [
+                450,
+                550
+              ],
+              "timestamp": [
+                5000,
+                6000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指向白色焊锡丝卷轴（目标物体），并说“把这个”。然后指向金属网格方块（参考物体），并说“放到它的左边”。因此，指令是把白色焊锡丝卷轴移动到金属网格方块的左侧区域。",
+          "video_name": "VID20251227154250.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令4/vis_VID20251227154250.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 1.0,
+          "spatial_grounding": [
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227154454.mp4",
+        "instruction": "指令4",
+        "prediction": {
+          "explicit_command": "把银色物体放到绿色圆柱体的右边",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "银色物体",
+              "point": [
+                330,
+                520
+              ],
+              "timestamp": [
+                3000,
+                4000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "绿色圆柱体右侧区域",
+              "point": [
+                600,
+                600
+              ],
+              "timestamp": [
+                5000,
+                7000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指向银色物体，然后指向绿色圆柱体，并说“把这个放到它的右边”。因此，银色物体是目标物体，放置位置在绿色圆柱体的右侧区域。",
+          "video_name": "VID20251227154454.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令4/vis_VID20251227154454.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.5,
+          "spatial_grounding": [
+            0.0,
+            1.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227154552.mp4",
+        "instruction": "指令4",
+        "prediction": {
+          "explicit_command": "把绿色的杯子放到红色螺丝刀的左侧",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "绿色杯子",
+              "point": [
+                330,
+                580
+              ],
+              "timestamp": [
+                4000,
+                5000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "螺丝刀左侧的桌面区域",
+              "point": [
+                480,
+                600
+              ],
+              "timestamp": [
+                6000,
+                8000
+              ]
+            }
+          ],
+          "reasoning": "用户首先用手指向绿色杯子，并说“把这个”，表明绿色杯子是目标物体。随后用户将手移至红色螺丝刀，并说“放到它的左面”，表明螺丝刀是参照物，目标位置，目标位置是螺丝刀的左侧。",
+          "video_name": "VID20251227154552.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令4/vis_VID20251227154552.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 1.0,
+          "spatial_grounding": [
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227154507.mp4",
+        "instruction": "指令4",
+        "prediction": {
+          "explicit_command": "把红色螺丝刀放到白色圆形物体的左边。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "红色螺丝刀",
+              "point": [
+                450,
+                470
+              ],
+              "timestamp": [
+                3000,
+                4000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "白色圆形物体的左边",
+              "point": [
+                500,
+                500
+              ],
+              "timestamp": [
+                5000,
+                7000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指向了桌上的红色螺丝刀（物体A），然后指向了旁边的白色圆形物体（物体B）。用户语音指令“把这个（A）放到它的（B）左面”，意图是将螺丝刀放置在白色圆形物体的左侧区域。",
+          "video_name": "VID20251227154507.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令4/vis_VID20251227154507.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.8,
+          "spatial_grounding": [
+            1.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227154216.mp4",
+        "instruction": "指令4",
+        "prediction": {
+          "explicit_command": "把白色的卷筒放到金属网格盒的前面。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "白色卷筒",
+              "point": [
+                346,
+                648
+              ],
+              "timestamp": [
+                4000,
+                5000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "金属网格盒前面的区域",
+              "point": [
+                450,
+                700
+              ],
+              "timestamp": [
+                5000,
+                7000
+              ]
+            }
+          ],
+          "reasoning": "用户先指向白色的卷筒并说“把这个”，确定目标物体。接着指向金属网格盒并说“放到它的前面”，确定参照物和放置位置。因此指令是将白色的卷筒放置到金属网格盒的前方区域。",
+          "video_name": "VID20251227154216.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令4/vis_VID20251227154216.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.0,
+          "spatial_grounding": [
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227154205.mp4",
+        "instruction": "指令4",
+        "prediction": {
+          "explicit_command": "把蓝白色的胶带卷放到标有数字5的白色物体的右侧。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "蓝白色的胶带卷",
+              "point": [
+                405,
+                755
+              ],
+              "timestamp": [
+                3000,
+                4000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "标有数字5的白色物体右侧的放置区域",
+              "point": [
+                350,
+                600
+              ],
+              "timestamp": [
+                4000,
+                5000
+              ]
+            }
+          ],
+          "reasoning": "根据用户的双重指向和口头指令“把这个放到它的右面”，首先指向的蓝白胶带卷是目标物体（“这个”），接着指向的标有数字5的白色物体是参考物体（“它”）。指令要求将目标物体放置在参考物体的右侧。",
+          "video_name": "VID20251227154205.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令4/vis_VID20251227154205.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.6,
+          "spatial_grounding": [
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227154808.mp4",
+        "instruction": "指令5",
+        "prediction": {
+          "explicit_command": "把白色零件放到绿色线圈的左侧，然后拿起黑色的方块。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "白色零件",
+              "point": [
+                672,
+                601
+              ],
+              "timestamp": [
+                3000,
+                4000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "绿色线圈的左侧",
+              "point": [
+                396,
+                597
+              ],
+              "timestamp": [
+                5000,
+                6000
+              ]
+            },
+            {
+              "type": "target_object",
+              "description": "黑色方块",
+              "point": [
+                506,
+                545
+              ],
+              "timestamp": [
+                7000,
+                8000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指示将白色零件（target_object）放置到绿色线圈（spatial_affordance_reference）的左侧，接着指示拿起黑色的方块（target_object）。",
+          "video_name": "VID20251227154808.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令5/vis_VID20251227154808.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.4,
+          "spatial_grounding": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227154419.mp4",
+        "instruction": "指令4",
+        "prediction": {
+          "explicit_command": "把绿色的圆柱体放到白色物体的前面。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "绿色的圆柱体",
+              "point": [
+                500,
+                600
+              ],
+              "timestamp": [
+                3000,
+                4000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "白色物体前面的区域",
+              "point": [
+                300,
+                700
+              ],
+              "timestamp": [
+                5000,
+                6000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指向绿色的圆柱体，并说‘把这个’，将其指定为目标物体。随后指向白色的物体，并说‘放到它的前面’，指定了放置的目标位置是白色物体的前方区域。",
+          "video_name": "VID20251227154419.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令4/vis_VID20251227154419.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.5,
+          "spatial_grounding": [
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227154739.mp4",
+        "instruction": "指令5",
+        "prediction": {
+          "explicit_command": "把白色线圈放到绿色线圈后面，然后把绿色圆柱拿起来。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "白色线圈",
+              "point": [
+                450,
+                700
+              ],
+              "timestamp": [
+                4000,
+                5000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "绿色线圈后面",
+              "point": [
+                350,
+                550
+              ],
+              "timestamp": [
+                5000,
+                7000
+              ]
+            },
+            {
+              "type": "target_object",
+              "description": "绿色圆柱",
+              "point": [
+                300,
+                500
+              ],
+              "timestamp": [
+                7000,
+                9000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指令将白色线圈（白色的卷状物）放置到绿色线圈（绿色的卷状物）后面。随后，用户又指令拿起绿色的圆柱形物体。因此，指令涉及两个主要步骤和三个物体定位：白色线圈是第一个操作对象，绿色线圈是空间参照物，绿色圆柱是第二个操作对象。",
+          "video_name": "VID20251227154739.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令5/vis_VID20251227154739.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.2,
+          "spatial_grounding": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227154954.mp4",
+        "instruction": "指令5",
+        "prediction": {
+          "explicit_command": "把蓝色的焊锡丝放到黑色的立方体后面，然后拿起红色螺丝刀。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "蓝色的焊锡丝卷",
+              "point": [
+                608,
+                602
+              ],
+              "timestamp": [
+                3400,
+                4000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "黑色的立方体后方位置",
+              "point": [
+                501,
+                450
+              ],
+              "timestamp": [
+                4500,
+                5500
+              ]
+            },
+            {
+              "type": "target_object",
+              "description": "红色螺丝刀",
+              "point": [
+                483,
+                502
+              ],
+              "timestamp": [
+                7000,
+                8000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指向蓝色的焊锡丝卷并说“把这个”，然后指向黑色的立方体并要求“放到它的后面”。接着，用户指向红色螺丝刀并要求“把这个拿起来”，这是一个两步的复合指令。",
+          "video_name": "VID20251227154954.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令5/vis_VID20251227154954.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.9,
+          "spatial_grounding": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227154712.mp4",
+        "instruction": "指令5",
+        "prediction": {
+          "explicit_command": "把绿色的线圈放到黑色方块的左边，然后拿起黑色方块。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "绿色线圈",
+              "point": [
+                375,
+                660
+              ],
+              "timestamp": [
+                4000,
+                6000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "黑色方块左侧",
+              "point": [
+                400,
+                600
+              ],
+              "timestamp": [
+                5000,
+                7000
+              ]
+            },
+            {
+              "type": "target_object",
+              "description": "黑色方块",
+              "point": [
+                470,
+                600
+              ],
+              "timestamp": [
+                7000,
+                8000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指示将绿色的线圈（'这个'）放置到黑色方块（'它'）的左侧，然后指示拿起黑色方块（'这个'）。指令包含两个连续动作。",
+          "video_name": "VID20251227154712.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令5/vis_VID20251227154712.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.4,
+          "spatial_grounding": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227154753.mp4",
+        "instruction": "指令5",
+        "prediction": {
+          "explicit_command": "把焊锡丝卷轴放到黑色方块前面，然后把白色小勺拿起来。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "焊锡丝卷轴（绿色和银色物体）",
+              "point": [
+                387,
+                608
+              ],
+              "timestamp": [
+                3300,
+                4000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "黑色方块前面的位置",
+              "point": [
+                500,
+                600
+              ],
+              "timestamp": [
+                4000,
+                5000
+              ]
+            },
+            {
+              "type": "target_object",
+              "description": "白色小勺",
+              "point": [
+                196,
+                689
+              ],
+              "timestamp": [
+                6000,
+                7000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指示将焊锡丝卷轴（通过手势指向'这个'）移动到黑色方块（通过手势指向'它'）的前面。接着，用户指示将白色小勺（通过手势指向'这个'）拿起来。指令包含两个连续的动作：放置和拿取。",
+          "video_name": "VID20251227154753.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令5/vis_VID20251227154753.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.6,
+          "spatial_grounding": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227154646.mp4",
+        "instruction": "指令5",
+        "prediction": {
+          "explicit_command": "把白色零件放到黑色方块的右边，然后把白色胶带拿起来。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "白色零件",
+              "point": [
+                742,
+                638
+              ],
+              "timestamp": [
+                3000,
+                4000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "黑色方块的右边",
+              "point": [
+                650,
+                550
+              ],
+              "timestamp": [
+                4000,
+                6000
+              ]
+            },
+            {
+              "type": "target_object",
+              "description": "白色胶带",
+              "point": [
+                384,
+                829
+              ],
+              "timestamp": [
+                7000,
+                8000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指示将白色零件（[742, 638]）放置到黑色方块（[502, 544]）的右侧位置（[650, 550]）。接着，用户指示拿取另一个物体，通过手势指向了白色胶带（[384, 829]）。指令是一个复合动作，包含放置和拿取两个步骤。",
+          "video_name": "VID20251227154646.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令5/vis_VID20251227154646.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.1,
+          "spatial_grounding": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227154913.mp4",
+        "instruction": "指令5",
+        "prediction": {
+          "explicit_command": "把黑色的方块放到绿色的杯子右边，然后把红色的螺丝刀拿起来。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "黑色的方块",
+              "point": [
+                471,
+                466
+              ],
+              "timestamp": [
+                4000,
+                5000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "绿色的杯子右边",
+              "point": [
+                382,
+                469
+              ],
+              "timestamp": [
+                5000,
+                6000
+              ]
+            },
+            {
+              "type": "target_object",
+              "description": "红色的螺丝刀",
+              "point": [
+                423,
+                560
+              ],
+              "timestamp": [
+                7000,
+                8000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指向黑色的方块（00:04-00:05），然后指向绿色的杯子（00:05-00:06），指令是“把这个放到它的右边”，即把黑方块放到绿杯子右边。接着用户指向红色的螺丝刀（00:07-00:08），指令是“把它拿起来”，即拿起红色的螺丝刀。因此，目标物体是黑方块和螺丝刀，位置是绿杯子右边。",
+          "video_name": "VID20251227154913.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令5/vis_VID20251227154913.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.9,
+          "spatial_grounding": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227155008.mp4",
+        "instruction": "指令5",
+        "prediction": {
+          "explicit_command": "把绿色的杯子放到黑色的方块前面，然后把白色的焊锡丝拿起来。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "绿色的杯子",
+              "point": [
+                386,
+                498
+              ],
+              "timestamp": [
+                3410,
+                4410
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "黑色的方块前面",
+              "point": [
+                504,
+                605
+              ],
+              "timestamp": [
+                4930,
+                5850
+              ]
+            },
+            {
+              "type": "target_object",
+              "description": "白色的焊锡丝",
+              "point": [
+                415,
+                708
+              ],
+              "timestamp": [
+                7330,
+                8210
+              ]
+            }
+          ],
+          "reasoning": "用户首先指向绿色的杯子，并说“把这个放到它的前面”，这里的“它”指的是用户接下来指向的黑色的方块。因此第一步是将绿色的杯子移动到黑方块的前面。接着用户指向白色的焊锡丝，并说“把这个拿起来”，这是第二步动作。因此，需要识别出绿杯子作为第一操作目标，黑方块前方作为空间位置，以及白焊锡丝作为第二操作目标。",
+          "video_name": "VID20251227155008.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令5/vis_VID20251227155008.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.7,
+          "spatial_grounding": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      {
+        "video_name": "VID20251227155105.mp4",
+        "instruction": "指令5",
+        "prediction": {
+          "explicit_command": "把蓝色焊锡线圈放到黑色方块前面，然后把红色螺丝刀拿起来。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "蓝色焊锡线圈",
+              "point": [
+                448,
+                558
+              ],
+              "timestamp": [
+                3000,
+                4000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "黑色方块前面",
+              "point": [
+                470,
+                480
+              ],
+              "timestamp": [
+                4000,
+                5000
+              ]
+            },
+            {
+              "type": "target_object",
+              "description": "红色螺丝刀",
+              "point": [
+                570,
+                700
+              ],
+              "timestamp": [
+                7000,
+                8000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指向蓝色焊锡线圈，指令要求将其放置到黑色方块的前面，黑色方块是空间参照物。随后，用户指向红色螺丝刀，要求执行拿起操作。指令包含两个连续的动作和目标。",
+          "video_name": "VID20251227155105.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令5/vis_VID20251227155105.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.6,
+          "spatial_grounding": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227154927.mp4",
+        "instruction": "指令5",
+        "prediction": {
+          "explicit_command": "将白色的焊锡丝放到红色螺丝刀后面，然后拿起旁边的白色零件。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "白色的焊锡丝卷轴",
+              "point": [
+                400,
+                700
+              ],
+              "timestamp": [
+                4000,
+                5000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "红色螺丝刀后方的位置",
+              "point": [
+                475,
+                500
+              ],
+              "timestamp": [
+                5000,
+                6000
+              ]
+            },
+            {
+              "type": "target_object",
+              "description": "白色的线圈状零件",
+              "point": [
+                200,
+                630
+              ],
+              "timestamp": [
+                7000,
+                8000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指示将白色的焊锡丝（圆盘状物体）移动到红色螺丝刀后方，这是一个放置动作。接着，用户指示拿起白色纸上的线圈状零件，这是一个抓取动作。指令包含两个连续的步骤。",
+          "video_name": "VID20251227154927.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令5/vis_VID20251227154927.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.0,
+          "spatial_grounding": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227154726.mp4",
+        "instruction": "指令5",
+        "prediction": {
+          "explicit_command": "把绿色线轴放到白色线轴的右边，然后拿起左边的白色小部件。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "绿色线轴",
+              "point": [
+                398,
+                442
+              ],
+              "timestamp": [
+                4000,
+                5000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "白色线轴的右侧",
+              "point": [
+                550,
+                680
+              ],
+              "timestamp": [
+                4000,
+                6000
+              ]
+            },
+            {
+              "type": "target_object",
+              "description": "白色小部件",
+              "point": [
+                260,
+                500
+              ],
+              "timestamp": [
+                7000,
+                8000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指示将绿色线轴移动到其下方白色线轴的右侧。然后，用户指示拿起位于左侧的白色小部件。指令包含两个连续的动作和目标物体。",
+          "video_name": "VID20251227154726.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令5/vis_VID20251227154726.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.1,
+          "spatial_grounding": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227155021.mp4",
+        "instruction": "指令5",
+        "prediction": {
+          "explicit_command": "把白色圆形物体放到黑色方块的右边，然后把红色螺丝刀拿起来。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "白色圆形物体",
+              "point": [
+                284,
+                548
+              ],
+              "timestamp": [
+                3000,
+                4000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "黑色方块的右边",
+              "point": [
+                504,
+                510
+              ],
+              "timestamp": [
+                4000,
+                6000
+              ]
+            },
+            {
+              "type": "target_object",
+              "description": "红色螺丝刀",
+              "point": [
+                379,
+                403
+              ],
+              "timestamp": [
+                7000,
+                8000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指示将左侧的白色圆形物体放置到中间黑色方块的右边，然后指示拿起红色螺丝刀。第一步操作涉及一个目标物体（白色圆形物体）和一个空间参照物（黑色方块）。第二步操作涉及另一个目标物体（红色螺丝刀）。",
+          "video_name": "VID20251227155021.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令5/vis_VID20251227155021.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.0,
+          "spatial_grounding": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227154539.mp4",
+        "instruction": "指令4",
+        "prediction": {
+          "explicit_command": "把白色小零件放到黑色设备的右侧。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "白色小零件",
+              "point": [
+                280,
+                700
+              ],
+              "timestamp": [
+                3000,
+                4000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "黑色设备右侧的空白区域",
+              "point": [
+                500,
+                800
+              ],
+              "timestamp": [
+                6390,
+                6950
+              ]
+            }
+          ],
+          "reasoning": "根据视频和语音指令，用户首先用手指向左侧的白色小零件（00:03-00:04），对应指令中的“把这个”。然后用户指向中间的黑色设备（00:05-00:06），对应指令中的“它”。最后，用户的手指向黑色设备右侧的空白区域（00:06-00:07），指令要求将白色零件放置在黑色设备的右侧。",
+          "video_name": "VID20251227154539.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令4/vis_VID20251227154539.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.0,
+          "spatial_grounding": [
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      {
+        "video_name": "VID20251227154659.mp4",
+        "instruction": "指令5",
+        "prediction": {
+          "explicit_command": "把绿色的线轴放到白色物体左边, 然后把白色物体拿起来",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "绿色的线轴",
+              "point": [
+                400,
+                600
+              ],
+              "timestamp": [
+                4000,
+                6000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "白色物体左边",
+              "point": [
+                500,
+                650
+              ],
+              "timestamp": [
+                6000,
+                7000
+              ]
+            },
+            {
+              "type": "target_object",
+              "description": "白色物体",
+              "point": [
+                500,
+                650
+              ],
+              "timestamp": [
+                8000,
+                9000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指示把绿色的线轴（通过手势指向00:05）放到白色物体（通过手势指向00:06）的左边。接着，用户指示把白色物体（通过手势指向00:08）拿起来。因此，指令包含两个步骤：移动线轴，然后拿起白色物体。",
+          "video_name": "VID20251227154659.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令5/vis_VID20251227154659.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.1,
+          "spatial_grounding": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227154859.mp4",
+        "instruction": "指令5",
+        "prediction": {
+          "explicit_command": "把银色焊锡丝卷轴放到红色螺丝刀前面，然后把黑色方块拿起来。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "银色焊锡丝卷轴",
+              "point": [
+                248,
+                203
+              ],
+              "timestamp": [
+                3740,
+                4740
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "红色螺丝刀前方",
+              "point": [
+                350,
+                309
+              ],
+              "timestamp": [
+                5260,
+                6620
+              ]
+            },
+            {
+              "type": "target_object",
+              "description": "黑色方块",
+              "point": [
+                247,
+                498
+              ],
+              "timestamp": [
+                7420,
+                8580
+              ]
+            }
+          ],
+          "reasoning": "用户首先指令“把这个放到他的前面”。根据手势，第一个“这个”指代银色焊锡丝卷轴，第二个“他”指代红色螺丝刀。因此，第一步是将银色卷轴移到螺丝刀前方。接着用户指令“然后把这个拿起来”，手势指向黑色方块，因此第二步是拿起黑色块。",
+          "video_name": "VID20251227154859.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令5/vis_VID20251227154859.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.3,
+          "spatial_grounding": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      {
+        "video_name": "VID20251227155316.mp4",
+        "instruction": "指令6",
+        "prediction": {
+          "explicit_command": "把放大镜放到黑色方块上面，然后再把绿色圆筒放到螺丝刀右面。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "放大镜",
+              "point": [
+                267,
+                342
+              ],
+              "timestamp": [
+                4140,
+                5140
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "黑色方块的上面",
+              "point": [
+                485,
+                492
+              ],
+              "timestamp": [
+                5780,
+                7140
+              ]
+            },
+            {
+              "type": "target_object",
+              "description": "绿色圆筒",
+              "point": [
+                362,
+                396
+              ],
+              "timestamp": [
+                8300,
+                9220
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "螺丝刀的右面",
+              "point": [
+                547,
+                513
+              ],
+              "timestamp": [
+                9740,
+                10940
+              ]
+            }
+          ],
+          "reasoning": "用户给出了一个两步的复合指令。第一步是“把这个放到它的上面”，通过手势指向和语音判断，“这个”指的是放大镜，“它”指的是黑色方块。第二步是“然后再把这个放到它的右面”，通过手势指向和语音判断，“这个”指的是绿色圆筒，“它”指的是螺丝刀。",
+          "video_name": "VID20251227155316.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令6/vis_VID20251227155316.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.75,
+          "spatial_grounding": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      {
+        "video_name": "VID20251227154941.mp4",
+        "instruction": "指令5",
+        "prediction": {
+          "explicit_command": "将绿色杯子放置到黑色方块的左侧，然后拿起白色焊台支架。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "绿色杯子",
+              "point": [
+                298,
+                437
+              ],
+              "timestamp": [
+                4000,
+                5000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "黑色方块左侧位置",
+              "point": [
+                450,
+                470
+              ],
+              "timestamp": [
+                5000,
+                6000
+              ]
+            },
+            {
+              "type": "target_object",
+              "description": "白色焊台支架",
+              "point": [
+                359,
+                399
+              ],
+              "timestamp": [
+                7000,
+                8000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指向黑色方块作为参照物，然后指向绿色杯子，并指示将其放置在黑色方块的左侧。接着，用户指向白色焊台支架，并指示将其拿起。指令包含两个连续的动作。",
+          "video_name": "VID20251227154941.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令5/vis_VID20251227154941.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.5,
+          "spatial_grounding": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227155246.mp4",
+        "instruction": "指令6",
+        "prediction": {
+          "explicit_command": "把红色螺丝刀放到黑色方块后面，再把蓝色焊锡卷放到白色线圈前面。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "红色螺丝刀",
+              "point": [
+                700,
+                700
+              ],
+              "timestamp": [
+                3000,
+                4000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "黑色方块后面",
+              "point": [
+                500,
+                500
+              ],
+              "timestamp": [
+                5000,
+                6000
+              ]
+            },
+            {
+              "type": "target_object",
+              "description": "蓝色焊锡卷",
+              "point": [
+                400,
+                600
+              ],
+              "timestamp": [
+                7000,
+                8000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "白色线圈前面",
+              "point": [
+                300,
+                800
+              ],
+              "timestamp": [
+                9000,
+                10000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指示将红色螺丝刀（[700, 700]）放置到黑色方块（[500, 500]）的后面。接着，用户指示将蓝色焊锡卷（[400, 600]）放置到白色线圈（[300, 800]）的前面。",
+          "video_name": "VID20251227155246.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令6/vis_VID20251227155246.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 1.0,
+          "spatial_grounding": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227155159.mp4",
+        "instruction": "指令6",
+        "prediction": {
+          "explicit_command": "把白色的焊锡卷放到蓝色的焊锡罐前面，再把黑色的方块放到蓝色的焊锡罐后面。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "白色的焊锡卷",
+              "point": [
+                330,
+                700
+              ],
+              "timestamp": [
+                3710,
+                4670
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "蓝色的焊锡罐前面",
+              "point": [
+                470,
+                750
+              ],
+              "timestamp": [
+                5870,
+                6630
+              ]
+            },
+            {
+              "type": "target_object",
+              "description": "黑色的方块",
+              "point": [
+                500,
+                480
+              ],
+              "timestamp": [
+                7790,
+                8710
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "蓝色的焊锡罐后面",
+              "point": [
+                470,
+                450
+              ],
+              "timestamp": [
+                9910,
+                10110
+              ]
+            }
+          ],
+          "reasoning": "用户首先指向白色的焊锡卷（“这个”），并指示将其放置在蓝色的焊锡罐（“它”）的前方（“前面”）。接着，用户指向黑色的方块（“这个”），并指示将其放置在蓝色的焊锡罐（“它”）的后方（“后面”）。指令包含两个连续的移动动作，其中蓝色焊锡罐作为两个动作的参考位置。",
+          "video_name": "VID20251227155159.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令6/vis_VID20251227155159.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.75,
+          "spatial_grounding": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "temporal_grounding": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      },
+      {
+        "video_name": "VID20251227155301.mp4",
+        "instruction": "指令6",
+        "prediction": {
+          "explicit_command": "把绿色圆柱放到蓝色线圈的右边，然后把白色胶带卷放到红色螺丝刀的左边。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "绿色圆柱",
+              "point": [
+                382,
+                506
+              ],
+              "timestamp": [
+                3800,
+                4800
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "蓝色线圈的右边",
+              "point": [
+                500,
+                600
+              ],
+              "timestamp": [
+                5000,
+                6000
+              ]
+            },
+            {
+              "type": "target_object",
+              "description": "白色胶带卷",
+              "point": [
+                300,
+                700
+              ],
+              "timestamp": [
+                7500,
+                8500
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "红色螺丝刀的左边",
+              "point": [
+                450,
+                700
+              ],
+              "timestamp": [
+                9000,
+                10000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指向绿色圆柱作为第一个目标物体，并指示将其放置在蓝色线圈的右侧。接着用户指向白色胶带卷作为第二个目标物体，并指示将其放置在红色螺丝刀的左侧。",
+          "video_name": "VID20251227155301.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令6/vis_VID20251227155301.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.75,
+          "spatial_grounding": [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227155526.mp4",
+        "instruction": "指令6",
+        "prediction": {
+          "explicit_command": "把放大镜放到黑色方块前面，然后再把焊锡丝放到白色物体后面。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "放大镜",
+              "point": [
+                363,
+                603
+              ],
+              "timestamp": [
+                5000,
+                6000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "黑色方块",
+              "point": [
+                369,
+                484
+              ],
+              "timestamp": [
+                3000,
+                4000
+              ]
+            },
+            {
+              "type": "target_object",
+              "description": "焊锡丝卷",
+              "point": [
+                403,
+                705
+              ],
+              "timestamp": [
+                7000,
+                8000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "白色物体",
+              "point": [
+                535,
+                550
+              ],
+              "timestamp": [
+                9000,
+                10000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指示将放大镜（'这个'）放置到黑色方块（'它'）前面。接着，用户指示将焊锡丝卷（'这个'）放置到白色物体（'它'）后面。这是一个包含两个连续放置动作的复合指令，需要解析两个目标物体和对应的空间参照点。",
+          "video_name": "VID20251227155526.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令6/vis_VID20251227155526.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.8,
+          "spatial_grounding": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227155332.mp4",
+        "instruction": "指令6",
+        "prediction": {
+          "explicit_command": "将蓝色线圈放到黑色方块上面，然后将红色螺丝刀放到绿色瓶子右侧。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "蓝色线圈",
+              "point": [
+                350,
+                550
+              ],
+              "timestamp": [
+                3860,
+                4820
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "黑色方块的上面",
+              "point": [
+                500,
+                480
+              ],
+              "timestamp": [
+                5740,
+                6780
+              ]
+            },
+            {
+              "type": "target_object",
+              "description": "红色螺丝刀",
+              "point": [
+                600,
+                580
+              ],
+              "timestamp": [
+                7980,
+                8900
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "绿色瓶子的右面",
+              "point": [
+                400,
+                450
+              ],
+              "timestamp": [
+                9900,
+                10820
+              ]
+            }
+          ],
+          "reasoning": "根据语音指令，第一部分要求将用户指向的蓝色线圈（第一个“这个”）放置到用户指向的黑色方块（“它”）上面。第二部分要求将用户指向的红色螺丝刀（第二个“这个”）放置到用户指向的绿色瓶子（“它”）的右面。",
+          "video_name": "VID20251227155332.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令6/vis_VID20251227155332.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.8,
+          "spatial_grounding": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      {
+        "video_name": "VID20251227155439.mp4",
+        "instruction": "指令6",
+        "prediction": {
+          "explicit_command": "把绿色焊锡丝卷轴放到黑色方块的左边，再把白色焊锡丝卷轴放到黑色方块的后面。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "绿色焊锡丝卷轴",
+              "point": [
+                383,
+                467
+              ],
+              "timestamp": [
+                4000,
+                5000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "黑色方块的左边",
+              "point": [
+                508,
+                497
+              ],
+              "timestamp": [
+                6000,
+                7000
+              ]
+            },
+            {
+              "type": "target_object",
+              "description": "白色焊锡丝卷轴",
+              "point": [
+                756,
+                417
+              ],
+              "timestamp": [
+                9000,
+                10000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "黑色方块的后面",
+              "point": [
+                508,
+                497
+              ],
+              "timestamp": [
+                10000,
+                11000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指向绿色焊锡丝卷轴作为目标物体，并指示将其放置在黑色方块的左侧。接着，用户指向白色焊锡丝卷轴作为第二个目标物体，并指示将其放置在黑色方块的后面。黑色方块是两个放置操作的共同参照物。",
+          "video_name": "VID20251227155439.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令6/vis_VID20251227155439.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.1,
+          "spatial_grounding": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227155423.mp4",
+        "instruction": "指令6",
+        "prediction": {
+          "explicit_command": "把白色焊锡丝卷放到绿色焊锡丝卷的右边，然后把放大镜放到白色支架的前面。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "白色焊锡丝卷",
+              "point": [
+                394,
+                755
+              ],
+              "timestamp": [
+                4000,
+                5000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "在绿色焊锡丝卷的右侧",
+              "point": [
+                600,
+                650
+              ],
+              "timestamp": [
+                5000,
+                6000
+              ]
+            },
+            {
+              "type": "target_object",
+              "description": "放大镜",
+              "point": [
+                320,
+                696
+              ],
+              "timestamp": [
+                7000,
+                8000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "在白色支架的前面",
+              "point": [
+                550,
+                750
+              ],
+              "timestamp": [
+                9000,
+                10000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指向白色焊锡丝卷，并要求将其放到绿色焊锡丝卷的右侧。接着用户指向放大镜，并要求将其放到白色支架的前面。指令包含两个连续的移动操作，涉及两个目标物体和两个相对位置。",
+          "video_name": "VID20251227155423.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令6/vis_VID20251227155423.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.0,
+          "spatial_grounding": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227155230.mp4",
+        "instruction": "指令6",
+        "prediction": {
+          "explicit_command": "把黑色的方块放到白色的物体前面，然后把白色的物体放到绿色的瓶子左边。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "黑色的方块",
+              "point": [
+                450,
+                480
+              ],
+              "timestamp": [
+                3000,
+                4000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "在白色的物体前面",
+              "point": [
+                270,
+                850
+              ],
+              "timestamp": [
+                5000,
+                6000
+              ]
+            },
+            {
+              "type": "target_object",
+              "description": "白色的物体",
+              "point": [
+                270,
+                750
+              ],
+              "timestamp": [
+                7000,
+                8000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "在绿色的瓶子左边",
+              "point": [
+                200,
+                300
+              ],
+              "timestamp": [
+                9000,
+                10000
+              ]
+            }
+          ],
+          "reasoning": "根据用户的多步复合指令，首先定位目标物体“黑色的方块”（00:03），然后根据指令“放到它的前面”和参考物体“白色的物体”（00:05）确定第一个放置位置。接着定位第二个目标物体“白色的物体”（00:07），根据指令“放到它的左面”和参考物体“绿色的瓶子”（00:09）确定第二个放置位置。",
+          "video_name": "VID20251227155230.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令6/vis_VID20251227155230.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.5,
+          "spatial_grounding": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227155511.mp4",
+        "instruction": "指令6",
+        "prediction": {
+          "explicit_command": "把绿色的焊锡丝放到放大镜的左边，再把白色的焊锡丝放到放大镜的右边。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "绿色焊锡丝",
+              "point": [
+                373,
+                553
+              ],
+              "timestamp": [
+                4000,
+                6000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "放大镜的左边",
+              "point": [
+                300,
+                600
+              ],
+              "timestamp": [
+                6000,
+                7000
+              ]
+            },
+            {
+              "type": "target_object",
+              "description": "白色焊锡丝",
+              "point": [
+                447,
+                780
+              ],
+              "timestamp": [
+                8000,
+                10000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "放大镜的右边",
+              "point": [
+                400,
+                800
+              ],
+              "timestamp": [
+                10000,
+                11000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指示绿色的焊锡丝为目标物体，然后指示放大镜并要求将其放置在放大镜的左侧。接着，用户指示白色的焊锡丝为第二个目标物体，并要求将其放置在（同一个）放大镜的右侧。",
+          "video_name": "VID20251227155511.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令6/vis_VID20251227155511.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.0,
+          "spatial_grounding": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227155214.mp4",
+        "instruction": "指令6",
+        "prediction": {
+          "explicit_command": "把银白色带环状的手动工具放到红色螺丝刀的左边，再把蓝色卷状的焊锡丝放到绿色杯子的右边。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "银白色带环状的手动工具",
+              "point": [
+                298,
+                712
+              ],
+              "timestamp": [
+                4000,
+                5000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "红色螺丝刀的左边",
+              "point": [
+                492,
+                703
+              ],
+              "timestamp": [
+                5600,
+                7040
+              ]
+            },
+            {
+              "type": "target_object",
+              "description": "蓝色卷状的焊锡丝",
+              "point": [
+                465,
+                604
+              ],
+              "timestamp": [
+                7800,
+                9200
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "绿色杯子的右边",
+              "point": [
+                445,
+                507
+              ],
+              "timestamp": [
+                9560,
+                10440
+              ]
+            }
+          ],
+          "reasoning": "根据用户指令“把这个放到他的左面，然后再把这个放到他的右面”，并结合视频中手指的指向动作，第一部分指令“把这个”指向银白色工具， “他的”指向红色螺丝刀，意图是将银白色工具放到螺丝刀左侧；第二部分指令“把这个”指向蓝色焊锡丝， “他的”指向”绿色杯子，意图是将蓝色焊锡丝放到绿色杯子右侧。\n",
+          "video_name": "VID20251227155214.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令6/vis_VID20251227155214.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.4,
+          "spatial_grounding": [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      {
+        "video_name": "VID20251227155609.mp4",
+        "instruction": "指令6",
+        "prediction": {
+          "explicit_command": "把白色圆形物体放到白色U形物体的后面，然后再把白色U形物体放到焊锡丝卷的右面。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "白色圆形物体",
+              "point": [
+                523,
+                497
+              ],
+              "timestamp": [
+                2000,
+                3000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "白色U形物体后面",
+              "point": [
+                400,
+                880
+              ],
+              "timestamp": [
+                4000,
+                5000
+              ]
+            },
+            {
+              "type": "target_object",
+              "description": "白色U形物体",
+              "point": [
+                430,
+                810
+              ],
+              "timestamp": [
+                6000,
+                7000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "焊锡丝卷右侧",
+              "point": [
+                750,
+                680
+              ],
+              "timestamp": [
+                8000,
+                9000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指示将白色圆形物体（Target Object 1）放置在白色U形物体（Spatial Affordance 1）的后面。接着，用户指示将白色U形物体（Target Object 2）放置在焊锡丝卷（Spatial Affordance 2）的右侧。",
+          "video_name": "VID20251227155609.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令6/vis_VID20251227155609.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.2,
+          "spatial_grounding": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227155348.mp4",
+        "instruction": "指令6",
+        "prediction": {
+          "explicit_command": "把白色放大镜放到蓝色焊锡卷的左侧，然后把白色焊锡卷放到红色螺丝刀的后面。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "白色放大镜",
+              "point": [
+                290,
+                390
+              ],
+              "timestamp": [
+                4000,
+                5000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "蓝色焊锡卷的左侧",
+              "point": [
+                430,
+                480
+              ],
+              "timestamp": [
+                5000,
+                7000
+              ]
+            },
+            {
+              "type": "target_object",
+              "description": "白色焊锡卷",
+              "point": [
+                350,
+                600
+              ],
+              "timestamp": [
+                7000,
+                9000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "红色螺丝刀的后面",
+              "point": [
+                510,
+                620
+              ],
+              "timestamp": [
+                9000,
+                11000
+              ]
+            }
+          ],
+          "reasoning": "根据指令第一部分“把这个放到它的左面”，用户先指向白色放大镜（目标物体），再指向蓝色焊锡卷（参考物体），指令意图是将白色放大镜放置到蓝色焊锡卷的左侧。根据指令第二部分“然后再把这个放到它的后面”，用户先指向白色焊锡卷（目标物体），再指向红色螺丝刀（参考物体），指令意图是将白色焊锡卷放置到红色螺丝刀的后面。",
+          "video_name": "VID20251227155348.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令6/vis_VID20251227155348.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.6,
+          "spatial_grounding": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227155455.mp4",
+        "instruction": "指令6",
+        "prediction": {
+          "explicit_command": "把放大镜放到黑色方块后面，然后再把线圈放到黑色方块右边",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "放大镜",
+              "point": [
+                286,
+                680
+              ],
+              "timestamp": [
+                4000,
+                6000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "黑色方块后面",
+              "point": [
+                500,
+                400
+              ],
+              "timestamp": [
+                5000,
+                6000
+              ]
+            },
+            {
+              "type": "target_object",
+              "description": "线圈",
+              "point": [
+                320,
+                850
+              ],
+              "timestamp": [
+                7000,
+                8000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "黑色方块右边",
+              "point": [
+                600,
+                480
+              ],
+              "timestamp": [
+                9000,
+                11000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指向放大镜，指令是将其放在黑色方块后面。接着用户指向线圈，指令是将其放在黑色方块右边。因此，第一步的目标物体是放大镜，空间位置是黑色方块后方；第二步的目标物体是线圈，空间位置是黑色方块右方。",
+          "video_name": "VID20251227155455.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令6/vis_VID20251227155455.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.0,
+          "spatial_grounding": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "temporal_grounding": null
+        }
+      },
+      {
+        "video_name": "VID20251227155625.mp4",
+        "instruction": "指令6",
+        "prediction": {
+          "explicit_command": "把白色支架放到黑色方块的右边，然后把红色螺丝刀放到白色圆环的左边。",
+          "point_list": [
+            {
+              "type": "target_object",
+              "description": "白色支架",
+              "point": [
+                372,
+                800
+              ],
+              "timestamp": [
+                3000,
+                4000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "黑色方块的右边",
+              "point": [
+                500,
+                510
+              ],
+              "timestamp": [
+                6000,
+                7000
+              ]
+            },
+            {
+              "type": "target_object",
+              "description": "红色螺丝刀",
+              "point": [
+                370,
+                650
+              ],
+              "timestamp": [
+                8000,
+                9000
+              ]
+            },
+            {
+              "type": "spatial_affordance",
+              "description": "白色圆环的左边",
+              "point": [
+                370,
+                510
+              ],
+              "timestamp": [
+                10000,
+                11000
+              ]
+            }
+          ],
+          "reasoning": "用户首先指示将第一个物体（白色支架）放置在第二个物体（黑色方块）的右侧。然后，用户指示将第三个物体（红色螺丝刀）放置在第四个物体（白色圆环）的左侧。",
+          "video_name": "VID20251227155625.mp4",
+          "visualization_rel_path": "web_runs/full_mode/f88bd77f-be8e-4560-83f5-3ce04061cd53/指令6/vis_VID20251227155625.mp4.jpg"
+        },
+        "scores": {
+          "intent_accuracy": 0.5,
+          "spatial_grounding": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "temporal_grounding": null
+        }
+      }
+    ],
+    "model_name": "gemini-robotics-er-1.5-preview",
+    "model_provider": "gemini"
+  }
+}

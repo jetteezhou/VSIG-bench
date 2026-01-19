@@ -1,0 +1,967 @@
+{
+  "model_name": "gemini-2.5-flash",
+  "model_provider": "gemini",
+  "dataset": "四楼实训区_场景1_康昱灵_张潇杨_拍摄",
+  "instruction": "指令2",
+  "predictions": [
+    {
+      "explicit_command": "把橙色的3D打印物体拿起来",
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "橙色的3D打印物体，形状像一只卡通狐狸或龙",
+          "point": [
+            500,
+            650
+          ],
+          "timestamp": [
+            3100,
+            4500
+          ]
+        }
+      ],
+      "reasoning": "用户通过手指指向一个橙色的3D打印物体，并伴随语音指令'把这个拿起来'。视觉指向和语音中的指示代词'这个'共同定位了目标物体为桌上的橙色3D打印物体。指令的核心意图是执行'拿起来'的动作，因此不需要空间指向。",
+      "video_name": "VID20251227153203.mp4"
+    },
+    {
+      "explicit_command": "拿起桌上绿色和黑色的电子设备",
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "桌上绿色和黑色的电子设备",
+          "point": [
+            675,
+            475
+          ],
+          "timestamp": [
+            3300,
+            3700
+          ]
+        }
+      ],
+      "reasoning": "用户的手指指向桌上一个绿色和黑色的电子设备，同时语音指令中的'这个'指代被指向的物体，而'拿起来'明确了操作意图。因此，需要识别并拿起该电子设备。",
+      "video_name": "VID20251227153232.mp4"
+    },
+    {
+      "explicit_command": "把绿色的圆柱体拿起来。",
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "绿色的圆柱体",
+          "point": [
+            380,
+            720
+          ],
+          "timestamp": [
+            3190,
+            3750
+          ]
+        }
+      ],
+      "reasoning": "用户在视频中指向一个绿色的圆柱体，同时语音指令为'把这个拿起来'。结合视觉和语音信息，判断用户意图是拿起被指向的绿色圆柱体。语音中'这个'的时间戳对应被指物体。",
+      "video_name": "VID20251227153151.mp4"
+    },
+    {
+      "explicit_command": "关闭控制面板",
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "控制面板上的屏幕和按钮区域",
+          "point": [
+            600,
+            400
+          ],
+          "timestamp": [
+            4500,
+            5500
+          ]
+        }
+      ],
+      "reasoning": "1. 用户的手指向视频中的控制面板。2. 用户的语音指令为'把这个关上'，其中'这个'指代被指向的控制面板。3. '关上'意为关闭或停止运行。4. 因此，用户的意图是关闭被指向的控制面板。5. 坐标定位到最后一帧中用户手指指向的控制面板区域。6. 时间戳对应语音中'这个'的发生时间。",
+      "video_name": "VID20251227151846.mp4"
+    },
+    {
+      "explicit_command": "按下控制面板上的红色按钮。",
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "控制面板上的红色按钮",
+          "point": [
+            280,
+            500
+          ],
+          "timestamp": [
+            4000,
+            4500
+          ]
+        }
+      ],
+      "reasoning": "用户的手指向控制面板上的红色按钮，并说'把这个按下'。语音中的'这个'结合视觉指向，明确指代了该红色按钮，指令是执行按下的动作。",
+      "video_name": "VID20251227151837.mp4"
+    },
+    {
+      "explicit_command": "拿起桌上的白色小物体",
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "桌上被指向的白色不规则小物体",
+          "point": [
+            375,
+            525
+          ],
+          "timestamp": [
+            3600,
+            3900
+          ]
+        }
+      ],
+      "reasoning": "用户在视频中指向桌上一个白色的不规则小物体，并说出指令'把这个拿起来'。语音中的'这个'结合指向动作明确指代了该白色物体。因此，意图是将该白色物体拿起来，没有明确的空间放置意图。",
+      "video_name": "VID20251227153223.mp4"
+    },
+    {
+      "explicit_command": "拿起红色螺丝刀",
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "红色螺丝刀",
+          "point": [
+            400,
+            450
+          ],
+          "timestamp": [
+            3940,
+            4500
+          ]
+        }
+      ],
+      "reasoning": "用户通过指向手势和语音指令中的指代词'这个'共同指示了桌面上的红色螺丝刀作为目标物体。指令'拿起来'表示对该物体执行拾取操作。",
+      "video_name": "VID20251227153241.mp4"
+    },
+    {
+      "explicit_command": "拿起蓝色盖子的焊锡丝卷",
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "蓝色盖子的焊锡丝卷",
+          "point": [
+            700,
+            600
+          ],
+          "timestamp": [
+            4000,
+            4500
+          ]
+        }
+      ],
+      "reasoning": "用户语音指令'把这个拿起来'中的'这个'结合视频中手势指向，识别出目标物体是桌上的蓝色盖子的焊锡丝卷。指令意图是拿起该物体，不涉及放置位置，因此没有空间定位点。",
+      "video_name": "VID20251227151915.mp4"
+    },
+    {
+      "explicit_command": "拿起桌子上的焊锡带",
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "白色圆形带有蓝色中心的焊锡带",
+          "point": [
+            250,
+            750
+          ],
+          "timestamp": [
+            4000,
+            4500
+          ]
+        }
+      ],
+      "reasoning": "用户在视频中用手指指向桌子上的白色圆形焊锡带，并同时说出'这个'。后续的'拿起来'指令明确了对该物体的操作意图。因此，目标物体是焊锡带，操作是拿起该物体。",
+      "video_name": "VID20251227151936.mp4"
+    },
+    {
+      "explicit_command": "把黑色的方块拿起来",
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "黑色的方块",
+          "point": [
+            450,
+            550
+          ],
+          "timestamp": [
+            4500,
+            5000
+          ]
+        }
+      ],
+      "reasoning": "用户在视频中指向桌上的一个黑色方块，并发出语音指令'把这个拿起来'。语音中的'这个'结合指向手势，明确指代该黑色方块。指令要求执行'拿起来'的动作，没有明确指定放置位置，因此不包含空间意向。",
+      "video_name": "VID20251227151827.mp4"
+    },
+    {
+      "explicit_command": "打开黑色带有按钮的矩形设备",
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "黑色带有按钮的矩形设备",
+          "point": [
+            494,
+            648
+          ],
+          "timestamp": [
+            3000,
+            4000
+          ]
+        }
+      ],
+      "reasoning": "用户手指向桌上的黑色矩形设备，同时语音指令为'把这个打开'。根据指向和语音指令，确定操作对象为黑色矩形设备，动作是打开。由于动作是'打开'，而非移动，故无明确的空间放置目标，仅定位被操作物体。",
+      "video_name": "VID20251227151818.mp4"
+    },
+    {
+      "explicit_command": "拿起桌子上的万用表",
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "桌子上的橙色万用表",
+          "point": [
+            250,
+            600
+          ],
+          "timestamp": [
+            3600,
+            4000
+          ]
+        }
+      ],
+      "reasoning": "用户用手指指向桌子上的橙色万用表，并发出'把这个拿起来'的语音指令。根据视觉指向和语音中指代词'这个'的时间戳，确认目标物体为万用表，意图是将其拿起。",
+      "video_name": "VID20251227153213.mp4"
+    },
+    {
+      "explicit_command": "按下那个红色的按钮",
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "控制面板上的红色圆形按钮",
+          "point": [
+            270,
+            490
+          ],
+          "timestamp": [
+            4300,
+            4700
+          ]
+        },
+        {
+          "type": "spatial_affordance",
+          "description": "按钮的按压位置",
+          "point": [
+            270,
+            490
+          ],
+          "timestamp": null
+        }
+      ],
+      "reasoning": "用户在视频中指向控制面板上的一个红色圆形按钮。语音指令'把这个按一下'中的'这个'结合指向动作，明确指代该红色按钮。因此，目标物体是红色按钮，操作意图是'按一下'。由于操作是直接作用于物体本身，没有额外的放置或移动目标位置，故将空间位置设定为物体本身的坐标，且无对应时间戳。",
+      "video_name": "VID20251227151926.mp4"
+    },
+    {
+      "explicit_command": "拿起桌子上的银色矩形电子模块",
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "桌上的银色矩形电子模块",
+          "point": [
+            450,
+            850
+          ],
+          "timestamp": [
+            3950,
+            4500
+          ]
+        },
+        {
+          "type": "spatial_affordance",
+          "description": "拿起动作的作用区域",
+          "point": [
+            450,
+            850
+          ],
+          "timestamp": [
+            4500,
+            5100
+          ]
+        }
+      ],
+      "reasoning": "1. 用户通过手指指向一个银色矩形电子模块。2. 语音指令'把这个拿起来'中的'这个'与指向动作同步，明确指代该模块。3. '拿起来'表示执行拾取动作，目标对象即被指向的模块。4. '拿起来'不涉及放置目标，因此将空间作用区域定位在目标物体本身，表示拾取动作在此处发生。",
+      "video_name": "VID20251227151906.mp4"
+    },
+    {
+      "explicit_command": "拿起绿色的焊锡丝卷",
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "绿色的焊锡丝卷",
+          "point": [
+            380,
+            500
+          ],
+          "timestamp": [
+            4000,
+            4500
+          ]
+        }
+      ],
+      "reasoning": "用户指向桌上的绿色焊锡丝卷并说出'把这个拿起来'。通过视觉指向和语音中的指代词'这个'，将意图定位到拿起该焊锡丝卷。指令中没有提及具体的放置位置，因此不存在空间示能点。",
+      "video_name": "VID20251227151857.mp4"
+    }
+  ],
+  "ground_truths": [
+    {
+      "asr_result": null,
+      "folder": "C:\\Users\\lenovo\\Desktop\\四楼实训区_场景1_康昱灵_张潇杨_拍摄\\指令2",
+      "id": "1766826417543",
+      "is_invalid": false,
+      "object_space": [
+        {
+          "name": "带着盾牌的人形打印件",
+          "points": [
+            [
+              630,
+              448
+            ],
+            [
+              608,
+              458
+            ],
+            [
+              649,
+              460
+            ]
+          ],
+          "type": "object",
+          "mask": {
+            "mask_base64": "iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAAAAADNuJ6fAAARyUlEQVR4Ae3BW2Ls1gEDMHL/iz59pal90zjxSObHCEADAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDM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cw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAc/8AIWGhOQFX5Z0AAAAASUVORK5CYII=",
+            "bbox": [
+              834,
+              627,
+              940,
+              742
+            ],
+            "score": 0.8240898847579956,
+            "point_on_mask": true
+          }
+        }
+      ],
+      "scene": "四楼实训区",
+      "task_template": "指令2",
+      "video_name": "VID20251227153203.mp4",
+      "_video_dir": "data_new/四楼实训区_场景1_康昱灵_张潇杨_拍摄/指令2"
+    },
+    {
+      "asr_result": null,
+      "folder": "C:\\Users\\lenovo\\Desktop\\四楼实训区_场景1_康昱灵_张潇杨_拍摄\\指令2",
+      "id": "1766826460630",
+      "is_invalid": false,
+      "object_space": [
+        {
+          "name": "绿色外壳的万用表",
+          "points": [
+            [
+              595,
+              499
+            ],
+            [
+              595,
+              517
+            ],
+            [
+              621,
+              531
+            ]
+          ],
+          "type": "object",
+          "mask": {
+            "mask_base64": "iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAAAAADNuJ6fAAAQ40lEQVR4Ae3BC7LlVgEEsO79L/pQFKQISSDz8W3bbyQ1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDA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ADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADD3DyNecDk1Kc12AAAAAElFTkSuQmCC",
+            "bbox": [
+              920,
+              612,
+              1074,
+              716
+            ],
+            "score": 0.6728519201278687,
+            "point_on_mask": true
+          }
+        }
+      ],
+      "scene": "四楼实训区",
+      "task_template": "指令2",
+      "video_name": "VID20251227153232.mp4",
+      "_video_dir": "data_new/四楼实训区_场景1_康昱灵_张潇杨_拍摄/指令2"
+    },
+    {
+      "id": "1766826403770",
+      "folder": "data/四楼实训区_场景1_康昱灵_张潇杨_拍摄/指令2",
+      "video_name": "VID20251227153151.mp4",
+      "task_template": "指令2",
+      "scene": "四楼实训区",
+      "object_space": [
+        {
+          "name": "绿色圆形柱体",
+          "points": [
+            [
+              831,
+              427
+            ],
+            [
+              803,
+              440
+            ],
+            [
+              851,
+              448
+            ],
+            [
+              863,
+              436
+            ]
+          ],
+          "type": "object",
+          "mask": {
+            "mask_base64": "iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAAAAADNuJ6fAAARIElEQVR4Ae3BQXZcxwEDQOD+h+7M0HJix7LUJP/DqqoaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDm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",
+            "bbox": [
+              809,
+              841,
+              883,
+              967
+            ],
+            "score": 0.9238714575767517,
+            "point_on_mask": true
+          }
+        }
+      ],
+      "is_invalid": false,
+      "asr_result": {
+        "sentences": [
+          {
+            "begin_time": 3190,
+            "end_time": 4670,
+            "text": "把这个拿起来。"
+          }
+        ],
+        "text": "把这个拿起来。",
+        "words": [
+          {
+            "begin_time": 3190,
+            "end_time": 3750,
+            "fixed": false,
+            "punctuation": "",
+            "speaker_id": null,
+            "text": "把这个"
+          },
+          {
+            "begin_time": 3750,
+            "end_time": 3950,
+            "fixed": false,
+            "punctuation": "",
+            "speaker_id": null,
+            "text": "拿"
+          },
+          {
+            "begin_time": 3950,
+            "end_time": 4670,
+            "fixed": false,
+            "punctuation": "。",
+            "speaker_id": null,
+            "text": "起来"
+          }
+        ]
+      },
+      "_video_dir": "data_new/四楼实训区_场景1_康昱灵_张潇杨_拍摄/指令2"
+    },
+    {
+      "asr_result": null,
+      "folder": "C:\\Users\\lenovo\\Desktop\\四楼实训区_场景1_康昱灵_张潇杨_拍摄\\指令2",
+      "id": "1766826310880",
+      "is_invalid": false,
+      "object_space": [
+        {
+          "name": "左右两个长条柱体支撑的显示屏",
+          "points": [
+            [
+              310,
+              483
+            ],
+            [
+              293,
+              507
+            ],
+            [
+              338,
+              503
+            ]
+          ],
+          "type": "object"
+        }
+      ],
+      "scene": "四楼实训区",
+      "task_template": "指令2",
+      "video_name": "VID20251227151846.mp4",
+      "_video_dir": "data_new/四楼实训区_场景1_康昱灵_张潇杨_拍摄/指令2"
+    },
+    {
+      "asr_result": null,
+      "folder": "C:\\Users\\lenovo\\Desktop\\四楼实训区_场景1_康昱灵_张潇杨_拍摄\\指令2",
+      "id": "1766826294091",
+      "is_invalid": false,
+      "object_space": [
+        {
+          "name": "第一块电路板从左往右数的第一颗红色按钮",
+          "points": [
+            [
+              493,
+              287
+            ]
+          ],
+          "type": "object",
+          "mask": {
+            "mask_base64": "iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAAAAADNuJ6fAAAPRklEQVR4Ae3BOW4kQQADMOn/j64NHKyPwbSBMhSRbACAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYa+CXTgPAH2ngN04+NAD8gQaenXzSAHCrgUcnXzQAXGrgyck3DQB3Gnhy8l0DwJUGHpz80ABwpYEHJz81ANxo4L2TFxoAbjTw3skLDQA3Gnjv5JUGgAsNvHfySgPAhQbeO3mlAeBCA++dvNIAcKGBByc/NQDcaODByU8NADcaeHLyXQPAlQaenHzTAHCngUcnXzQAXGrg0clnDQC3Gnh28l8DwLUGfuPkQwPAH2jgd07SAPA3GgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBg7h8Grxs53xtY6QAAAABJRU5ErkJggg==",
+            "bbox": [
+              547,
+              523,
+              568,
+              544
+            ],
+            "score": 0.8223685622215271,
+            "point_on_mask": true
+          }
+        }
+      ],
+      "scene": "四楼实训区",
+      "task_template": "指令2",
+      "video_name": "VID20251227151837.mp4",
+      "_video_dir": "data_new/四楼实训区_场景1_康昱灵_张潇杨_拍摄/指令2"
+    },
+    {
+      "asr_result": null,
+      "folder": "C:\\Users\\lenovo\\Desktop\\四楼实训区_场景1_康昱灵_张潇杨_拍摄\\指令2",
+      "id": "1766826444577",
+      "is_invalid": false,
+      "object_space": [
+        {
+          "name": "白色支架的打印件",
+          "points": [
+            [
+              587,
+              338
+            ],
+            [
+              567,
+              352
+            ],
+            [
+              597,
+              355
+            ]
+          ],
+          "type": "object",
+          "mask": {
+            "mask_base64": "iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAAAAADNuJ6fAAAQrklEQVR4Ae3BAY4kxQEEwMz/P7os8IEQNqdjdpQ9tYqIBgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGrnDyQwPwDTTw+U7+ogG4XwMf7uRvGoDrNfDRTv5XA3C7Bj7Yyf/TANyugY918g8agMs18KFO/lEDcLkGPtLJzzQAd2vgA538XANwtwY+zMkvaACu1sAnOfk1DcDVGvgcJ7+qAbhaA5/h5F9pAG7WwPNO/rUG4GYNPO7k32sAbtbA005e0QBcrIGHnbykAbhYAw87eUkDcLEGHnbymgbgXg087OQ1DcC9GnjYyYsagGs18LST1zQA12rgaScvagBu1cDTTl7UANyqgaedvKoBuFQDTzt5WQNwpwYed/KqBuBODTzu5FUNwJ0aeNzJyxqAKzXwuJOXNQBXauB5J69qAK7UwPNOXtYA3KiB5528rAG4UQPPO3ldA3ChBp538roG4EINPO/kCxqA+zTwAU5e1wDcp4EPcPIFDcB1GvgAJ1/RANymgQ9w8iUNwGUa+AQnX9IA3KWBT3DyNQ3AVRp4yEnzp5OvaQCu0sAzTn7T/HDyNQ3ATRp4xslvmh9OvqQBuEoDjzj5XfPDyVc0AHdp4BEnv2v+cPK6BuAyDTzh5L+aP5y8qgG4TgMPOPlT87uTFzUAF2rgASdv0gBcqYG9k/doAC7VwNzJWzQA12pg7uQdGoB7NbB28hYNwL0aWDt5hwbgYg2snbxFA3CvBtZO3qMBuFYDayfv0gBcqoG1k/dpAK7UwNrJGzUAN2pg7eSdGoALNbB28l4NwHUaWDt5swbgNg3MnbxZA3CZBuZO3qwBuEwDeyfv1QBcpoEHnLxXA3CXBp5w8k4NwGUaeMTJGzUAl2ngGSfv0wBcpoGHnLxLA3CbBh5z8hYNwHUaeNDJ1zUA92ngSSdf1QBcqIFHnXxJA3ClBp518roG4FINPOzkNQ3AvRp42skLGoCbNfC8k3+nAbhcAx/g5Nc1APdr4BOc/KoG4Bto4COc/IoG4Hto4FOc/FwD8G008DFOfqYB+D4a+Bwn/6gB+E4a+CQn/08D8M008GFO/qYB+HYa+DQnf9EAfEcNfJyTPzQA31MDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDM/QfewGQ5SKvvAwAAAABJRU5ErkJggg==",
+            "bbox": [
+              630,
+              591,
+              714,
+              681
+            ],
+            "score": 0.7799490094184875,
+            "point_on_mask": true
+          }
+        }
+      ],
+      "scene": "四楼实训区",
+      "task_template": "指令2",
+      "video_name": "VID20251227153223.mp4",
+      "_video_dir": "data_new/四楼实训区_场景1_康昱灵_张潇杨_拍摄/指令2"
+    },
+    {
+      "id": "1766826475141",
+      "folder": "data/四楼实训区_场景1_康昱灵_张潇杨_拍摄/指令2",
+      "video_name": "VID20251227153241.mp4",
+      "task_template": "指令2",
+      "scene": "四楼实训区",
+      "object_space": [
+        {
+          "name": "红色手柄的螺丝刀",
+          "points": [
+            [
+              563,
+              390
+            ],
+            [
+              573,
+              412
+            ],
+            [
+              550,
+              366
+            ]
+          ],
+          "type": "object",
+          "mask": {
+            "mask_base64": "iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAAAAADNuJ6fAAAP10lEQVR4Ae3BAY4bRQAEwO7/P3pAQgJFBGLOe43XrqoGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYa+BVnfypAXgvDbyokx81AO+jgdd08jcNwLto4DWd/EwD8BYaeE0n/6ABuL8GXtPJP2sAbq6BF3XybxqAO2vgVZ38QgNwVw28rJNfawDuqIEXdvKIBuBuGnhtJ49oAG6lgZd38pAG4DYauIGTBzUAt9DAPZw8qAF4fQ3cxsmDGoAX18CdnDyq+ctpAF5LAzdz8mUNwIto4H5OvqwBeAUN3NTJlzUA/7MGbuzkOQ3A/6OBezt5VgMw18D9nTyrAZhq4D2cPKkB2GngjZw8pwHYaOC9nDyrAfh2Dbyjk6c0AN+rgTd18pwG4Ps08LZOntYAfIsG3tjJ8xqA6zXwzk4u0ABcrYH3dvK0BuBqDby5k6c1ABdr4O2dPKkBuFgDH+DkKQ3AxRr4ECdf1wBcq4HPcfJFDcC1GvgoJ1/QAFysgU9z8l81ABdr4AOd/CcNwMUa+Ewnj2sALtbA5zp5TANwsQY+2ckjGoCLNfDpTn6hAbhaAyQn/6IBuFoD/OHk5xqAyzXAX07+pgG4XgP84OQHDcA3aICfOPldA/BNGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYO43JMY1OSIzOfUAAAAASUVORK5CYII=",
+            "bbox": [
+              669,
+              584,
+              809,
+              633
+            ],
+            "score": 0.8532655239105225,
+            "point_on_mask": true
+          }
+        }
+      ],
+      "is_invalid": false,
+      "asr_result": {
+        "sentences": [
+          {
+            "begin_time": 3940,
+            "end_time": 5260,
+            "text": "把这个拿起来。"
+          }
+        ],
+        "text": "把这个拿起来。",
+        "words": [
+          {
+            "begin_time": 3940,
+            "end_time": 4500,
+            "fixed": false,
+            "punctuation": "",
+            "speaker_id": null,
+            "text": "把这个"
+          },
+          {
+            "begin_time": 4500,
+            "end_time": 4700,
+            "fixed": false,
+            "punctuation": "",
+            "speaker_id": null,
+            "text": "拿"
+          },
+          {
+            "begin_time": 4700,
+            "end_time": 5260,
+            "fixed": false,
+            "punctuation": "。",
+            "speaker_id": null,
+            "text": "起来"
+          }
+        ]
+      },
+      "_video_dir": "data_new/四楼实训区_场景1_康昱灵_张潇杨_拍摄/指令2"
+    },
+    {
+      "asr_result": null,
+      "folder": "C:\\Users\\lenovo\\Desktop\\四楼实训区_场景1_康昱灵_张潇杨_拍摄\\指令2",
+      "id": "1766826358342",
+      "is_invalid": false,
+      "object_space": [
+        {
+          "name": "蓝色圆形柱体",
+          "points": [
+            [
+              708,
+              514
+            ],
+            [
+              688,
+              526
+            ],
+            [
+              726,
+              533
+            ]
+          ],
+          "type": "object",
+          "mask": {
+            "mask_base64": "iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAAAAADNuJ6fAAAQTElEQVR4Ae3BQY4cRwADMOn/j64ccjUC73ZDkymQbACAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGuN7Jvxrg/6IBrnXyRw3wcQ1wpZP/1AAf1QD3OfkLDfA5DXCZk7/WAB/SAFc5+ZEG+IgGuMnJDzXAJzTARU5+rAE+oAGucfIrDTDXANc4+Z0GWGuAW5z8UgOsNcAlTn6tAcYa4BInv9cAWw1wh5MnGmCqAe5w8kwDDDXAHU6eaYChBrjCyVMNsNMAVzh5qgF2GuAKJ481wEwDXOHksQaYaYAbnLygAVYa4AYnL2iAlQa4wckLGmClAa5w8lwDrDTAFU6ea4CVBrjByQsaYKUBbnDyggZYaYAbnLygAVYa4AYnL2iAlQa4wslzDbDSAFc4ea4BVhrgCifPNcBKA1zh5LkGWGmAK5w81wArDXCFk+caYKUBbnDyggZYaYAbnDzXADMNcIOT5xpgpgFucPJcA8w0wA1OnmuAmQa4wMkLGmCmAS5w8lwD7DTABU6ea4CdBrjAyXMNsNMA3+/kBQ2w0wDf7+QFDbDTAN/v5AUNsNMA3+/kBQ2w0wDf7+QFDbDTAN/v5AUNsNMA3+/kBQ2w0wBf7+QFDTDUAF/v5AUNMNQAX+/kBQ0w1ABf7+QFDTDUAF/v5AUNMNQAX+/kBQ0w1ABf7+QFDTDUAF/v5AUNMNQAX+/kBQ0w1ABf7+QFDTDUAN/v5LkGGGqA73fyXAMMNcD3O3msAZYa4PudPNYASw1wgZOnGmCpAS5w8lQDLDXADU6eaYCpBrjCySMNMNUAVzh5pAGmGuAOJw80wFYDXOLk1xpgrAFucfJbDTDWANc4+Z0GWGuAe5z8RgPMNcBNTn6sAfYa4ConP9QAH9AAlzn5gQb4iAa4z8lfaoDPaIAbnfyFBviUBrjTyX9rgA9qgHud/FkDfFgDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzP0D1yZWOYx1NkwAAAAASUVORK5CYII=",
+            "bbox": [
+              968,
+              735,
+              1040,
+              817
+            ],
+            "score": 0.8759437203407288,
+            "point_on_mask": true
+          }
+        }
+      ],
+      "scene": "四楼实训区",
+      "task_template": "指令2",
+      "video_name": "VID20251227151915.mp4",
+      "_video_dir": "data_new/四楼实训区_场景1_康昱灵_张潇杨_拍摄/指令2"
+    },
+    {
+      "asr_result": null,
+      "folder": "C:\\Users\\lenovo\\Desktop\\四楼实训区_场景1_康昱灵_张潇杨_拍摄\\指令2",
+      "id": "1766826387376",
+      "is_invalid": false,
+      "object_space": [
+        {
+          "name": "白色圆形中间镂空柱体",
+          "points": [
+            [
+              710,
+              229
+            ],
+            [
+              682,
+              243
+            ],
+            [
+              714,
+              251
+            ]
+          ],
+          "type": "object",
+          "mask": {
+            "mask_base64": "iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAAAAADNuJ6fAAAP3klEQVR4Ae3BgY0kRQAEsKr8g24CAAF3O6rZftluAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhr+HOc/LMGgC/TcL+T/9QA8E0aLnbyAw0AX6PhTic/1wDwJRpudPI7DQBfoeE+J7/XAPAFGm5z8pEGgPc13ObkIw0A72u4zMmHGgBe13CXk481ALyt4Sonn2sAeFvDRU6e0ADwtoZrnDykAeBlDdc4eUgDwMsabnHylAaAlzVc4uQ5DQDvarjEyXMaAN7VcIeTBzUAvKvhDicPagB4V8MdTh7UAPCuhiucPKkB4F0NVzh5UgPAuxqucPKoBoBXNdzg5FkNAK9quMHJsxoAXtVwg5NnNQC8quEGJ89qAHhVww1OntUA8KqGK5w8qgHgVQ1XOHlUA8CrGu5w8qAGgHc13OHkQQ0A72q4xMlzGgDe1XCJk+c0ALyr4RYnj2kAeFfDLU6e0gDwsoZbnDylAeBlDdc4eUgDwMsarnHykAaAlzXc4+QZDQAva7jHySMaAN7WcJGTBzQAvK7hIicPaAB4XcNNTj7WAPC+hpucfKgB4Bs0XOXkIw0AX6HhKie/1wDwLRrucvJLDQDfo+EyJ7/QAPBVGq5z8jMNAN+m4V4n/0MDwPdpuNnJv2oA+E4Nf4CTv2sA+F4NADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADD3F61oOTlk77f+AAAAAElFTkSuQmCC",
+            "bbox": [
+              423,
+              731,
+              504,
+              785
+            ],
+            "score": 0.7587758898735046,
+            "point_on_mask": true
+          }
+        }
+      ],
+      "scene": "四楼实训区",
+      "task_template": "指令2",
+      "video_name": "VID20251227151936.mp4",
+      "_video_dir": "data_new/四楼实训区_场景1_康昱灵_张潇杨_拍摄/指令2"
+    },
+    {
+      "asr_result": null,
+      "folder": "C:\\Users\\lenovo\\Desktop\\四楼实训区_场景1_康昱灵_张潇杨_拍摄\\指令2",
+      "id": "1766826278417",
+      "is_invalid": false,
+      "object_space": [
+        {
+          "name": "黑色长方体打印件",
+          "points": [
+            [
+              595,
+              445
+            ],
+            [
+              567,
+              461
+            ],
+            [
+              588,
+              472
+            ]
+          ],
+          "type": "object",
+          "mask": {
+            "mask_base64": "iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAAAAADNuJ6fAAAQiUlEQVR4Ae3BAaooRwEEwO77H3oEQdQQY352twPzqqoBAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAf5eJ//SAD9GA/xtTv5bA/wUDfD3OPkdDfAzNMDeyf/SAD9CA0yd/LEG+AkaYOTkT2mAH6ABvnfyCxrgfg3wqZNf1gDXa4CPnPxVDXC7BnjZyVMNcLsGeM/JOxrgcg3wjpP3NMDlGuAFJ+9qgLs1wHMnb2uAqzXAcyeva4CbNcBzJ69rgJs1wHMn72uAizXAcycfaIB7NcBzJx9ogHs1wHMnX2iAazXAcyefaIBbNcBzJ59ogFs1wHMn32iASzXAcycfaYA7NcBzJx9pgDs1wHMnX2mAKzXAcydfaYArNcBzJ19pgCs1wHMnn2mAGzXAcyefaYAbNcBzJ59pgBs1wHMnn2mAGzXAcyffaYALNcBzJ99pgAs1wHMn32mACzXAcyffaYALNcBzJ99pgAs1wHMn32mACzXAcyffaYALNcBzJ99pgAs1wHMn32mACzXAcyffaYALNcBzJ99pgAs1wHMn32mACzXAcyffaYALNcBzJ99pgAs1wHMn32mACzXAcyffaYALNcBzJ99pgAs1wHMn32mACzXAcyffaYALNcBzJ99pgAs1wHMn32mACzXAcyffaYALNcBzJ99pgAs1wHMn32mACzXAC04+0wAXaoAXnHymAS7UAC84+UwDXKgBXnDymQa4UAO84OQzDXChBnjDyVca4EIN8IaTrzTAhRrgFScfaYALNcA7Tr7RABdqgHecfKIBbtQALzn5QgPcqAHecvKBBrhRA7zm5H0NcKMGeM3J+xrgRg3wnpPXNcCNGuA9J69rgBs1wItO3tYAN2qAN528qwGu1ABvOnlXA1ypAV518qYGuFMDvOrkNQ1wrQZ418krGuBmDfCuk8ca4HYN8LKTv64BfoYGeNnJX9IAP0gDvOzklzXAD9MAbzv5BQ3wEzXA207+nAb4sRrgbSf/XwP8aA3wupM/0gA0wPtOfl8D8E8N8IGT32gA/kMDfOHk3xqA32iAj5ykAfhdDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHP/AES8Xjm7s/GDAAAAAElFTkSuQmCC",
+            "bbox": [
+              839,
+              596,
+              933,
+              685
+            ],
+            "score": 0.9262999296188354,
+            "point_on_mask": true
+          }
+        }
+      ],
+      "scene": "四楼实训区",
+      "task_template": "指令2",
+      "video_name": "VID20251227151827.mp4",
+      "_video_dir": "data_new/四楼实训区_场景1_康昱灵_张潇杨_拍摄/指令2"
+    },
+    {
+      "asr_result": null,
+      "folder": "C:\\Users\\lenovo\\Desktop\\四楼实训区_场景1_康昱灵_张潇杨_拍摄\\指令2",
+      "id": "1766826259100",
+      "is_invalid": false,
+      "object_space": [
+        {
+          "name": "透明外壳的盒子",
+          "points": [
+            [
+              770,
+              376
+            ],
+            [
+              751,
+              410
+            ],
+            [
+              779,
+              404
+            ]
+          ],
+          "type": "object",
+          "mask": {
+            "mask_base64": "iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAAAAADNuJ6fAAARrUlEQVR4Ae3BCW4cwYEEwMz/P7qMxQJjSdbBa5LdZEQ0AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDM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",
+            "bbox": [
+              662,
+              766,
+              879,
+              911
+            ],
+            "score": 0.7166661024093628,
+            "point_on_mask": true
+          }
+        }
+      ],
+      "scene": "四楼实训区",
+      "task_template": "指令2",
+      "video_name": "VID20251227151818.mp4",
+      "_video_dir": "data_new/四楼实训区_场景1_康昱灵_张潇杨_拍摄/指令2"
+    },
+    {
+      "asr_result": null,
+      "folder": "C:\\Users\\lenovo\\Desktop\\四楼实训区_场景1_康昱灵_张潇杨_拍摄\\指令2",
+      "id": "1766826431088",
+      "is_invalid": false,
+      "object_space": [
+        {
+          "name": "橙色外壳的万用表",
+          "points": [
+            [
+              669,
+              241
+            ],
+            [
+              638,
+              258
+            ],
+            [
+              673,
+              269
+            ]
+          ],
+          "type": "object"
+        }
+      ],
+      "scene": "四楼实训区",
+      "task_template": "指令2",
+      "video_name": "VID20251227153213.mp4",
+      "_video_dir": "data_new/四楼实训区_场景1_康昱灵_张潇杨_拍摄/指令2"
+    },
+    {
+      "asr_result": null,
+      "folder": "C:\\Users\\lenovo\\Desktop\\四楼实训区_场景1_康昱灵_张潇杨_拍摄\\指令2",
+      "id": "1766826373049",
+      "is_invalid": false,
+      "object_space": [
+        {
+          "name": "第一块电路板从左往右数的第四颗红色按钮",
+          "points": [
+            [
+              442,
+              324
+            ]
+          ],
+          "type": "object",
+          "mask": {
+            "mask_base64": "iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAAAAADNuJ6fAAAPNUlEQVR4Ae3BuWEbQAADMHL/oS+S7fiR6mMFoAEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK6Bq04+NQD8aOCikx8NAP81cM/Jbw0AXxq45uRFA8CHBm45edUA8KGBW07eNAA8NXDLyZsGgKcGbjl51wDw0MAtJ+8aAB4auOXkXQPAQwO3nLxrAHho4JaTdw0ADw3ccvKmAeCpgWtOXjUAPDVwzcmLBoAPDVxz8lcDwKcG7jn5owHgUwP3nPzWAPClgYtOvjUAfGvgppMvDQA/GgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5v4BVdUYOeRd3nkAAAAASUVORK5CYII=",
+            "bbox": [
+              605,
+              469,
+              625,
+              489
+            ],
+            "score": 0.7746597528457642,
+            "point_on_mask": true
+          }
+        }
+      ],
+      "scene": "四楼实训区",
+      "task_template": "指令2",
+      "video_name": "VID20251227151926.mp4",
+      "_video_dir": "data_new/四楼实训区_场景1_康昱灵_张潇杨_拍摄/指令2"
+    },
+    {
+      "asr_result": null,
+      "folder": "C:\\Users\\lenovo\\Desktop\\四楼实训区_场景1_康昱灵_张潇杨_拍摄\\指令2",
+      "id": "1766826343010",
+      "is_invalid": false,
+      "object_space": [
+        {
+          "name": "白色蜂窝状的长方体",
+          "points": [
+            [
+              848,
+              431
+            ],
+            [
+              826,
+              455
+            ],
+            [
+              871,
+              460
+            ]
+          ],
+          "type": "object",
+          "mask": {
+            "mask_base64": "iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAAAAADNuJ6fAAARJklEQVR4Ae3BAU5D0WEEwN37H/pVVZMoaQwYsBfre2YaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDm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",
+            "bbox": [
+              788,
+              869,
+              940,
+              989
+            ],
+            "score": 0.7449434399604797,
+            "point_on_mask": true
+          }
+        }
+      ],
+      "scene": "四楼实训区",
+      "task_template": "指令2",
+      "video_name": "VID20251227151906.mp4",
+      "_video_dir": "data_new/四楼实训区_场景1_康昱灵_张潇杨_拍摄/指令2"
+    },
+    {
+      "asr_result": null,
+      "folder": "C:\\Users\\lenovo\\Desktop\\四楼实训区_场景1_康昱灵_张潇杨_拍摄\\指令2",
+      "id": "1766826327815",
+      "is_invalid": false,
+      "object_space": [
+        {
+          "name": "银色圆形中间镂空柱体",
+          "points": [
+            [
+              533,
+              370
+            ],
+            [
+              515,
+              387
+            ],
+            [
+              554,
+              388
+            ]
+          ],
+          "type": "object",
+          "mask": {
+            "mask_base64": "iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAAAAADNuJ6fAAAQYklEQVR4Ae3BQY5gOwEEsKr7HzosEQtgfj+pMmnZbgCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGfqWT/9AA/FUa+FVO/ocG4C/RwG9x8gcagL9BA7/ByZ9rAK5r4Hkn/1ADcFkDjzv5gQbgqgbedvIzDcBFDTzt5McagGsaeNnJzzUA1zTwsJMPGoBrGnjXyScNwC0NPOvkmwbglgaedfJNA3BLA886+aYBuKWBV5181ADc0sCrTj5qAG5p4FUnHzUAtzTwqpOPGoBbGnjVyUcNwC0NvOrkowbglgZedfJRA3BLA686+aYBuKaBV5180wBc08CrTr5pAK5p4FknnzQA1zTwrJNPGoBrGnjWyScNwDUNPOvkkwbgmgaedfJNA3BLA886+aYBuKWBZ5180wDc0sCzTj5pAK5p4FknnzQA1zTwrJNPGoBrGnjWyScNwDUNPOvkkwbgmgaedfJJA3BNA886+aQBuKaBZ5180gBc08CzTj5pAK5p4FknnzQA1zTwrJNPGoBrGnjWyScNwDUNPOvkkwbgmgaedfJJA3BNA886+aYBuKWBZ5180wDc0sCzTr5pAG5p4Fkn3zQAtzTwrJNvGoBbGnjWyTcNwC0NPOvkmwbglgaedfJNA3BLA886+aYBuKWBZ5180wDc0sCzTr5pAG5p4Fkn3zQAtzTwrJNvGoBbGnjWyUcNwCUNPOvkowbgkgaedfJRA3BJA886+agBuKSBZ5181ABc0sCzTr5qAO5o4FknXzUAdzTwrJOvGoA7GnjWyVcNwB0NPOvkqwbgjgaedfJRA3BJA+86+aYBuKSBd5180gDc0sC7Tj5pAG5p4GEnHzQA1zTwspOfawCuaeBlJz/WANzTwNNOfqYBuKmBt538RANwVQOPO/nHGoDLGnjeyT/TANzWwC9w8ucagPsa+BVO/kgD8Fdo4Lc4+T8agL9FA7/JyX/RAPxNGviFTv6tAfj7NADAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwNy/AOILWDl8MRf+AAAAAElFTkSuQmCC",
+            "bbox": [
+              700,
+              548,
+              768,
+              632
+            ],
+            "score": 0.8885507583618164,
+            "point_on_mask": true
+          }
+        }
+      ],
+      "scene": "四楼实训区",
+      "task_template": "指令2",
+      "video_name": "VID20251227151857.mp4",
+      "_video_dir": "data_new/四楼实训区_场景1_康昱灵_张潇杨_拍摄/指令2"
+    }
+  ]
+}

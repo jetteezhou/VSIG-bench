@@ -121,7 +121,7 @@ class EvaluationEngine:
         asr_result = item.get("asr_result")
         transcript = asr_result["text"] if (
             asr_result and isinstance(asr_result, dict) and "text" in asr_result) else item.get("task_template")
-        
+
         if item.get("task_template") == "指令1":
             transcript = "用户没有说话，只是做出了指向性动作。"
 
@@ -173,21 +173,13 @@ class EvaluationEngine:
 
         result["video_name"] = video_id
 
-        # Post-process: Swap coordinates from [x, y] (Prompt/Model) to [y, x] (Eval/Vis/GT)
-        # The prompt asks for [x, y] (Width, Height), but the evaluator and visualizer expect [y, x] (Height, Width).
-        if "point_list" in result:
-            for pred_item in result["point_list"]:
-                if "point" in pred_item and isinstance(pred_item["point"], list):
-                    pt = pred_item["point"]
-                    # Case 1: Single point [x, y]
-                    if len(pt) == 2 and isinstance(pt[0], (int, float)):
-                        pred_item["point"] = [pt[1], pt[0]]
-                    # Case 2: Multiple points [[x1, y1], [x2, y2]]
-                    elif len(pt) > 0 and isinstance(pt[0], list) and len(pt[0]) == 2:
-                        pred_item["point"] = [[p[1], p[0]] for p in pt]
+        # 核心逻辑：系统内部已全部统一为 [x, y] 格式。
+        # 模型的输出 (point_list) 本身就是 [x, y]，评估器和可视化器也已适配 [x, y]。
+        # 故此处移除所有坐标交换逻辑，保持模型原始的 [x, y] 输出。
 
-        # Visualize (Only enabled in test mode to save time/space)
-        if self.config.get("test_mode", False):
+        # Visualize (Enabled in test mode OR if running a web task)
+        is_web_run = "web_runs" in output_dir
+        if self.config.get("test_mode", False) or is_web_run:
             vis_filename = f"vis_{video_id}.jpg"
             vis_path = os.path.join(output_dir, vis_filename)
             try:
@@ -208,7 +200,8 @@ class EvaluationEngine:
                 else:
                     result["visualization_rel_path"] = vis_path
             except Exception as e:
-                self.log(f"Visualization failed for {video_id}: {e}", "warning")
+                self.log(
+                    f"Visualization failed for {video_id}: {e}", "warning")
 
         return result, item
 
@@ -283,33 +276,38 @@ class EvaluationEngine:
                     metrics = Evaluator.evaluate_batch(
                         all_predictions, all_ground_truths, num_workers=10)
 
-                    # If in test mode, include detailed per-sample results
-                    if self.config.get("test_mode", False):
-                        detailed_samples = []
-                        self.log(
-                            "Test Mode: Running detailed parallel evaluation...")
+                    # 移除冗余的第二次并行评估，直接使用 metrics 中的 detailed_results
+                    is_web_run = "web_runs" in output_dir
+                    if not (self.config.get("test_mode", False) or is_web_run):
+                        # 如果不是测试模式或 Web 运行，为了节省空间可以删除详情
+                        if "detailed_results" in metrics:
+                            del metrics["detailed_results"]
+                    else:
+                        if is_web_run:
+                            self.log("Web Run: Using pre-calculated detailed evaluation results.")
+                        else:
+                            self.log("Test Mode: Using pre-calculated detailed evaluation results.")
 
-                        def eval_worker(pred_gt):
-                            p, g = pred_gt
-                            scores = Evaluator.evaluate_sample(p, g)
-                            return {
-                                "video_name": g.get("video_name"),
-                                "instruction": g.get("task_template"),
-                                "prediction": p,
-                                # "ground_truth": g, # Do not expose GT
-                                "scores": scores
-                            }
-
-                        with ThreadPoolExecutor(max_workers=10) as eval_executor:
-                            results = list(eval_executor.map(
-                                eval_worker, zip(all_predictions, all_ground_truths)))
-                            detailed_samples.extend(results)
-
-                        metrics["detailed_results"] = detailed_samples
+                # Inject model metadata into metrics
+                metrics["model_name"] = self.config.get(
+                    "model_name", "Unknown")
+                metrics["model_provider"] = self.config.get(
+                    "model_provider", "Unknown")
 
                 metrics_path = os.path.join(output_dir, "metrics.json")
                 with open(metrics_path, "w", encoding="utf-8") as f:
                     json.dump(metrics, f, indent=2, ensure_ascii=False)
+
+                # Save metrics_summary.json for leaderboard compatibility
+                summary_data = {
+                    "model_name": self.config.get("model_name", "Unknown"),
+                    "model_provider": self.config.get("model_provider", "Unknown"),
+                    "overall": metrics
+                }
+
+                summary_path = os.path.join(output_dir, "metrics_summary.json")
+                with open(summary_path, "w", encoding="utf-8") as f:
+                    json.dump(summary_data, f, indent=2, ensure_ascii=False)
 
                 self.log("Evaluation Complete.")
                 return metrics_path

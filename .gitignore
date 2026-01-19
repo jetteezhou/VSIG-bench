@@ -2,7 +2,7 @@
 data/
 data_new/
 temp_frames/
-results/
+results/web_runs/test_mode/
 
 # Python 缓存
 __pycache__/

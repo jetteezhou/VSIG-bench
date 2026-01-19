@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Terminal, Activity, Database, Github } from 'lucide-react';
+import { Terminal, Activity, Database, Github, Trophy } from 'lucide-react';
 
 export default function Navbar() {
   const location = useLocation();
@@ -33,6 +33,7 @@ export default function Navbar() {
         <div className="flex items-center gap-1">
           <NavItem to="/" icon={Activity} label="Task Intro" />
           <NavItem to="/benchmark" icon={Terminal} label="Benchmark" />
+          <NavItem to="/leaderboard" icon={Trophy} label="Leaderboard" />
           <NavItem to="/dataset" icon={Database} label="Dataset" />
         </div>
 

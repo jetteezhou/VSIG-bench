@@ -1,0 +1,63 @@
+{
+  "overall": {
+    "intent_grounding_accuracy": 0.43833333333333335,
+    "spatial_grounding_accuracy": 0.15384615384615385,
+    "temporal_grounding_accuracy": 0.8518518518518519,
+    "overall_score": 0.481343779677113
+  },
+  "by_instruction": {
+    "指令1": {
+      "intent_accuracy": 0.35333333333333333,
+      "spatial_grounding": 0.2,
+      "temporal_grounding": 0.0,
+      "overall": 0.27666666666666667,
+      "count": 15
+    },
+    "指令2": {
+      "intent_accuracy": 0.5766666666666667,
+      "spatial_grounding": 0.4666666666666667,
+      "temporal_grounding": 1.0,
+      "overall": 0.6811111111111111,
+      "count": 15
+    },
+    "指令3": {
+      "intent_accuracy": 0.26999999999999996,
+      "spatial_grounding": 0.06666666666666667,
+      "temporal_grounding": 0.0,
+      "overall": 0.1683333333333333,
+      "count": 15
+    },
+    "指令4": {
+      "intent_accuracy": 0.4766666666666667,
+      "spatial_grounding": 0.13333333333333333,
+      "temporal_grounding": 1.0,
+      "overall": 0.5366666666666666,
+      "count": 15
+    },
+    "指令5": {
+      "intent_accuracy": 0.4966666666666667,
+      "spatial_grounding": 0.15555555555555556,
+      "temporal_grounding": 1.0,
+      "overall": 0.5507407407407408,
+      "count": 15
+    },
+    "指令6": {
+      "intent_accuracy": 0.45666666666666667,
+      "spatial_grounding": 0.11666666666666667,
+      "temporal_grounding": 0.75,
+      "overall": 0.44111111111111106,
+      "count": 15
+    }
+  },
+  "statistics": {
+    "total_samples": 90,
+    "samples_by_instruction": {
+      "指令1": 15,
+      "指令2": 15,
+      "指令3": 15,
+      "指令4": 15,
+      "指令5": 15,
+      "指令6": 15
+    }
+  }
+}

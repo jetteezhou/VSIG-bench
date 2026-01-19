@@ -1,0 +1,7 @@
+{
+  "intent_accuracy": 0.41333333333333333,
+  "spatial_grounding": 0.1,
+  "temporal_grounding": 0.5,
+  "overall": 0.33777777777777773,
+  "count": 15
+}

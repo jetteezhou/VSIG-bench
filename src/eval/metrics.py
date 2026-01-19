@@ -24,46 +24,59 @@ class Evaluator:
         Evaluator._eval_model = model
 
     @staticmethod
+    def _ensure_single_point(pt):
+        """辅助方法：确保输入为单点 [x, y]（取平均值）"""
+        if not pt or not isinstance(pt, list):
+            return None
+        if len(pt) == 0:
+            return None
+        # 如果是 [[x, y], ...] 格式
+        if isinstance(pt[0], list):
+            avg_x = sum(p[0] for p in pt) / len(pt)
+            avg_y = sum(p[1] for p in pt) / len(pt)
+            return [avg_x, avg_y]
+        # 如果是 [x, y] 格式
+        return pt
+
+    @staticmethod
     def calculate_distance(pred_pt, gt_pt):
         """
         计算预测点与 GT 点之间的欧氏距离。
-        pred_pt: [y, x]
-        gt_pt: [y, x] 或 [[y1, x1], [y2, x2], ...]
+        输入均应为 [x, y] 格式。
         """
-        if pred_pt is None or gt_pt is None:
+        p_pt = Evaluator._ensure_single_point(pred_pt)
+        g_pt = Evaluator._ensure_single_point(gt_pt)
+
+        if p_pt is None or g_pt is None:
             return float('inf')
 
-        # 如果 GT 是多个点，取平均值
-        if isinstance(gt_pt[0], list):
-            gt_y = sum(p[0] for p in gt_pt) / len(gt_pt)
-            gt_x = sum(p[1] for p in gt_pt) / len(gt_pt)
-        else:
-            gt_y, gt_x = gt_pt
-
-        pred_y, pred_x = pred_pt
-        return math.sqrt((pred_y - gt_y)**2 + (pred_x - gt_x)**2)
+        return math.sqrt((p_pt[0] - g_pt[0])**2 + (p_pt[1] - g_pt[1])**2)
 
     @staticmethod
     def is_point_in_mask(point, mask_base64, bbox, width=1920, height=1080):
         """
         严谨的 mask 评估：检查点是否落在解码后的 mask 像素内。
-        point: [y, x] (归一化 0-1000)
+        point: [x, y] 或 [[x, y], ...] (归一化 0-1000)
         mask_base64: 标注的 mask 数据 (Base64 编码的图像)
-        bbox: [y1, x1, y2, x2] (原始像素坐标)
+        bbox: [x1, y1, x2, y2] (原始像素坐标)
         width, height: 视频帧的原始宽高
         """
         if not mask_base64 or not bbox:
             return False
 
-        try:
-            # 1. 还原归一化坐标为像素坐标
-            y_norm, x_norm = point
-            py = int(y_norm * height / 1000)
-            px = int(x_norm * width / 1000)
+        p_pt = Evaluator._ensure_single_point(point)
+        if p_pt is None:
+            return False
 
-            # 2. 基础检查：是否在 bbox 内
+        try:
+            # 1. 还原归一化坐标为像素坐标 (x, y 对应 width, height)
+            x_norm, y_norm = p_pt
+            px = int(x_norm * width / 1000)
+            py = int(y_norm * height / 1000)
+
+            # 2. 基础检查：是否在 bbox 内 (bbox 为 [x1, y1, x2, y2])
             x1, y1, x2, y2 = bbox
-            if not (y1 <= py <= y2 and x1 <= px <= x2):
+            if not (x1 <= px <= x2 and y1 <= py <= y2):
                 return False
 
             # 3. 解码 mask 图像
@@ -142,6 +155,23 @@ class Evaluator:
 
         template = gt.get("task_template")
         raw_os = gt.get("object_space", [])
+
+        # 核心转换：将标注中的 [y, x] 统一转换为全系统通用的 [x, y]
+        processed_raw_os = []
+        for item in raw_os:
+            new_item = item.copy()
+            points = item.get("points", [])
+            if points:
+                if isinstance(points[0], list):
+                    # [[y1, x1], [y2, x2]] -> [[x1, y1], [x2, y2]]
+                    new_item["points"] = [[p[1], p[0]] for p in points]
+                else:
+                    # [y, x] -> [x, y]
+                    new_item["points"] = [points[1], points[0]]
+            processed_raw_os.append(new_item)
+
+        raw_os = processed_raw_os
+
         processed_gt = {
             "template": template,
             "items": []
@@ -496,44 +526,43 @@ class Evaluator:
             eval_args.append((pred, gt, width, height))
 
         # 并行评估
-        results_with_gt = []  # Store (score, gt) pairs to keep association
+        results_with_gt = []  # 存储 (score, gt, pred) 三元组，确保数据对齐
         if num_workers and num_workers > 1 and len(eval_args) > 1:
             with ThreadPoolExecutor(max_workers=min(num_workers, len(eval_args))) as executor:
                 futures = {executor.submit(Evaluator._evaluate_single_sample_wrapper, args): args
                            for args in eval_args}
                 for future in as_completed(futures):
-                    # Retrieve the original args (specifically GT) associated with this future
-                    _, gt, _, _ = futures[future]
+                    # 从原始 args 中提取对应的 pred 和 gt
+                    pred, gt, _, _ = futures[future]
                     try:
                         score = future.result()
-                        results_with_gt.append((score, gt))
+                        results_with_gt.append((score, gt, pred))
                     except Exception as e:
-                        # 如果评估失败，添加默认分数
                         default_score = {
                             "intent_accuracy": 0.0,
                             "spatial_grounding": [],
                             "temporal_grounding": None
                         }
-                        results_with_gt.append((default_score, gt))
+                        results_with_gt.append((default_score, gt, pred))
         else:
             # 单线程模式
             for args in eval_args:
-                _, gt, _, _ = args
+                pred, gt, _, _ = args
                 try:
                     score = Evaluator._evaluate_single_sample_wrapper(args)
-                    results_with_gt.append((score, gt))
+                    results_with_gt.append((score, gt, pred))
                 except Exception as e:
                     default_score = {
                         "intent_accuracy": 0.0,
                         "spatial_grounding": [],
                         "temporal_grounding": None
                     }
-                    results_with_gt.append((default_score, gt))
+                    results_with_gt.append((default_score, gt, pred))
 
         if not results_with_gt:
             return {}
 
-        # Separate scores for global calculation
+        # 统一提取 scores 进行汇总计算
         all_scores = [x[0] for x in results_with_gt]
 
         avg_intent = sum(s["intent_accuracy"]
@@ -596,5 +625,14 @@ class Evaluator:
             "spatial_grounding_accuracy": avg_spatial,
             "temporal_grounding_accuracy": avg_temporal,
             "overall_score": (avg_intent + avg_spatial + avg_temporal) / 3 if avg_temporal > 0 else (avg_intent + avg_spatial) / 2,
-            "instruction_breakdown": breakdown_results
+            "instruction_breakdown": breakdown_results,
+            "detailed_results": [
+                {
+                    "video_name": gt.get("video_name"),
+                    "instruction": gt.get("task_template"),
+                    "prediction": pred,
+                    "scores": score
+                }
+                for score, gt, pred in results_with_gt
+            ]
         }

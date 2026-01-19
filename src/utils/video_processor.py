@@ -229,7 +229,7 @@ class VideoProcessor:
         h, w = img.shape[:2]
 
         # 解析坐标
-        # 预测点：从 point_list 中按顺序提取，并将 [y, x] 转换为 [x, y]
+        # 预测点与 GT 点此时均已统一为 [x, y] 格式
         pred_point_list = result_json.get("point_list", [])
 
         # GT 点：优先使用 gt_items，否则回退到 gt_json["object_space"]
@@ -240,7 +240,17 @@ class VideoProcessor:
         if gt_items is not None:
             source_items = gt_items
         elif gt_json and "object_space" in gt_json and isinstance(gt_json.get("object_space"), list):
-            source_items = gt_json.get("object_space")
+            # 回退路径：若未提供预处理好的 items，则在此处手动将原始 [y, x] 转换为统一的 [x, y]
+            raw_os = gt_json.get("object_space")
+            for item in raw_os:
+                new_item = item.copy()
+                points = item.get("points", [])
+                if points:
+                    if isinstance(points[0], list):
+                        new_item["points"] = [[p[1], p[0]] for p in points]
+                    else:
+                        new_item["points"] = [points[1], points[0]]
+                source_items.append(new_item)
 
         for point in source_items:
             # 尝试提取 mask 数据
@@ -319,33 +329,25 @@ class VideoProcessor:
             if not point_coord:
                 continue
 
-            # 将 [y, x] 转换为 [x, y]
-            if isinstance(point_coord, list) and len(point_coord) >= 2:
-                if isinstance(point_coord[0], list):
-                    # 多个点的情况
-                    for i, pt in enumerate(point_coord):
-                        x, y = pt[1], pt[0]  # Swap [y, x] to [x, y]
-                        x_pixel = int(x / 1000 * w)
-                        y_pixel = int(y / 1000 * h)
-                        pixel_pt = (x_pixel, y_pixel)
-                        color = get_color_for_type(point_type, is_pred=True)
-                        cv2.circle(img, pixel_pt, 10, color, -1)
-                        if i == 0:
-                            label = "Pred"  # 简单标注
-                            cv2.putText(img, label, (pixel_pt[0]+10, pixel_pt[1]),
-                                        cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
-                else:
-                    # 单个点的情况
-                    # Swap [y, x] to [x, y]
-                    x, y = point_coord[1], point_coord[0]
-                    x_pixel = int(x / 1000 * w)
-                    y_pixel = int(y / 1000 * h)
-                    pixel_pt = (x_pixel, y_pixel)
+            # 统一使用 [x, y] 格式直接绘制，无需交换
+            if isinstance(point_coord[0], list):
+                # 多个点的情况 [[x1, y1], [x2, y2]]
+                for i, pt in enumerate(point_coord):
+                    x, y = pt[0], pt[1]
+                    pixel_pt = (int(x / 1000 * w), int(y / 1000 * h))
                     color = get_color_for_type(point_type, is_pred=True)
                     cv2.circle(img, pixel_pt, 10, color, -1)
-                    label = "Pred"
-                    cv2.putText(img, label, (pixel_pt[0]+10, pixel_pt[1]),
-                                cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
+                    if i == 0:
+                        cv2.putText(img, "Pred", (pixel_pt[0]+10, pixel_pt[1]),
+                                    cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
+            else:
+                # 单个点的情况 [x, y]
+                x, y = point_coord[0], point_coord[1]
+                pixel_pt = (int(x / 1000 * w), int(y / 1000 * h))
+                color = get_color_for_type(point_type, is_pred=True)
+                cv2.circle(img, pixel_pt, 10, color, -1)
+                cv2.putText(img, "Pred", (pixel_pt[0]+10, pixel_pt[1]),
+                            cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
 
         # 按顺序绘制 GT 点/Mask
         # 创建 Mask 叠加层
@@ -356,7 +358,7 @@ class VideoProcessor:
                 continue
 
             point_type = point_item.get("type", "")
-            point_coord = point_item.get("point", [])
+            point_coord = point_item.get("point", [])  # 此时已在评估引擎中统一为 [x, y]
             description = point_item.get("description", "")
             mask_info = point_item.get("mask")
 
@@ -372,27 +374,19 @@ class VideoProcessor:
                     mask_img = cv2.imdecode(nparr, cv2.IMREAD_GRAYSCALE)
 
                     if mask_img is not None:
-                        # 调整 mask 大小以匹配图像 (如果需要)
-                        # 注意：mask 通常是全图大小或者 bbox 大小
-                        # 这里假设 mask 对应的是全图或者 bbox，需要结合 bbox 使用
-                        bbox = mask_info.get("bbox")  # [y1, x1, y2, x2]
-
+                        bbox = mask_info.get("bbox")  # [x1, y1, x2, y2]
                         if bbox:
                             x1, y1, x2, y2 = bbox
-                            # 确保坐标有效
                             y1, x1, y2, x2 = max(0, y1), max(
                                 0, x1), min(h, y2), min(w, x2)
 
-                            # 如果 mask 是全图大小，直接 resize
                             if mask_img.shape[0] == h and mask_img.shape[1] == w:
                                 resized_mask = mask_img
                             else:
-                                # 如果 mask 是局部切片，resize 到 bbox 大小
                                 target_h, target_w = y2 - y1, x2 - x1
                                 if target_h > 0 and target_w > 0:
                                     resized_mask_patch = cv2.resize(
                                         mask_img, (target_w, target_h))
-                                    # 创建全图大小的 mask
                                     resized_mask = np.zeros(
                                         (h, w), dtype=np.uint8)
                                     resized_mask[y1:y2,
@@ -400,53 +394,30 @@ class VideoProcessor:
                                 else:
                                     resized_mask = None
                         else:
-                            # 假设 mask 是全图
-                            if mask_img.shape[0] != h or mask_img.shape[1] != w:
-                                resized_mask = cv2.resize(mask_img, (w, h))
-                            else:
-                                resized_mask = mask_img
+                            resized_mask = cv2.resize(mask_img, (w, h)) if (
+                                mask_img.shape[0] != h or mask_img.shape[1] != w) else mask_img
 
                         if resized_mask is not None:
-                            # 找到轮廓并填充颜色
                             contours, _ = cv2.findContours(
                                 resized_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
                             cv2.drawContours(
-                                overlay, contours, -1, color, -1)  # 填充
+                                overlay, contours, -1, color, -1)
                             has_drawn_mask = True
-
-                            # 在 Mask 中心标记文字
-                            M = cv2.moments(contours[0]) if contours else None
-                            if M and M["m00"] != 0:
-                                cX = int(M["m10"] / M["m00"])
-                                cY = int(M["m01"] / M["m00"])
-                                # 稍后统一绘制中文文字
-                                pass
                 except Exception as e:
                     logger.error(f"绘制 Mask 失败: {e}")
 
             # 如果没有 Mask 或者绘制失败，回退到绘制点
             if not has_drawn_mask and point_coord:
-                # GT 点是 [y, x] 格式，需要转换为 [x, y]
-                converted_points = []
-                if isinstance(point_coord[0], list):
-                    for pt in point_coord:
-                        if len(pt) >= 2:
-                            x, y = pt[1], pt[0]
-                            converted_points.append([x, y])
-                elif len(point_coord) == 2:
-                    x, y = point_coord[1], point_coord[0]
-                    converted_points = [x, y]
-
-                if converted_points:
-                    pts = norm_to_pixel(converted_points)
-                    if pts:
-                        if isinstance(pts, list):
-                            for pt in pts:
-                                cv2.circle(img, pt, 8, color, 2)
-                                cv2.circle(img, pt, 2, color, -1)
-                        else:
-                            cv2.circle(img, pts, 8, color, 2)
-                            cv2.circle(img, pts, 2, color, -1)
+                # 直接绘制统一后的 [x, y]
+                pts = norm_to_pixel(point_coord)
+                if pts:
+                    if isinstance(pts, list):
+                        for pt in pts:
+                            cv2.circle(img, pt, 8, color, 2)
+                            cv2.circle(img, pt, 2, color, -1)
+                    else:
+                        cv2.circle(img, pts, 8, color, 2)
+                        cv2.circle(img, pts, 2, color, -1)
 
         # 混合图层 (Mask 透明度)
         alpha = 0.4
@@ -500,25 +471,20 @@ class VideoProcessor:
                 # 确定标签位置
                 label_pos = None
 
-                # 如果有 Mask，尝试用 Mask 中心
-                if point_item.get("mask") and "mask_base64" in point_item["mask"]:
-                    # (这里简单化，不重新解码计算重心，而是使用点位作为备选，或者在上面解码时保存了重心)
-                    pass
-
                 # 使用点位作为标签位置
                 point_coord = point_item.get("point", [])
                 if point_coord:
-                    # [y, x] -> [x, y]
+                    # 此时 point_coord 已经是统一后的 [x, y]
                     if isinstance(point_coord[0], list):
                         pt = point_coord[0]
                     else:
                         pt = point_coord
 
                     if len(pt) >= 2:
-                        y, x = pt[0], pt[1]  # raw is [y, x] for GT
-                        # Convert to pixel
-                        x_pixel = int(x / 1000 * w)
-                        y_pixel = int(y / 1000 * h)
+                        x_norm, y_norm = pt[0], pt[1]
+                        # 转换为像素坐标
+                        x_pixel = int(x_norm / 1000 * w)
+                        y_pixel = int(y_norm / 1000 * h)
                         label_pos = (x_pixel, y_pixel)
 
                 if label_pos:
