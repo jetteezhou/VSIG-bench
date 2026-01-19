@@ -3,7 +3,7 @@ import os
 import time
 
 # Ensure we are in the project directory
-project_dir = "/home/tione/notebook/workspace/jetteezhou/code_space/Ego-Intent-Bench"
+project_dir = "/home/tione/notebook/workspace/jetteezhou/code_space/VSIG-Bench"
 os.chdir(project_dir)
 sys.path.append(project_dir)
 

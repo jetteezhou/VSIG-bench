@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { Play, Terminal as TerminalIcon, Settings, Cpu, FileJson, AlertCircle, CheckCircle2, BarChart3 } from 'lucide-react';
 
-const API_BASE = '/api';
+const API_BASE = '/embodied_benchmark/api';
 
 const MetricsCharts = ({ results }) => {
   if (!results?.instruction_breakdown) return null;
@@ -423,7 +423,7 @@ export default function Benchmark() {
                                   {item.prediction.visualization_rel_path && (
                                       <div className="w-full">
                                           <img 
-                                              src={`/results/${item.prediction.visualization_rel_path}`} 
+                                              src={`/embodied_benchmark/results/${item.prediction.visualization_rel_path}`} 
                                               alt={`Visualization for ${item.video_name}`}
                                               className="w-full rounded border border-zinc-800"
                                           />

@@ -3,7 +3,7 @@ import os
 import uuid
 import asyncio
 import logging
-from fastapi import FastAPI, BackgroundTasks, HTTPException
+from fastapi import FastAPI, BackgroundTasks, HTTPException, APIRouter
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from datetime import datetime
@@ -23,6 +23,9 @@ from src.eval_engine import EvaluationEngine
 
 app = FastAPI(title="VSIG-Bench API")
 
+# Create API router with prefix
+api_router = APIRouter(prefix="/embodied_benchmark/api")
+
 # CORS
 app.add_middleware(
     CORSMiddleware,
@@ -36,7 +39,10 @@ app.add_middleware(
 # Assuming the app is run from the project root
 results_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "results"))
 os.makedirs(results_dir, exist_ok=True)
-app.mount("/results", StaticFiles(directory=results_dir), name="results")
+app.mount("/embodied_benchmark/results", StaticFiles(directory=results_dir), name="results")
+
+# Include API router
+app.include_router(api_router)
 
 # In-memory task store
 tasks = {}
@@ -70,7 +76,7 @@ def run_evaluation_task(task_id: str, config: dict):
         tasks[task_id]["status"] = "failed"
         tasks[task_id]["message"] = str(e)
 
-@app.post("/api/evaluate", response_model=TaskResponse)
+@api_router.post("/evaluate", response_model=TaskResponse)
 async def submit_evaluation(request: EvaluationRequest, background_tasks: BackgroundTasks):
     task_id = str(uuid.uuid4())
     
@@ -101,13 +107,13 @@ async def submit_evaluation(request: EvaluationRequest, background_tasks: Backgr
         message="Evaluation task started."
     )
 
-@app.get("/api/tasks/{task_id}", response_model=TaskStatus)
+@api_router.get("/tasks/{task_id}", response_model=TaskStatus)
 async def get_task_status(task_id: str):
     if task_id not in tasks:
         raise HTTPException(status_code=404, detail="Task not found")
     return TaskStatus(**tasks[task_id])
 
-@app.get("/api/results/{task_id}")
+@api_router.get("/results/{task_id}")
 async def get_task_results(task_id: str):
     if task_id not in tasks:
         raise HTTPException(status_code=404, detail="Task not found")
@@ -126,5 +132,5 @@ async def get_task_results(task_id: str):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="127.0.0.1", port=6006)
 
