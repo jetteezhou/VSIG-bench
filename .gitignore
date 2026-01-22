@@ -4,6 +4,10 @@ data/
 temp_frames/
 results/web_runs/test_mode/
 
+# 字体文件（保留字体文件，但忽略压缩包）
+fonts/*.zip
+fonts/SubsetOTF/
+
 # Python 缓存
 __pycache__/
 *.py[cod]

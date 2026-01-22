@@ -232,39 +232,57 @@ class VideoProcessor:
         # 预测点与 GT 点此时均已统一为 [x, y] 格式
         pred_point_list = result_json.get("point_list", [])
 
-        # GT 点：优先使用 gt_items，否则回退到 gt_json["object_space"]
+        # GT 点：优先使用 gt_items（已处理，points为像素坐标），否则回退到 gt_json["object_space"]
         gt_point_list = []
         gt_cmd = ""
 
         source_items = []
-        if gt_items is not None:
+        if gt_items is not None and len(gt_items) > 0:
+            # gt_items 已经过处理，points 已经是像素坐标 [x, y]
             source_items = gt_items
+            logger.debug(f"使用 gt_items，共 {len(source_items)} 个GT项")
         elif gt_json and "object_space" in gt_json and isinstance(gt_json.get("object_space"), list):
-            # 回退路径：若未提供预处理好的 items，则在此处手动将原始 [y, x] 转换为统一的 [x, y]
+            # 回退路径：若未提供预处理好的 items，则在此处手动处理
+            # 注意：原始 annotation 中的 points 为 [y, x] 格式（像素坐标）
             raw_os = gt_json.get("object_space")
+            logger.debug(f"使用回退路径，从 object_space 提取 {len(raw_os)} 个GT项")
             for item in raw_os:
                 new_item = item.copy()
                 points = item.get("points", [])
                 if points:
                     if isinstance(points[0], list):
+                        # [[y1, x1], [y2, x2]] -> [[x1, y1], [x2, y2]] (像素坐标)
                         new_item["points"] = [[p[1], p[0]] for p in points]
                     else:
+                        # [y, x] -> [x, y] (像素坐标)
                         new_item["points"] = [points[1], points[0]]
                 source_items.append(new_item)
+        else:
+            logger.warning(f"未找到GT数据: gt_items={gt_items is not None}, gt_json存在={gt_json is not None}")
 
+        # 提取GT信息
         for point in source_items:
             # 尝试提取 mask 数据
             mask_data = None
             if "mask" in point:
                 mask_data = point["mask"]
 
-            gt_point_list.append({
-                "type": point.get("type"),
-                "description": point.get("name"),
-                "point": point.get("points"),
-                "mask": mask_data
-            })
-            gt_cmd = gt_cmd + point.get("name") + " -> "
+            point_name = point.get("name", "")
+            if point_name:
+                gt_cmd = gt_cmd + point_name + " -> "
+
+            points = point.get("points")
+            if points:
+                gt_point_list.append({
+                    "type": point.get("type"),
+                    "description": point_name,
+                    "point": points,  # 已经是像素坐标 [x, y] 或 [[x, y], ...]
+                    "mask": mask_data
+                })
+                logger.debug(f"添加GT项: name={point_name}, type={point.get('type')}, points={points}")
+
+        if len(gt_point_list) == 0:
+            logger.warning(f"GT点列表为空，将只显示预测结果")
 
         def norm_to_pixel(pt):
             """
@@ -329,10 +347,11 @@ class VideoProcessor:
             point_type = point_item.get("type", "")
             point_coord = point_item.get("point", [])
             mask_info = point_item.get("mask")
+            description = point_item.get("description", "")
 
             color = get_color_for_type(point_type, is_pred=False)
 
-            # 优先绘制 Mask
+            # 绘制 Mask（如果有）
             has_drawn_mask = False
             if mask_info and "mask_base64" in mask_info:
                 try:
@@ -375,19 +394,27 @@ class VideoProcessor:
                 except Exception as e:
                     logger.error(f"绘制 Mask 失败: {e}")
 
-            # 如果没有 Mask 或者绘制失败，回退到绘制点
-            if not has_drawn_mask and point_coord:
+            # 绘制 GT 点（总是绘制，即使有mask也绘制点以便更清晰）
+            if point_coord:
                 if isinstance(point_coord[0], list):
-                    # 多个点 [[x, y], ...]
+                    # 多个点 [[x, y], ...] - GT points 已经是像素坐标
                     for pt in point_coord:
-                        pixel_pt = (int(pt[0]), int(pt[1]))
-                        cv2.circle(img, pixel_pt, 8, color, 2)
-                        cv2.circle(img, pixel_pt, 2, color, -1)
+                        if len(pt) >= 2:
+                            pixel_pt = (int(pt[0]), int(pt[1]))
+                            cv2.circle(img, pixel_pt, 10, color, 3)
+                            cv2.circle(img, pixel_pt, 3, color, -1)
+                            # 绘制GT标签
+                            cv2.putText(img, "GT", (pixel_pt[0]+12, pixel_pt[1]),
+                                        cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
                 else:
-                    # 单个点 [x, y]
-                    pixel_pt = (int(point_coord[0]), int(point_coord[1]))
-                    cv2.circle(img, pixel_pt, 8, color, 2)
-                    cv2.circle(img, pixel_pt, 2, color, -1)
+                    # 单个点 [x, y] - GT points 已经是像素坐标
+                    if len(point_coord) >= 2:
+                        pixel_pt = (int(point_coord[0]), int(point_coord[1]))
+                        cv2.circle(img, pixel_pt, 10, color, 3)
+                        cv2.circle(img, pixel_pt, 3, color, -1)
+                        # 绘制GT标签
+                        cv2.putText(img, "GT", (pixel_pt[0]+12, pixel_pt[1]),
+                                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
 
         # 混合图层 (Mask 透明度)
         alpha = 0.4
@@ -432,8 +459,14 @@ class VideoProcessor:
             img_pil = Image.fromarray(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
             draw = ImageDraw.Draw(img_pil)
 
-            # 尝试加载中文字体
+            # 获取项目根目录（假设当前文件在 src/utils/ 目录下）
+            current_file_dir = os.path.dirname(os.path.abspath(__file__))
+            project_root = os.path.dirname(os.path.dirname(current_file_dir))
+            project_font_path = os.path.join(project_root, "fonts", "SourceHanSansCN-Regular.otf")
+
+            # 尝试加载中文字体（优先使用项目文件夹中的字体）
             font_paths = [
+                project_font_path,                           # 项目字体（优先）
                 "/System/Library/Fonts/STHeiti Light.ttc",  # macOS
                 "/System/Library/Fonts/PingFang.ttc",       # macOS
                 "/usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf",  # Linux
@@ -446,11 +479,14 @@ class VideoProcessor:
                 if os.path.exists(path):
                     try:
                         font = ImageFont.truetype(path, 30)  # 字号 30
+                        logger.debug(f"成功加载字体: {path}")
                         break
-                    except Exception:
+                    except Exception as e:
+                        logger.debug(f"加载字体失败 {path}: {e}")
                         continue
 
             if font is None:
+                logger.warning("未能加载任何中文字体，使用默认字体（可能无法正确显示中文）")
                 font = ImageFont.load_default()
 
             # 绘制文字
@@ -468,12 +504,15 @@ class VideoProcessor:
                 description = point_item.get("description", "")
                 point_type = point_item.get("type", "")
 
-                # 确定标签位置
+                if not description:
+                    continue
+
+                # 确定标签位置 - GT points 已经是像素坐标
                 label_pos = None
                 point_coord = point_item.get("point", [])
                 if point_coord:
                     if isinstance(point_coord[0], list):
-                        pt = point_coord[0]
+                        pt = point_coord[0]  # 使用第一个点作为标签位置
                     else:
                         pt = point_coord
 
@@ -485,8 +524,10 @@ class VideoProcessor:
                     bgr_color = get_color_for_type(point_type, is_pred=False)
                     rgb_color = (bgr_color[2], bgr_color[1], bgr_color[0])
 
-                    draw.text((label_pos[0] + 10, label_pos[1] - 10), description,
-                              font=font, fill=rgb_color, stroke_width=1, stroke_fill=(0, 0, 0))
+                    # 绘制GT名称标签，位置在点的右上方
+                    draw.text((label_pos[0] + 15, label_pos[1] - 25), 
+                              f"GT: {description}",
+                              font=font, fill=rgb_color, stroke_width=2, stroke_fill=(0, 0, 0))
 
             # PIL图片转回OpenCV图片
             img = cv2.cvtColor(np.array(img_pil), cv2.COLOR_RGB2BGR)
@@ -503,16 +544,17 @@ class VideoProcessor:
             # 降级时也尝试绘制 GT 标签名
             for idx, point_item in enumerate(gt_point_list):
                 description = point_item.get("description", "")
+                point_type = point_item.get("type", "")
                 point_coord = point_item.get("point", [])
                 if point_coord and description:
-                    if isinstance(point_coord[0], list): pt = point_coord[0]
-                    else: pt = point_coord
+                    if isinstance(point_coord[0], list): 
+                        pt = point_coord[0]
+                    else: 
+                        pt = point_coord
                     if len(pt) >= 2:
-                        cv2.putText(img, description[:10], (int(pt[0])+10, int(pt[1])), 
-                                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 255), 1)
-
-        cv2.imwrite(output_path, img)
-        logger.info(f"可视化结果已保存: {output_path}")
+                        color = get_color_for_type(point_type, is_pred=False)
+                        cv2.putText(img, f"GT: {description[:15]}", (int(pt[0])+15, int(pt[1])-25), 
+                                    cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
 
         cv2.imwrite(output_path, img)
         logger.info(f"可视化结果已保存: {output_path}")

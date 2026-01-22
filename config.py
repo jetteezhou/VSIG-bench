@@ -12,7 +12,7 @@ class Config:
         "MODEL_PROVIDER", "gemini")  # "openai" 或 "gemini"
     OPENAI_BASE_URL = os.getenv(
         "OPENAI_BASE_URL", "")
-    MODEL_NAME = "gemini-3-flash-preview"  # "gemini-3-pro-preview", gpt-5.2
+    MODEL_NAME = "gemini-2.5-flash"  # "gemini-3-pro-preview", gpt-5.2
 
     # --- 坐标顺序配置 ---
     # 坐标顺序："xy" 表示 [x, y]（默认），"yx" 表示 [y, x]
