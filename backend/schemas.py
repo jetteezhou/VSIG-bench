@@ -27,6 +27,9 @@ class EvaluationRequest(BaseModel):
     eval_model_name: Optional[str] = Field(None, description="Evaluation Model Name")
     eval_api_key: Optional[str] = Field(None, description="Evaluation Model API Key")
     eval_api_base_url: Optional[str] = Field(None, description="Evaluation Model API Base URL (for OpenAI compatible)")
+    
+    # Coordinate Order Config
+    coord_order: Optional[str] = Field(None, description="Coordinate order: 'xy' for [x, y] or 'yx' for [y, x]. Default: 'yx' for gemini, 'xy' for others")
 
 class TaskResponse(BaseModel):
     task_id: str

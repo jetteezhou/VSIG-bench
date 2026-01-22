@@ -1,0 +1,2743 @@
+{
+  "model_name": "gemini-3-flash-preview",
+  "model_provider": "gemini",
+  "dataset": "三楼钳工区_场景a_李凯越_李尚儒_拍摄",
+  "instruction": "指令5",
+  "predictions": [
+    {
+      "explicit_command": "把在墙上的从左往右数第六个灰色的锉刀放在钳工台上的灰色金属锉刀左面，然后把左手边离人近的长方形金属工件拿起来。",
+      "selected_options": [
+        "K",
+        "a",
+        "B"
+      ],
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "在墙上的从左往右数第六个灰色的锉刀",
+          "point": [
+            558,
+            151
+          ],
+          "timestamp": [
+            2400,
+            3500
+          ]
+        },
+        {
+          "type": "spatial_affordance",
+          "description": "钳工台上的灰色金属锉刀左面",
+          "point": [
+            440,
+            418
+          ],
+          "timestamp": [
+            4100,
+            5200
+          ]
+        },
+        {
+          "type": "target_object",
+          "description": "左手边离人近的长方形金属工件",
+          "point": [
+            608,
+            562
+          ],
+          "timestamp": [
+            6800,
+            8000
+          ]
+        }
+      ],
+      "reasoning": "视频中用户先是指向墙上从左数第六个灰色锉刀，随后指向钳工台上的灰色锉刀左侧区域，表达了移动并放置物体的意图；最后用户又指向了钳工台上近处的一个长方形金属工件，意图是将其拿取。",
+      "video_name": "VID_20251230_184012.mp4"
+    },
+    {
+      "explicit_command": "把左手边离人近的长方形金属工件放在左手边离人近的蓝色金属台虎钳上面，然后把钳工台上的灰色金属锉刀拿起来。",
+      "selected_options": [
+        "B",
+        "i",
+        "L"
+      ],
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "左手边离人近的长方形金属工件",
+          "point": [
+            608,
+            577
+          ],
+          "timestamp": [
+            2400,
+            3900
+          ]
+        },
+        {
+          "type": "spatial_affordance",
+          "description": "左手边离人近的蓝色金属台虎钳上面",
+          "point": [
+            273,
+            747
+          ],
+          "timestamp": [
+            4500,
+            5700
+          ]
+        },
+        {
+          "type": "target_object",
+          "description": "钳工台上的灰色金属锉刀",
+          "point": [
+            467,
+            451
+          ],
+          "timestamp": [
+            6600,
+            7900
+          ]
+        }
+      ],
+      "reasoning": "用户首先通过手势指向左侧的长方形金属工件（B）并说“把这个”，接着指向左侧的蓝色台虎钳（i）说“放在它的上面”，最后指向钳工台上的灰色锉刀（L）说“然后把这个拿起来”。通过结合手势指向的时间戳和语音指令，确定了具体的动作意图。",
+      "video_name": "VID_20251230_184256.mp4"
+    },
+    {
+      "explicit_command": "把在墙上的从左往右数第一个绿色手柄的金属锯子放到左手边离人近的木质手柄的刷子前面，然后把放在钳工台上面的金属刮刀拿起来。",
+      "selected_options": [
+        "G",
+        "d",
+        "J"
+      ],
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "在墙上的从左往右数第一个绿色手柄的金属锯子",
+          "point": [
+            192,
+            220
+          ],
+          "timestamp": [
+            2500,
+            3700
+          ]
+        },
+        {
+          "type": "spatial_affordance",
+          "description": "左手边离人近的木质手柄的刷子前面",
+          "point": [
+            411,
+            703
+          ],
+          "timestamp": [
+            4100,
+            7000
+          ]
+        },
+        {
+          "type": "target_object",
+          "description": "放在钳工台上面的金属刮刀",
+          "point": [
+            608,
+            525
+          ],
+          "timestamp": [
+            7700,
+            9100
+          ]
+        }
+      ],
+      "reasoning": "根据视频和语音指令，用户首先指向了墙上最左侧的绿色手柄锯子（选项G），然后指示将其放置在刷子前方的空间（选项d），最后指向并要求拿取台面上的金属刮刀（选项J）。",
+      "video_name": "VID_20251230_184057.mp4"
+    },
+    {
+      "explicit_command": "把放在钳工台上的金属刮刀放在其左面，然后拿走在墙上的从左往右数第三个灰色的锉刀。",
+      "selected_options": [
+        "J",
+        "h",
+        "E"
+      ],
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "放在钳工台上面的金属刮刀",
+          "point": [
+            535,
+            478
+          ],
+          "timestamp": [
+            2000,
+            4000
+          ]
+        },
+        {
+          "type": "spatial_affordance",
+          "description": "放在钳工台上面的金属刮刀左面",
+          "point": [
+            500,
+            478
+          ],
+          "timestamp": [
+            4000,
+            6000
+          ]
+        },
+        {
+          "type": "target_object",
+          "description": "在墙上的从左往右数第三个灰色的锉刀",
+          "point": [
+            221,
+            254
+          ],
+          "timestamp": [
+            6000,
+            8000
+          ]
+        }
+      ],
+      "reasoning": "用户首先指向钳工台上的金属刮刀，并说'把这个'，确定为第一个目标物体。接着指向该物体的左侧并说'放到它的左面'，确定为放置的空间位置。最后，用户指向墙上挂着的、从左往右数第三个灰色的锉刀，并说'然后把这个拿起来'，确定为第二个目标物体。",
+      "video_name": "VID_20251230_184339.mp4"
+    },
+    {
+      "explicit_command": "把在墙上的从左往右数第六个灰色的锉刀放到中间位置离人近的木质刷柄右面，然后把左手边离人近的蓝色金属台虎钳打开。",
+      "selected_options": [
+        "K",
+        "e",
+        "D"
+      ],
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "在墙上的从左往右数第六个灰色的锉刀",
+          "point": [
+            521,
+            154
+          ],
+          "timestamp": [
+            2000,
+            4000
+          ]
+        },
+        {
+          "type": "spatial_affordance",
+          "description": "中间位置离人近的木质刷柄右面",
+          "point": [
+            650,
+            557
+          ],
+          "timestamp": [
+            4000,
+            6000
+          ]
+        },
+        {
+          "type": "target_object",
+          "description": "左手边离人近的蓝色金属台虎钳",
+          "point": [
+            360,
+            786
+          ],
+          "timestamp": [
+            7000,
+            9000
+          ]
+        }
+      ],
+      "reasoning": "用户首先指向了墙上从左往右数第六个灰色的锉刀，并说‘把这个’，确定为操作目标。接着指向了桌面上木质刷柄的右侧区域，并说‘放到它的右面’，确定为放置位置。最后指向了左手边的蓝色台虎钳，并说‘然后把这个打开’，确定为第二个操作目标及其动作。",
+      "video_name": "VID_20251230_184143.mp4"
+    },
+    {
+      "explicit_command": "把钳工台上的灰色金属锉刀放到左手边离人近的蓝色金属台虎钳上面，然后拿走在墙上的从左往右数第二个绿色手柄的金属锯子。",
+      "selected_options": [
+        "L",
+        "i",
+        "H"
+      ],
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "钳工台上的灰色金属锉刀",
+          "point": [
+            458,
+            486
+          ],
+          "timestamp": [
+            2000,
+            4000
+          ]
+        },
+        {
+          "type": "spatial_affordance",
+          "description": "左手边离人近的蓝色金属台虎钳上面",
+          "point": [
+            458,
+            767
+          ],
+          "timestamp": [
+            4000,
+            6000
+          ]
+        },
+        {
+          "type": "target_object",
+          "description": "在墙上的从左往右数第二个绿色手柄的金属锯子",
+          "point": [
+            305,
+            235
+          ],
+          "timestamp": [
+            7000,
+            9000
+          ]
+        }
+      ],
+      "reasoning": "根据视频和语音，用户首先指着钳工台上的灰色金属锉刀（L），要求将其放到左手边的蓝色金属台虎钳上面（i），随后指着墙上从左往右数第二个绿色手柄的金属锯子（H）要求将其拿起。根据这些信息，我们可以确定操作对象和目标位置。",
+      "video_name": "VID_20251230_184325.mp4"
+    },
+    {
+      "explicit_command": "把钳工台上的灰色金属锉刀放到左手边离人近的长方形金属工件前面，然后把放在钳工台上面的金属刮刀拿起来。",
+      "selected_options": [
+        "L",
+        "f",
+        "J"
+      ],
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "钳工台上的灰色金属锉刀",
+          "point": [
+            395,
+            520
+          ],
+          "timestamp": [
+            3500,
+            4500
+          ]
+        },
+        {
+          "type": "spatial_affordance",
+          "description": "左手边离人近的长方形金属工件前面",
+          "point": [
+            480,
+            630
+          ],
+          "timestamp": [
+            5500,
+            6500
+          ]
+        },
+        {
+          "type": "target_object",
+          "description": "放在钳工台上面的金属刮刀",
+          "point": [
+            500,
+            475
+          ],
+          "timestamp": [
+            7500,
+            8500
+          ]
+        }
+      ],
+      "reasoning": "用户首先指向钳工台上的灰色金属锉刀并说“把这个”，接着指向长方形金属工件前面的区域并说“放到它的前面”，最后指向钳工台上的金属刮刀并说“把这个拿起来”。",
+      "video_name": "VID_20251230_184213.mp4"
+    },
+    {
+      "explicit_command": "把在墙上的从左往右数第三个灰色的锉刀放到放在钳工台上面的金属刮刀右面，然后把左手边离人近的蓝色金属台虎钳打开。",
+      "selected_options": [
+        "E",
+        "b",
+        "D"
+      ],
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "在墙上的从左往右数第三个灰色的锉刀",
+          "point": [
+            221,
+            251
+          ],
+          "timestamp": [
+            3000,
+            4200
+          ]
+        },
+        {
+          "type": "spatial_affordance",
+          "description": "放在钳工台上面的金属刮刀右面",
+          "point": [
+            560,
+            506
+          ],
+          "timestamp": [
+            5000,
+            6100
+          ]
+        },
+        {
+          "type": "target_object",
+          "description": "左手边离人近的蓝色金属台虎钳",
+          "point": [
+            332,
+            850
+          ],
+          "timestamp": [
+            8000,
+            10000
+          ]
+        }
+      ],
+      "reasoning": "用户先后指代了墙上的第三个灰色锉刀、钳工台上的金属刮刀及其右侧区域，以及左侧的蓝色台虎钳，并给出了相应的操作指令（移动和打开）。",
+      "video_name": "VID_20251230_184027.mp4"
+    },
+    {
+      "explicit_command": "把左手边离人近的长方形金属工件放到放在钳工台上面的金属刮刀左面，然后把中间位置离人近的木质刷柄拿起来",
+      "selected_options": [
+        "B",
+        "h",
+        "I"
+      ],
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "左手边离人近的长方形金属工件",
+          "point": [
+            560,
+            600
+          ],
+          "timestamp": [
+            2000,
+            4000
+          ]
+        },
+        {
+          "type": "spatial_affordance",
+          "description": "放在钳工台上面的金属刮刀左面",
+          "point": [
+            390,
+            520
+          ],
+          "timestamp": [
+            4000,
+            7000
+          ]
+        },
+        {
+          "type": "target_object",
+          "description": "中间位置离人近的木质刷柄",
+          "point": [
+            360,
+            680
+          ],
+          "timestamp": [
+            7000,
+            9000
+          ]
+        }
+      ],
+      "reasoning": "用户在视频中通过语音和手势明确了三个目标。首先指向长方形金属工件并称其为‘这个’，确定了第一个操作对象；然后指向金属刮刀的左侧区域并说‘放到它的左面’，确定了放置位置；最后指向木质刷柄并说‘然后把这个拿起来’，确定了第二个操作对象。",
+      "video_name": "VID_20251230_184310.mp4"
+    },
+    {
+      "explicit_command": "把在墙上的从左往右数第二个灰色的锉刀放到左手边离人近的长方形金属工件前面，然后把中间位置离人近的木质刷柄拿起来。",
+      "selected_options": [
+        "C",
+        "f",
+        "I"
+      ],
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "在墙上的从左往右数第二个灰色的锉刀",
+          "point": [
+            517,
+            308
+          ],
+          "timestamp": [
+            2500,
+            3100
+          ]
+        },
+        {
+          "type": "spatial_affordance",
+          "description": "左手边离人近的长方形金属工件前面",
+          "point": [
+            584,
+            709
+          ],
+          "timestamp": [
+            4600,
+            5400
+          ]
+        },
+        {
+          "type": "target_object",
+          "description": "中间位置离人近的木质刷柄",
+          "point": [
+            417,
+            739
+          ],
+          "timestamp": [
+            7300,
+            8300
+          ]
+        }
+      ],
+      "reasoning": "用户通过三个连续的手势和语音指令明确了意图：首先指向墙上第二个灰色锉刀作为移动物体，随后指向工作台左侧金属工件的前方作为放置点，最后指向工作台上的木质刷柄并要求拿起。",
+      "video_name": "VID_20251230_184158.mp4"
+    },
+    {
+      "explicit_command": "把在墙上的从左往右数第二个绿色手柄的金属锯子放到放在钳工台上面的金属刮刀前面，然后拿起中间位置离人近的木质刷柄。",
+      "selected_options": [
+        "H",
+        "g",
+        "I"
+      ],
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "在墙上的从左往右数第二个绿色手柄的金属锯子",
+          "point": [
+            303,
+            225
+          ],
+          "timestamp": [
+            3150,
+            4440
+          ]
+        },
+        {
+          "type": "spatial_affordance",
+          "description": "放在钳工台上面的金属刮刀前面",
+          "point": [
+            502,
+            506
+          ],
+          "timestamp": [
+            4870,
+            6810
+          ]
+        },
+        {
+          "type": "target_object",
+          "description": "中间位置离人近的木质刷柄",
+          "point": [
+            412,
+            630
+          ],
+          "timestamp": [
+            7910,
+            9400
+          ]
+        }
+      ],
+      "reasoning": "用户首先指着墙上左起第二把绿色手柄的锯子说'把这个'，接着指着工作台上的金属刮刀并示意前方说'放到它的前面'，最后指着中间位置的木质刷子说'把这个拿起来'。",
+      "video_name": "VID_20251230_184112.mp4"
+    },
+    {
+      "explicit_command": "把钳工台上的金属刮刀放到它的左面，并打开右侧的蓝色金属台虎钳。",
+      "selected_options": [
+        "J",
+        "h",
+        "F"
+      ],
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "钳工台上的金属刮刀",
+          "point": [
+            451,
+            474
+          ],
+          "timestamp": [
+            4155,
+            4794
+          ]
+        },
+        {
+          "type": "spatial_affordance",
+          "description": "钳工台上的金属刮刀左面",
+          "point": [
+            381,
+            476
+          ],
+          "timestamp": [
+            6074,
+            6906
+          ]
+        },
+        {
+          "type": "target_object",
+          "description": "右手边离人近的蓝色金属台虎钳",
+          "point": [
+            659,
+            429
+          ],
+          "timestamp": [
+            8762,
+            9849
+          ]
+        }
+      ],
+      "reasoning": "视频中，用户先后指代了三个目标。第一个目标指代的是钳工台上面的金属刮刀；第二个指代的是上述金属刮刀的左面；第三个指代的是右手边离人近的蓝色金属台虎钳。根据用户说的话，其动作意图是将金属刮刀放到它左面，然后再把蓝色台虎钳打开。",
+      "video_name": "VID_20251230_184242.mp4"
+    },
+    {
+      "explicit_command": "把在墙上的从左往右数第一个绿色手柄的金属锯子放在左手边离人近的长方形金属工件后面，并将右手边离人近的蓝色金属台虎钳打开。",
+      "selected_options": [
+        "G",
+        "c",
+        "F"
+      ],
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "在墙上的从左往右数第一个绿色手柄的金属锯子",
+          "point": [
+            172,
+            163
+          ],
+          "timestamp": [
+            3600,
+            4800
+          ]
+        },
+        {
+          "type": "spatial_affordance",
+          "description": "左手边离人近的长方形金属工件后面",
+          "point": [
+            439,
+            475
+          ],
+          "timestamp": [
+            5500,
+            7500
+          ]
+        },
+        {
+          "type": "target_object",
+          "description": "右手边离人近的蓝色金属台虎钳",
+          "point": [
+            706,
+            388
+          ],
+          "timestamp": [
+            9300,
+            10700
+          ]
+        }
+      ],
+      "reasoning": "根据视频中用户的指向动作和语音指令，首先识别出'这个'是指向墙上最左侧带绿色手柄的锯子（G），'那个'是指向工作台左前方的长方形金属件，要求放置在其后面（c）。接着用户指向右侧的蓝色台虎钳（F），指令是将其打开。",
+      "video_name": "VID_20251230_184042.mp4"
+    }
+  ],
+  "ground_truths": [
+    {
+      "asr_result": {
+        "text": "把这个放到它的左面然后把这个拿起来",
+        "words": [
+          {
+            "begin_time": 3330,
+            "end_time": 4410,
+            "text": "把这个",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 5090,
+            "end_time": 5370,
+            "text": "放到",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 5370,
+            "end_time": 5650,
+            "text": "它的",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 5650,
+            "end_time": 5810,
+            "text": "左",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 5810,
+            "end_time": 6410,
+            "text": "面",
+            "punctuation": "，",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 7210,
+            "end_time": 7490,
+            "text": "然后",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 7490,
+            "end_time": 7970,
+            "text": "把这个",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 7970,
+            "end_time": 8130,
+            "text": "拿",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 8130,
+            "end_time": 8290,
+            "text": "起来",
+            "punctuation": "。",
+            "fixed": false,
+            "speaker_id": null
+          }
+        ]
+      },
+      "folder": "data\\三楼钳工区_场景a_李凯越_李尚儒_拍摄\\指令5",
+      "id": "1768389557044",
+      "is_invalid": false,
+      "object_space": [
+        {
+          "name": "在墙上的从左往右数第一个灰色的锉刀",
+          "points": [
+            [
+              98,
+              192
+            ],
+            [
+              278,
+              215
+            ],
+            [
+              483,
+              238
+            ]
+          ],
+          "type": "object"
+        },
+        {
+          "name": "钳工台上的灰色金属锉刀",
+          "points": [
+            [
+              454,
+              551
+            ],
+            [
+              442,
+              508
+            ],
+            [
+              430,
+              479
+            ]
+          ],
+          "type": "object"
+        },
+        {
+          "name": "左面",
+          "points": [
+            [
+              460,
+              488
+            ],
+            [
+              507,
+              493
+            ],
+            [
+              485,
+              513
+            ]
+          ],
+          "type": "space"
+        },
+        {
+          "mask": {
+            "bbox": [
+              1131,
+              624,
+              1175,
+              686
+            ],
+            "mask_base64": "iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAAAAADNuJ6fAAAP30lEQVR4Ae3BMYJFOQEDMPv+hw7QADs/tV8RSQ0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw3A507+rYGHNAAfO/mfBt7QAHzr5B8aeEED8KmTPxp4QAPwpZO/GnhAA/Clk78aeEAD8KGTHw08oAH4zsmvBh7QAHzn5EcDL2gAPnPyq4EXNABfOfnVwBMagK+c/GrgCQ3AR05+NfCGBuAbJxcNvKEB+MbJrwYe0QB84uSigUc0AF84uWngEQ3AF04uGnhFA/CBk5sGXtEA7J3cNPCMBmDv5KKBdzQAcyc3DbyjAVg7uWngIQ3A2MlVAw9pALZOrhp4SQOwdXLTwFMagKmTqwae0gBMndw08JYGYOnkqoG3NABDJ1cNPKYB2Dm5auA1DcDOyVUDr2kAdk5uGnhOAzBzctXAcxqAlZOrBt7TAKycXDXwngZg5OSqgQc1ACMnNw28qAHYOLlq4EUNwMTJVQNPagAmTq4aeFIDsHBy1cCbGoCFk5sGHtUALJzcNPCoBmDg5KaBVzUAAycXDTyrARg4uWjgWQ3AwMlFA89qAAZOfjXwrgZg4ORXA+9qAAZOfjXwrgZg4ORHAw9rAAZOfjTwsAZg4ORHAw9rAAZOfjTwsAZg4ORHAw9rABZO/mjgZQ3AwskfDbysAZg4+acGXtYAjJz8vwZe1gDMnPxXA09rAJZO/qOBxzUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDM/Qsv9kI5e6ZENQAAAABJRU5ErkJggg==",
+            "point_on_mask": true,
+            "score": 0.8566782474517822
+          },
+          "name": "左手边离人近的长方形金属工件",
+          "points": [
+            [
+              617,
+              596
+            ],
+            [
+              575,
+              604
+            ]
+          ],
+          "type": "object"
+        }
+      ],
+      "scene": "三楼钳工区",
+      "task_template": "指令四",
+      "video_name": "VID_20251230_184012.mp4",
+      "_video_dir": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令5",
+      "_video_width": 1920,
+      "_video_height": 1080,
+      "_video_path": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令5/VID_20251230_184012.mp4",
+      "_last_frame_path": null,
+      "_processed_gt": {
+        "template": "指令四",
+        "items": []
+      },
+      "_correct_options": [
+        "A",
+        "a",
+        "B"
+      ]
+    },
+    {
+      "id": "1768464299559",
+      "folder": "data\\三楼钳工区_场景a_李凯越_李尚儒_拍摄\\指令5",
+      "video_name": "VID_20251230_184256.mp4",
+      "task_template": "指令四",
+      "scene": "三楼钳工区",
+      "object_space": [
+        {
+          "name": "左手边离人近的长方形金属工件",
+          "points": [
+            [
+              634,
+              550
+            ]
+          ],
+          "type": "object"
+        },
+        {
+          "name": "左手边离人近的蓝色金属台虎钳",
+          "points": [
+            [
+              761,
+              267
+            ],
+            [
+              842,
+              338
+            ],
+            [
+              786,
+              391
+            ]
+          ],
+          "type": "object"
+        },
+        {
+          "name": "上面",
+          "points": [
+            [
+              764,
+              242
+            ],
+            [
+              834,
+              244
+            ],
+            [
+              780,
+              322
+            ]
+          ],
+          "type": "space"
+        },
+        {
+          "name": "钳工台上的灰色金属锉刀",
+          "points": [
+            [
+              488,
+              485
+            ],
+            [
+              470,
+              413
+            ]
+          ],
+          "type": "object"
+        }
+      ],
+      "is_invalid": false,
+      "asr_result": {
+        "text": "然后把这个拿起来",
+        "words": [
+          {
+            "begin_time": 7800,
+            "end_time": 8040,
+            "text": "然后",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 8040,
+            "end_time": 8400,
+            "text": "把这个",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 8400,
+            "end_time": 8560,
+            "text": "拿",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 8560,
+            "end_time": 8720,
+            "text": "起来",
+            "punctuation": "。",
+            "fixed": false,
+            "speaker_id": null
+          }
+        ]
+      },
+      "_video_dir": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令5",
+      "_video_width": 1920,
+      "_video_height": 1080,
+      "_video_path": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令5/VID_20251230_184256.mp4",
+      "_last_frame_path": null,
+      "_processed_gt": {
+        "template": "指令四",
+        "items": []
+      },
+      "_correct_options": [
+        "B",
+        "i",
+        "L"
+      ]
+    },
+    {
+      "asr_result": {
+        "text": "把这个放到他的前面然后把这个拿起来",
+        "words": [
+          {
+            "begin_time": 3660,
+            "end_time": 4700,
+            "text": "把这个",
+            "punctuation": "。",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 5910,
+            "end_time": 6190,
+            "text": "放到",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 6190,
+            "end_time": 6470,
+            "text": "他的",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 6470,
+            "end_time": 6750,
+            "text": "前面",
+            "punctuation": "。",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 8440,
+            "end_time": 8720,
+            "text": "然后",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 8720,
+            "end_time": 9080,
+            "text": "把这个",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 9080,
+            "end_time": 9280,
+            "text": "拿",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 9280,
+            "end_time": 9440,
+            "text": "起来",
+            "punctuation": "。",
+            "fixed": false,
+            "speaker_id": null
+          }
+        ]
+      },
+      "folder": "data\\三楼钳工区_场景a_李凯越_李尚儒_拍摄\\指令5",
+      "id": "1768390108573",
+      "is_invalid": false,
+      "object_space": [
+        {
+          "name": "在墙上的从左往右数第一个绿色手柄的金属锯子",
+          "points": [
+            [
+              50,
+              341
+            ],
+            [
+              221,
+              376
+            ],
+            [
+              415,
+              371
+            ]
+          ],
+          "type": "object"
+        },
+        {
+          "name": "左手边离人近的木质手柄的刷子",
+          "points": [
+            [
+              626,
+              408
+            ],
+            [
+              654,
+              451
+            ]
+          ],
+          "type": "object"
+        },
+        {
+          "name": "前面",
+          "points": [
+            [
+              646,
+              495
+            ],
+            [
+              688,
+              501
+            ],
+            [
+              680,
+              523
+            ]
+          ],
+          "type": "space"
+        },
+        {
+          "mask": {
+            "bbox": [
+              913,
+              437,
+              1109,
+              487
+            ],
+            "mask_base64": "iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAAAAADNuJ6fAAAP2UlEQVR4Ae3BURJaxwEEwJn7H3qTqvhD5cgyIBg9oLsbAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAa7l5AcN8Jka4EJOfqYBPk0DXMjJP2mAT9IAF3LySw3wIRrgQk5u0QDvrgEu5OR2DfC+GuBSTu7TAO+oAS7n5E4N8GYa4IpO7tYA76MBLurkbg3wJhrgyk7u1ADvoAGu7uReDXBxDfAOTu7XAJfVAG/i5BENcEUN8E5OHtEAF9MAb+bkQQ1wGQ3whk4e1QBX0ADv6uRBDfCnNcA7O3lMA/xRDfDuTh7UAH9KA3yAk4c1wB/QAJ/i5GHNX04DLDTAJzl5kQZ4pgb4NCev1ABP0AAf6eSVGuD3NMDnOnmdBvgNDfDZTl6nAR7UAJ/v5HUa4AEN8B1OXqYB7tUAX+TkNRrgPg3wZU5eogHu0ADf5+QVGuBmDfCdTp6uAW7VAN/r5Lka4EYN8M1OnqoBbtMA3+3kmRrgJg3w7U6epwFu0gDk5Eka4CYNwH+dPEcD3KIB+J+TJ2iAWzQAPzj5LQ1wkwbgb04e1gA3aQD+38ljGuAmDcBPndyvAW7TAPyjk3s0wK0agF85uUkD3KMB+LWTf9UA92kAbnHyEw3wmAYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCY+w9jbTU5V3L4QAAAAABJRU5ErkJggg==",
+            "point_on_mask": true,
+            "score": 0.7732330560684204
+          },
+          "name": "左手边离人近的蓝色金属台虎钳",
+          "points": [
+            [
+              409,
+              486
+            ],
+            [
+              421,
+              528
+            ],
+            [
+              437,
+              562
+            ]
+          ],
+          "type": "object"
+        }
+      ],
+      "scene": "三楼钳工区",
+      "task_template": "指令四",
+      "video_name": "VID_20251230_184057.mp4",
+      "_video_dir": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令5",
+      "_video_width": 1920,
+      "_video_height": 1080,
+      "_video_path": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令5/VID_20251230_184057.mp4",
+      "_last_frame_path": null,
+      "_processed_gt": {
+        "template": "指令四",
+        "items": []
+      },
+      "_correct_options": [
+        "G",
+        "d",
+        "D"
+      ]
+    },
+    {
+      "id": "1768464664063",
+      "folder": "data\\三楼钳工区_场景a_李凯越_李尚儒_拍摄\\指令5",
+      "video_name": "VID_20251230_184339.mp4",
+      "task_template": "指令四",
+      "scene": "三楼钳工区",
+      "object_space": [
+        {
+          "name": "中间位置离人近的木质刷柄",
+          "points": [
+            [
+              499,
+              656
+            ]
+          ],
+          "type": "object"
+        },
+        {
+          "name": "放在钳工台上面的金属刮刀",
+          "points": [
+            [
+              478,
+              471
+            ]
+          ],
+          "type": "object"
+        },
+        {
+          "name": "左面",
+          "points": [
+            [
+              461,
+              436
+            ],
+            [
+              497,
+              446
+            ],
+            [
+              472,
+              418
+            ]
+          ],
+          "type": "space"
+        },
+        {
+          "name": "在墙上的从左往右数第二个绿色手柄的金属锯子",
+          "points": [
+            [
+              53,
+              499
+            ],
+            [
+              237,
+              501
+            ],
+            [
+              379,
+              528
+            ]
+          ],
+          "type": "object",
+          "mask": {
+            "bbox": [
+              929,
+              39,
+              1016,
+              440
+            ],
+            "mask_base64": "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AKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWPd/uRejSLJnjPEAAAAASUVORK5CYII=",
+            "point_on_mask": true,
+            "score": 0.6410310864448547
+          }
+        }
+      ],
+      "is_invalid": false,
+      "asr_result": {
+        "text": "把这个放到它的左面然后把这个拿起来",
+        "words": [
+          {
+            "begin_time": 3100,
+            "end_time": 4020,
+            "text": "把这个",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 5180,
+            "end_time": 5460,
+            "text": "放到",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 5460,
+            "end_time": 5660,
+            "text": "它的",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 5660,
+            "end_time": 5820,
+            "text": "左",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 5820,
+            "end_time": 5940,
+            "text": "面",
+            "punctuation": "。",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 7580,
+            "end_time": 7820,
+            "text": "然后",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 7820,
+            "end_time": 8180,
+            "text": "把这个",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 8180,
+            "end_time": 8340,
+            "text": "拿",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 8340,
+            "end_time": 8500,
+            "text": "起来",
+            "punctuation": "。",
+            "fixed": false,
+            "speaker_id": null
+          }
+        ]
+      },
+      "_video_dir": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令5",
+      "_video_width": 1920,
+      "_video_height": 1080,
+      "_video_path": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令5/VID_20251230_184339.mp4",
+      "_last_frame_path": null,
+      "_processed_gt": {
+        "template": "指令四",
+        "items": []
+      },
+      "_correct_options": [
+        "I",
+        "h",
+        "H"
+      ]
+    },
+    {
+      "asr_result": {
+        "text": "把这个放到他的右面然后把这个打开",
+        "words": [
+          {
+            "begin_time": 3630,
+            "end_time": 4670,
+            "text": "把这个",
+            "punctuation": "。",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 5840,
+            "end_time": 6160,
+            "text": "放到",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 6160,
+            "end_time": 6360,
+            "text": "他的",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 6360,
+            "end_time": 6520,
+            "text": "右",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 6520,
+            "end_time": 6720,
+            "text": "面",
+            "punctuation": "。",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 8390,
+            "end_time": 8630,
+            "text": "然后",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 8630,
+            "end_time": 8990,
+            "text": "把这个",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 8990,
+            "end_time": 9150,
+            "text": "打开",
+            "punctuation": "。",
+            "fixed": false,
+            "speaker_id": null
+          }
+        ]
+      },
+      "folder": "data\\三楼钳工区_场景a_李凯越_李尚儒_拍摄\\指令5",
+      "id": "1768390652129",
+      "is_invalid": false,
+      "object_space": [
+        {
+          "name": "放在钳工台上面的金属刮刀",
+          "points": [
+            [
+              519,
+              499
+            ]
+          ],
+          "type": "object"
+        },
+        {
+          "name": "中间位置离人近的木质刷柄",
+          "points": [
+            [
+              546,
+              679
+            ],
+            [
+              603,
+              717
+            ]
+          ],
+          "type": "object"
+        },
+        {
+          "name": "右面",
+          "points": [
+            [
+              538,
+              716
+            ],
+            [
+              576,
+              724
+            ],
+            [
+              558,
+              741
+            ]
+          ],
+          "type": "space"
+        },
+        {
+          "name": "左手边离人近的蓝色金属台虎钳",
+          "points": [
+            [
+              767,
+              406
+            ],
+            [
+              851,
+              426
+            ],
+            [
+              827,
+              470
+            ]
+          ],
+          "type": "object"
+        }
+      ],
+      "scene": "三楼钳工区",
+      "task_template": "指令四",
+      "video_name": "VID_20251230_184143.mp4",
+      "_video_dir": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令5",
+      "_video_width": 1920,
+      "_video_height": 1080,
+      "_video_path": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令5/VID_20251230_184143.mp4",
+      "_last_frame_path": null,
+      "_processed_gt": {
+        "template": "指令四",
+        "items": []
+      },
+      "_correct_options": [
+        "J",
+        "e",
+        "D"
+      ]
+    },
+    {
+      "id": "1768464590462",
+      "folder": "data\\三楼钳工区_场景a_李凯越_李尚儒_拍摄\\指令5",
+      "video_name": "VID_20251230_184325.mp4",
+      "task_template": "指令四",
+      "scene": "三楼钳工区",
+      "object_space": [
+        {
+          "name": "左手边离人近的长方形金属工件",
+          "points": [
+            [
+              582,
+              599
+            ]
+          ],
+          "type": "object",
+          "mask": null
+        },
+        {
+          "name": "左手边离人近的蓝色金属台虎钳",
+          "points": [
+            [
+              716,
+              319
+            ],
+            [
+              792,
+              381
+            ],
+            [
+              729,
+              440
+            ]
+          ],
+          "type": "object",
+          "mask": null
+        },
+        {
+          "name": "上面",
+          "points": [
+            [
+              695,
+              357
+            ],
+            [
+              738,
+              283
+            ],
+            [
+              767,
+              306
+            ]
+          ],
+          "type": "space",
+          "mask": {
+            "bbox": [
+              469,
+              720,
+              750,
+              889
+            ],
+            "mask_base64": "iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAAAAADNuJ6fAAAR/0lEQVR4Ae3BCWIlV4EEwMz7H/qNgQFs3IuklrLrV0VEAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAO/0ckfGoDHaeD3OPmzBuBRGvgNTv6uAXiOBtZOvqMBeIoGtk5+oAF4hgaGTn6qAXiABlZO3qYBuL0GNk7eoQG4twYWTt6nAbi1Br7eyfs1ADfWwFc7+ZAG4L4a+GInH9UA3FUDX+rkVzQA99TAFzr5VQ3AHTXwZU4+RQNwOw18kZNP0wDcTANf4uRTNQC30sAXOPl0DcCNNPDZTr5GA3AbDXyuky/TANxFA5/p5Gs1ALfQwKc5GWgAbqCBz3Gy0gC8vAY+wclUA/DiGvhlJ3MNwEtr4Bed/BYNwAtr4Nec/CYNwOtq4Jec/D4NwKtq4Bec/F4NwGtq4MNOLqABeEENfNDJRTQAL6eBDzm5kAbgxTTwASfX0gC8lgbe7eR6GoBX0sA7nVxSA/BCGniXk8tqAF5GA+9wcm0NwGto4M1Orq8BeAUNvNHJa2gArq+BNzl5HQ3A1TXwFicvpQG4tgbe4OTVNABX1sBPnbyiBuC6Gvixk5fVAFxVAz9y8tIagGtq4PtOXl4DcEUNfM/JHTQAF9TAd5zcRANwOQ1808mNNAAX08C3nNxKA3AtDfzdyd00AJfSwP86uaEG4Eoa+LOTu2oALqSB/zi5sQbgQhr4l5N7awAupIF/OLm7BuBCGkhObq8BuJIGTh6gAbiShqc7eYIG4FIanu3kERqAa2l4tJNHaAAupuHBTp6hAbiahsc6eYgG4HIaHurkKRqA62l4ppOnaAAuqOGJTp6iAbikhsc5eYwG4KIaHuXkSRqAq2p4ipOHaQCuq+ERTh6nAbiwhic4eZoG4NIa7u/kaRqAi2u4u5OnaQAur+HeTp6mAXgBDXd28jQNwEtouLGTh2kAXkTDfZ08TAPwKhpu6+RZGoDX0XBXJ4/SALyShrs6eZAG4LU03NXJYzQAr6bhrk6eogF4OQ13dfIMDcALaritkydoAF5Rw22dPEAD8JIa7uvk7hqAF9VwYyf31gC8qoZbO7mvBuB1NdzbyV01AC+s4eZO7qkBeGUNt3dyQw3AS2t4gJO7aQBeW8MjnNxKA/DiGp7h5EYagFfX8BgnN9EAvLyGBzm5gQbgBhqe5OTlNQB30PAsJy+tAbiHhqc5eVkNwF00PM/Ja2oAbqPhkU5eTgNwIw0PdvIyGoBbaXiwkxfRANxMw4OdvIIG4H4aHuzk+hqAO2p4sJOrawDuqeHJTi6tAbirhkc7ua4G4L4aHu3kshqAG2t4tpNragBureHhTq6oAbi3hqc7uZwG4O4aHu/kYhqA22vg5EoagAdoICdX0QA8QwPJySU0AE/RwB9OLqABeIwG/nDy2zUAD9LAP5z8Xg3AozTwTye/UQPwMA38y8lv0wA8TQP/7+T3aACep4F/O/kNGoAnauDfTuYagGdq4D9OxhqAh2rgv06WGoDHauBPTnYagOdq4C9ORhqAB2vgr04mGoAna+B/nXy5BuDZGvi7k6/VADxcA99y8nUagMdr4JtOvkgDQBr4jpOv0ACQNPA9J5+vAeAPDXzXyWdrAPiHBn7g5DM1APxLAz9y8mkaAP6tgR86+RwNAP/VwI+dfIYGgD9p4CdOfl0DwJ818DMnv6oB4C8a+KmTX9MA8FcN/NzJL2gA+F8N/NzJxzUA/E0Db3DyUQ0Af9fAG5x8UAPANzTwFicf0QDwTQ28ycn7NQB8WwNvc/JeDQDf0cBbnbxLA8D3NPB2J2/VAPADDbzLyU81APxEA+918gMNAD/XwLudfEcDwJs08H4n39IA8EYNfMTJ/2oAeLMGPubkLxoA3q6BDzr5kwaAd2jgw07+qQHgnRoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5v4PfGqkOUJVtrwAAAAASUVORK5CYII=",
+            "point_on_mask": true,
+            "score": 0.7908631563186646
+          }
+        },
+        {
+          "name": "在墙上的从左往右数第一个绿色手柄的金属锯子",
+          "points": [
+            [
+              54,
+              305
+            ],
+            [
+              196,
+              343
+            ],
+            [
+              414,
+              341
+            ]
+          ],
+          "type": "object",
+          "mask": {
+            "bbox": [
+              562,
+              29,
+              680,
+              502
+            ],
+            "mask_base64": "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AIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDl/h/gWkRmKELr5gAAAABJRU5ErkJggg==",
+            "point_on_mask": true,
+            "score": 0.779103696346283
+          }
+        }
+      ],
+      "is_invalid": false,
+      "asr_result": {
+        "text": "把这个放在它的上面然后把这个拿起来",
+        "words": [
+          {
+            "begin_time": 3180,
+            "end_time": 4140,
+            "text": "把这个",
+            "punctuation": "。",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 5280,
+            "end_time": 5560,
+            "text": "放在",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 5560,
+            "end_time": 5800,
+            "text": "它的",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 5800,
+            "end_time": 6000,
+            "text": "上面",
+            "punctuation": "。",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 8100,
+            "end_time": 8380,
+            "text": "然后",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 8380,
+            "end_time": 8740,
+            "text": "把这个",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 8740,
+            "end_time": 8900,
+            "text": "拿",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 8900,
+            "end_time": 9060,
+            "text": "起来",
+            "punctuation": "。",
+            "fixed": false,
+            "speaker_id": null
+          }
+        ]
+      },
+      "_video_dir": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令5",
+      "_video_width": 1920,
+      "_video_height": 1080,
+      "_video_path": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令5/VID_20251230_184325.mp4",
+      "_last_frame_path": null,
+      "_processed_gt": {
+        "template": "指令四",
+        "items": []
+      },
+      "_correct_options": [
+        "B",
+        "i",
+        "G"
+      ]
+    },
+    {
+      "asr_result": {
+        "text": "把这个放到他的前面然后把这个拿起来",
+        "words": [
+          {
+            "begin_time": 3740,
+            "end_time": 4780,
+            "text": "把这个",
+            "punctuation": "。",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 5920,
+            "end_time": 6200,
+            "text": "放到",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 6200,
+            "end_time": 6440,
+            "text": "他的",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 6440,
+            "end_time": 7200,
+            "text": "前面",
+            "punctuation": "，",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 8360,
+            "end_time": 8640,
+            "text": "然后",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 8640,
+            "end_time": 9000,
+            "text": "把这个",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 9000,
+            "end_time": 9160,
+            "text": "拿",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 9160,
+            "end_time": 9400,
+            "text": "起来",
+            "punctuation": "。",
+            "fixed": false,
+            "speaker_id": null
+          }
+        ]
+      },
+      "folder": "data\\三楼钳工区_场景a_李凯越_李尚儒_拍摄\\指令5",
+      "id": "1768390864827",
+      "is_invalid": false,
+      "object_space": [
+        {
+          "name": "中间位置离人近的木质刷柄",
+          "points": [
+            [
+              661,
+              388
+            ],
+            [
+              689,
+              432
+            ]
+          ],
+          "type": "object"
+        },
+        {
+          "name": "放在钳工台上面的金属刮刀",
+          "points": [
+            [
+              513,
+              466
+            ]
+          ],
+          "type": "object"
+        },
+        {
+          "name": "前面",
+          "points": [
+            [
+              654,
+              516
+            ],
+            [
+              692,
+              519
+            ],
+            [
+              676,
+              537
+            ]
+          ],
+          "type": "space"
+        },
+        {
+          "name": "钳工台上的灰色金属锉刀",
+          "points": [
+            [
+              489,
+              560
+            ],
+            [
+              485,
+              528
+            ],
+            [
+              472,
+              493
+            ]
+          ],
+          "type": "object"
+        }
+      ],
+      "scene": "三楼钳工区",
+      "task_template": "指令四",
+      "video_name": "VID_20251230_184213.mp4",
+      "_video_dir": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令5",
+      "_video_width": 1920,
+      "_video_height": 1080,
+      "_video_path": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令5/VID_20251230_184213.mp4",
+      "_last_frame_path": null,
+      "_processed_gt": {
+        "template": "指令四",
+        "items": []
+      },
+      "_correct_options": [
+        "I",
+        "g",
+        "L"
+      ]
+    },
+    {
+      "asr_result": {
+        "text": "把这个放到它的右面然后把这个打开",
+        "words": [
+          {
+            "begin_time": 3920,
+            "end_time": 4960,
+            "text": "把这个",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 5720,
+            "end_time": 6040,
+            "text": "放到",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 6040,
+            "end_time": 6280,
+            "text": "它的",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 6280,
+            "end_time": 6440,
+            "text": "右",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 6440,
+            "end_time": 6600,
+            "text": "面",
+            "punctuation": "。",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 8520,
+            "end_time": 8800,
+            "text": "然后",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 8800,
+            "end_time": 9200,
+            "text": "把这个",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 9200,
+            "end_time": 9360,
+            "text": "打开",
+            "punctuation": "。",
+            "fixed": false,
+            "speaker_id": null
+          }
+        ]
+      },
+      "folder": "data\\三楼钳工区_场景a_李凯越_李尚儒_拍摄\\指令5",
+      "id": "1768389745380",
+      "is_invalid": false,
+      "object_space": [
+        {
+          "mask": {
+            "bbox": [
+              424,
+              91,
+              514,
+              470
+            ],
+            "mask_base64": "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awCAcQ0AMK4BAMY1AMC4BgAY1wAA4xoAYFwDAIxrAIBxDQAwrgEAxjUAwLgGABjXAADjGgBgXAMAjGsAgHENADCuAQDGNQDAuAYAGNcAAOMaAGBcAwCMawCAcQ0AMK4BAMY1AMC4BgAY1wAA4xoAYFwDAIxrAIBxDQAwrgEAxjUAwLgGABjXAADjGgBgXAMAjGsAgHENADCuAQDGNQDAuAYAGNcAAOMaAGBcAwCMawCAcQ0AMK4BAMY1AMC4BgAY1wAA4xoAYFwDAIxrAIBxDQAwrgEAxjUAwLgGABjXAADjGgBgXAMAjGsAgHENADCuAQDGNQDAuAYAGNcAAOMaAGBcAwCMawCAcQ0AMK4BAMY1AMC4BgAY1wAA4xoAYFwDAIxrAIBxDQAwrgEAxjUAwLgGABjXAADjGgBgXAMAjGsAgHENADCuAQDGNQDAuAYAGNcAAOMaAGBcAwCMawCAcQ0AMK4BAMY1AMC4BgAY1wAA4xoAYFwDAIxrAIBxDQAwrgEAxjUAwLgGABjXAADjGgBgXAMAjGsAgHENADCuAQDGNQDAuAYAGNcAAOMaAGBcAwCMawCAcQ0AMK4BAMY1AMC4BgAY1wAA4xoAYFwDAIxrAIBxDQAwrgEAxjUAwLgGABjXAADjGgBgXAMAjGsAgHENADCuAQDGNQDAuAYAGNcAAOMaAGBcAwCMawCAcQ0AMK4BAMY1AMC4BgAY1wAA4xoAYFwDAIxrAIBxDQAwrgEAxjUAwLgGABjXAADjGgBgXAMAjGsAgHENADCuAQDGNQDAuAYAGNcAAOMaAGBcAwCMawCAcQ0AMK4BAMY1AMC4BgAY1wAA4xoAYFwDAIxrAIBxDQAwrgEAxjUAwLgGABjXAADjGgBgXAMAjGsAgHENADCuAQDGNQDAuAYAGNcAAOMaAGBcAwCMawCAcQ0AMK4BAMY1AMC4BgAY1wAA4xoAYFwDAIxrAIBxDQAwrgEAxjUAwLgGABjXAADjGgBgXAMAjGsAgHENADCuAQDGNQDAuAYAGNcAAOMaAGBcAwCMawCAcQ0AMK4BAMY1AMC4BgAY1wAA4xoAYFwDAIxrAIBxDQAwrgEAxjUAwLgGABjXAADjGgBgXAMAjGsAgHENADCuAQDGNQDAuAYAGNcAAOMaAGBcAwCMawCAcQ0AMK4BAMY1AMC4BgAY1wAA4xoAYFwDAIxrAIBxDQAwrgEAxjUAwLgGABjXAADjGgBgXAMAjGsAgHENADCuAQDGNQDAuAYAGNcAAOMaAGBcAwCMawCAcQ0AMK4BAMY1AMC4BgAY1wAA4xoAYFwDAIxrAIBxDQAwrgEAxjUAwLgGABjXAADjGgBgXAMAjGsAgHENADCuAQDGNQDAuAYAGNcAAOMaAGBcAwCMawCAcQ0AMK4BAMY1AMC4BgAY1wAA4xoAYFwDAIxrAIBxDQAwrgEAxjUAwLgGABjXAADjGgBgXAMAjGsAgHENADCuAQDGNQDAuAYAGNcAAOMaAGBcAwCMawCAcQ0AMK4BAMY1AMC4BgAY1wAA4xoAYFwDAIxrAIBxDQAwrgEAxjUAwLgGABjXAADjGgBgXAMAjGsAgHENADCuAQDGNQDAuAYAGNcAAOMaAGBcAwCMawCAcQ0AMK4BAMY1AMC4BgAY1wAA4xoAYFwDAIxrAIBxDQAwrgEAxjUAwLgGABjXAADjGgBgXAMAjGsAgHENADCuAQDGNQDAuAYAGNcAAOMaAGBcAwCMawCAcQ0AMK4BAMY1AMC4BgAY1wAA4xoAYFwDAIxrAIBxDQAwrgEAxjUAwLgGABjXAADjGgBgXAMAjGsAgHENADCuAQDGNQDAuAYAGNcAAOMaAGBcAwCMawCAcQ0AMK4BAMY1AMC4BgAY1wAA4xoAYFwDAIxrAIBxDQAwrgEAxjUAwLgGABjXAADjGgBgXAMAjGsAgHENADCuAQDGNQDAuAYAGNcAAOMaAGBcAwCMawCAcQ0AMK4BAMY1AMC4BgAY1wAA4xoAYFwDAIxrAIBxDQAwrgEAxjUAwLgGABjXAADjGgBgXAMAjGsAgHENADCuAQDGNQDAuAYAGNcAAOMaAGBcAwCMawCAcQ0AMK4BAMY1AMC4BgAY1wAA4xoAYFwDAIxrAIBxDQAwrgEAxjUAwLgGABjXAADjGgBgXAMAjGsAgHENADCuAQDGNQDAuAYAGNcAAOMaAGBcAwCMawCAcQ0AMK4BAMY1AMC4BgAY1wAA4xoAYFwDAIxrAIBxDQAwrgEAxjUAwLgGABjXAADjGgBgXAMAjGsAgHENADCuAQDGNQDAuAYAGNcAAOMaAGBcAwCMawCAcQ0AMK4BAMY1AMC4BgAY1wAA4xoAYFwDAIxrAIBxDQAwrgEAxjUAwLgGABjXAADjGgBgXAMAjGsAgHENADCuAQDGNQDAuAYAGNcAAOMaAGBcAwCMawCAcQ0AMK4BAMY1AMC4BgAY1wAA4xoAYFwDAIxrAIBxDQAwrgEAxjUAwLgGABjXAADjGgBgXAMAjGsAgHENADCuAQDGNQDAuAYAGNcAAOMaAGBcAwCMawCAcQ0AMK4BAMY1AMC4BgAY1wAA4xoAYFwDAIxrAIBxDQAwrgEAxjUAwLgGABjXAADjGgBgXAMAjGsAgHENADCuAQDGNQDAuAYAGNcAAOMaAGBcAwCM+38EHHpI2AHIcgAAAABJRU5ErkJggg==",
+            "point_on_mask": true,
+            "score": 0.883204460144043
+          },
+          "name": "在墙上的从左往右数第二个灰色的锉刀",
+          "points": [
+            [
+              114,
+              237
+            ],
+            [
+              245,
+              244
+            ],
+            [
+              401,
+              263
+            ]
+          ],
+          "type": "object"
+        },
+        {
+          "mask": {
+            "bbox": [
+              851,
+              518,
+              895,
+              560
+            ],
+            "mask_base64": "iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAAAAADNuJ6fAAAPn0lEQVR4Ae3BS4LbVgADMPL+h379JGk7GVvdyNwIQAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1wN1O/tQAvNcANzv5qQF4owFudvJLA/BaA9zr5D8agFca4FYnXzQALzTArU6+agC+a4BbnfymAfimAe508l0D8JsGuNPJdw3AbxrgTicvNABfNcCdTl5pAL5ogDudvNYA/EcD3OnkjQbgXw1wp5N3GoB/NMCdTt5qAH5pgDudvNcA/NQAtzp5rwH4oQFudXKhAfhbA9zq5EoD8JcGuNfJpQYgaYCbnVxqANIANzu51gA0wN1OrjXA4zXA7U6uNcDTNcAHnFxqgIdrgE84udQAz9YAn3DyPxrgyRrgI06uNcCTNcBnnFxrgAdrgA85udYAz9UAn3JyrQEeqwE+5+RKAzxWA3zQyZUGeKoG+KCTKw3wVA3wSScXGuCpGuCjTt5qgMdqgM86eacBHqsBPu3kpQZ4rgb4uJMXGuDBGuDzTn7TAM/WABMnPzQASQMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMDcH+PjLTnCkfGGAAAAAElFTkSuQmCC",
+            "point_on_mask": true,
+            "score": 0.8569270968437195
+          },
+          "name": "放在钳工台上面的金属刮刀",
+          "points": [
+            [
+              491,
+              451
+            ]
+          ],
+          "type": "object"
+        },
+        {
+          "name": "右面",
+          "points": [
+            [
+              474,
+              489
+            ],
+            [
+              505,
+              485
+            ],
+            [
+              501,
+              506
+            ]
+          ],
+          "type": "space"
+        },
+        {
+          "name": "左手边离人近的蓝色金属台虎钳",
+          "points": [
+            [
+              734,
+              359
+            ],
+            [
+              935,
+              316
+            ],
+            [
+              919,
+              422
+            ],
+            [
+              808,
+              435
+            ]
+          ],
+          "type": "object"
+        }
+      ],
+      "scene": "三楼钳工区",
+      "task_template": "指令四",
+      "video_name": "VID_20251230_184027.mp4",
+      "_video_dir": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令5",
+      "_video_width": 1920,
+      "_video_height": 1080,
+      "_video_path": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令5/VID_20251230_184027.mp4",
+      "_last_frame_path": null,
+      "_processed_gt": {
+        "template": "指令四",
+        "items": []
+      },
+      "_correct_options": [
+        "C",
+        "b",
+        "D"
+      ]
+    },
+    {
+      "id": "1768464467059",
+      "folder": "data\\三楼钳工区_场景a_李凯越_李尚儒_拍摄\\指令5",
+      "video_name": "VID_20251230_184310.mp4",
+      "task_template": "指令四",
+      "scene": "三楼钳工区",
+      "object_space": [
+        {
+          "name": "中间位置离人近的木质刷柄",
+          "points": [
+            [
+              504,
+              599
+            ],
+            [
+              565,
+              637
+            ]
+          ],
+          "type": "object"
+        },
+        {
+          "name": "钳工台上的灰色金属锉刀",
+          "points": [
+            [
+              451,
+              502
+            ],
+            [
+              433,
+              422
+            ]
+          ],
+          "type": "object"
+        },
+        {
+          "name": "左面",
+          "points": [
+            [
+              461,
+              425
+            ],
+            [
+              500,
+              449
+            ],
+            [
+              479,
+              471
+            ]
+          ],
+          "type": "space"
+        },
+        {
+          "name": "左手边离人近的长方形金属工件",
+          "points": [
+            [
+              594,
+              561
+            ]
+          ],
+          "type": "object",
+          "mask": {
+            "bbox": [
+              1059,
+              624,
+              1100,
+              684
+            ],
+            "mask_base64": "iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAAAAADNuJ6fAAAP9UlEQVR4Ae3BMZJbSwIDMPL+h+4NNvn2dGn0JBcjAA0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw3Ah07SAB9pAJ47+Y8GeKoBeOzkTw3wTAPw1MnfGuCRBuCpkx8a4IkG4KGTnxrgiQbgoZOfGuCJBuCZk4sGeKIBeOTkogEeaQAeOblogEcagCdObhrgkQbgiZOLBnimAXjg5KYBnmkAHji5aICHGoD3ndw0wEMNwPtObhrgoQbgbSc3DfBUA/C2k4sGeKwBeNfJTQM81gC86eSqAR5rAN50ctMAzzUAbzq5aYDnGoD3nNw0wAcagLecXDXABxqAt5zcNMAnGoB3nFw1wCcagHec3DTARxqAN5zcNMBnGoA3nNw0wGcagN+dXDXAZxqA353cNMCHGoBfnVw1wIcagF+d3DTApxqA35xcNcCnGoDfnFw1wKcagF+cXDXAxxqA107uGuBjDcBLJ3cN8LkG4KWTuwb4XAPwysldA3yhAXjl5K4BvtAAvHBy1wDfaABeOLlrgG80AC+cXDXAVxqAF06uGuArDcALJzcN8J0G4IWTmwb4TgPwwslNA3ynAXjh5KIBvtQAvHBy0QBfagBeOPmpAb7VALxw8lMDfKsBeOHkpwb4VgPwysnfGuBrDcArJ39rgK81AC+d/KUBvtYAvHTypwb4XgPw2skfGuB7DcAvTv6jAf6BBuB3J//XAP9EA/COkzTAv9IAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAc/8DcoFBOeWK+6gAAAAASUVORK5CYII=",
+            "point_on_mask": true,
+            "score": 0.8422881960868835
+          }
+        }
+      ],
+      "is_invalid": false,
+      "asr_result": {
+        "text": "把这个放到它的左面然后把这个拿起来",
+        "words": [
+          {
+            "begin_time": 3540,
+            "end_time": 4500,
+            "text": "把这个",
+            "punctuation": "。",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 5780,
+            "end_time": 6060,
+            "text": "放到",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 6060,
+            "end_time": 6260,
+            "text": "它的",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 6260,
+            "end_time": 6420,
+            "text": "左",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 6420,
+            "end_time": 7020,
+            "text": "面",
+            "punctuation": "，",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 8100,
+            "end_time": 8340,
+            "text": "然后",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 8340,
+            "end_time": 8660,
+            "text": "把这个",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 8660,
+            "end_time": 8820,
+            "text": "拿",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 8820,
+            "end_time": 8980,
+            "text": "起来",
+            "punctuation": "。",
+            "fixed": false,
+            "speaker_id": null
+          }
+        ]
+      },
+      "_video_dir": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令5",
+      "_video_width": 1920,
+      "_video_height": 1080,
+      "_video_path": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令5/VID_20251230_184310.mp4",
+      "_last_frame_path": null,
+      "_processed_gt": {
+        "template": "指令四",
+        "items": []
+      },
+      "_correct_options": [
+        "I",
+        "a",
+        "B"
+      ]
+    },
+    {
+      "asr_result": {
+        "text": "把这个放到他的前面然后把这个拿起来",
+        "words": [
+          {
+            "begin_time": 3680,
+            "end_time": 4680,
+            "text": "把这个",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 5600,
+            "end_time": 5920,
+            "text": "放到",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 5920,
+            "end_time": 6240,
+            "text": "他的",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 6240,
+            "end_time": 7040,
+            "text": "前面",
+            "punctuation": "，",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 8000,
+            "end_time": 8280,
+            "text": "然后",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 8280,
+            "end_time": 8920,
+            "text": "把这个",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 8920,
+            "end_time": 9080,
+            "text": "拿",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 9080,
+            "end_time": 9240,
+            "text": "起来",
+            "punctuation": "。",
+            "fixed": false,
+            "speaker_id": null
+          }
+        ]
+      },
+      "folder": "data\\三楼钳工区_场景a_李凯越_李尚儒_拍摄\\指令5",
+      "id": "1768390707379",
+      "is_invalid": false,
+      "object_space": [
+        {
+          "name": "在墙上的从左往右数第六个灰色的锉刀",
+          "points": [
+            [
+              70,
+              613
+            ],
+            [
+              195,
+              609
+            ]
+          ],
+          "type": "object"
+        },
+        {
+          "name": "左手边离人近的长方形金属工件",
+          "points": [
+            [
+              601,
+              619
+            ],
+            [
+              569,
+              631
+            ]
+          ],
+          "type": "object"
+        },
+        {
+          "name": "前面",
+          "points": [
+            [
+              593,
+              656
+            ],
+            [
+              632,
+              649
+            ],
+            [
+              616,
+              672
+            ]
+          ],
+          "type": "space"
+        },
+        {
+          "mask": {
+            "bbox": [
+              770,
+              646,
+              912,
+              719
+            ],
+            "mask_base64": "iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAAAAADNuJ6fAAAQTElEQVR4Ae3BW3bk1gEEsKr9L/omfsTHnqg5rRFV/iCABgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYA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MNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAc/8BWPtSOeXU4Q8AAAAASUVORK5CYII=",
+            "point_on_mask": true,
+            "score": 0.8034515380859375
+          },
+          "name": "中间位置离人近的木质刷柄",
+          "points": [
+            [
+              599,
+              416
+            ],
+            [
+              655,
+              468
+            ]
+          ],
+          "type": "object"
+        }
+      ],
+      "scene": "三楼钳工区",
+      "task_template": "指令四",
+      "video_name": "VID_20251230_184158.mp4",
+      "_video_dir": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令5",
+      "_video_width": 1920,
+      "_video_height": 1080,
+      "_video_path": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令5/VID_20251230_184158.mp4",
+      "_last_frame_path": null,
+      "_processed_gt": {
+        "template": "指令四",
+        "items": []
+      },
+      "_correct_options": [
+        "K",
+        "f",
+        "I"
+      ]
+    },
+    {
+      "asr_result": {
+        "text": "把这个放到它的前面然后把这个拿起来",
+        "words": [
+          {
+            "begin_time": 3890,
+            "end_time": 4930,
+            "text": "把这个",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 5770,
+            "end_time": 6090,
+            "text": "放到",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 6090,
+            "end_time": 6330,
+            "text": "它的",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 6330,
+            "end_time": 7130,
+            "text": "前面",
+            "punctuation": "，",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 8090,
+            "end_time": 8370,
+            "text": "然后",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 8370,
+            "end_time": 8730,
+            "text": "把这个",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 8730,
+            "end_time": 8890,
+            "text": "拿",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 8890,
+            "end_time": 9090,
+            "text": "起来",
+            "punctuation": "。",
+            "fixed": false,
+            "speaker_id": null
+          }
+        ]
+      },
+      "folder": "data\\三楼钳工区_场景a_李凯越_李尚儒_拍摄\\指令5",
+      "id": "1768390191917",
+      "is_invalid": false,
+      "object_space": [
+        {
+          "name": "在墙上的从左往右数第二个绿色手柄的金属锯子",
+          "points": [
+            [
+              22,
+              486
+            ],
+            [
+              197,
+              497
+            ],
+            [
+              336,
+              515
+            ]
+          ],
+          "type": "object"
+        },
+        {
+          "name": "左手边离人近的木质手柄的刷子",
+          "points": [
+            [
+              608,
+              388
+            ],
+            [
+              634,
+              432
+            ]
+          ],
+          "type": "object"
+        },
+        {
+          "name": "前面",
+          "points": [
+            [
+              652,
+              490
+            ],
+            [
+              700,
+              495
+            ],
+            [
+              694,
+              522
+            ]
+          ],
+          "type": "space"
+        },
+        {
+          "name": "中间位置离人近的木质刷柄",
+          "points": [
+            [
+              480,
+              639
+            ],
+            [
+              538,
+              673
+            ]
+          ],
+          "type": "object"
+        }
+      ],
+      "scene": "三楼钳工区",
+      "task_template": "指令四",
+      "video_name": "VID_20251230_184112.mp4",
+      "_video_dir": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令5",
+      "_video_width": 1920,
+      "_video_height": 1080,
+      "_video_path": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令5/VID_20251230_184112.mp4",
+      "_last_frame_path": null,
+      "_processed_gt": {
+        "template": "指令四",
+        "items": []
+      },
+      "_correct_options": [
+        "H",
+        "d",
+        "I"
+      ]
+    },
+    {
+      "id": "1768464271794",
+      "folder": "data\\三楼钳工区_场景a_李凯越_李尚儒_拍摄\\指令5",
+      "video_name": "VID_20251230_184242.mp4",
+      "task_template": "指令四",
+      "scene": "三楼钳工区",
+      "object_space": [
+        {
+          "name": "钳工台上的灰色金属锉刀",
+          "points": [
+            [
+              423,
+              415
+            ],
+            [
+              437,
+              493
+            ]
+          ],
+          "type": "object"
+        },
+        {
+          "name": "放在钳工台上面的金属刮刀",
+          "points": [
+            [
+              484,
+              407
+            ]
+          ],
+          "type": "object"
+        },
+        {
+          "name": "左面",
+          "points": [
+            [
+              464,
+              382
+            ],
+            [
+              464,
+              362
+            ],
+            [
+              511,
+              375
+            ]
+          ],
+          "type": "space"
+        },
+        {
+          "name": "右手边离人近的蓝色金属台虎钳",
+          "points": [
+            [
+              368,
+              722
+            ],
+            [
+              430,
+              665
+            ],
+            [
+              444,
+              724
+            ]
+          ],
+          "type": "object",
+          "mask": {
+            "bbox": [
+              1161,
+              260,
+              1489,
+              549
+            ],
+            "mask_base64": "iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAAAAADNuJ6fAAAWEElEQVR4Ae3BAYIUx4EEwMz/P7pOZxskQBK92Mqdno6IBgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsA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1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMPd//7mESOGmab8AAAAASUVORK5CYII=",
+            "point_on_mask": true,
+            "score": 0.6355844736099243
+          }
+        }
+      ],
+      "is_invalid": false,
+      "asr_result": {
+        "text": "把这个放到他的左面然后把这个打开",
+        "words": [
+          {
+            "begin_time": 4610,
+            "end_time": 5610,
+            "text": "把这个",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 6290,
+            "end_time": 6570,
+            "text": "放到",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 6570,
+            "end_time": 6850,
+            "text": "他的",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 6850,
+            "end_time": 7010,
+            "text": "左",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 7010,
+            "end_time": 7490,
+            "text": "面",
+            "punctuation": "。",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 9000,
+            "end_time": 9320,
+            "text": "然后",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 9320,
+            "end_time": 10240,
+            "text": "把这个",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 10240,
+            "end_time": 10400,
+            "text": "打开",
+            "punctuation": "。",
+            "fixed": false,
+            "speaker_id": null
+          }
+        ]
+      },
+      "_video_dir": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令5",
+      "_video_width": 1920,
+      "_video_height": 1080,
+      "_video_path": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令5/VID_20251230_184242.mp4",
+      "_last_frame_path": null,
+      "_processed_gt": {
+        "template": "指令四",
+        "items": []
+      },
+      "_correct_options": [
+        "L",
+        "h",
+        "F"
+      ]
+    },
+    {
+      "asr_result": {
+        "text": "放到他的后面然后把这个打开",
+        "words": [
+          {
+            "begin_time": 6680,
+            "end_time": 6960,
+            "text": "放到",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 6960,
+            "end_time": 7240,
+            "text": "他的",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 7240,
+            "end_time": 7520,
+            "text": "后面",
+            "punctuation": "。",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 9140,
+            "end_time": 9420,
+            "text": "然后",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 9420,
+            "end_time": 9820,
+            "text": "把这个",
+            "punctuation": "",
+            "fixed": false,
+            "speaker_id": null
+          },
+          {
+            "begin_time": 9820,
+            "end_time": 10060,
+            "text": "打开",
+            "punctuation": "。",
+            "fixed": false,
+            "speaker_id": null
+          }
+        ]
+      },
+      "folder": "data\\三楼钳工区_场景a_李凯越_李尚儒_拍摄\\指令5",
+      "id": "1768389890194",
+      "is_invalid": false,
+      "object_space": [
+        {
+          "name": "在墙上的从左往右数第三个灰色的锉刀",
+          "points": [
+            [
+              106,
+              263
+            ],
+            [
+              221,
+              266
+            ],
+            [
+              344,
+              291
+            ]
+          ],
+          "type": "object"
+        },
+        {
+          "name": "左手边离人近的长方形金属工件",
+          "points": [
+            [
+              616,
+              573
+            ],
+            [
+              581,
+              586
+            ]
+          ],
+          "type": "object"
+        },
+        {
+          "name": "后面",
+          "points": [
+            [
+              569,
+              543
+            ],
+            [
+              601,
+              544
+            ],
+            [
+              581,
+              561
+            ]
+          ],
+          "type": "space"
+        },
+        {
+          "name": "右手边离人近的蓝色金属台虎钳",
+          "points": [
+            [
+              415,
+              765
+            ],
+            [
+              425,
+              700
+            ],
+            [
+              450,
+              757
+            ]
+          ],
+          "type": "object"
+        }
+      ],
+      "scene": "三楼钳工区",
+      "task_template": "指令四",
+      "video_name": "VID_20251230_184042.mp4",
+      "_video_dir": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令5",
+      "_video_width": 1920,
+      "_video_height": 1080,
+      "_video_path": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令5/VID_20251230_184042.mp4",
+      "_last_frame_path": null,
+      "_processed_gt": {
+        "template": "指令四",
+        "items": []
+      },
+      "_correct_options": [
+        "E",
+        "c",
+        "F"
+      ]
+    }
+  ]
+}

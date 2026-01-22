@@ -1,4 +1,15 @@
 # main.py
+"""
+VSIG任务主程序
+逻辑流程：
+1. 初始化模型
+2. 扫描数据根目录，找到所有指令文件夹
+3. 对每个指令文件夹：
+   a. 读取视频、annotation、description（使用DataLoader）
+   b. 格式化GT数据（使用GTFormatter）
+   c. 对每个样本进行推理
+   d. 评估结果
+"""
 import os
 import json
 import sys
@@ -9,15 +20,17 @@ from src.models.base_vlm import OpenAIVLM, GeminiVLM
 from src.utils.video_processor import VideoProcessor
 from src.eval.metrics import Evaluator
 from src.utils.logger import setup_logger
+from src.data_loader import DataLoader
+from src.gt_formatter import GTFormatter
 
 
-def process_single_sample(item, video_dir, output_dir, model, logger, idx, total):
+def process_single_sample(formatted_gt, options_text, output_dir, model, logger, idx, total):
     """
     处理单个视频样本
 
     Args:
-        item: 数据集项（包含 video_name, task_template 等信息）
-        video_dir: 视频存放目录
+        formatted_gt: 已格式化的GT数据（包含所有必要信息）
+        options_text: 选项定义文本（用于构建prompt）
         output_dir: 结果保存目录
         model: 模型实例
         logger: 日志记录器
@@ -27,59 +40,59 @@ def process_single_sample(item, video_dir, output_dir, model, logger, idx, total
     Returns:
         tuple: (prediction, ground_truth) 或 (None, None) 如果处理失败
     """
-    video_id = item["video_name"]
+    video_id = formatted_gt["video_name"]
+    video_dir = formatted_gt["_video_dir"]
     logger.info(f"[{idx+1}/{total}] 处理样本: {video_id}")
 
     video_path = os.path.join(video_dir, video_id)
 
     # 获取 ASR 文本，如果没有则使用任务模板描述
-    asr_result = item.get("asr_result")
+    asr_result = formatted_gt.get("asr_result")
     transcript = asr_result["text"] if (
-        asr_result and isinstance(asr_result, dict) and "text" in asr_result) else item.get("task_template")
+        asr_result and isinstance(asr_result, dict) and "text" in asr_result) else formatted_gt.get("task_template")
 
-    if item.get("task_template") == "指令1":
+    if formatted_gt.get("task_template") == "指令1":
         transcript = "用户没有说话，只是做出了指向性动作。"
 
-    # 4.1 提取帧 / 准备输入
+    # 1. 提取帧 / 准备输入
     last_frame_path = None
     frame_paths = []
 
     try:
         if Config.USE_VIDEO_INPUT and hasattr(model, 'generate_from_video') and getattr(model, 'accepts_video_files', False):
-            # 如果配置了视频输入且模型支持
             logger.info(f"使用直接视频输入模式: {video_path}")
-            # 提取最后一帧用于可视化 (尝试提取，失败则忽略)
+            # 视频输入模式：仅提取最后一帧用于可视化
             try:
                 _, last_frame_path = VideoProcessor.extract_frame(
                     video_path, timestamp_sec=None)
             except Exception as vid_e:
                 logger.warning(f"无法提取可视化帧 (非致命错误): {vid_e}")
-                last_frame_path = None
         else:
-            # 默认或不支持视频输入时，使用抽帧模式
             if Config.USE_VIDEO_INPUT:
                 logger.warning(f"配置了视频输入但模型 {Config.MODEL_NAME} 不支持，回退到抽帧模式")
 
-            # 提取多帧，默认8帧
+            # 抽帧模式：需要提取多帧用于推理
             frame_paths, last_frame_path = VideoProcessor.extract_frames(
-                video_path, num_frames=Config.NUM_FRAMES, end_timestamp_sec=item.get("timestamp"))
+                video_path, num_frames=Config.NUM_FRAMES, end_timestamp_sec=formatted_gt.get("timestamp"))
     except Exception as e:
         logger.error(f"处理视频 {video_id} 失败: {e}")
         return None, None
 
-    # 4.2 构建 Prompt
+    # 2. 构建 Prompt
     system_prompt = VSIGPrompts.get_system_prompt(
-        task_template=item.get("task_template"))
+        task_template=formatted_gt.get("task_template"),
+        coord_order=Config.COORD_ORDER,
+        options_text=options_text
+    )
     user_prompt = VSIGPrompts.get_user_prompt(
         transcript, asr_result=asr_result)
 
-    # 4.3 模型推理
+    # 3. 模型推理
     try:
         if Config.USE_VIDEO_INPUT and hasattr(model, 'generate_from_video') and getattr(model, 'accepts_video_files', False):
             result = model.generate_from_video(
                 video_path, user_prompt, system_prompt=system_prompt)
         else:
-            # 传入所有帧的路径列表
             result = model.generate(
                 frame_paths, user_prompt, system_prompt=system_prompt)
     except Exception as e:
@@ -90,11 +103,9 @@ def process_single_sample(item, video_dir, output_dir, model, logger, idx, total
         logger.warning(f"样本 {video_id} 推理无结果，跳过")
         return None, None
 
-    # 4.4 处理 result 格式（可能是字典或列表）
-    # 处理 result 可能是字典或列表的情况
+    # 4. 处理 result 格式
     if isinstance(result, list):
         if len(result) > 0 and isinstance(result[0], dict):
-            # 如果返回的是列表且第一个元素是字典，使用第一个元素
             result = result[0]
             logger.warning(f"样本 {video_id} 返回结果为列表格式，已提取第一个元素")
         else:
@@ -105,43 +116,36 @@ def process_single_sample(item, video_dir, output_dir, model, logger, idx, total
         logger.warning(f"样本 {video_id} 返回结果格式不正确: {type(result)}，跳过")
         return None, None
 
-    # 将视频名称添加到预测结果中
     result["video_name"] = video_id
 
-    # Post-process: Swap coordinates from [x, y] (Prompt/Model) to [y, x] (Eval/Vis/GT)
-    # The prompt asks for [x, y] (Width, Height), but the evaluator and visualizer expect [y, x] (Height, Width).
-    if "point_list" in result:
-        for pred_item in result["point_list"]:
-            if "point" in pred_item and isinstance(pred_item["point"], list):
-                pt = pred_item["point"]
-                # Case 1: Single point [x, y]
-                if len(pt) == 2 and isinstance(pt[0], (int, float)):
-                    pred_item["point"] = [pt[1], pt[0]]
-                # Case 2: Multiple points [[x1, y1], [x2, y2]]
-                elif len(pt) > 0 and isinstance(pt[0], list) and len(pt[0]) == 2:
-                    pred_item["point"] = [[p[1], p[0]] for p in pt]
+    # 注意：坐标转换已在模型类的 generate/generate_from_video 方法中完成
+    # result["point_list"] 中的所有 points 都已经是 [x, y] 格式
 
+    # 5. 可视化
     vis_path = os.path.join(output_dir, f"vis_{video_id}.jpg")
-    # 可视化依然使用最后一帧（最接近指令结束时刻）
-    # 传入 processed_gt (gt_items) 进行对比可视化
     try:
-        # Process GT items to match evaluation logic (skip objects, merge names etc.)
-        processed_gt = Evaluator.process_gt_by_template(item)
+        # 使用已格式化的GT数据中的processed_gt
+        processed_gt = formatted_gt.get("_processed_gt", {})
         gt_items = processed_gt.get("items", [])
         VideoProcessor.visualize_points(
-            last_frame_path, result, vis_path, gt_json=item, gt_items=gt_items)
+            last_frame_path, result, vis_path, gt_json=formatted_gt, gt_items=gt_items)
     except Exception as e:
         logger.error(f"样本 {video_id} 可视化失败: {e}")
 
     explicit_cmd = result.get('explicit_command', 'None')
     logger.info(f"样本 {video_id} 完成。指令: {explicit_cmd}")
 
-    return result, item
+    return result, formatted_gt
 
 
 def process_single_directory(video_dir, meta_file, output_dir, model, logger):
     """
     处理单个指令文件夹
+
+    统一的数据加载和GT格式化流程：
+    1. 使用 DataLoader.prepare_dataset 读取数据
+    2. 立即使用 GTFormatter.format_batch_gt_for_evaluation 格式化所有GT
+    3. 对每个样本进行推理
 
     Args:
         video_dir: 视频存放目录
@@ -152,69 +156,74 @@ def process_single_directory(video_dir, meta_file, output_dir, model, logger):
 
     Returns:
         predictions: 预测结果列表
-        ground_truths: 真实标签列表
+        ground_truths: 真实标签列表（已格式化）
     """
-    # 3. 加载数据
-    if not os.path.exists(meta_file):
-        logger.warning(f"标注文件不存在: {meta_file}，跳过该目录")
-        return [], []
-
-    with open(meta_file, 'r', encoding='utf-8') as f:
-        all_dataset = json.load(f)
-
-    # 提取视频文件名（支持 mp4 和 MOV 格式）
-    video_extensions = ['.mp4', '.MOV', '.mov']
-    video_file_names = [x for x in os.listdir(video_dir) if any(
-        x.endswith(ext) for ext in video_extensions)]
-    dataset = []
-    # 提取视频文件名对应的标注
-    for dataset_item in all_dataset:
-        video_name = dataset_item["video_name"]
-        if video_name in video_file_names:
-            # 添加临时字段用于评估时定位视频分辨率
-            dataset_item["_video_dir"] = video_dir
-            dataset.append(dataset_item)
+    # 1. 读取数据：视频、annotation、description（使用DataLoader）
+    description_path = os.path.join(video_dir, "description.txt")
+    dataset, options_text, answers_map = DataLoader.prepare_dataset(
+        video_dir=video_dir,
+        annotation_path=meta_file,
+        description_path=description_path
+    )
 
     logger.info(f"成功加载数据集，共 {len(dataset)} 条样本")
 
+    # 2. 格式化GT数据（使用GTFormatter）
+    formatted_gt_list = GTFormatter.format_batch_gt_for_evaluation(
+        dataset, video_dir, answers_map
+    )
+
+    # 如果 answers_map 不为空，说明会过滤掉不在 description.txt 中的视频
+    if answers_map and len(answers_map) > 0:
+        skipped_count = len(dataset) - len(formatted_gt_list)
+        if skipped_count > 0:
+            logger.info(
+                f"已过滤掉 {skipped_count} 个不符合标准的视频（不在 description.txt 中）")
+
+    logger.info(f"格式化后剩余 {len(formatted_gt_list)} 条样本用于评估")
+
     predictions = []
     ground_truths = []
-
     os.makedirs(output_dir, exist_ok=True)
 
-    # 4. 推理循环（支持多线程并行）
+    # 3. 推理循环（支持多线程并行）
     logger.info(f"开始推理循环... (使用 {Config.NUM_WORKERS} 个线程并行处理)")
 
     if Config.NUM_WORKERS > 1:
-        # 多线程并行处理
         with ThreadPoolExecutor(max_workers=Config.NUM_WORKERS) as executor:
-            # 提交所有任务
-            future_to_item = {
-                executor.submit(process_single_sample, item, video_dir, output_dir, model, logger, idx, len(dataset)): item
-                for idx, item in enumerate(dataset)
+            future_to_gt = {
+                executor.submit(
+                    process_single_sample,
+                    formatted_gt,
+                    options_text,
+                    output_dir,
+                    model,
+                    logger,
+                    idx,
+                    len(formatted_gt_list)
+                ): formatted_gt
+                for idx, formatted_gt in enumerate(formatted_gt_list)
             }
 
-            # 收集结果
-            for future in as_completed(future_to_item):
+            for future in as_completed(future_to_gt):
                 try:
                     prediction, ground_truth = future.result()
                     if prediction is not None and ground_truth is not None:
                         predictions.append(prediction)
                         ground_truths.append(ground_truth)
                 except Exception as e:
-                    item = future_to_item[future]
+                    gt = future_to_gt[future]
                     logger.error(
-                        f"处理样本 {item.get('video_name', 'unknown')} 时发生异常: {e}")
+                        f"处理样本 {gt.get('video_name', 'unknown')} 时发生异常: {e}")
     else:
-        # 单线程串行处理（保持原有逻辑）
-        for idx, item in enumerate(dataset):
+        for idx, formatted_gt in enumerate(formatted_gt_list):
             prediction, ground_truth = process_single_sample(
-                item, video_dir, output_dir, model, logger, idx, len(dataset))
+                formatted_gt, options_text, output_dir, model, logger, idx, len(formatted_gt_list))
             if prediction is not None and ground_truth is not None:
                 predictions.append(prediction)
                 ground_truths.append(ground_truth)
 
-    logger.info(f"推理完成，成功处理 {len(predictions)}/{len(dataset)} 个样本")
+    logger.info(f"推理完成，成功处理 {len(predictions)}/{len(formatted_gt_list)} 个样本")
 
     return predictions, ground_truths
 
@@ -243,7 +252,8 @@ def main():
         # 如果配置了视频输入模式，则设置 accepts_video_files=True
         accepts_video = getattr(Config, 'USE_VIDEO_INPUT', False)
         model = OpenAIVLM(api_key=api_key, base_url=base_url,
-                          model_name=model_name, accepts_video_files=accepts_video)
+                          model_name=model_name, accepts_video_files=accepts_video,
+                          coord_order=Config.COORD_ORDER)
 
     elif model_provider == "gemini":
         api_key = Config.GEMINI_API_KEY
@@ -254,7 +264,8 @@ def main():
             sys.exit(1)
 
         logger.info(f"正在初始化 GeminiVLM (Model: {model_name})")
-        model = GeminiVLM(api_key=api_key, model_name=model_name)
+        model = GeminiVLM(api_key=api_key, model_name=model_name,
+                          coord_order=Config.COORD_ORDER)
 
     else:
         logger.error(f"不支持的模型提供商: {model_provider}")
@@ -311,46 +322,8 @@ def main():
         logger.critical(f"数据根目录不存在: {data_root_dir}")
         sys.exit(1)
 
-    # 扫描所有数据集和指令文件夹
-    # 数据结构: {指令名: [(数据集路径, 指令文件夹路径), ...]}
-    instruction_dirs = {}
-    dataset_dirs = []
-
-    # 如果 data_root_dir 是 "data" 或 "data_new"，扫描其下所有子目录作为数据集
-    if os.path.basename(data_root_dir) in ["data", "data_new"] or data_root_dir.endswith("/data") or data_root_dir.endswith("/data_new"):
-        # 扫描 data/ 下的所有数据集目录
-        for dataset_name in os.listdir(data_root_dir):
-            dataset_path = os.path.join(data_root_dir, dataset_name)
-            if os.path.isdir(dataset_path):
-                dataset_dirs.append((dataset_name, dataset_path))
-    else:
-        # 单个数据集目录
-        dataset_dirs.append((os.path.basename(data_root_dir), data_root_dir))
-
-    logger.info(
-        f"找到 {len(dataset_dirs)} 个数据集目录: {[d[0] for d in dataset_dirs]}")
-
-    # 扫描所有数据集中的指令文件夹
-    for dataset_name, dataset_path in dataset_dirs:
-        logger.info(f"扫描数据集: {dataset_name} (路径: {dataset_path})")
-        if not os.path.exists(dataset_path):
-            logger.warning(f"数据集路径不存在: {dataset_path}，跳过")
-            continue
-
-        items_found = []
-        for item in os.listdir(dataset_path):
-            item_path = os.path.join(dataset_path, item)
-            if os.path.isdir(item_path) and os.path.exists(os.path.join(item_path, "annotations.json")):
-                # 检查是否是指令文件夹（指令1-6）
-                if item.startswith("指令") and item in ["指令1", "指令2", "指令3", "指令4", "指令5", "指令6"]:
-                    if item not in instruction_dirs:
-                        instruction_dirs[item] = []
-                    instruction_dirs[item].append(
-                        (dataset_name, dataset_path, item_path))
-                    items_found.append(item)
-
-        logger.info(
-            f"数据集 {dataset_name} 中找到 {len(items_found)} 个指令文件夹: {items_found}")
+    # 2. 扫描数据根目录，找到所有指令文件夹（使用DataLoader）
+    instruction_dirs = DataLoader.scan_data_root(data_root_dir)
 
     if not instruction_dirs:
         logger.warning(f"未找到任何指令文件夹（指令1-指令6）")
@@ -371,11 +344,6 @@ def main():
             all_scanned_datasets.add(dataset_name)
 
     logger.info(f"\n扫描到的数据集列表: {sorted(all_scanned_datasets)}")
-    logger.info(f"期望的数据集数量: {len(dataset_dirs)}")
-    if len(all_scanned_datasets) < len(dataset_dirs):
-        missing_datasets = set(d[0]
-                               for d in dataset_dirs) - all_scanned_datasets
-        logger.warning(f"⚠️  警告：以下数据集没有被扫描到: {missing_datasets}")
     logger.info(f"{'='*60}\n")
 
     # 存储所有目录的预测结果和真实标签（按指令分组）
@@ -514,23 +482,6 @@ def main():
             all_ground_truths_by_instruction[instruction_name] = instruction_ground_truths
             all_predictions.extend(instruction_predictions)
             all_ground_truths.extend(instruction_ground_truths)
-
-            # 评估该指令类型（合并所有数据集）
-            logger.info(
-                f"\n开始计算指令 {instruction_name} 的合并评估指标... (共 {len(instruction_predictions)} 个样本，使用 {Config.EVAL_NUM_WORKERS} 个线程并行评估)")
-            instruction_metrics = Evaluator.evaluate_batch(
-                instruction_predictions, instruction_ground_truths, num_workers=Config.EVAL_NUM_WORKERS)
-
-            logger.info(f"指令 {instruction_name} 的评估结果:")
-            logger.info(json.dumps(instruction_metrics, indent=2))
-
-            # 保存指令级别的评估结果
-            instruction_metrics_path = os.path.join(
-                base_output_dir, instruction_name, "metrics.json")
-            with open(instruction_metrics_path, "w", encoding="utf-8") as f:
-                json.dump(instruction_metrics, f, indent=2, ensure_ascii=False)
-            logger.info(
-                f"指令 {instruction_name} 的评估结果已保存至: {instruction_metrics_path}")
         else:
             logger.warning(f"指令 {instruction_name} 没有有效的预测结果，无法进行评估。")
 
@@ -542,11 +493,17 @@ def main():
 
         summary_results_file = os.path.join(
             base_output_dir, f"results_{model_name_safe}_summary.json")
+        # 从instruction_dirs中提取所有数据集名称
+        all_datasets = set()
+        for dirs_list in instruction_dirs.values():
+            for dataset_name, _, _ in dirs_list:
+                all_datasets.add(dataset_name)
+
         summary_results_data = {
             "model_name": model_name,
             "model_provider": model_provider,
             "data_root_dir": data_root_dir,
-            "processed_datasets": [d[0] for d in dataset_dirs],
+            "processed_datasets": sorted(all_datasets),
             "processed_instructions": sorted(instruction_dirs.keys()),
             "total_samples": len(all_predictions),
             "predictions": all_predictions,
@@ -556,25 +513,54 @@ def main():
             json.dump(summary_results_data, f, indent=2, ensure_ascii=False)
         logger.info(f"汇总推理结果已保存至: {summary_results_file}")
 
-        # 评估所有目录的汇总结果
+        # 统一评估：只评估一次总体结果，然后从 instruction_breakdown 中提取各指令的评估结果
+        logger.info(f"\n{'='*60}")
+        logger.info("开始统一评估所有结果...")
+        logger.info(f"{'='*60}")
+
+        # 评估总体结果（一次评估即可，避免重复评估）
         logger.info(
             f"\n开始计算所有数据的汇总评估指标... (共 {len(all_predictions)} 个样本，使用 {Config.EVAL_NUM_WORKERS} 个线程并行评估)")
         summary_metrics = Evaluator.evaluate_batch(
             all_predictions, all_ground_truths, num_workers=Config.EVAL_NUM_WORKERS)
 
-        # 收集各指令的评估结果
+        # 从总体评估结果的 instruction_breakdown 中提取各指令的评估结果（避免重复评估）
+        instruction_breakdown = summary_metrics.get("instruction_breakdown", {})
         instruction_metrics_dict = {}
+        
+        # 为每个指令构建完整的评估结果格式（与单独评估时的格式保持一致）
         for inst_name in sorted(all_predictions_by_instruction.keys()):
-            inst_metrics_path = os.path.join(
-                base_output_dir, inst_name, "metrics.json")
-            if os.path.exists(inst_metrics_path):
-                try:
-                    with open(inst_metrics_path, 'r', encoding='utf-8') as f:
-                        instruction_metrics_dict[inst_name] = json.load(f)
-                except Exception as e:
-                    logger.warning(f"加载指令 {inst_name} 的评估结果失败: {e}")
+            if inst_name in instruction_breakdown:
+                # 从 instruction_breakdown 中提取该指令的评估结果
+                inst_breakdown = instruction_breakdown[inst_name]
+                
+                # 构建与单独评估时相同格式的评估结果
+                inst_metrics = {
+                    "overall_accuracy": inst_breakdown.get("intent_accuracy", 0.0),
+                    "intent_grounding_accuracy": inst_breakdown.get("intent_accuracy", 0.0),
+                    "spatial_grounding_accuracy": inst_breakdown.get("spatial_grounding", 0.0),
+                    "temporal_grounding_accuracy": inst_breakdown.get("temporal_grounding", 0.0),
+                    "overall_score": inst_breakdown.get("overall", 0.0),
+                    "instruction_breakdown": {inst_name: inst_breakdown},
+                    "count": inst_breakdown.get("count", 0)
+                }
+                
+                instruction_metrics_dict[inst_name] = inst_metrics
+                
+                logger.info(f"指令 {inst_name} 的评估结果:")
+                logger.info(json.dumps(inst_metrics, indent=2))
 
-        # 构建完整的汇总评估结果
+                # 保存指令级别的评估结果
+                instruction_metrics_path = os.path.join(
+                    base_output_dir, inst_name, "metrics.json")
+                with open(instruction_metrics_path, "w", encoding="utf-8") as f:
+                    json.dump(inst_metrics, f, indent=2, ensure_ascii=False)
+                logger.info(
+                    f"指令 {inst_name} 的评估结果已保存至: {instruction_metrics_path}")
+            else:
+                logger.warning(f"警告：指令 {inst_name} 在评估结果中未找到，可能没有对应的样本")
+
+        # 3. 构建完整的汇总评估结果
         summary_metrics_complete = {
             "overall": summary_metrics,
             "by_instruction": instruction_metrics_dict,

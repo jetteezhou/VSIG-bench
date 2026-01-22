@@ -112,6 +112,9 @@ async def submit_evaluation(request: EvaluationRequest, background_tasks: Backgr
     config["output_dir"] = output_dir
     # Ensure test_mode is explicitly in config
     config["test_mode"] = request.test_mode
+    # Set default coord_order if not provided: "yx" for gemini, "xy" for others
+    if "coord_order" not in config or config["coord_order"] is None:
+        config["coord_order"] = "yx" if request.model_provider == "gemini" else "xy"
 
     tasks[task_id] = {
         "task_id": task_id,

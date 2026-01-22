@@ -7,6 +7,8 @@ from src.prompts.vsig_prompts import VSIGPrompts
 from src.models.base_vlm import OpenAIVLM, GeminiVLM
 from src.utils.video_processor import VideoProcessor
 from src.eval.metrics import Evaluator
+from src.data_loader import DataLoader
+from src.gt_formatter import GTFormatter
 
 # Configure logger
 logger = logging.getLogger("VSIG_Engine")
@@ -48,17 +50,21 @@ class EvaluationEngine:
         self.log(
             f"Initializing Model: {provider}/{model_name} (Video Input: {use_video_input})")
 
+        coord_order = self.config.get("coord_order", "xy")
+
         if provider == "openai":
             self.model = OpenAIVLM(
                 api_key=api_key,
                 base_url=base_url,
                 model_name=model_name,
-                accepts_video_files=use_video_input
+                accepts_video_files=use_video_input,
+                coord_order=coord_order
             )
         elif provider == "gemini":
             self.model = GeminiVLM(
                 api_key=api_key,
-                model_name=model_name
+                model_name=model_name,
+                coord_order=coord_order
             )
         else:
             raise ValueError(f"Unsupported provider: {provider}")
@@ -84,7 +90,8 @@ class EvaluationEngine:
                         api_key=eval_api_key,
                         base_url=eval_base_url,
                         model_name=eval_model_name,
-                        accepts_video_files=False  # Eval model typically doesn't need video input
+                        accepts_video_files=False,  # Eval model typically doesn't need video input
+                        coord_order=coord_order
                     )
                     self.log(f"评估模型已设置为: {eval_model_name} (OpenAI)")
 
@@ -95,7 +102,8 @@ class EvaluationEngine:
                 else:
                     self.eval_model = GeminiVLM(
                         api_key=eval_api_key,
-                        model_name=eval_model_name
+                        model_name=eval_model_name,
+                        coord_order=coord_order
                     )
                     self.log(f"评估模型已设置为: {eval_model_name} (Gemini)")
 
@@ -111,18 +119,29 @@ class EvaluationEngine:
         # Note: We do NOT set Evaluator.set_eval_model here anymore to avoid race conditions.
         # It will be set inside the locked evaluation block.
 
-    def process_single_sample(self, item, video_dir, output_dir, idx, total):
-        video_id = item["video_name"]
+    def process_single_sample(self, formatted_gt, options_text, output_dir, idx, total):
+        """
+        处理单个视频样本
+
+        Args:
+            formatted_gt: 已格式化的GT数据
+            options_text: 选项定义文本
+            output_dir: 结果保存目录
+            idx: 当前样本索引
+            total: 总样本数
+        """
+        video_id = formatted_gt["video_name"]
+        video_dir = formatted_gt["_video_dir"]
         self.log(f"Processing [{idx+1}/{total}]: {video_id}")
 
         video_path = os.path.join(video_dir, video_id)
 
         # ASR handling
-        asr_result = item.get("asr_result")
+        asr_result = formatted_gt.get("asr_result")
         transcript = asr_result["text"] if (
-            asr_result and isinstance(asr_result, dict) and "text" in asr_result) else item.get("task_template")
+            asr_result and isinstance(asr_result, dict) and "text" in asr_result) else formatted_gt.get("task_template")
 
-        if item.get("task_template") == "指令1":
+        if formatted_gt.get("task_template") == "指令1":
             transcript = "用户没有说话，只是做出了指向性动作。"
 
         # Extract Input
@@ -138,7 +157,7 @@ class EvaluationEngine:
                     video_path, timestamp_sec=None)
             else:
                 frame_paths, last_frame_path = VideoProcessor.extract_frames(
-                    video_path, num_frames=num_frames, end_timestamp_sec=item.get("timestamp"))
+                    video_path, num_frames=num_frames, end_timestamp_sec=formatted_gt.get("timestamp"))
         except Exception as e:
             self.log(f"Error processing video {video_id}: {e}", "error")
             return None, None
@@ -146,8 +165,12 @@ class EvaluationEngine:
         # Build Prompts
         system_prompt = self.config.get("system_prompt")
         if not system_prompt:
+            coord_order = self.config.get("coord_order", "xy")
             system_prompt = VSIGPrompts.get_system_prompt(
-                task_template=item.get("task_template"))
+                task_template=formatted_gt.get("task_template"),
+                coord_order=coord_order,
+                options_text=options_text
+            )
 
         user_prompt = VSIGPrompts.get_user_prompt(
             transcript, asr_result=asr_result)
@@ -173,9 +196,8 @@ class EvaluationEngine:
 
         result["video_name"] = video_id
 
-        # 核心逻辑：系统内部已全部统一为 [x, y] 格式。
-        # 模型的输出 (point_list) 本身就是 [x, y]，评估器和可视化器也已适配 [x, y]。
-        # 故此处移除所有坐标交换逻辑，保持模型原始的 [x, y] 输出。
+        # 注意：坐标转换已在模型类的 generate/generate_from_video 方法中完成
+        # result["point_list"] 中的所有 points 都已经是 [x, y] 格式
 
         # Visualize (Enabled in test mode OR if running a web task)
         is_web_run = "web_runs" in output_dir
@@ -183,12 +205,12 @@ class EvaluationEngine:
             vis_filename = f"vis_{video_id}.jpg"
             vis_path = os.path.join(output_dir, vis_filename)
             try:
-                # Process GT items to match evaluation logic (skip objects, merge names etc.)
-                processed_gt = Evaluator.process_gt_by_template(item)
+                # 使用已格式化的GT数据
+                processed_gt = formatted_gt.get("_processed_gt", {})
                 gt_items = processed_gt.get("items", [])
 
                 VideoProcessor.visualize_points(
-                    last_frame_path, result, vis_path, gt_json=item, gt_items=gt_items)
+                    last_frame_path, result, vis_path, gt_json=formatted_gt, gt_items=gt_items)
 
                 # Add relative path for frontend access (relative to 'results' directory)
                 if "results" in vis_path:
@@ -203,7 +225,7 @@ class EvaluationEngine:
                 self.log(
                     f"Visualization failed for {video_id}: {e}", "warning")
 
-        return result, item
+        return result, formatted_gt
 
     def run(self):
         try:
@@ -251,7 +273,14 @@ class EvaluationEngine:
 
             with ThreadPoolExecutor(max_workers=num_workers) as executor:
                 future_to_task = {
-                    executor.submit(self.process_single_sample, task["item"], task["video_dir"], task["results_dir"], idx, len(all_tasks)): task
+                    executor.submit(
+                        self.process_single_sample,
+                        task["formatted_gt"],
+                        task["options_text"],
+                        task["results_dir"],
+                        idx,
+                        len(all_tasks)
+                    ): task
                     for idx, task in enumerate(all_tasks)
                 }
 
@@ -262,6 +291,7 @@ class EvaluationEngine:
                             all_predictions.append(pred)
                             all_ground_truths.append(gt)
                     except Exception as e:
+                        task = future_to_task[future]
                         self.log(f"Sample processing failed: {e}", "error")
 
             # Evaluate
@@ -284,9 +314,11 @@ class EvaluationEngine:
                             del metrics["detailed_results"]
                     else:
                         if is_web_run:
-                            self.log("Web Run: Using pre-calculated detailed evaluation results.")
+                            self.log(
+                                "Web Run: Using pre-calculated detailed evaluation results.")
                         else:
-                            self.log("Test Mode: Using pre-calculated detailed evaluation results.")
+                            self.log(
+                                "Test Mode: Using pre-calculated detailed evaluation results.")
 
                 # Inject model metadata into metrics
                 metrics["model_name"] = self.config.get(
@@ -323,26 +355,51 @@ class EvaluationEngine:
             raise e
 
     def collect_tasks(self, dataset_name, dataset_path, instruction_path, output_dir):
+        """
+        收集任务：统一使用 DataLoader 和 GTFormatter
+
+        Returns:
+            List of tasks, each containing:
+            - formatted_gt: 已格式化的GT数据
+            - options_text: 选项定义文本
+            - results_dir: 结果保存目录
+        """
         instruction_name = os.path.basename(instruction_path)
-
         meta_file = os.path.join(instruction_path, "annotations.json")
-        with open(meta_file, 'r', encoding='utf-8') as f:
-            all_dataset = json.load(f)
-
         video_dir = instruction_path
-        video_files = set(os.listdir(video_dir))
 
-        dataset = []
-        for d in all_dataset:
-            if d["video_name"] in video_files:
-                d["_video_dir"] = video_dir
-                dataset.append(d)
+        # 1. 使用 DataLoader 读取数据
+        description_path = os.path.join(video_dir, "description.txt")
+        dataset, options_text, answers_map = DataLoader.prepare_dataset(
+            video_dir=video_dir,
+            annotation_path=meta_file,
+            description_path=description_path
+        )
 
         # Test mode: only take the first sample for each instruction
         if self.config.get("test_mode", False) and len(dataset) > 0:
             dataset = dataset[:1]
 
+        # 2. 使用 GTFormatter 格式化GT数据
+        formatted_gt_list = GTFormatter.format_batch_gt_for_evaluation(
+            dataset, video_dir, answers_map
+        )
+
+        # 如果 answers_map 不为空，说明会过滤掉不在 description.txt 中的视频
+        if answers_map and len(answers_map) > 0:
+            skipped_count = len(dataset) - len(formatted_gt_list)
+            if skipped_count > 0:
+                self.log(
+                    f"已过滤掉 {skipped_count} 个不符合标准的视频（不在 description.txt 中）")
+
         results_dir = os.path.join(output_dir, instruction_name)
         os.makedirs(results_dir, exist_ok=True)
 
-        return [{"item": item, "video_dir": video_dir, "results_dir": results_dir} for item in dataset]
+        return [
+            {
+                "formatted_gt": formatted_gt,
+                "options_text": options_text,
+                "results_dir": results_dir
+            }
+            for formatted_gt in formatted_gt_list
+        ]

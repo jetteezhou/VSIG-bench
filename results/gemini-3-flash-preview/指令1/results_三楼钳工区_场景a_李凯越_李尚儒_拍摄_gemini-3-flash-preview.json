@@ -1,0 +1,1049 @@
+{
+  "model_name": "gemini-3-flash-preview",
+  "model_provider": "gemini",
+  "dataset": "三楼钳工区_场景a_李凯越_李尚儒_拍摄",
+  "instruction": "指令1",
+  "predictions": [
+    {
+      "explicit_command": "拿起在墙上的从左往右数第三个灰色的锉刀",
+      "selected_options": [
+        "C"
+      ],
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "在墙上的从左往右数第三个灰色的锉刀",
+          "point": [
+            269,
+            327
+          ],
+          "timestamp": [
+            1000,
+            3000
+          ]
+        }
+      ],
+      "reasoning": "视频中人指向了挂在墙上工具架上的第三个工具，该工具是从左往右数第三个灰色的锉刀，对应选项C。",
+      "video_name": "VID_20251230_182838.mp4"
+    },
+    {
+      "explicit_command": "请拿起放在钳工台上的那个金属刮刀。",
+      "selected_options": [
+        "J"
+      ],
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "放在钳工台上面的金属刮刀",
+          "point": [
+            532,
+            472
+          ],
+          "timestamp": [
+            2500,
+            4500
+          ]
+        }
+      ],
+      "reasoning": "通过分析视频，在约2.5秒到4.5秒之间，用户的手指向并靠近了工作台上的一件长条形工具，经对比选项描述，该物体为金属刮刀（J）。",
+      "video_name": "VID_20251230_182943.mp4"
+    },
+    {
+      "explicit_command": "请把墙上从左往右数第六个灰色的锉刀拿给我。",
+      "selected_options": [
+        "H"
+      ],
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "在墙上的从左往右数第六个灰色的锉刀",
+          "point": [
+            595,
+            247
+          ],
+          "timestamp": [
+            2800,
+            3500
+          ]
+        }
+      ],
+      "reasoning": "视频中用户的手指向了墙上挂着的工具。从左往右数，在前三个锉刀和两个金属锯之后，用户指向了第六个灰色的锉刀。其意图是获取该工具。",
+      "video_name": "VID_20251230_182906.mp4"
+    },
+    {
+      "explicit_command": "把钳工台上面的金属刮刀拿起来放在中间的金属台面上。",
+      "selected_options": [
+        "J"
+      ],
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "放在钳工台上面的金属刮刀",
+          "point": [
+            477,
+            557
+          ],
+          "timestamp": [
+            2211,
+            3011
+          ]
+        },
+        {
+          "type": "spatial_affordance",
+          "description": "工作台中央的金属台面",
+          "point": [
+            477,
+            557
+          ],
+          "timestamp": [
+            4311,
+            4811
+          ]
+        }
+      ],
+      "reasoning": "视频中，人右手拿起位于钳工台上的金属刮刀（选项J），并将其移动到位于中间位置的金属垫块表面。根据任务要求，坐标点基于最后一帧物体所在的位置给出。",
+      "video_name": "VID_20251230_182915.mp4"
+    },
+    {
+      "explicit_command": "把放在钳工台上面的金属刮刀挂在墙上从左往右数第四个挂钩上。",
+      "selected_options": [
+        "J",
+        "B"
+      ],
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "放在钳工台上面的金属刮刀",
+          "point": [
+            513,
+            478
+          ],
+          "timestamp": [
+            0,
+            2000
+          ]
+        },
+        {
+          "type": "spatial_affordance",
+          "description": "墙上从左往右数第四个挂钩，即第二个灰色锉刀所在的位置",
+          "point": [
+            281,
+            252
+          ],
+          "timestamp": [
+            2500,
+            4500
+          ]
+        }
+      ],
+      "reasoning": "用户指令要求移动钳工台上的金属刮刀（选项J）。目标位置是墙上从左往右第四个挂钩。通过观察工具墙，前两个挂钩挂的是绿色手柄锯子，第三个和第四个挂的是灰色锉刀，因此第四个挂钩对应选项B（第二个灰色锉刀）。",
+      "video_name": "VID_20251230_182924.mp4"
+    },
+    {
+      "explicit_command": "拿起中间位置离人近的木质刷子。",
+      "selected_options": [
+        "N"
+      ],
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "中间位置离人近的木质刷柄",
+          "point": [
+            620,
+            668
+          ],
+          "timestamp": [
+            1200,
+            2400
+          ]
+        }
+      ],
+      "reasoning": "视频中用户用手指向了钳工台面中间靠右、离人较近的一把木柄刷子。根据选项描述，该物体对应选项N。",
+      "video_name": "VID_20251230_183002.mp4"
+    },
+    {
+      "explicit_command": "拿起在墙上的从左往右数第一个灰色的锉刀",
+      "selected_options": [
+        "A"
+      ],
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "墙上从左往右数第一个灰色的锉刀",
+          "point": [
+            149,
+            401
+          ],
+          "timestamp": [
+            1000,
+            2000
+          ]
+        }
+      ],
+      "reasoning": "在视频的[1000, 2000]毫秒期间，用户指向了墙上工具架上最左侧的灰色锉刀，并配合语音指令“这个”，明确表达了对该物体的操作意图，因此选择选项A。",
+      "video_name": "VID_20251230_182759.mp4"
+    },
+    {
+      "explicit_command": "把墙上的从左往右数第四个灰色的锉刀和从左往右数第五个灰色的锉刀放到左手边离人近的长方形金属工件上面。",
+      "selected_options": [
+        "F",
+        "G",
+        "M"
+      ],
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "在墙上的从左往右数第四个灰色的锉刀",
+          "point": [
+            563,
+            241
+          ],
+          "timestamp": [
+            2500,
+            3500
+          ]
+        },
+        {
+          "type": "target_object",
+          "description": "在墙上的从左往右数第五个灰色的锉刀",
+          "point": [
+            584,
+            250
+          ],
+          "timestamp": [
+            2500,
+            3500
+          ]
+        },
+        {
+          "type": "spatial_affordance",
+          "description": "左手边离人近的长方形金属工件",
+          "point": [
+            384,
+            925
+          ],
+          "timestamp": null
+        }
+      ],
+      "reasoning": "视频中用户在3秒左右指向了墙上工具架右侧的两把灰色锉刀，根据位置依次为从左往右数第四个和第五个（避开中间两把锯子）。语音指令要求将它们放在近处的长方形工件上，该工件位于视野左下方台钳内。",
+      "video_name": "VID_20251230_182857.mp4"
+    },
+    {
+      "explicit_command": "请拿一下墙上从左往右数第一个绿色手柄的金属锯子。",
+      "selected_options": [
+        "D"
+      ],
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "在墙上的从左往右数第一个绿色手柄的金属锯子",
+          "point": [
+            332,
+            333
+          ],
+          "timestamp": [
+            1000,
+            3500
+          ]
+        }
+      ],
+      "reasoning": "视频中用户在约1秒至3.5秒期间，用手指明确指向了墙上工具架上从左往右数第四个位置的工具。该工具为绿色手柄的金属锯子，也是此类锯子中的第一个，符合选项D的描述。",
+      "video_name": "VID_20251230_182809.mp4"
+    },
+    {
+      "explicit_command": "请帮我取下墙上从左往右数第四个和第六个灰色的锉刀。",
+      "selected_options": [
+        "F",
+        "H"
+      ],
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "墙上的从左往右数第四个灰色的锉刀",
+          "point": [
+            275,
+            340
+          ],
+          "timestamp": [
+            1400,
+            2000
+          ]
+        },
+        {
+          "type": "target_object",
+          "description": "墙上的从左往右数第六个灰色的锉刀",
+          "point": [
+            583,
+            318
+          ],
+          "timestamp": [
+            2200,
+            2800
+          ]
+        }
+      ],
+      "reasoning": "视频中演示者先后用手指向了墙面工具挂板上的两个特定物体。第一次指向的是左侧工具组中从左往右第四个灰色的锉刀（对应选项F），第二次指向的是右侧工具组中左起第二个、全局总计第六个灰色的锉刀（对应选项H）。",
+      "video_name": "VID_20251230_182818.mp4"
+    },
+    {
+      "explicit_command": "请帮我拿一下墙上从左往右数第二个绿色手柄的金属锯子。",
+      "selected_options": [
+        "E"
+      ],
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "在墙上的从左往右数第二个绿色手柄的金属锯子",
+          "point": [
+            303,
+            417
+          ],
+          "timestamp": null
+        }
+      ],
+      "reasoning": "通过分析视频，用户的手势指向了墙上挂着的工具架。根据从左到右的顺序辨认，该指向目标是第二把绿色手柄的金属锯子，与选项E匹配。由于没有明确语音输入，该意图通过视觉指向确认，时间戳设为null。",
+      "video_name": "VID_20251230_182828.mp4"
+    },
+    {
+      "explicit_command": "请拿起左手边离人近的长方形金属工件，并使用墙上从左往右数第六个灰色的锉刀对其进行加工。",
+      "selected_options": [
+        "M",
+        "H"
+      ],
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "左手边离人近的长方形金属工件",
+          "point": [
+            461,
+            834
+          ],
+          "timestamp": [
+            1933,
+            3000
+          ]
+        },
+        {
+          "type": "spatial_affordance",
+          "description": "在墙上的从左往右数第六个灰色的锉刀",
+          "point": [
+            563,
+            183
+          ],
+          "timestamp": [
+            3133,
+            5466
+          ]
+        }
+      ],
+      "reasoning": "通过视频观察，用户先后指向了工作台前方的长方形金属工件（选项M）和工具墙上从左起第六把灰色锉刀（选项H），表明了拿起该工件并使用特定锉刀进行加工的意图。",
+      "video_name": "VID_20251230_182952.mp4"
+    },
+    {
+      "explicit_command": "拿取墙上从左往右数第四个灰色的锉刀。",
+      "selected_options": [
+        "F"
+      ],
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "墙上从左往右数第四个灰色的锉刀",
+          "point": [
+            565,
+            248
+          ],
+          "timestamp": null
+        }
+      ],
+      "reasoning": "视频中，用户在3秒左右通过手势指向了墙上工具架上的一个工具。通过观察，该工具是位于两把绿色锯子右侧的第一把灰色锉刀，按照从左往右的顺序，它是第四个灰色的锉刀。因此，用户的意图是选择并获取该工具。",
+      "video_name": "VID_20251230_182847.mp4"
+    },
+    {
+      "explicit_command": "把钳工台上的灰色金属锉刀放回到墙上从左往右数第四个灰色的锉刀的位置。",
+      "selected_options": [
+        "K",
+        "F"
+      ],
+      "point_list": [
+        {
+          "type": "target_object",
+          "description": "钳工台上的灰色金属锉刀",
+          "point": [
+            532,
+            473
+          ],
+          "timestamp": null
+        },
+        {
+          "type": "spatial_affordance",
+          "description": "墙上从左往右数第四个灰色的锉刀所在的位置",
+          "point": [
+            682,
+            228
+          ],
+          "timestamp": null
+        }
+      ],
+      "reasoning": "视频中用户先是指向了钳工台上的灰色金属锉刀（选项K），随后指向了墙上工具架上从左往右数第四个灰色锉刀的位置（选项F），这表明用户的意图是将台面上的锉刀放回墙上的对应挂钩位置。",
+      "video_name": "VID_20251230_182933.mp4"
+    }
+  ],
+  "ground_truths": [
+    {
+      "asr_result": null,
+      "folder": "data\\三楼钳工区_场景a_李凯越_李尚儒_拍摄\\指令1",
+      "id": "1768386762272",
+      "is_invalid": false,
+      "object_space": [
+        {
+          "mask": {
+            "bbox": [
+              1057,
+              128,
+              1128,
+              547
+            ],
+            "mask_base64": "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AKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYF0DAKxrAIB1DQCwrgEA1jUAwLoGAFjXAADrGgBgXQMArGsAgHUNALCuAQDWNQDAugYAWNcAAOsaAGBdAwCsawCAdQ0AsK4BANY1AMC6BgBY1wAA6xoAYN3/A2ma4Ug9M228AAAAAElFTkSuQmCC",
+            "point_on_mask": true,
+            "score": 0.7243736386299133
+          },
+          "name": "在墙上的从左往右数第二个绿色手柄的金属锯子",
+          "points": [
+            [
+              142,
+              560
+            ],
+            [
+              322,
+              564
+            ],
+            [
+              467,
+              581
+            ]
+          ],
+          "type": "object"
+        }
+      ],
+      "scene": "三楼钳工区",
+      "task_template": "指令一",
+      "video_name": "VID_20251230_182838.mp4",
+      "_video_dir": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令1",
+      "_video_width": 1920,
+      "_video_height": 1080,
+      "_video_path": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令1/VID_20251230_182838.mp4",
+      "_last_frame_path": null,
+      "_processed_gt": {
+        "template": "指令一",
+        "items": []
+      },
+      "_correct_options": [
+        "E"
+      ]
+    },
+    {
+      "id": "1768462057480",
+      "folder": "data\\三楼钳工区_场景a_李凯越_李尚儒_拍摄\\指令1",
+      "video_name": "VID_20251230_182943.mp4",
+      "task_template": "指令一",
+      "scene": "三楼钳工区",
+      "object_space": [
+        {
+          "name": "右手边的离人远的金属游标卡尺",
+          "points": [
+            [
+              544,
+              669
+            ],
+            [
+              520,
+              624
+            ]
+          ],
+          "type": "object",
+          "mask": {
+            "bbox": [
+              1167,
+              543,
+              1313,
+              604
+            ],
+            "mask_base64": "iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAAAAADNuJ6fAAAQAUlEQVR4Ae3BUa4jRQAEsKr7H7oRQqAVkNmv1JtJbDcAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQC3cvKXBj5ZA3AXJ//WwIdqAO7i5P808IEagJs4eaGBj9MA3MTJhQY+SgNwEyfXGvgcDcBdnPxOAx+iAbiNk99r4BM0AHdy8lsNPF8DcC8nv9fAwzUAd3RyqYFnawDu6uRKAw/WANzXyZUGHqsBuLOTKw08VANwbydXGnikBuDuTq408EANwO2dXGrgcRqABzi51MDDNAAPcXKhgUdpAB7j5EIDD9IAPMjJlQaeogF4lpMLDTxDA/A0JxcaeIIG4HlOrjRwew3AE51caeDmGoCHOrnQwK01AM91cqGB+2oAnuzkSgM31QA83MmFBm6pAXi+k9cauKEG4BOcXGjgbhqAD3FyoYFbaQA+x8mFBu6jAfgoJ681cBcNwKc5ea2BW2gAPs/Jaw3cQAPwiU5ea+DHNQAf6uS1Bn5WA/CxTi408IMagE92cqGBn9IAfLiT1xr4GQ3A5zt5rYEf0AB8g5PXGphrAL7EyUsNjDUAX+PktQaWGoBvcvJaAzMNwJc5ea2BjQbg65y81sBCA/CNTl5q4P0agC918lIDb9YAfK2Tlxp4qwbgm5280sAbNQDf7eSVBt6mAfh2Jy808C4NADn5Pw28SwPAn07+o4F3aQD4y8m/NPAuDQD/OPlVA+/SAPCrk7818DYNAP910sAbNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzP0Bi9hAOTngbXYAAAAASUVORK5CYII=",
+            "point_on_mask": true,
+            "score": 0.8845126628875732
+          }
+        }
+      ],
+      "is_invalid": false,
+      "asr_result": null,
+      "_video_dir": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令1",
+      "_video_width": 1920,
+      "_video_height": 1080,
+      "_video_path": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令1/VID_20251230_182943.mp4",
+      "_last_frame_path": null,
+      "_processed_gt": {
+        "template": "指令一",
+        "items": []
+      },
+      "_correct_options": [
+        "L"
+      ]
+    },
+    {
+      "asr_result": null,
+      "folder": "data\\三楼钳工区_场景a_李凯越_李尚儒_拍摄\\指令1",
+      "id": "1768386818332",
+      "is_invalid": false,
+      "object_space": [
+        {
+          "mask": {
+            "bbox": [
+              1206,
+              121,
+              1237,
+              319
+            ],
+            "mask_base64": "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Hw2c1ABc8/LRwEkNwDUvHw2c1ABc8/LRwEkNwDUvHw2c1ABc8/LRwEkNwDUvHw2c1ABc8/LRwEkNwDUvHw2c1ABc8/LRwEkNwDUvHw2c1ABc8/LRwEkNwDUv/zRwUwNwzcs/DdzUAFzz8k8DNzUA17z808BNDcA1L/80cFMDcM3LPw3c1ABc8/JPAzc1ANe8/NPATQ3ANS//NHBTA3DNyz8N3NQAXPPyTwM3NQDXvPzTwE0NwDUv/9HAUQ3ANS//0cBRDcA1L//RwFENwDUv/9HAUQ3ANS//p4GrGoBzXv6/Bs5qAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLn/B/loyzngnUk9AAAAAElFTkSuQmCC",
+            "point_on_mask": true,
+            "score": 0.7862648367881775
+          },
+          "name": "在墙上的从左往右数第六个灰色的锉刀",
+          "points": [
+            [
+              130,
+              639
+            ],
+            [
+              276,
+              637
+            ]
+          ],
+          "type": "object"
+        }
+      ],
+      "scene": "三楼钳工区",
+      "task_template": "指令一",
+      "video_name": "VID_20251230_182906.mp4",
+      "_video_dir": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令1",
+      "_video_width": 1920,
+      "_video_height": 1080,
+      "_video_path": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令1/VID_20251230_182906.mp4",
+      "_last_frame_path": null,
+      "_processed_gt": {
+        "template": "指令一",
+        "items": []
+      },
+      "_correct_options": [
+        "H"
+      ]
+    },
+    {
+      "asr_result": null,
+      "folder": "data\\三楼钳工区_场景a_李凯越_李尚儒_拍摄\\指令1",
+      "id": "1768386839677",
+      "is_invalid": false,
+      "object_space": [
+        {
+          "mask": {
+            "bbox": [
+              730,
+              741,
+              853,
+              847
+            ],
+            "mask_base64": "iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAAAAADNuJ6fAAAQ5ElEQVR4Ae3BC44kWYEEQPf7H/ohrUDAznRF5KccKdPMGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK6Br3SSBuB/poEvc/IfGoD/iQa+yMlfNQB7DXyJkz9pANYa+AonP2kAthr4eCfXGoClBj7dyR0NwFADn+3krgZgpoGPdnJfA7DSwAc7eUwDsNHA5zp5VAMw0cDnOnlYA7DQwMc6eUIDMNDApzp5SgPw+xr4VCfPaQB+XQMf6uRpDcAva+BDnTyvAfhdDXymk1c0AL+qgc908pIG4Dc18JlOXtMA/KIGPtPJixqA39PARzp5WQPwaxr4SCcvawB+TQOf6eRlDcBvaeAznbysAfgtDXymk9c1AL+kgc908gYNwO9o4DOdvEMD8Csa+FAnb9EA/IIGPtTJezQA79fAhzp5kwbg7Rr4VCfv0QC8XQMf6+Q9GoB3a+BjnbxHA/BuDXyuk7doAN6tgQ928g4NwLs18MlO3qEBeLMGPtrJGzQAb9bAhzt5WQPwZg18vJMXNQBv1sB3OHleA/BmDXyPk+c0AG/WwBc5eU4D8F4NfJOTpzQA79XAVzl5SgPwVg18l5NnNABv1cCXOXlGA/BODXydk8c1AO/UwPc5eVwD8EYNfKGTxzUA79PANzp5XAPwNg18p5OHNQDv0sCXOnlYA/AmDXyvkwc1AO/RwDc7eUwD8BYNfLuTRzQAb9AAObmvAXhdA/zTyS0NwMsa4N9ObmgAXtUA/+nkhgbgNQ3w306uNQAvaYC/OLnSALyiAf7GyYUG4AUN8HdOrjQAT2uAv3VypQF4VgP8wcmFBuBJDfAnJ1cagKc0wB+dXGkAntEAf3ZypQF4QgP82cm1BuBhDfCDk2sNwKMa4Ccn1xqABzXAj06uNQCPaYCfnVxrAB7SAD87uaMBeEADXDi5owG4rwGunNzRANzWAJdObmgAbmuASyd3NAB3NcC1kzsagJsa4IaTGxqAmxrgjpMbGoB7GuCWkxsagFsa4J6Taw3ALQ1w08m1BuCOBrjr5FIDcEcD3HVyrQG4oQFuO7nUANzQAPedXGkAbmiAB5xcaABuaICHnPysAbjWAI85+VEDcK0BHnTykwbgWgM86uQHDcC1BnjcyR81ANca4Bknf9AAXGuAp5z8QQNwqQGec/L3GoBLDfCsk7/TAFxqgOed/FUDcKkBXnDyFw3ApQZ4xcn/0wBca4DXnPyXBuBaA7zs5N8agGsN8LqTf2kAbmiAtzj5Pw3ADQ0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw9w/1u2453V8y7QAAAABJRU5ErkJggg==",
+            "point_on_mask": true,
+            "score": 0.8678811192512512
+          },
+          "name": "左手边的离人远的木质手柄的刷子",
+          "points": [
+            [
+              707,
+              398
+            ],
+            [
+              774,
+              435
+            ]
+          ],
+          "type": "object"
+        }
+      ],
+      "scene": "三楼钳工区",
+      "task_template": "指令一",
+      "video_name": "VID_20251230_182915.mp4",
+      "_video_dir": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令1",
+      "_video_width": 1920,
+      "_video_height": 1080,
+      "_video_path": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令1/VID_20251230_182915.mp4",
+      "_last_frame_path": null,
+      "_processed_gt": {
+        "template": "指令一",
+        "items": []
+      },
+      "_correct_options": [
+        "I"
+      ]
+    },
+    {
+      "id": "1768461840297",
+      "folder": "data\\三楼钳工区_场景a_李凯越_李尚儒_拍摄\\指令1",
+      "video_name": "VID_20251230_182924.mp4",
+      "task_template": "指令一",
+      "scene": "三楼钳工区",
+      "object_space": [
+        {
+          "name": "放在钳工台上面的金属刮刀",
+          "points": [
+            [
+              573,
+              506
+            ]
+          ],
+          "type": "object"
+        }
+      ],
+      "is_invalid": false,
+      "asr_result": null,
+      "_video_dir": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令1",
+      "_video_width": 1920,
+      "_video_height": 1080,
+      "_video_path": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令1/VID_20251230_182924.mp4",
+      "_last_frame_path": null,
+      "_processed_gt": {
+        "template": "指令一",
+        "items": []
+      },
+      "_correct_options": [
+        "J"
+      ]
+    },
+    {
+      "id": "1768462111828",
+      "folder": "data\\三楼钳工区_场景a_李凯越_李尚儒_拍摄\\指令1",
+      "video_name": "VID_20251230_183002.mp4",
+      "task_template": "指令一",
+      "scene": "三楼钳工区",
+      "object_space": [
+        {
+          "name": "中间位置离人近的木质刷柄",
+          "points": [
+            [
+              693,
+              586
+            ],
+            [
+              652,
+              660
+            ]
+          ],
+          "type": "object",
+          "mask": {
+            "bbox": [
+              1090,
+              699,
+              1279,
+              779
+            ],
+            "mask_base64": "iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAAAAADNuJ6fAAAQeElEQVR4Ae3BAbIc1QEEsO77H/qlkgpFIAYbz7h3dr+kBgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQbgw50GHqcB+GQnv2ngQRqAz3Xyvxp4jAbgU538SQNP0QB8qJP/08BDNAAf6eSbGniEBuADnfyVBp6gAfg0J3+ngQdoAD7LyXc08HoNwCc5+b4GXq4B+BwnP6SBV2sAPsTJD2vgxRqAD3DyDzXwUg3A2zv5xxp4qQbgrZ38lAZeqgF4Xyc/rYFXagDe08klDbxSA/COTq5p4KUagHdzcl0DL9UAvJWTOzTwWg3AGzm5RQMv1gC8jZNbNPByDcB7OLlJA6/XADzfyW0aeIIG4OlObtPAMzQAT3ZyowaeogF4rJM7NfAcDcAzndyqgSdpAJ7o5E4NPEwD8DwnN2rgeRqAhzm5UQOP1AA8ycmdGnioBuA5Tm7UwHM1AA9xcqMGHq0BeIST+zTwdA3A653cqIHnawBe7eQ+DbyFBuCVTm7UwLtoAF7l5FYNvI8G4DVO7tTAW2kAXuDkTg28mwZg7eRODbyhBmDp5FYNvKcGYOfkTg28rQZg5ORODbyzBmDh5E4NvLkG4Jc7uVMD768B+MVObtTAR2gAfqGTGzXwMRqAX+XkRg18kgbglzi5UQMfpgH4BU7u08DnaQBudnKjBj5SA3Cjkzs18KkagNuc3KiBD9YA3OPkRg18tgbgBid3auDTNQCXndyogS+gAbjo5D4NfA0NwCUnd2ng62gArji5SQNfSQNwwck9GvhaGoALTq5r4OtpAC44uaqBr6gBuODkkga+qAbggpOf18DX1QBccPJzGvjaGoALTn5CA19eA3DFyT/VAGkArjj5Rxrg3xqAS05+WAP8VwNwzckPaYDfNQDXnHxfA/xBA3DRyd9rgD9rAK46+WsN8A0NwGUn39YA39YAXHfyDQ3wVxqAG5z8UQP8nQbgDie/a4DvaABucfKbBvieBuAeJ//RAN/XAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABzDQAw1wAAcw0AMNcAAHMNADDXAABz/wLhC1U5ou4+QgAAAABJRU5ErkJggg==",
+            "point_on_mask": true,
+            "score": 0.8862599730491638
+          }
+        }
+      ],
+      "is_invalid": false,
+      "asr_result": null,
+      "_video_dir": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令1",
+      "_video_width": 1920,
+      "_video_height": 1080,
+      "_video_path": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令1/VID_20251230_183002.mp4",
+      "_last_frame_path": null,
+      "_processed_gt": {
+        "template": "指令一",
+        "items": []
+      },
+      "_correct_options": [
+        "N"
+      ]
+    },
+    {
+      "asr_result": null,
+      "folder": "data\\三楼钳工区_场景a_李凯越_李尚儒_拍摄\\指令1",
+      "id": "1768386648135",
+      "is_invalid": false,
+      "object_space": [
+        {
+          "mask": null,
+          "name": "在墙上的从左往右数第一个灰色的锉刀",
+          "points": [
+            [
+              221,
+              200
+            ],
+            [
+              358,
+              211
+            ],
+            [
+              578,
+              241
+            ]
+          ],
+          "type": "object"
+        }
+      ],
+      "scene": "三楼钳工区",
+      "task_template": "指令一",
+      "video_name": "VID_20251230_182759.mp4",
+      "_video_dir": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令1",
+      "_video_width": 1920,
+      "_video_height": 1080,
+      "_video_path": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令1/VID_20251230_182759.mp4",
+      "_last_frame_path": null,
+      "_processed_gt": {
+        "template": "指令一",
+        "items": []
+      },
+      "_correct_options": [
+        "A"
+      ]
+    },
+    {
+      "asr_result": null,
+      "folder": "data\\三楼钳工区_场景a_李凯越_李尚儒_拍摄\\指令1",
+      "id": "1768386799342",
+      "is_invalid": false,
+      "object_space": [
+        {
+          "mask": {
+            "bbox": [
+              1172,
+              121,
+              1203,
+              323
+            ],
+            "mask_base64": "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AGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOb+A01h0Dnl+5rEAAAAAElFTkSuQmCC",
+            "point_on_mask": true,
+            "score": 0.7741415500640869
+          },
+          "name": "在墙上的从左往右数第五个灰色的锉刀",
+          "points": [
+            [
+              126,
+              615
+            ],
+            [
+              272,
+              611
+            ]
+          ],
+          "type": "object"
+        }
+      ],
+      "scene": "三楼钳工区",
+      "task_template": "指令一",
+      "video_name": "VID_20251230_182857.mp4",
+      "_video_dir": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令1",
+      "_video_width": 1920,
+      "_video_height": 1080,
+      "_video_path": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令1/VID_20251230_182857.mp4",
+      "_last_frame_path": null,
+      "_processed_gt": {
+        "template": "指令一",
+        "items": []
+      },
+      "_correct_options": [
+        "G"
+      ]
+    },
+    {
+      "asr_result": null,
+      "folder": "data\\三楼钳工区_场景a_李凯越_李尚儒_拍摄\\指令1",
+      "id": "1768386668252",
+      "is_invalid": false,
+      "object_space": [
+        {
+          "mask": {
+            "bbox": [
+              482,
+              197,
+              568,
+              608
+            ],
+            "mask_base64": "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",
+            "point_on_mask": true,
+            "score": 0.8971359729766846
+          },
+          "name": "在墙上的从左往右数第二个灰色的锉刀",
+          "points": [
+            [
+              227,
+              263
+            ],
+            [
+              342,
+              276
+            ],
+            [
+              511,
+              288
+            ]
+          ],
+          "type": "object"
+        }
+      ],
+      "scene": "三楼钳工区",
+      "task_template": "指令一",
+      "video_name": "VID_20251230_182809.mp4",
+      "_video_dir": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令1",
+      "_video_width": 1920,
+      "_video_height": 1080,
+      "_video_path": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令1/VID_20251230_182809.mp4",
+      "_last_frame_path": null,
+      "_processed_gt": {
+        "template": "指令一",
+        "items": []
+      },
+      "_correct_options": [
+        "B"
+      ]
+    },
+    {
+      "asr_result": null,
+      "folder": "data\\三楼钳工区_场景a_李凯越_李尚儒_拍摄\\指令1",
+      "id": "1768386692910",
+      "is_invalid": false,
+      "object_space": [
+        {
+          "mask": {
+            "bbox": [
+              577,
+              211,
+              640,
+              555
+            ],
+            "mask_base64": "iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAAAAADNuJ6fAAAVK0lEQVR4Ae3BWRIcV4IDMPL+h35jWfI2rVoiqpI/CaABAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYa+NxJGgDe18DHTn5oAHhXAx87+akB4D0NfOzklwaAtzTwqZN/awB4qYGPnfw/DQBPNfC5k/+vAeCJBr7g5H81ADzSwDec/FYDwO808AUnjzUA/H8NfO7kuQaA/2jg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VgM7J//SANxXA1Mnf2oAbq0BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDm/g9vO1xIwq5lKAAAAABJRU5ErkJggg==",
+            "point_on_mask": true,
+            "score": 0.877339780330658
+          },
+          "name": "在墙上的从左往右数第三个灰色的锉刀",
+          "points": [
+            [
+              237,
+              314
+            ],
+            [
+              362,
+              327
+            ],
+            [
+              483,
+              328
+            ]
+          ],
+          "type": "object"
+        }
+      ],
+      "scene": "三楼钳工区",
+      "task_template": "指令一",
+      "video_name": "VID_20251230_182818.mp4",
+      "_video_dir": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令1",
+      "_video_width": 1920,
+      "_video_height": 1080,
+      "_video_path": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令1/VID_20251230_182818.mp4",
+      "_last_frame_path": null,
+      "_processed_gt": {
+        "template": "指令一",
+        "items": []
+      },
+      "_correct_options": [
+        "C"
+      ]
+    },
+    {
+      "asr_result": null,
+      "folder": "data\\三楼钳工区_场景a_李凯越_李尚儒_拍摄\\指令1",
+      "id": "1768386740388",
+      "is_invalid": false,
+      "object_space": [
+        {
+          "mask": {
+            "bbox": [
+              700,
+              161,
+              809,
+              625
+            ],
+            "mask_base64": "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AJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJZrAIDlGgBguQYAWK4BAJb7P2TZPGY/ubsJAAAAAElFTkSuQmCC",
+            "point_on_mask": true,
+            "score": 0.7527913451194763
+          },
+          "name": "在墙上的从左往右数第一个绿色手柄的金属锯子",
+          "points": [
+            [
+              161,
+              373
+            ],
+            [
+              298,
+              414
+            ]
+          ],
+          "type": "object"
+        }
+      ],
+      "scene": "三楼钳工区",
+      "task_template": "指令一",
+      "video_name": "VID_20251230_182828.mp4",
+      "_video_dir": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令1",
+      "_video_width": 1920,
+      "_video_height": 1080,
+      "_video_path": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令1/VID_20251230_182828.mp4",
+      "_last_frame_path": null,
+      "_processed_gt": {
+        "template": "指令一",
+        "items": []
+      },
+      "_correct_options": [
+        "D"
+      ]
+    },
+    {
+      "id": "1768462077545",
+      "folder": "data\\三楼钳工区_场景a_李凯越_李尚儒_拍摄\\指令1",
+      "video_name": "VID_20251230_182952.mp4",
+      "task_template": "指令一",
+      "scene": "三楼钳工区",
+      "object_space": [
+        {
+          "name": "左手边离人近的长方形金属工件",
+          "points": [
+            [
+              863,
+              503
+            ],
+            [
+              798,
+              504
+            ]
+          ],
+          "type": "object",
+          "mask": {
+            "bbox": [
+              951,
+              854,
+              993,
+              970
+            ],
+            "mask_base64": "iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAAAAADNuJ6fAAAQ4UlEQVR4Ae3BQY4ENwIDMOn/j/beAmww1UfBDkg2AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDAXAMAzDUAwFwDAMw1AMBcAwDMNQDA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",
+            "point_on_mask": true,
+            "score": 0.9151167273521423
+          }
+        }
+      ],
+      "is_invalid": false,
+      "asr_result": null,
+      "_video_dir": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令1",
+      "_video_width": 1920,
+      "_video_height": 1080,
+      "_video_path": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令1/VID_20251230_182952.mp4",
+      "_last_frame_path": null,
+      "_processed_gt": {
+        "template": "指令一",
+        "items": []
+      },
+      "_correct_options": [
+        "M"
+      ]
+    },
+    {
+      "asr_result": null,
+      "folder": "data\\三楼钳工区_场景a_李凯越_李尚儒_拍摄\\指令1",
+      "id": "1768386783730",
+      "is_invalid": false,
+      "object_space": [
+        {
+          "name": "在墙上的从左往右数第四个灰色的锉刀",
+          "points": [
+            [
+              149,
+              601
+            ],
+            [
+              265,
+              600
+            ]
+          ],
+          "type": "object"
+        }
+      ],
+      "scene": "三楼钳工区",
+      "task_template": "指令一",
+      "video_name": "VID_20251230_182847.mp4",
+      "_video_dir": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令1",
+      "_video_width": 1920,
+      "_video_height": 1080,
+      "_video_path": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令1/VID_20251230_182847.mp4",
+      "_last_frame_path": null,
+      "_processed_gt": {
+        "template": "指令一",
+        "items": []
+      },
+      "_correct_options": [
+        "F"
+      ]
+    },
+    {
+      "id": "1768462028824",
+      "folder": "data\\三楼钳工区_场景a_李凯越_李尚儒_拍摄\\指令1",
+      "video_name": "VID_20251230_182933.mp4",
+      "task_template": "指令一",
+      "scene": "三楼钳工区",
+      "object_space": [
+        {
+          "name": "钳工台上的灰色金属锉刀",
+          "points": [
+            [
+              522,
+              598
+            ],
+            [
+              504,
+              546
+            ],
+            [
+              473,
+              519
+            ]
+          ],
+          "type": "object",
+          "mask": {
+            "bbox": [
+              983,
+              514,
+              1185,
+              588
+            ],
+            "mask_base64": "iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAAAAADNuJ6fAAAQTElEQVR4Ae3BAW4dWQEEwO77H/ohkIBlSeKx/7gTza+qBgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrAIC5BgCYawCAuQYAmGsAgLkGAJhrgCc6+bcG+AM1wPOc/FUD/HEa4HFO/k8D/FEa4GlOfqQB/iAN8DQnP9EAf4oGeJyTn2qAP0IDPNDJzzXA79cAT3TyKw3wmzXAM538UgP8Tg3wVCe/1gC/TQM82MmvNcDv0QCPdvKRBthrgIc7+VADjDXA8518qAGWGuAdnFzQACsN8CZOrmiAhQZ4HycXNMD3a4D3cvKxBvhmDfBuTq5ogG/UAO/n5JIG+C4N8J5OrmiAb9EA7+rkkga4XwO8r5OLGuBeDfDOTq5qgBs1wJs7uagBbtMAnFzUAPdoAJKTqxrgBg3Av5xc1QCvagD+4+SiBnhJA/BXJxc1wNc1AP/r5KIG+KoG4P+cXNMAX9MA/MjJNQ3wBQ3Aj51c0wCf1gD8zMk1DfBJDcCvnFzTAJ/QAHzg5Asa4BcagI+dfEkD/FgDcMXJlzXA3zUAV528oAH+qwG47uRFDfBPDcBnnLyugbfXAHzSyesaeG8NwKed3KCBN9YAfMXJDRp4Vw3A15zcoYG31AB81ckdGnhDDcALTu7QwLtpAF5ycosG3koD8JqTezTwRhqAV53cpIF30QC87OQuDbyHBuAGJ3dp4B00AHc4uU0Dz9cA3OPkNg08XQNwl5O7NPBwDcB9Tm7SwLM1AHc6uUcDj9YA3OzkDg08WQNwu5MbNPBgDcD9Tm7QwHM1AN/i5FUNPFcD8F1OXtLAczUA3+fkFQ08VgPwnU6+roHHagC+2ckXNfBYDcD3O/mKBh6rAZg4+bQGHqsBGDn5nAaeqwEYOrmsgQdrALZOLmngyRqAuZMPNPBwDcBvdJq/O2ng8RoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5hoAYK4BAOYaAGCuAQDmGgBgrgEA5v4BsBxOOc7o/QMAAAAASUVORK5CYII=",
+            "point_on_mask": true,
+            "score": 0.8587468862533569
+          }
+        }
+      ],
+      "is_invalid": false,
+      "asr_result": null,
+      "_video_dir": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令1",
+      "_video_width": 1920,
+      "_video_height": 1080,
+      "_video_path": "data_new/三楼钳工区_场景a_李凯越_李尚儒_拍摄/指令1/VID_20251230_182933.mp4",
+      "_last_frame_path": null,
+      "_processed_gt": {
+        "template": "指令一",
+        "items": []
+      },
+      "_correct_options": [
+        "K"
+      ]
+    }
+  ]
+}

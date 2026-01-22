@@ -1,7 +1,17 @@
 {
-  "intent_accuracy": 0.45666666666666667,
-  "spatial_grounding": 0.11666666666666667,
-  "temporal_grounding": 0.75,
-  "overall": 0.44111111111111106,
-  "count": 15
+  "overall_accuracy": 0.49264705882352944,
+  "intent_grounding_accuracy": 0.49264705882352944,
+  "spatial_grounding_accuracy": 0.22794117647058823,
+  "temporal_grounding_accuracy": 0.0,
+  "overall_score": 0.3602941176470588,
+  "instruction_breakdown": {
+    "指令6": {
+      "intent_accuracy": 0.49264705882352944,
+      "spatial_grounding": 0.22794117647058823,
+      "temporal_grounding": 0.0,
+      "overall": 0.3602941176470588,
+      "count": 34
+    }
+  },
+  "count": 34
 }

@@ -14,6 +14,40 @@ class BaseVLM(ABC):
     视觉语言模型 (VLM) 的抽象基类。
     """
 
+    def __init__(self, coord_order="xy"):
+        """
+        初始化模型
+
+        Args:
+            coord_order: 坐标顺序，"xy" 表示 [x, y]（默认），"yx" 表示 [y, x]
+        """
+        self.coord_order = coord_order
+
+    @staticmethod
+    def _convert_coordinates(result, coord_order):
+        """
+        根据坐标顺序转换模型输出的坐标格式。
+        如果 coord_order="yx"，将 [y, x] 转换为 [x, y]。
+        如果 coord_order="xy"，保持 [x, y] 不变。
+
+        重要：此转换在模型输出后立即执行，确保后续所有逻辑都使用 [x, y] 格式。
+
+        Args:
+            result: 模型输出的结果字典
+            coord_order: 坐标顺序，"xy" 或 "yx"
+        """
+        if coord_order == "yx" and isinstance(result, dict) and "point_list" in result:
+            for pred_item in result["point_list"]:
+                if "point" in pred_item and isinstance(pred_item["point"], list):
+                    pt = pred_item["point"]
+                    # Case 1: Single point [y, x] -> [x, y]
+                    if len(pt) == 2 and isinstance(pt[0], (int, float)):
+                        pred_item["point"] = [pt[1], pt[0]]
+                    # Case 2: Multiple points [[y1, x1], [y2, x2]] -> [[x1, y1], [x2, y2]]
+                    elif len(pt) > 0 and isinstance(pt[0], list) and len(pt[0]) == 2:
+                        pred_item["point"] = [[p[1], p[0]] for p in pt]
+        return result
+
     @abstractmethod
     def generate(self, image_paths, prompt, system_prompt=None):
         """
@@ -25,7 +59,7 @@ class BaseVLM(ABC):
             system_prompt (str, optional): 系统预设提示词。
 
         Returns:
-            dict: 解析后的 JSON 响应。
+            dict: 解析后的 JSON 响应（坐标已统一为 [x, y] 格式）。
         """
         pass
 
@@ -33,6 +67,9 @@ class BaseVLM(ABC):
         """
         根据视频文件和提示生成响应。
         默认实现为抛出错误，子类需覆盖此方法以支持直接视频输入。
+
+        Returns:
+            dict: 解析后的 JSON 响应（坐标已统一为 [x, y] 格式）。
         """
         raise NotImplementedError("该模型不支持直接视频文件输入，请使用 generate 方法传入帧列表。")
 
@@ -42,13 +79,14 @@ class OpenAIVLM(BaseVLM):
     使用 OpenAI 兼容 API (如 GPT-4o, vLLM 等) 的模型封装。
     """
 
-    def __init__(self, api_key, base_url=None, model_name="gpt-4o", accepts_video_files=False):
+    def __init__(self, api_key, base_url=None, model_name="gpt-4o", accepts_video_files=False, coord_order="xy"):
         try:
             from openai import OpenAI
         except ImportError:
             logger.error("缺少 openai 库，请执行 pip install openai")
             raise ImportError("请安装 openai 库: pip install openai")
 
+        super().__init__(coord_order=coord_order)
         self.client = OpenAI(
             api_key=api_key,
             base_url=base_url
@@ -56,7 +94,7 @@ class OpenAIVLM(BaseVLM):
         self.model_name = model_name
         self.accepts_video_files = accepts_video_files  # 是否支持视频文件路径输入
         logger.info(
-            f"OpenAIVLM 初始化完成。模型: {model_name}, Base URL: {base_url or 'Default'}, Video Files: {accepts_video_files}")
+            f"OpenAIVLM 初始化完成。模型: {model_name}, Base URL: {base_url or 'Default'}, Video Files: {accepts_video_files}, Coord Order: {coord_order}")
 
     def _encode_image(self, image_path):
         with open(image_path, "rb") as image_file:
@@ -138,6 +176,9 @@ class OpenAIVLM(BaseVLM):
             result_content = response.choices[0].message.content
             logger.info(f"模型原始响应: {result_content}")
             parsed_result = self._parse_json_response(result_content)
+            # 立即转换坐标格式：如果 coord_order="yx"，将 [y, x] 转换为 [x, y]
+            parsed_result = self._convert_coordinates(
+                parsed_result, self.coord_order)
             logger.info("模型推理成功")
             return parsed_result
 
@@ -193,6 +234,9 @@ class OpenAIVLM(BaseVLM):
             result_content = response.choices[0].message.content
             logger.info(f"模型原始响应: {result_content}")
             parsed_result = self._parse_json_response(result_content)
+            # 立即转换坐标格式：如果 coord_order="yx"，将 [y, x] 转换为 [x, y]
+            parsed_result = self._convert_coordinates(
+                parsed_result, self.coord_order)
             logger.info("模型推理成功")
             return parsed_result
 
@@ -206,7 +250,7 @@ class GeminiVLM(BaseVLM):
     使用 Google Gemini API 的模型封装。
     """
 
-    def __init__(self, api_key, model_name="gemini-1.5-flash"):
+    def __init__(self, api_key, model_name="gemini-1.5-flash", coord_order="yx"):
         try:
             import google.generativeai as genai
         except ImportError:
@@ -215,11 +259,13 @@ class GeminiVLM(BaseVLM):
             raise ImportError(
                 "请安装 google-generativeai 库: pip install google-generativeai")
 
+        super().__init__(coord_order=coord_order)
         genai.configure(api_key=api_key)
         self.model = genai.GenerativeModel(model_name)
         self.model_name = model_name
         self.accepts_video_files = True
-        logger.info(f"GeminiVLM 初始化完成。模型: {model_name}")
+        logger.info(
+            f"GeminiVLM 初始化完成。模型: {model_name}, Coord Order: {coord_order}")
 
     def _wait_for_file_active(self, file_obj):
         """等待文件处理完成"""
@@ -265,6 +311,9 @@ class GeminiVLM(BaseVLM):
             result_content = response.text
             logger.info(f"模型原始响应: {result_content}")
             parsed_result = self._parse_json_response(result_content)
+            # 立即转换坐标格式：如果 coord_order="yx"，将 [y, x] 转换为 [x, y]
+            parsed_result = self._convert_coordinates(
+                parsed_result, self.coord_order)
 
             # 5. 清理（可选，这里为了节省云端空间）
             try:
@@ -334,6 +383,9 @@ class GeminiVLM(BaseVLM):
             result_content = response.text
             logger.info(f"模型原始响应: {result_content}")
             parsed_result = self._parse_json_response(result_content)
+            # 立即转换坐标格式：如果 coord_order="yx"，将 [y, x] 转换为 [x, y]
+            parsed_result = self._convert_coordinates(
+                parsed_result, self.coord_order)
             logger.info("模型推理成功")
             return parsed_result
 

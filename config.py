@@ -12,7 +12,13 @@ class Config:
         "MODEL_PROVIDER", "gemini")  # "openai" 或 "gemini"
     OPENAI_BASE_URL = os.getenv(
         "OPENAI_BASE_URL", "")
-    MODEL_NAME = "gemini-3-pro-preview"  # "gemini-3-pro-preview", gpt-5.2
+    MODEL_NAME = "gemini-3-flash-preview"  # "gemini-3-pro-preview", gpt-5.2
+
+    # --- 坐标顺序配置 ---
+    # 坐标顺序："xy" 表示 [x, y]（默认），"yx" 表示 [y, x]
+    # Gemini 模型默认使用 "yx"，其他模型默认使用 "xy"
+    COORD_ORDER = os.getenv(
+        "COORD_ORDER", "yx" if MODEL_PROVIDER == "gemini" else "xy")
 
     # --- 数据路径配置 ---
     DATA_ROOT_DIR = "data_new"  # 数据根目录，会遍历其下所有子目录（支持多个数据集）

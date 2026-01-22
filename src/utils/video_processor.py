@@ -318,38 +318,7 @@ class VideoProcessor:
                     return (255, 255, 0)  # Cyan
             return (255, 255, 255)  # White as default
 
-        # 按顺序绘制预测点
-        for idx, point_item in enumerate(pred_point_list):
-            if not isinstance(point_item, dict):
-                continue
-
-            point_type = point_item.get("type", "")
-            point_coord = point_item.get("point", [])
-
-            if not point_coord:
-                continue
-
-            # 统一使用 [x, y] 格式直接绘制，无需交换
-            if isinstance(point_coord[0], list):
-                # 多个点的情况 [[x1, y1], [x2, y2]]
-                for i, pt in enumerate(point_coord):
-                    x, y = pt[0], pt[1]
-                    pixel_pt = (int(x / 1000 * w), int(y / 1000 * h))
-                    color = get_color_for_type(point_type, is_pred=True)
-                    cv2.circle(img, pixel_pt, 10, color, -1)
-                    if i == 0:
-                        cv2.putText(img, "Pred", (pixel_pt[0]+10, pixel_pt[1]),
-                                    cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
-            else:
-                # 单个点的情况 [x, y]
-                x, y = point_coord[0], point_coord[1]
-                pixel_pt = (int(x / 1000 * w), int(y / 1000 * h))
-                color = get_color_for_type(point_type, is_pred=True)
-                cv2.circle(img, pixel_pt, 10, color, -1)
-                cv2.putText(img, "Pred", (pixel_pt[0]+10, pixel_pt[1]),
-                            cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
-
-        # 按顺序绘制 GT 点/Mask
+        # 1. 绘制 GT 点/Mask
         # 创建 Mask 叠加层
         overlay = img.copy()
 
@@ -358,8 +327,7 @@ class VideoProcessor:
                 continue
 
             point_type = point_item.get("type", "")
-            point_coord = point_item.get("point", [])  # 此时已在评估引擎中统一为 [x, y]
-            description = point_item.get("description", "")
+            point_coord = point_item.get("point", [])
             mask_info = point_item.get("mask")
 
             color = get_color_for_type(point_type, is_pred=False)
@@ -376,21 +344,22 @@ class VideoProcessor:
                     if mask_img is not None:
                         bbox = mask_info.get("bbox")  # [x1, y1, x2, y2]
                         if bbox:
-                            x1, y1, x2, y2 = bbox
-                            y1, x1, y2, x2 = max(0, y1), max(
-                                0, x1), min(h, y2), min(w, x2)
+                            # 修正坐标顺序: [x1, y1, x2, y2]
+                            bx1, by1, bx2, by2 = bbox
+                            bx1, by1 = max(0, int(bx1)), max(0, int(by1))
+                            bx2, by2 = min(w, int(bx2)), min(h, int(by2))
 
                             if mask_img.shape[0] == h and mask_img.shape[1] == w:
                                 resized_mask = mask_img
                             else:
-                                target_h, target_w = y2 - y1, x2 - x1
+                                target_h, target_w = by2 - by1, bx2 - bx1
                                 if target_h > 0 and target_w > 0:
                                     resized_mask_patch = cv2.resize(
                                         mask_img, (target_w, target_h))
                                     resized_mask = np.zeros(
                                         (h, w), dtype=np.uint8)
-                                    resized_mask[y1:y2,
-                                                 x1:x2] = resized_mask_patch
+                                    resized_mask[by1:by2,
+                                                 bx1:bx2] = resized_mask_patch
                                 else:
                                     resized_mask = None
                         else:
@@ -408,22 +377,53 @@ class VideoProcessor:
 
             # 如果没有 Mask 或者绘制失败，回退到绘制点
             if not has_drawn_mask and point_coord:
-                # 直接绘制统一后的 [x, y]
-                pts = norm_to_pixel(point_coord)
-                if pts:
-                    if isinstance(pts, list):
-                        for pt in pts:
-                            cv2.circle(img, pt, 8, color, 2)
-                            cv2.circle(img, pt, 2, color, -1)
-                    else:
-                        cv2.circle(img, pts, 8, color, 2)
-                        cv2.circle(img, pts, 2, color, -1)
+                if isinstance(point_coord[0], list):
+                    # 多个点 [[x, y], ...]
+                    for pt in point_coord:
+                        pixel_pt = (int(pt[0]), int(pt[1]))
+                        cv2.circle(img, pixel_pt, 8, color, 2)
+                        cv2.circle(img, pixel_pt, 2, color, -1)
+                else:
+                    # 单个点 [x, y]
+                    pixel_pt = (int(point_coord[0]), int(point_coord[1]))
+                    cv2.circle(img, pixel_pt, 8, color, 2)
+                    cv2.circle(img, pixel_pt, 2, color, -1)
 
         # 混合图层 (Mask 透明度)
         alpha = 0.4
         cv2.addWeighted(overlay, alpha, img, 1 - alpha, 0, img)
 
-        # 绘制指令文本和标签 (最后绘制以防被覆盖)
+        # 2. 按顺序绘制预测点 (绘制在混合层之上，确保清晰)
+        for idx, point_item in enumerate(pred_point_list):
+            if not isinstance(point_item, dict):
+                continue
+
+            point_type = point_item.get("type", "")
+            point_coord = point_item.get("point", [])
+
+            if not point_coord:
+                continue
+
+            color = get_color_for_type(point_type, is_pred=True)
+            if isinstance(point_coord[0], list):
+                # 多个点的情况 [[x1, y1], [x2, y2]]
+                for i, pt in enumerate(point_coord):
+                    x, y = pt[0], pt[1]
+                    # 预测点通常是归一化坐标 0-1000
+                    pixel_pt = (int(x / 1000 * w), int(y / 1000 * h))
+                    cv2.circle(img, pixel_pt, 10, color, -1)
+                    if i == 0:
+                        cv2.putText(img, "Pred", (pixel_pt[0]+10, pixel_pt[1]),
+                                    cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
+            else:
+                # 单个点的情况 [x, y]
+                x, y = point_coord[0], point_coord[1]
+                pixel_pt = (int(x / 1000 * w), int(y / 1000 * h))
+                cv2.circle(img, pixel_pt, 10, color, -1)
+                cv2.putText(img, "Pred", (pixel_pt[0]+10, pixel_pt[1]),
+                            cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
+
+        # 3. 绘制指令文本和标签
         pred_cmd = result_json.get("explicit_command", "")
 
         # 使用 Pillow 绘制中文
@@ -463,41 +463,30 @@ class VideoProcessor:
                 draw.text((20, 80), f"Cmd (GT): {gt_cmd}", font=font, fill=(
                     0, 255, 255), stroke_width=1, stroke_fill=(0, 0, 0))
 
-            # 2. 绘制 GT 标签 (直接显示物体名称)
+            # 绘制 GT 标签 (直接显示物体名称)
             for idx, point_item in enumerate(gt_point_list):
                 description = point_item.get("description", "")
                 point_type = point_item.get("type", "")
 
                 # 确定标签位置
                 label_pos = None
-
-                # 使用点位作为标签位置
                 point_coord = point_item.get("point", [])
                 if point_coord:
-                    # 此时 point_coord 已经是统一后的 [x, y]
                     if isinstance(point_coord[0], list):
                         pt = point_coord[0]
                     else:
                         pt = point_coord
 
                     if len(pt) >= 2:
-                        x_norm, y_norm = pt[0], pt[1]
-                        # 转换为像素坐标
-                        x_pixel = int(x_norm / 1000 * w)
-                        y_pixel = int(y_norm / 1000 * h)
-                        label_pos = (x_pixel, y_pixel)
+                        label_pos = (int(pt[0]), int(pt[1]))
 
                 if label_pos:
-                    # GT Color matches object type
-                    label_color = (255, 255, 0) if point_type == "object" else (
-                        0, 255, 255)
-                    # draw.text uses RGB
-                    # Yellow/Cyan
-                    pil_color = (label_color[0],
-                                 label_color[1], label_color[2])
+                    # 使用 get_color_for_type 统一颜色逻辑 (Pillow 使用 RGB)
+                    bgr_color = get_color_for_type(point_type, is_pred=False)
+                    rgb_color = (bgr_color[2], bgr_color[1], bgr_color[0])
 
                     draw.text((label_pos[0] + 10, label_pos[1] - 10), description,
-                              font=font, fill=pil_color, stroke_width=1, stroke_fill=(0, 0, 0))
+                              font=font, fill=rgb_color, stroke_width=1, stroke_fill=(0, 0, 0))
 
             # PIL图片转回OpenCV图片
             img = cv2.cvtColor(np.array(img_pil), cv2.COLOR_RGB2BGR)
@@ -510,6 +499,20 @@ class VideoProcessor:
             if gt_cmd:
                 cv2.putText(img, f"Cmd (GT): {gt_cmd[:30]}...", (
                     20, 80), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 255), 2)
+            
+            # 降级时也尝试绘制 GT 标签名
+            for idx, point_item in enumerate(gt_point_list):
+                description = point_item.get("description", "")
+                point_coord = point_item.get("point", [])
+                if point_coord and description:
+                    if isinstance(point_coord[0], list): pt = point_coord[0]
+                    else: pt = point_coord
+                    if len(pt) >= 2:
+                        cv2.putText(img, description[:10], (int(pt[0])+10, int(pt[1])), 
+                                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 255), 1)
+
+        cv2.imwrite(output_path, img)
+        logger.info(f"可视化结果已保存: {output_path}")
 
         cv2.imwrite(output_path, img)
         logger.info(f"可视化结果已保存: {output_path}")
