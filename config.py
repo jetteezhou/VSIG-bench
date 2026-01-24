@@ -24,35 +24,35 @@ class Config:
     #   - coord_order: 坐标顺序 "xy" 或 "yx"（可选，默认根据provider自动设置）
     #   - use_video_input: 是否使用视频输入（可选，默认使用全局配置）
     MODELS = [
-        # 示例配置：
+        # # 示例配置：
+        # {
+        #     "provider": "gemini",
+        #     "name": "gemini-3-flash-preview",
+        #     "api_key": None,  # None表示使用全局GEMINI_API_KEY
+        #     "coord_order": "yx",
+        #     "use_video_input": True
+        # },
         {
             "provider": "gemini",
-            "name": "gemini-3-flash-preview",
+            "name": "gemini-3-pro-preview",
             "api_key": None,  # None表示使用全局GEMINI_API_KEY
             "coord_order": "yx",
             "use_video_input": True
         },
-        # {
-        #     "provider": "gemini",
-        #     "name": "gemini-3-pro-preview",
-        #     "api_key": None,  # None表示使用全局GEMINI_API_KEY
-        #     "coord_order": "yx",
-        #     "use_video_input": True
-        # },
-        # {
-        #     "provider": "gemini",
-        #     "name": "gemini-2.5-flash",
-        #     "api_key": None,  # None表示使用全局GEMINI_API_KEY
-        #     "coord_order": "yx",
-        #     "use_video_input": True
-        # },
-        # {
-        #     "provider": "gemini",
-        #     "name": "gemini-2.5-pro",
-        #     "api_key": None,  # None表示使用全局GEMINI_API_KEY
-        #     "coord_order": "yx",
-        #     "use_video_input": True
-        # },
+        {
+            "provider": "gemini",
+            "name": "gemini-2.5-flash",
+            "api_key": None,  # None表示使用全局GEMINI_API_KEY
+            "coord_order": "yx",
+            "use_video_input": True
+        },
+        {
+            "provider": "gemini",
+            "name": "gemini-2.5-pro",
+            "api_key": None,  # None表示使用全局GEMINI_API_KEY
+            "coord_order": "yx",
+            "use_video_input": True
+        },
         # {
         #     "provider": "openai",
         #     "name": "gpt-4o",
@@ -87,7 +87,7 @@ class Config:
     NUM_WORKERS = 20  # 并行推理的线程数，默认为4
 
     # --- 并行评估配置 ---
-    EVAL_NUM_WORKERS = 10  # 并行评估的线程数，None 表示单线程
+    EVAL_NUM_WORKERS = 20  # 并行评估的线程数，None 表示单线程
 
     # --- 评估模型配置（如果未配置，则使用推理模型进行评估）---
     # "openai" 或 "gemini"，None 表示使用推理模型

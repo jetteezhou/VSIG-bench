@@ -4,6 +4,7 @@ data_new/
 data_audio_shift/
 temp_frames/
 results/web_runs/test_mode/
+*.jpg
 
 # 字体文件（保留字体文件，但忽略压缩包）
 fonts/*.zip

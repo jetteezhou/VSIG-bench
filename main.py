@@ -56,9 +56,12 @@ def process_single_sample(formatted_gt, options_text, output_dir, model, logger,
         transcript = "用户没有说话，只是做出了指向性动作。"
 
     # 获取模型配置（优先使用传入的配置，否则使用全局配置）
-    use_video_input = model_config.get("use_video_input", Config.USE_VIDEO_INPUT) if model_config else Config.USE_VIDEO_INPUT
-    coord_order = model_config.get("coord_order", Config.COORD_ORDER) if model_config else Config.COORD_ORDER
-    model_name = model_config.get("name", Config.MODEL_NAME) if model_config else Config.MODEL_NAME
+    use_video_input = model_config.get(
+        "use_video_input", Config.USE_VIDEO_INPUT) if model_config else Config.USE_VIDEO_INPUT
+    coord_order = model_config.get(
+        "coord_order", Config.COORD_ORDER) if model_config else Config.COORD_ORDER
+    model_name = model_config.get(
+        "name", Config.MODEL_NAME) if model_config else Config.MODEL_NAME
 
     # 1. 提取帧 / 准备输入
     last_frame_path = None
@@ -239,17 +242,17 @@ def process_single_directory(video_dir, meta_file, output_dir, model, logger, mo
 def initialize_model(model_config, logger):
     """
     根据模型配置初始化模型实例
-    
+
     Args:
         model_config: 模型配置字典，包含 provider, name, api_key 等字段
         logger: 日志记录器
-    
+
     Returns:
         模型实例
     """
     provider = model_config.get("provider")
     model_name = model_config.get("name")
-    
+
     # 获取API密钥（优先使用模型配置中的，否则使用全局配置）
     if provider == "openai":
         api_key = model_config.get("api_key") or Config.OPENAI_API_KEY
@@ -262,7 +265,8 @@ def initialize_model(model_config, logger):
 
         logger.info(f"正在初始化 OpenAIVLM (Model: {model_name})")
         # 获取视频输入配置（优先使用模型配置中的，否则使用全局配置）
-        use_video_input = model_config.get("use_video_input", Config.USE_VIDEO_INPUT)
+        use_video_input = model_config.get(
+            "use_video_input", Config.USE_VIDEO_INPUT)
         coord_order = model_config.get("coord_order", Config.COORD_ORDER)
         model = OpenAIVLM(api_key=api_key, base_url=base_url,
                           model_name=model_name, accepts_video_files=use_video_input,
@@ -284,21 +288,21 @@ def initialize_model(model_config, logger):
     else:
         logger.error(f"不支持的模型提供商: {provider}")
         return None
-    
+
     return model
 
 
 def process_single_model(model_config, logger):
     """
     处理单个模型的完整流程
-    
+
     Args:
         model_config: 模型配置字典
         logger: 日志记录器
     """
     provider = model_config.get("provider")
     model_name = model_config.get("name")
-    
+
     logger.info(f"\n{'='*80}")
     logger.info(f"开始处理模型: {model_name} ({provider})")
     logger.info(f"{'='*80}")
@@ -563,15 +567,16 @@ def process_single_model(model_config, logger):
             all_predictions, all_ground_truths, num_workers=Config.EVAL_NUM_WORKERS)
 
         # 从总体评估结果的 instruction_breakdown 中提取各指令的评估结果（避免重复评估）
-        instruction_breakdown = summary_metrics.get("instruction_breakdown", {})
+        instruction_breakdown = summary_metrics.get(
+            "instruction_breakdown", {})
         instruction_metrics_dict = {}
-        
+
         # 为每个指令构建完整的评估结果格式（与单独评估时的格式保持一致）
         for inst_name in sorted(all_predictions_by_instruction.keys()):
             if inst_name in instruction_breakdown:
                 # 从 instruction_breakdown 中提取该指令的评估结果
                 inst_breakdown = instruction_breakdown[inst_name]
-                
+
                 # 构建与单独评估时相同格式的评估结果
                 inst_metrics = {
                     "overall_accuracy": inst_breakdown.get("intent_accuracy", 0.0),
@@ -582,9 +587,9 @@ def process_single_model(model_config, logger):
                     "instruction_breakdown": {inst_name: inst_breakdown},
                     "count": inst_breakdown.get("count", 0)
                 }
-                
+
                 instruction_metrics_dict[inst_name] = inst_metrics
-                
+
                 logger.info(f"指令 {inst_name} 的评估结果:")
                 logger.info(json.dumps(inst_metrics, indent=2))
 
@@ -610,16 +615,20 @@ def process_single_model(model_config, logger):
             }
         }
 
-        logger.info("汇总评估结果:")
-        logger.info(json.dumps(summary_metrics_complete, indent=2))
-
-        # 保存汇总评估结果到文件
+        # 保存汇总评估结果到文件 (包含详细样本结果)
         summary_metrics_path = os.path.join(
             base_output_dir, "metrics_summary.json")
         with open(summary_metrics_path, "w", encoding="utf-8") as f:
             json.dump(summary_metrics_complete, f,
                       indent=2, ensure_ascii=False)
         logger.info(f"汇总评估结果已保存至: {summary_metrics_path}")
+
+        # 打印汇总评估结果 (不包含详细结果，避免终端输出过长)
+        if "overall" in summary_metrics_complete and "detailed_results" in summary_metrics_complete["overall"]:
+            del summary_metrics_complete["overall"]["detailed_results"]
+
+        logger.info("汇总评估结果 (不包含详细样本结果):")
+        logger.info(json.dumps(summary_metrics_complete, indent=2))
     else:
         logger.warning("没有有效的预测结果，无法进行评估。")
 
@@ -633,9 +642,10 @@ def main():
     if hasattr(Config, 'MODELS') and Config.MODELS and len(Config.MODELS) > 0:
         log_dir = "results/logs"
     else:
-        model_name_safe = Config.MODEL_NAME.replace("/", "_").replace("\\", "_")
+        model_name_safe = Config.MODEL_NAME.replace(
+            "/", "_").replace("\\", "_")
         log_dir = os.path.join("results", model_name_safe, "logs")
-    
+
     logger, log_file = setup_logger(output_dir=log_dir, log_to_file=True)
     if log_file:
         logger.info(f"日志文件: {log_file}")
@@ -648,28 +658,30 @@ def main():
         logger.info(f"\n{'='*80}")
         logger.info(f"检测到多模型配置，共 {len(Config.MODELS)} 个模型")
         logger.info(f"{'='*80}\n")
-        
+
         for model_idx, model_config in enumerate(Config.MODELS):
             logger.info(f"\n{'#'*80}")
             logger.info(f"处理模型 [{model_idx+1}/{len(Config.MODELS)}]")
             logger.info(f"{'#'*80}")
-            
+
             try:
                 process_single_model(model_config, logger)
             except Exception as e:
-                logger.error(f"处理模型 {model_config.get('name', 'unknown')} 时发生错误: {e}")
+                logger.error(
+                    f"处理模型 {model_config.get('name', 'unknown')} 时发生错误: {e}")
                 import traceback
                 logger.error(traceback.format_exc())
-                logger.warning(f"跳过模型 {model_config.get('name', 'unknown')}，继续处理下一个模型")
+                logger.warning(
+                    f"跳过模型 {model_config.get('name', 'unknown')}，继续处理下一个模型")
                 continue
-        
+
         logger.info(f"\n{'='*80}")
         logger.info("所有模型处理完成")
         logger.info(f"{'='*80}")
     else:
         # 单模型模式：使用原有的单个模型配置（保持向后兼容）
         logger.info("使用单模型配置模式")
-        
+
         # 构建单个模型配置
         model_config = {
             "provider": Config.MODEL_PROVIDER,
@@ -679,7 +691,7 @@ def main():
             "coord_order": Config.COORD_ORDER,
             "use_video_input": Config.USE_VIDEO_INPUT
         }
-        
+
         try:
             process_single_model(model_config, logger)
         except Exception as e:
@@ -687,7 +699,7 @@ def main():
             import traceback
             logger.error(traceback.format_exc())
             sys.exit(1)
-    
+
     logger.info("所有任务结束")
 
 

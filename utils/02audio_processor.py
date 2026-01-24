@@ -1,6 +1,5 @@
 """音频处理模块"""
-import os
-import sys
+from utils.settings import AUDIO_SAMPLE_RATE, AUDIO_FORMAT, AUDIO_CHANNELS, ASR_MODEL, DASHSCOPE_API_KEY
 import subprocess
 import tempfile
 import json
@@ -10,11 +9,11 @@ from pydub import AudioSegment
 import dashscope
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import threading
+import os
+import sys
 
 # 添加项目根目录到sys.path，以便导入utils模块
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-from utils.settings import AUDIO_SAMPLE_RATE, AUDIO_FORMAT, AUDIO_CHANNELS, ASR_MODEL, DASHSCOPE_API_KEY
 
 
 def extract_audio_and_video(video_path: str, output_dir: str) -> Tuple[Optional[str], Optional[str]]:
@@ -144,11 +143,12 @@ def audio_to_words_with_timestamps(
         print(f"音频文件大小: {file_size} 字节")
 
         # 设置API密钥
-        dashscope.api_key = DASHSCOPE_API_KEY
+        dashscope.api_key = "sk-dee7a03925be4cfb8fd61b0c1013dd34"  # DASHSCOPE_API_KEY
 
         # 设置 WebSocket API URL（北京地域）
         # 若使用新加坡地域的模型，需将url替换为：wss://dashscope-intl.aliyuncs.com/api-ws/v1/inference
-        dashscope.base_websocket_api_url = 'wss://dashscope.aliyuncs.com/api-ws/v1/inference'
+        # wss://dashscope.aliyuncs.com/api-ws/v1/inference
+        dashscope.base_websocket_api_url = "wss://dashscope.aliyuncs.com/api-ws/v1/inference"
 
         # 转换音频为单声道
         print(f"开始转换音频格式: {audio_file_path}")
@@ -207,7 +207,7 @@ def audio_to_words_with_timestamps(
             words_list = []
             sentences_with_words = 0
             total_sentences = len(sentence) if sentence else 0
-            
+
             if sentence and len(sentence) > 0:
                 for idx, sent in enumerate(sentence):
                     if isinstance(sent, dict) and "words" in sent:
@@ -225,15 +225,18 @@ def audio_to_words_with_timestamps(
                                     }
                                     # 保留其他字段（如果有）
                                     if "punctuation" in word:
-                                        word_dict["punctuation"] = word.get("punctuation")
+                                        word_dict["punctuation"] = word.get(
+                                            "punctuation")
                                     valid_words.append(word_dict)
-                            
+
                             if valid_words:
                                 words_list.extend(valid_words)
                                 sentences_with_words += 1
-                                print(f"调试信息: sentence[{idx}]包含{len(valid_words)}个有效词汇")
+                                print(
+                                    f"调试信息: sentence[{idx}]包含{len(valid_words)}个有效词汇")
                             else:
-                                print(f"调试信息: sentence[{idx}]的words格式不正确（缺少text字段或text为空）")
+                                print(
+                                    f"调试信息: sentence[{idx}]的words格式不正确（缺少text字段或text为空）")
                         else:
                             print(f"调试信息: sentence[{idx}]的words为空或长度为0")
                     else:
@@ -241,7 +244,8 @@ def audio_to_words_with_timestamps(
 
             # 如果至少有一个sentence有words，就认为识别成功
             if words_list and len(words_list) > 0:
-                print(f"调试信息: 总共收集到{len(words_list)}个词汇（来自{sentences_with_words}/{total_sentences}个sentence）")
+                print(
+                    f"调试信息: 总共收集到{len(words_list)}个词汇（来自{sentences_with_words}/{total_sentences}个sentence）")
 
                 # 打印识别指标
                 print(f'[Metric] requestId: {recognition.get_last_request_id()}, '
@@ -273,8 +277,10 @@ def audio_to_words_with_timestamps(
                     import json
                     try:
                         # 只打印前3个sentence的详细信息，避免日志过长
-                        preview = sentence[:3] if len(sentence) > 3 else sentence
-                        print(f"前{len(preview)}个sentence的JSON格式: {json.dumps(preview, ensure_ascii=False, indent=2)}")
+                        preview = sentence[:3] if len(
+                            sentence) > 3 else sentence
+                        print(
+                            f"前{len(preview)}个sentence的JSON格式: {json.dumps(preview, ensure_ascii=False, indent=2)}")
                     except:
                         print(f"sentence无法序列化为JSON")
                 return False, [], error_msg
@@ -360,10 +366,10 @@ def validate_api_key(api_key: str) -> Tuple[bool, Optional[str]]:
 def _process_single_video_item(task_info: Dict) -> Dict:
     """
     处理单个视频项的辅助函数，用于线程池并行处理
-    
+
     Args:
         task_info: 包含任务信息的字典，包括 video_path, video_name, root, api_key, template_asr, item_index
-        
+
     Returns:
         处理结果字典，包含 success, item_index, asr_result, error 等字段
     """
@@ -372,10 +378,10 @@ def _process_single_video_item(task_info: Dict) -> Dict:
     root = task_info['root']
     api_key = task_info['api_key']
     item_index = task_info['item_index']
-    
+
     try:
         print(f"[线程] 处理视频: {video_name} (在 {os.path.basename(root)})")
-        
+
         # Extract audio
         audio_path, _ = extract_audio_and_video(video_path, output_dir=root)
         if not audio_path:
@@ -387,7 +393,8 @@ def _process_single_video_item(task_info: Dict) -> Dict:
             }
 
         # Recognize
-        success, words_list, error = audio_to_words_with_timestamps(audio_path, api_key)
+        success, words_list, error = audio_to_words_with_timestamps(
+            audio_path, api_key)
 
         # Clean up temp audio
         if os.path.exists(audio_path):
@@ -496,19 +503,19 @@ def fill_missing_asr_in_dir(target_dir: str, api_key: str) -> None:
     print("正在收集需要处理的任务...")
     tasks = []  # 存储所有任务信息
     json_files_data = {}  # 存储每个JSON文件的完整数据和路径
-    
+
     for root, dirs, files in os.walk(target_dir):
         if "annotations.json" in files:
             json_path = os.path.join(root, "annotations.json")
             try:
                 with open(json_path, 'r', encoding='utf-8') as f:
                     data = json.load(f)
-                
+
                 json_files_data[json_path] = {
                     'data': data,
                     'root': root
                 }
-                
+
                 for item_index, item in enumerate(data):
                     # Check if processing is needed
                     needs_update = False
@@ -530,7 +537,7 @@ def fill_missing_asr_in_dir(target_dir: str, api_key: str) -> None:
                         if not video_name:
                             print(f"  警告: 第{item_index}项缺少video_name字段，跳过")
                             continue
-                        
+
                         # Find video file
                         video_path = os.path.join(root, video_name)
                         if not os.path.exists(video_path):
@@ -570,45 +577,46 @@ def fill_missing_asr_in_dir(target_dir: str, api_key: str) -> None:
     total_processed = 0
     total_errors = 0
     should_stop_global = False
-    
+
     # 用于存储每个JSON文件的更新结果
     json_updates = {}  # json_path -> {item_index: asr_result}
-    
+
     # 创建线程锁用于保护共享变量
     lock = threading.Lock()
-    
+
     with ThreadPoolExecutor(max_workers=10) as executor:
         # 提交所有任务
         future_to_task = {
             executor.submit(_process_single_video_item, task): task
             for task in tasks
         }
-        
+
         # 处理完成的任务
         for future in as_completed(future_to_task):
             task = future_to_task[future]
             try:
                 result = future.result()
-                
+
                 with lock:
                     if result['should_stop']:
                         should_stop_global = True
-                    
+
                     json_path = task['json_path']
                     if json_path not in json_updates:
                         json_updates[json_path] = {}
-                    
+
                     if result['success']:
-                        json_updates[json_path][result['item_index']] = result['asr_result']
+                        json_updates[json_path][result['item_index']
+                                                ] = result['asr_result']
                         total_processed += 1
                     else:
                         total_errors += 1
-                        
+
             except Exception as e:
                 print(f"任务执行异常: {task['video_name']}, 错误: {e}")
                 with lock:
                     total_errors += 1
-            
+
             # 如果检测到需要停止的错误，取消剩余任务
             if should_stop_global:
                 print("检测到严重错误，正在取消剩余任务...")
@@ -627,12 +635,12 @@ def fill_missing_asr_in_dir(target_dir: str, api_key: str) -> None:
         if not updates:
             print(f"跳过文件 {json_path}：没有更新项")
             continue
-        
+
         try:
             data = json_files_data[json_path]['data']
             modified = False
             update_count = 0
-            
+
             print(f"处理文件: {json_path}，共有 {len(updates)} 个更新项")
             for item_index, asr_result in updates.items():
                 if item_index < len(data):
@@ -641,10 +649,11 @@ def fill_missing_asr_in_dir(target_dir: str, api_key: str) -> None:
                     modified = True
                     update_count += 1
                     video_name = data[item_index].get("video_name", "未知")
-                    print(f"  更新索引 {item_index} ({video_name}): null -> 已填充ASR结果")
+                    print(
+                        f"  更新索引 {item_index} ({video_name}): null -> 已填充ASR结果")
                 else:
                     print(f"  警告: 索引 {item_index} 超出范围（数据长度: {len(data)}）")
-            
+
             if modified:
                 print(f"保存更新到文件: {json_path}（更新了 {update_count} 项）")
                 with open(json_path, 'w', encoding='utf-8') as f:

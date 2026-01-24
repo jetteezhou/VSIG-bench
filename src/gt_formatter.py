@@ -118,7 +118,7 @@ class GTFormatter:
     def process_gt_by_template(gt: Dict, video_eval_info: Dict = None) -> Dict:
         """
         根据任务模板对 GT 数据进行预处理。
-        
+
         重要：完全从 eval_gt.json 读取数据
         - 如果提供了 video_eval_info (来自 eval_gt.json)，则完全从其 answer 列表中提取信息
         - 每个 answer 项包含 choice, asr_begin_time, asr_end_time
@@ -126,7 +126,8 @@ class GTFormatter:
         - 小写字母选项（空间位置）包含 points 字段（归一化 1-1000 [y, x] 格式）
         """
         # 使用 video_eval_info 的 JSON 字符串作为缓存键（如果存在）
-        cache_key = json.dumps(video_eval_info, sort_keys=True, ensure_ascii=False) if video_eval_info else json.dumps(gt, sort_keys=True, ensure_ascii=False)
+        cache_key = json.dumps(video_eval_info, sort_keys=True, ensure_ascii=False) if video_eval_info else json.dumps(
+            gt, sort_keys=True, ensure_ascii=False)
 
         if cache_key in GTFormatter._gt_cache:
             return GTFormatter._gt_cache[cache_key]
@@ -148,7 +149,7 @@ class GTFormatter:
                 f"无法从 eval_gt.json 读取评估数据。视频: {video_name}。"
                 f"请确保 eval_gt.json 文件存在且包含该视频的 answer 字段。"
             )
-        
+
         answers = video_eval_info.get("answer", [])
         if not answers:
             video_name = gt.get("video_name", "Unknown")
@@ -156,25 +157,25 @@ class GTFormatter:
                 f"eval_gt.json 中视频 {video_name} 的 answer 列表为空。"
                 f"请检查 eval_gt.json 文件。"
             )
-        
+
         for ans in answers:
             if not isinstance(ans, dict):
                 continue
-            
+
             choice = ans.get("choice", "")
             if not choice:
                 continue
-            
+
             # 判断是大写字母（物体）还是小写字母（空间位置）
             is_uppercase = choice.isupper()
-            
+
             item = {
                 "choice": choice,
                 "asr_begin_time": ans.get("asr_begin_time", 0),
                 "asr_end_time": ans.get("asr_end_time", 0),
                 "type": "object" if is_uppercase else "space"
             }
-            
+
             # 提取并转换 points (不管是物体还是空间)
             # eval_gt.json 中的 points 是 [y, x] 归一化格式 (1-1000)
             if "points" in ans and ans.get("points"):
@@ -186,16 +187,17 @@ class GTFormatter:
                 else:
                     # [y, x] -> [x, y]
                     xy_points = [ans_points[1], ans_points[0]]
-                
+
                 # 2. 反归一化为像素坐标
-                item["points"] = GTFormatter._normalize_to_pixel_coords(xy_points, width, height)
-            
+                item["points"] = GTFormatter._normalize_to_pixel_coords(
+                    xy_points, width, height)
+
             # 大写字母选项：提取 mask（评估时只需要 mask，不需要 points）
             if is_uppercase and "mask" in ans:
                 item["mask"] = ans["mask"]
-            
+
             processed_gt["items"].append(item)
-        
+
         if not processed_gt["items"]:
             video_name = gt.get("video_name", "Unknown")
             raise ValueError(
@@ -252,7 +254,8 @@ class GTFormatter:
 
         # 处理GT items（用于空间/语音时间评估）
         # process_gt_by_template 会从 eval_gt.json 的 answer 中提取数据
-        processed_gt = GTFormatter.process_gt_by_template(formatted_gt, video_eval_info)
+        processed_gt = GTFormatter.process_gt_by_template(
+            formatted_gt, video_eval_info)
 
         # 保存处理后的 GT
         formatted_gt["_processed_gt"] = processed_gt
@@ -264,7 +267,7 @@ class GTFormatter:
             raise ValueError(
                 f"eval_gt.json 中视频 {video_name} 的 answer 列表为空。"
             )
-        
+
         correct_options = []
         gt_speech_temporal = []
         for ans in answers:
@@ -276,10 +279,12 @@ class GTFormatter:
             else:
                 # 兼容旧格式（如果是字符串列表）
                 correct_options.append(ans)
-        
+
         # 保存 choices 信息，用于可视化时获取名称
-        formatted_gt["_object_choices"] = video_eval_info.get("object_choices", [])
-        formatted_gt["_space_choices"] = video_eval_info.get("space_choices", [])
+        formatted_gt["_object_choices"] = video_eval_info.get(
+            "object_choices", [])
+        formatted_gt["_space_choices"] = video_eval_info.get(
+            "space_choices", [])
 
         formatted_gt["_correct_options"] = correct_options
         formatted_gt["_gt_speech_temporal"] = gt_speech_temporal
@@ -373,18 +378,15 @@ class GTFormatter:
         formatted_list = []
         for item in annotations:
             video_name = item.get("video_name")
-            
+
             if not video_name:
                 raise ValueError(
                     f"标注数据中缺少 video_name 字段。"
                 )
 
             # 检查视频是否在评估列表中
-            if video_name not in video_eval_data:
-                raise ValueError(
-                    f"视频 {video_name} 不在 eval_gt.json 的评估列表中。"
-                    f"请确保 eval_gt.json 包含该视频的评估数据。"
-                )
+            if video_eval_data and video_name not in video_eval_data:
+                continue
 
             video_path = video_name_to_path.get(video_name)
 
@@ -395,9 +397,13 @@ class GTFormatter:
                 width, height = 1920, 1080
 
             video_eval_info = video_eval_data.get(video_name)
-            formatted_gt = GTFormatter.format_gt_for_evaluation(
-                item, video_dir, video_eval_info, video_width=width, video_height=height
-            )
-            formatted_list.append(formatted_gt)
+            try:
+                formatted_gt = GTFormatter.format_gt_for_evaluation(
+                    item, video_dir, video_eval_info, video_width=width, video_height=height
+                )
+                formatted_list.append(formatted_gt)
+            except ValueError as e:
+                # 如果单个样本格式化失败，跳过并记录（或者在 main.py 中通过长度差异发现）
+                continue
 
         return formatted_list

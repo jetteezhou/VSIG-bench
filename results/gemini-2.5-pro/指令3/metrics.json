@@ -1,0 +1,17 @@
+{
+  "overall_accuracy": 0.6,
+  "intent_grounding_accuracy": 0.6,
+  "spatial_grounding_accuracy": 0.025,
+  "speech_temporal_grounding_accuracy": 0.475,
+  "overall_score": 0.3666666666666667,
+  "instruction_breakdown": {
+    "指令3": {
+      "intent_accuracy": 0.6,
+      "spatial_grounding": 0.025,
+      "speech_temporal_grounding": 0.475,
+      "overall": 0.3666666666666667,
+      "count": 20
+    }
+  },
+  "count": 20
+}
