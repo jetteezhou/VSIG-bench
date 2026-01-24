@@ -1,17 +1,17 @@
 {
-  "overall_accuracy": 0.3333333333333333,
-  "intent_grounding_accuracy": 0.3333333333333333,
+  "overall_accuracy": 0.5333333333333333,
+  "intent_grounding_accuracy": 0.5333333333333333,
   "spatial_grounding_accuracy": 0.13333333333333333,
-  "temporal_grounding_accuracy": 0.0,
-  "overall_score": 0.23333333333333334,
+  "speech_temporal_grounding_accuracy": 0.13333333333333333,
+  "overall_score": 0.26666666666666666,
   "instruction_breakdown": {
     "指令2": {
-      "intent_accuracy": 0.3333333333333333,
+      "intent_accuracy": 0.5333333333333333,
       "spatial_grounding": 0.13333333333333333,
-      "temporal_grounding": 0.0,
-      "overall": 0.23333333333333334,
-      "count": 30
+      "speech_temporal_grounding": 0.13333333333333333,
+      "overall": 0.26666666666666666,
+      "count": 15
     }
   },
-  "count": 30
+  "count": 15
 }

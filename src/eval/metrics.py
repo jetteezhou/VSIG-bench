@@ -6,6 +6,7 @@ import base64
 import cv2
 import os
 import re
+import logging
 from PIL import Image
 import io
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -22,7 +23,7 @@ class Evaluator:
 
     @staticmethod
     def set_eval_model(model):
-        """保留接口，但在 MCQ 模式下可能不需要"""
+        """保留接口，但在当前模式下不需要"""
         Evaluator._eval_model = model
 
     @staticmethod
@@ -109,75 +110,30 @@ class Evaluator:
             return False
 
     @staticmethod
-    def evaluate_temporal(pred_ts, asr_result, target_description):
+    def evaluate_speech_temporal(pred_peak_ms, gt_ts):
         """
-        让大模型评估时间定位。
-        pred_ts: [start_ms, end_ms]
-        asr_result: ASR 结果字典 (包含 text 和 words)
-        target_description: 目标描述
+        计算语音时间定位的准确度：判断预测的尖峰时刻是否在GT的ASR范围内。
+        
+        Args:
+            pred_peak_ms: 预测的尖峰时刻（单个整数，毫秒）
+            gt_ts: GT的时间范围 [asr_begin_time, asr_end_time]
+        
+        Returns:
+            准确度：如果pred_peak_ms在[gt_start, gt_end]范围内返回1.0，否则返回0.0
         """
-        if not pred_ts or not asr_result:
+        if pred_peak_ms is None or not gt_ts:
             return 0.0
 
-        if not Evaluator._eval_model:
-            # 如果没有评估模型，回退到简单的 IoU 计算
-            return Evaluator._evaluate_temporal_fallback(pred_ts, asr_result)
+        gt_start, gt_end = gt_ts
 
-        asr_text = asr_result.get("text", "")
-        asr_words = asr_result.get("words", [])
-
-        words_info = []
-        for w in asr_words:
-            words_info.append(
-                f"'{w['text']}' ({w.get('begin_time', 0)}ms-{w.get('end_time', 0)}ms)")
-
-        words_timeline = ", ".join(words_info)
-
-        prompt = f"""你是一个评估视觉语言模型表现的专家助手。
-用户的原始语音转录内容为："{asr_text}"。
-其中每个词及其对应的时间轴（毫秒）如下：{words_timeline}。
-
-模型预测的与"{target_description}"动作相关的视频时间范围为：{pred_ts[0]}ms 到 {pred_ts[1]}ms。
-
-请根据语音时间轴判断，模型预测的时间范围是否准确涵盖了用户提到该物体或执行该动作时的语音段？
-评分标准：
-- 1.0: 预测非常准确，精准涵盖了相关的语音。
-- 0.5: 预测部分重叠，或者范围过大/过小，但包含关键部分。
-- 0.0: 预测完全错误，没有涵盖相关的语音段。
-
-请以 JSON 格式返回评分结果，包含字段 "score" (0.0 到 1.0 之间的浮点数)。只返回 JSON 即可。"""
-
-        try:
-            # 调用大模型（传入空图像列表）
-            result = Evaluator._eval_model.generate([], prompt)
-            score = result.get("score", 0.0)
-            try:
-                score = float(score)
-            except (TypeError, ValueError):
-                score = 0.0
-            return max(0.0, min(1.0, score))
-        except Exception:
-            # 出错时回退
-            return Evaluator._evaluate_temporal_fallback(pred_ts, asr_result)
-
-    @staticmethod
-    def _evaluate_temporal_fallback(pred_ts, asr_result):
-        """
-        传统的 IoU 时间定位评估。
-        """
-        pred_start, pred_end = pred_ts
-        asr_words = asr_result.get("words", [])
-        if not asr_words:
+        if gt_start is None or gt_end is None:
             return 0.0
 
-        asr_start = min(w.get("begin_time", 0) for w in asr_words)
-        asr_end = max(w.get("end_time", 0) for w in asr_words)
-
-        intersection = max(0, min(pred_end, asr_end) -
-                           max(pred_start, asr_start))
-        union = max(pred_end, asr_end) - min(pred_start, asr_start)
-
-        return intersection / union if union > 0 else 0.0
+        # 判断预测的尖峰时刻是否在GT范围内
+        if gt_start <= pred_peak_ms <= gt_end:
+            return 1.0
+        else:
+            return 0.0
 
     @staticmethod
     def evaluate_intent(selected_norm, correct_norm):
@@ -199,6 +155,11 @@ class Evaluator:
         accuracy = matches / len(correct_norm)
         # 只有完全一致时 is_match 才为 True
         is_match = (selected_norm == correct_norm)
+        # 严格匹配结果
+        if is_match:
+            return 1.0, True
+        else:
+            return 0.0, False
 
         return accuracy, is_match
 
@@ -233,18 +194,19 @@ class Evaluator:
         评估单个样本。所有信息都已预处理，直接使用即可。
 
         Args:
-            pred (dict): 模型预测结果 (JSON)，坐标已统一为 [x, y] 格式（归一化 0-1000）
+            pred (dict): 模型预测结果 (JSON)，坐标已统一为 [x, y]格式（归一化 0-1000）
             formatted_gt (dict): 已格式化的GT数据（通过 GTFormatter.format_gt_for_evaluation 处理）
                 - 包含 _video_dir, _video_width, _video_height, _last_frame_path
                 - _processed_gt: GT items（points 已转换为像素坐标）
                 - _correct_options: 正确答案选项列表
+                - _gt_speech_temporal: 语音时间定位 GT 列表
         """
         video_name = formatted_gt.get("video_name")
         if not video_name:
             return {
                 "intent_accuracy": 0.0,
                 "spatial_grounding": 0.0,
-                "temporal_grounding": 0.0,
+                "speech_temporal_grounding": 0.0,
                 "match": False,
                 "pred_options": [],
                 "gt_options": []
@@ -293,26 +255,11 @@ class Evaluator:
                 spatial_scores.append(0.0)
                 continue
 
-            # 获取GT点（已经是像素坐标）
-            gt_points = gt_item.get("points", [])
-            if not gt_points:
-                spatial_scores.append(0.0)
-                continue
-
             # 将预测点从归一化坐标转换为像素坐标
             pred_pt_pixel = Evaluator._normalize_pred_to_pixel(
                 pred_pt, width, height)
 
-            # GT points 已经是像素坐标，取平均
-            if isinstance(gt_points[0], list):
-                gt_pt_avg = [
-                    int(sum(p[0] for p in gt_points) / len(gt_points)),
-                    int(sum(p[1] for p in gt_points) / len(gt_points))
-                ]
-            else:
-                gt_pt_avg = [int(gt_points[0]), int(gt_points[1])]
-
-            # 如果GT有mask，使用mask检查
+            # 如果GT有mask（大写字母物体选项），使用mask检查
             if "mask" in gt_item and gt_item["mask"].get("mask_base64"):
                 is_hit = Evaluator.is_point_in_mask(
                     pred_pt_pixel,
@@ -323,6 +270,21 @@ class Evaluator:
                 )
                 spatial_scores.append(1.0 if is_hit else 0.0)
             else:
+                # 如果没有mask（小写字母空间位置选项），使用points和距离阈值
+                gt_points = gt_item.get("points", [])
+                if not gt_points:
+                    spatial_scores.append(0.0)
+                    continue
+                
+                # GT points 已经是像素坐标，取平均
+                if isinstance(gt_points[0], list):
+                    gt_pt_avg = [
+                        int(sum(p[0] for p in gt_points) / len(gt_points)),
+                        int(sum(p[1] for p in gt_points) / len(gt_points))
+                    ]
+                else:
+                    gt_pt_avg = [int(gt_points[0]), int(gt_points[1])]
+                
                 # 使用距离阈值（50像素）
                 dist = Evaluator.calculate_distance(pred_pt_pixel, gt_pt_avg)
                 spatial_scores.append(1.0 if dist < 50 else 0.0)
@@ -330,33 +292,40 @@ class Evaluator:
         spatial_grounding = sum(spatial_scores) / \
             len(spatial_scores) if spatial_scores else 0.0
 
-        # 计算 temporal_grounding：让大模型判断
-        temporal_scores = []
+        # 计算 speech_temporal_grounding：判断尖峰时刻是否在ASR范围内（准确度）
+        speech_temporal_scores = []
+        gt_speech_temporal = formatted_gt.get("_gt_speech_temporal", [])
 
-        if asr_result and asr_result.get("text") and asr_result.get("words"):
-            for i, pred_item in enumerate(pred_points):
-                pred_ts = pred_item.get("timestamp")
-                if pred_ts is None:
-                    # 如果没有timestamp（如指令1），跳过评估
-                    continue
+        for i, pred_item in enumerate(pred_points):
+            pred_peak_ms = pred_item.get("timestamp")
+            if pred_peak_ms is None:
+                # 如果没有timestamp（如指令1），跳过评估
+                continue
 
-                if not isinstance(pred_ts, list) or len(pred_ts) != 2:
-                    temporal_scores.append(0.0)
-                    continue
+            # 检查pred_peak_ms是否为有效的整数或浮点数
+            if not isinstance(pred_peak_ms, (int, float)):
+                speech_temporal_scores.append(0.0)
+                continue
 
-                # 调用 LLM 评估或回退 IoU
-                target_desc = pred_item.get("description", "目标物体")
-                score = Evaluator.evaluate_temporal(
-                    pred_ts, asr_result, target_desc)
-                temporal_scores.append(score)
+            pred_peak_ms = int(pred_peak_ms)
 
-        temporal_grounding = sum(temporal_scores) / \
-            len(temporal_scores) if temporal_scores else 0.0
+            # 获取对应的 GT 时间范围
+            if i < len(gt_speech_temporal):
+                gt_item = gt_speech_temporal[i]
+                gt_ts = [gt_item.get("asr_begin_time"),
+                         gt_item.get("asr_end_time")]
+                score = Evaluator.evaluate_speech_temporal(pred_peak_ms, gt_ts)
+                speech_temporal_scores.append(score)
+            else:
+                speech_temporal_scores.append(0.0)
+
+        speech_temporal_grounding = sum(speech_temporal_scores) / \
+            len(speech_temporal_scores) if speech_temporal_scores else 0.0
 
         return {
             "intent_accuracy": intent_accuracy,
             "spatial_grounding": spatial_grounding,
-            "temporal_grounding": temporal_grounding,
+            "speech_temporal_grounding": speech_temporal_grounding,
             "match": is_match,
             "pred_options": selected_norm,
             "gt_options": correct_norm
@@ -402,10 +371,11 @@ class Evaluator:
                         score = future.result()
                         results_with_gt.append((score, gt, pred))
                     except Exception as e:
+                        logging.error(f"Error evaluating sample: {e}")
                         default_score = {
                             "intent_accuracy": 0.0,
                             "spatial_grounding": 0.0,
-                            "temporal_grounding": 0.0,
+                            "speech_temporal_grounding": 0.0,
                             "match": False,
                             "pred_options": [],
                             "gt_options": []
@@ -419,10 +389,11 @@ class Evaluator:
                     score = Evaluator._evaluate_single_sample_wrapper(args)
                     results_with_gt.append((score, gt, pred))
                 except Exception as e:
+                    logging.error(f"Error evaluating sample: {e}")
                     default_score = {
                         "intent_accuracy": 0.0,
                         "spatial_grounding": 0.0,
-                        "temporal_grounding": 0.0,
+                        "speech_temporal_grounding": 0.0,
                         "match": False,
                         "pred_options": [],
                         "gt_options": []
@@ -438,15 +409,16 @@ class Evaluator:
         avg_intent = sum(s["intent_accuracy"]
                          for s in all_scores) / len(all_scores)
 
-        # 空间和时间 Grounding 取平均（现在是标量值）
+        # 空间和语音时间 Grounding 取平均
         all_spatial = [s["spatial_grounding"] for s in all_scores]
         avg_spatial = sum(all_spatial) / \
             len(all_spatial) if all_spatial else 0.0
 
-        all_temporal = [s["temporal_grounding"]
-                        for s in all_scores if s.get("temporal_grounding", 0) > 0]
-        avg_temporal = sum(all_temporal) / \
-            len(all_temporal) if all_temporal else 0.0
+        all_speech_temporal = [score["speech_temporal_grounding"]
+                               for score, gt, pred in results_with_gt
+                               if gt.get("task_template") != "指令1"]
+        avg_speech_temporal = sum(all_speech_temporal) / \
+            len(all_speech_temporal) if all_speech_temporal else 0.0
 
         # 按指令类型统计 (Instruction-wise breakdown)
         instruction_breakdown = {}
@@ -457,7 +429,7 @@ class Evaluator:
                 instruction_breakdown[instr] = {
                     "intent_accuracy": [],
                     "spatial_grounding": [],
-                    "temporal_grounding": [],
+                    "speech_temporal_grounding": [],
                     "count": 0
                 }
 
@@ -465,8 +437,9 @@ class Evaluator:
             ib["count"] += 1
             ib["intent_accuracy"].append(score["intent_accuracy"])
             ib["spatial_grounding"].append(score["spatial_grounding"])
-            if score.get("temporal_grounding", 0) > 0:
-                ib["temporal_grounding"].append(score["temporal_grounding"])
+            # 指令1不参与语音时间定位评估
+            if instr != "指令1":
+                ib["speech_temporal_grounding"].append(score["speech_temporal_grounding"])
 
         breakdown_results = {}
         for instr, data in instruction_breakdown.items():
@@ -474,15 +447,15 @@ class Evaluator:
             avg_s = sum(data["spatial_grounding"]) / \
                 len(data["spatial_grounding"]
                     ) if data["spatial_grounding"] else 0.0
-            avg_t = sum(data["temporal_grounding"]) / \
-                len(data["temporal_grounding"]
-                    ) if data["temporal_grounding"] else 0.0
+            avg_t = sum(data["speech_temporal_grounding"]) / \
+                len(data["speech_temporal_grounding"]
+                    ) if data["speech_temporal_grounding"] else 0.0
 
             breakdown_results[instr] = {
                 "intent_accuracy": avg_i,
                 "spatial_grounding": avg_s,
-                "temporal_grounding": avg_t,
-                "overall": (avg_i + avg_s + avg_t) / 3 if avg_t > 0 else (avg_i + avg_s) / 2,
+                "speech_temporal_grounding": avg_t,
+                "overall": (avg_i + avg_s + avg_t) / 3 if data["speech_temporal_grounding"] else (avg_i + avg_s) / 2,
                 "count": data["count"]
             }
 
@@ -490,8 +463,8 @@ class Evaluator:
             "overall_accuracy": avg_intent,
             "intent_grounding_accuracy": avg_intent,  # 保持兼容性
             "spatial_grounding_accuracy": avg_spatial,
-            "temporal_grounding_accuracy": avg_temporal,
-            "overall_score": (avg_intent + avg_spatial + avg_temporal) / 3 if avg_temporal > 0 else (avg_intent + avg_spatial) / 2,
+            "speech_temporal_grounding_accuracy": avg_speech_temporal,
+            "overall_score": (avg_intent + avg_spatial + avg_speech_temporal) / 3 if all_speech_temporal else (avg_intent + avg_spatial) / 2,
             "instruction_breakdown": breakdown_results,
             "detailed_results": [
                 {
@@ -501,7 +474,7 @@ class Evaluator:
                     "gt_options": score.get("gt_options", []),
                     "match": score.get("match", False),
                     "spatial_grounding": score.get("spatial_grounding", 0.0),
-                    "temporal_grounding": score.get("temporal_grounding", 0.0)
+                    "speech_temporal_grounding": score.get("speech_temporal_grounding", 0.0)
                 }
                 for score, gt, pred in results_with_gt
             ]

@@ -236,29 +236,32 @@ class VideoProcessor:
         gt_point_list = []
         gt_cmd = ""
 
-        source_items = []
-        if gt_items is not None and len(gt_items) > 0:
-            # gt_items 已经过处理，points 已经是像素坐标 [x, y]
-            source_items = gt_items
-            logger.debug(f"使用 gt_items，共 {len(source_items)} 个GT项")
-        elif gt_json and "object_space" in gt_json and isinstance(gt_json.get("object_space"), list):
-            # 回退路径：若未提供预处理好的 items，则在此处手动处理
-            # 注意：原始 annotation 中的 points 为 [y, x] 格式（像素坐标）
-            raw_os = gt_json.get("object_space")
-            logger.debug(f"使用回退路径，从 object_space 提取 {len(raw_os)} 个GT项")
-            for item in raw_os:
-                new_item = item.copy()
-                points = item.get("points", [])
-                if points:
-                    if isinstance(points[0], list):
-                        # [[y1, x1], [y2, x2]] -> [[x1, y1], [x2, y2]] (像素坐标)
-                        new_item["points"] = [[p[1], p[0]] for p in points]
-                    else:
-                        # [y, x] -> [x, y] (像素坐标)
-                        new_item["points"] = [points[1], points[0]]
-                source_items.append(new_item)
-        else:
-            logger.warning(f"未找到GT数据: gt_items={gt_items is not None}, gt_json存在={gt_json is not None}")
+        # 必须提供 gt_items，否则无法可视化
+        if gt_items is None or len(gt_items) == 0:
+            raise ValueError(
+                "无法可视化：缺少 GT items 数据。"
+                "请确保从 eval_gt.json 正确加载了评估数据。"
+            )
+        
+        # gt_items 已经过处理，points 已经是像素坐标 [x, y]
+        source_items = gt_items
+        logger.debug(f"使用 gt_items，共 {len(source_items)} 个GT项")
+
+        # 从 gt_json 中获取 choices 信息（用于从 choice 字段获取名称）
+        object_choices = []
+        space_choices = []
+        if gt_json:
+            object_choices = gt_json.get("_object_choices", [])
+            space_choices = gt_json.get("_space_choices", [])
+        
+        # 构建 choice 到名称的映射
+        choice_to_name = {}
+        for choice_str in object_choices + space_choices:
+            # 格式: "A. 名称" 或 "a. 名称"
+            if ". " in choice_str:
+                parts = choice_str.split(". ", 1)
+                if len(parts) == 2:
+                    choice_to_name[parts[0]] = parts[1]
 
         # 提取GT信息
         for point in source_items:
@@ -267,19 +270,29 @@ class VideoProcessor:
             if "mask" in point:
                 mask_data = point["mask"]
 
+            # 优先使用 name 字段，如果没有则从 choice 字段获取
             point_name = point.get("name", "")
+            if not point_name:
+                choice = point.get("choice", "")
+                if choice and choice in choice_to_name:
+                    point_name = choice_to_name[choice]
+                elif choice:
+                    # 如果找不到对应的名称，至少显示 choice
+                    point_name = f"选项 {choice}"
+            
             if point_name:
                 gt_cmd = gt_cmd + point_name + " -> "
 
             points = point.get("points")
-            if points:
+            # 即使没有points，如果有mask或points，也要添加到列表中
+            if points or mask_data:
                 gt_point_list.append({
                     "type": point.get("type"),
                     "description": point_name,
-                    "point": points,  # 已经是像素坐标 [x, y] 或 [[x, y], ...]
+                    "point": points if points else [],  # 已经是像素坐标 [x, y] 或 [[x, y], ...]
                     "mask": mask_data
                 })
-                logger.debug(f"添加GT项: name={point_name}, type={point.get('type')}, points={points}")
+                logger.debug(f"添加GT项: name={point_name}, type={point.get('type')}, has_points={points is not None}, has_mask={mask_data is not None}")
 
         if len(gt_point_list) == 0:
             logger.warning(f"GT点列表为空，将只显示预测结果")

@@ -24,7 +24,7 @@ from src.data_loader import DataLoader
 from src.gt_formatter import GTFormatter
 
 
-def process_single_sample(formatted_gt, options_text, output_dir, model, logger, idx, total):
+def process_single_sample(formatted_gt, options_text, output_dir, model, logger, idx, total, model_config=None):
     """
     处理单个视频样本
 
@@ -36,6 +36,7 @@ def process_single_sample(formatted_gt, options_text, output_dir, model, logger,
         logger: 日志记录器
         idx: 当前样本索引（从0开始）
         total: 总样本数
+        model_config: 模型配置字典（可选，用于获取模型特定的配置）
 
     Returns:
         tuple: (prediction, ground_truth) 或 (None, None) 如果处理失败
@@ -54,12 +55,17 @@ def process_single_sample(formatted_gt, options_text, output_dir, model, logger,
     if formatted_gt.get("task_template") == "指令1":
         transcript = "用户没有说话，只是做出了指向性动作。"
 
+    # 获取模型配置（优先使用传入的配置，否则使用全局配置）
+    use_video_input = model_config.get("use_video_input", Config.USE_VIDEO_INPUT) if model_config else Config.USE_VIDEO_INPUT
+    coord_order = model_config.get("coord_order", Config.COORD_ORDER) if model_config else Config.COORD_ORDER
+    model_name = model_config.get("name", Config.MODEL_NAME) if model_config else Config.MODEL_NAME
+
     # 1. 提取帧 / 准备输入
     last_frame_path = None
     frame_paths = []
 
     try:
-        if Config.USE_VIDEO_INPUT and hasattr(model, 'generate_from_video') and getattr(model, 'accepts_video_files', False):
+        if use_video_input and hasattr(model, 'generate_from_video') and getattr(model, 'accepts_video_files', False):
             logger.info(f"使用直接视频输入模式: {video_path}")
             # 视频输入模式：仅提取最后一帧用于可视化
             try:
@@ -68,8 +74,8 @@ def process_single_sample(formatted_gt, options_text, output_dir, model, logger,
             except Exception as vid_e:
                 logger.warning(f"无法提取可视化帧 (非致命错误): {vid_e}")
         else:
-            if Config.USE_VIDEO_INPUT:
-                logger.warning(f"配置了视频输入但模型 {Config.MODEL_NAME} 不支持，回退到抽帧模式")
+            if use_video_input:
+                logger.warning(f"配置了视频输入但模型 {model_name} 不支持，回退到抽帧模式")
 
             # 抽帧模式：需要提取多帧用于推理
             frame_paths, last_frame_path = VideoProcessor.extract_frames(
@@ -81,20 +87,22 @@ def process_single_sample(formatted_gt, options_text, output_dir, model, logger,
     # 2. 构建 Prompt
     system_prompt = VSIGPrompts.get_system_prompt(
         task_template=formatted_gt.get("task_template"),
-        coord_order=Config.COORD_ORDER,
+        coord_order=coord_order,
         options_text=options_text
     )
     user_prompt = VSIGPrompts.get_user_prompt(
         transcript, asr_result=asr_result)
-
+    logger.info(f"system_prompt: {system_prompt}")
+    logger.info(f"user_prompt: {user_prompt}")
     # 3. 模型推理
     try:
-        if Config.USE_VIDEO_INPUT and hasattr(model, 'generate_from_video') and getattr(model, 'accepts_video_files', False):
+        if use_video_input and hasattr(model, 'generate_from_video') and getattr(model, 'accepts_video_files', False):
             result = model.generate_from_video(
                 video_path, user_prompt, system_prompt=system_prompt)
         else:
             result = model.generate(
                 frame_paths, user_prompt, system_prompt=system_prompt)
+        logger.info(f"result: {result}")
     except Exception as e:
         logger.error(f"样本 {video_id} 推理出错: {e}")
         return None, None
@@ -138,7 +146,7 @@ def process_single_sample(formatted_gt, options_text, output_dir, model, logger,
     return result, formatted_gt
 
 
-def process_single_directory(video_dir, meta_file, output_dir, model, logger):
+def process_single_directory(video_dir, meta_file, output_dir, model, logger, model_config=None):
     """
     处理单个指令文件夹
 
@@ -153,32 +161,31 @@ def process_single_directory(video_dir, meta_file, output_dir, model, logger):
         output_dir: 结果保存目录
         model: 模型实例
         logger: 日志记录器
+        model_config: 模型配置字典（可选，用于传递给process_single_sample）
 
     Returns:
         predictions: 预测结果列表
         ground_truths: 真实标签列表（已格式化）
     """
-    # 1. 读取数据：视频、annotation、description（使用DataLoader）
-    description_path = os.path.join(video_dir, "description.txt")
-    dataset, options_text, answers_map = DataLoader.prepare_dataset(
+    # 1. 读取数据：视频、annotation、eval_gt.json（使用DataLoader）
+    dataset, options_text, video_eval_data = DataLoader.prepare_dataset(
         video_dir=video_dir,
-        annotation_path=meta_file,
-        description_path=description_path
+        annotation_path=meta_file
     )
 
     logger.info(f"成功加载数据集，共 {len(dataset)} 条样本")
 
     # 2. 格式化GT数据（使用GTFormatter）
     formatted_gt_list = GTFormatter.format_batch_gt_for_evaluation(
-        dataset, video_dir, answers_map
+        dataset, video_dir, video_eval_data
     )
 
-    # 如果 answers_map 不为空，说明会过滤掉不在 description.txt 中的视频
-    if answers_map and len(answers_map) > 0:
+    # 如果 video_eval_data 不为空，说明会过滤掉不在评估列表中的视频
+    if video_eval_data and len(video_eval_data) > 0:
         skipped_count = len(dataset) - len(formatted_gt_list)
         if skipped_count > 0:
             logger.info(
-                f"已过滤掉 {skipped_count} 个不符合标准的视频（不在 description.txt 中）")
+                f"已过滤掉 {skipped_count} 个不符合标准的视频（不在 eval_gt.json 中）")
 
     logger.info(f"格式化后剩余 {len(formatted_gt_list)} 条样本用于评估")
 
@@ -200,7 +207,8 @@ def process_single_directory(video_dir, meta_file, output_dir, model, logger):
                     model,
                     logger,
                     idx,
-                    len(formatted_gt_list)
+                    len(formatted_gt_list),
+                    model_config
                 ): formatted_gt
                 for idx, formatted_gt in enumerate(formatted_gt_list)
             }
@@ -218,7 +226,7 @@ def process_single_directory(video_dir, meta_file, output_dir, model, logger):
     else:
         for idx, formatted_gt in enumerate(formatted_gt_list):
             prediction, ground_truth = process_single_sample(
-                formatted_gt, options_text, output_dir, model, logger, idx, len(formatted_gt_list))
+                formatted_gt, options_text, output_dir, model, logger, idx, len(formatted_gt_list), model_config)
             if prediction is not None and ground_truth is not None:
                 predictions.append(prediction)
                 ground_truths.append(ground_truth)
@@ -228,48 +236,78 @@ def process_single_directory(video_dir, meta_file, output_dir, model, logger):
     return predictions, ground_truths
 
 
-def main():
-    # 0. 初始化 Logger
-    output_dir = Config.OUTPUT_DIR if Config.SAVE_LOG else None
-    logger = setup_logger(output_dir=output_dir)
-    logger.info("Visual-Speech Intent Grounding (VSIG) 任务启动")
-    logger.info("加载配置...")
-
-    # 1. 初始化模型
-    model_provider = Config.MODEL_PROVIDER
-    model_name = Config.MODEL_NAME
-
-    if model_provider == "openai":
-        api_key = Config.OPENAI_API_KEY
-        base_url = Config.OPENAI_BASE_URL
+def initialize_model(model_config, logger):
+    """
+    根据模型配置初始化模型实例
+    
+    Args:
+        model_config: 模型配置字典，包含 provider, name, api_key 等字段
+        logger: 日志记录器
+    
+    Returns:
+        模型实例
+    """
+    provider = model_config.get("provider")
+    model_name = model_config.get("name")
+    
+    # 获取API密钥（优先使用模型配置中的，否则使用全局配置）
+    if provider == "openai":
+        api_key = model_config.get("api_key") or Config.OPENAI_API_KEY
+        base_url = model_config.get("base_url") or Config.OPENAI_BASE_URL
 
         if not api_key:
             logger.error(
-                "未找到 OpenAI API Key。请在 config.py 中配置 OPENAI_API_KEY 或设置环境变量。")
-            sys.exit(1)
+                f"未找到 OpenAI API Key（模型: {model_name}）。请在 config.py 中配置 OPENAI_API_KEY 或设置环境变量。")
+            return None
 
         logger.info(f"正在初始化 OpenAIVLM (Model: {model_name})")
-        # 如果配置了视频输入模式，则设置 accepts_video_files=True
-        accepts_video = getattr(Config, 'USE_VIDEO_INPUT', False)
+        # 获取视频输入配置（优先使用模型配置中的，否则使用全局配置）
+        use_video_input = model_config.get("use_video_input", Config.USE_VIDEO_INPUT)
+        coord_order = model_config.get("coord_order", Config.COORD_ORDER)
         model = OpenAIVLM(api_key=api_key, base_url=base_url,
-                          model_name=model_name, accepts_video_files=accepts_video,
-                          coord_order=Config.COORD_ORDER)
+                          model_name=model_name, accepts_video_files=use_video_input,
+                          coord_order=coord_order)
 
-    elif model_provider == "gemini":
-        api_key = Config.GEMINI_API_KEY
+    elif provider == "gemini":
+        api_key = model_config.get("api_key") or Config.GEMINI_API_KEY
 
         if not api_key:
             logger.error(
-                "未找到 Gemini API Key。请在 config.py 中配置 GEMINI_API_KEY 或设置环境变量。")
-            sys.exit(1)
+                f"未找到 Gemini API Key（模型: {model_name}）。请在 config.py 中配置 GEMINI_API_KEY 或设置环境变量。")
+            return None
 
         logger.info(f"正在初始化 GeminiVLM (Model: {model_name})")
+        coord_order = model_config.get("coord_order", Config.COORD_ORDER)
         model = GeminiVLM(api_key=api_key, model_name=model_name,
-                          coord_order=Config.COORD_ORDER)
+                          coord_order=coord_order)
 
     else:
-        logger.error(f"不支持的模型提供商: {model_provider}")
-        sys.exit(1)
+        logger.error(f"不支持的模型提供商: {provider}")
+        return None
+    
+    return model
+
+
+def process_single_model(model_config, logger):
+    """
+    处理单个模型的完整流程
+    
+    Args:
+        model_config: 模型配置字典
+        logger: 日志记录器
+    """
+    provider = model_config.get("provider")
+    model_name = model_config.get("name")
+    
+    logger.info(f"\n{'='*80}")
+    logger.info(f"开始处理模型: {model_name} ({provider})")
+    logger.info(f"{'='*80}")
+
+    # 1. 初始化模型
+    model = initialize_model(model_config, logger)
+    if model is None:
+        logger.error(f"模型 {model_name} 初始化失败，跳过")
+        return
 
     # 初始化评估模型（如果配置了单独的评估模型，则使用评估模型；否则使用推理模型）
     eval_model = None
@@ -316,7 +354,9 @@ def main():
 
     # 2. 准备数据
     data_root_dir = Config.DATA_ROOT_DIR
-    base_output_dir = Config.OUTPUT_DIR
+    # 使用模型名称构建输出目录
+    model_name_safe = model_name.replace("/", "_").replace("\\", "_")
+    base_output_dir = f"results/{model_name_safe}"
 
     if not os.path.exists(data_root_dir):
         logger.critical(f"数据根目录不存在: {data_root_dir}")
@@ -353,8 +393,6 @@ def main():
     all_ground_truths = []
 
     # 3. 遍历每个指令类型，处理所有数据集
-    model_name_safe = model_name.replace("/", "_").replace("\\", "_")
-
     # 按指令类型处理
     for instruction_name in sorted(instruction_dirs.keys()):
         instruction_paths = instruction_dirs[instruction_name]
@@ -429,14 +467,14 @@ def main():
                 logger.info(f"开始推理 {dataset_name}/{instruction_name}...")
                 try:
                     predictions, ground_truths = process_single_directory(
-                        video_dir, meta_file, output_dir, model, logger
+                        video_dir, meta_file, output_dir, model, logger, model_config
                     )
 
                     # 保存推理结果（按数据集单独保存）
                     if predictions:
                         results_data = {
                             "model_name": model_name,
-                            "model_provider": model_provider,
+                            "model_provider": provider,
                             "dataset": dataset_name,
                             "instruction": instruction_name,
                             "predictions": predictions,
@@ -501,7 +539,7 @@ def main():
 
         summary_results_data = {
             "model_name": model_name,
-            "model_provider": model_provider,
+            "model_provider": provider,
             "data_root_dir": data_root_dir,
             "processed_datasets": sorted(all_datasets),
             "processed_instructions": sorted(instruction_dirs.keys()),
@@ -539,7 +577,7 @@ def main():
                     "overall_accuracy": inst_breakdown.get("intent_accuracy", 0.0),
                     "intent_grounding_accuracy": inst_breakdown.get("intent_accuracy", 0.0),
                     "spatial_grounding_accuracy": inst_breakdown.get("spatial_grounding", 0.0),
-                    "temporal_grounding_accuracy": inst_breakdown.get("temporal_grounding", 0.0),
+                    "speech_temporal_grounding_accuracy": inst_breakdown.get("speech_temporal_grounding", 0.0),
                     "overall_score": inst_breakdown.get("overall", 0.0),
                     "instruction_breakdown": {inst_name: inst_breakdown},
                     "count": inst_breakdown.get("count", 0)
@@ -585,7 +623,72 @@ def main():
     else:
         logger.warning("没有有效的预测结果，无法进行评估。")
 
-    logger.info("任务结束")
+    logger.info(f"模型 {model_name} 处理完成")
+    logger.info(f"{'='*80}\n")
+
+
+def main():
+    # 0. 初始化 Logger
+    # 创建日志目录：如果配置了多模型，使用results/logs；否则使用OUTPUT_DIR/logs
+    if hasattr(Config, 'MODELS') and Config.MODELS and len(Config.MODELS) > 0:
+        log_dir = "results/logs"
+    else:
+        model_name_safe = Config.MODEL_NAME.replace("/", "_").replace("\\", "_")
+        log_dir = os.path.join("results", model_name_safe, "logs")
+    
+    logger, log_file = setup_logger(output_dir=log_dir, log_to_file=True)
+    if log_file:
+        logger.info(f"日志文件: {log_file}")
+    logger.info("Visual-Speech Intent Grounding (VSIG) 任务启动")
+    logger.info("加载配置...")
+
+    # 检查是否配置了多模型模式
+    if hasattr(Config, 'MODELS') and Config.MODELS and len(Config.MODELS) > 0:
+        # 多模型模式：遍历所有配置的模型
+        logger.info(f"\n{'='*80}")
+        logger.info(f"检测到多模型配置，共 {len(Config.MODELS)} 个模型")
+        logger.info(f"{'='*80}\n")
+        
+        for model_idx, model_config in enumerate(Config.MODELS):
+            logger.info(f"\n{'#'*80}")
+            logger.info(f"处理模型 [{model_idx+1}/{len(Config.MODELS)}]")
+            logger.info(f"{'#'*80}")
+            
+            try:
+                process_single_model(model_config, logger)
+            except Exception as e:
+                logger.error(f"处理模型 {model_config.get('name', 'unknown')} 时发生错误: {e}")
+                import traceback
+                logger.error(traceback.format_exc())
+                logger.warning(f"跳过模型 {model_config.get('name', 'unknown')}，继续处理下一个模型")
+                continue
+        
+        logger.info(f"\n{'='*80}")
+        logger.info("所有模型处理完成")
+        logger.info(f"{'='*80}")
+    else:
+        # 单模型模式：使用原有的单个模型配置（保持向后兼容）
+        logger.info("使用单模型配置模式")
+        
+        # 构建单个模型配置
+        model_config = {
+            "provider": Config.MODEL_PROVIDER,
+            "name": Config.MODEL_NAME,
+            "api_key": None,  # 使用全局配置
+            "base_url": None,  # 使用全局配置
+            "coord_order": Config.COORD_ORDER,
+            "use_video_input": Config.USE_VIDEO_INPUT
+        }
+        
+        try:
+            process_single_model(model_config, logger)
+        except Exception as e:
+            logger.error(f"处理模型时发生错误: {e}")
+            import traceback
+            logger.error(traceback.format_exc())
+            sys.exit(1)
+    
+    logger.info("所有任务结束")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,1 @@
+ls: 无法访问 '/home/tione/notebook/workspace/jetteezhou/code_space/VSIG-Bench/results/Qwen3omni-30B-preview': 没有那个文件或目录

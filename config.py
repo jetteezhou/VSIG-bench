@@ -12,7 +12,56 @@ class Config:
         "MODEL_PROVIDER", "gemini")  # "openai" 或 "gemini"
     OPENAI_BASE_URL = os.getenv(
         "OPENAI_BASE_URL", "")
-    MODEL_NAME = "gemini-2.5-flash"  # "gemini-3-pro-preview", gpt-5.2
+    MODEL_NAME = "gemini-3-pro-preview"
+
+    # --- 多模型配置 ---
+    # 如果配置了 MODELS 列表，将遍历所有模型进行处理
+    # 每个模型配置包含以下字段：
+    #   - provider: "openai" 或 "gemini"
+    #   - name: 模型名称
+    #   - api_key: API密钥（可选，如果未提供则使用全局配置）
+    #   - base_url: OpenAI API的base_url（仅openai需要，可选）
+    #   - coord_order: 坐标顺序 "xy" 或 "yx"（可选，默认根据provider自动设置）
+    #   - use_video_input: 是否使用视频输入（可选，默认使用全局配置）
+    MODELS = [
+        # 示例配置：
+        {
+            "provider": "gemini",
+            "name": "gemini-3-flash-preview",
+            "api_key": None,  # None表示使用全局GEMINI_API_KEY
+            "coord_order": "yx",
+            "use_video_input": True
+        },
+        # {
+        #     "provider": "gemini",
+        #     "name": "gemini-3-pro-preview",
+        #     "api_key": None,  # None表示使用全局GEMINI_API_KEY
+        #     "coord_order": "yx",
+        #     "use_video_input": True
+        # },
+        # {
+        #     "provider": "gemini",
+        #     "name": "gemini-2.5-flash",
+        #     "api_key": None,  # None表示使用全局GEMINI_API_KEY
+        #     "coord_order": "yx",
+        #     "use_video_input": True
+        # },
+        # {
+        #     "provider": "gemini",
+        #     "name": "gemini-2.5-pro",
+        #     "api_key": None,  # None表示使用全局GEMINI_API_KEY
+        #     "coord_order": "yx",
+        #     "use_video_input": True
+        # },
+        # {
+        #     "provider": "openai",
+        #     "name": "gpt-4o",
+        #     "api_key": None,  # None表示使用全局OPENAI_API_KEY
+        #     "base_url": None,  # None表示使用全局OPENAI_BASE_URL
+        #     "coord_order": "xy",
+        #     "use_video_input": False
+        # },
+    ]
 
     # --- 坐标顺序配置 ---
     # 坐标顺序："xy" 表示 [x, y]（默认），"yx" 表示 [y, x]
@@ -43,7 +92,7 @@ class Config:
     # --- 评估模型配置（如果未配置，则使用推理模型进行评估）---
     # "openai" 或 "gemini"，None 表示使用推理模型
     EVAL_MODEL_PROVIDER = "gemini"
-    EVAL_MODEL_NAME = "gemini-3-flash-preview"
+    EVAL_MODEL_NAME = "gemini-3-pro-preview"
     EVAL_GEMINI_API_KEY = os.getenv(
         "GEMINI_API_KEY", "")
     EVAL_OPENAI_API_KEY = os.getenv(

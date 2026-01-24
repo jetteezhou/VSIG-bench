@@ -1,6 +1,7 @@
 # 数据文件夹
 data/
-# data_new/
+data_new/
+data_audio_shift/
 temp_frames/
 results/web_runs/test_mode/
 

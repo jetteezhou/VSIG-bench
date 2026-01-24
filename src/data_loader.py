@@ -78,19 +78,17 @@ class DataLoader:
     @staticmethod
     def prepare_dataset(
         video_dir: str,
-        annotation_path: str,
-        description_path: Optional[str] = None
-    ) -> Tuple[List[Dict], str, Dict[str, List[str]]]:
+        annotation_path: str
+    ) -> Tuple[List[Dict], str, Dict]:
         """
-        准备数据集：读取视频、annotation、description
+        准备数据集：读取视频、annotation、eval_gt.json
 
         Args:
             video_dir: 视频目录路径
             annotation_path: annotations.json文件路径
-            description_path: description.txt文件路径（可选）
 
         Returns:
-            (数据集列表, 选项定义文本, 视频答案映射)
+            (数据集列表, 选项定义文本, 视频评估数据映射)
             数据集列表中的每个item都包含：
             - 原始annotation数据
             - _video_dir字段（用于后续评估时定位视频）
@@ -123,18 +121,27 @@ class DataLoader:
         for item in dataset:
             item["_video_dir"] = video_dir
 
-        # 5. 读取description（如果存在）
+        # 5. 必须读取 eval_gt.json，否则无法评估
         options_text = ""
-        answers_map = {}
-        if description_path is None:
-            description_path = os.path.join(video_dir, "description.txt")
+        video_eval_data = {}
+        eval_gt_path = os.path.join(video_dir, "eval_gt.json")
 
-        if os.path.exists(description_path):
-            from src.gt_formatter import GTFormatter
-            options_text, answers_map = GTFormatter.parse_description_file(
-                description_path)
+        if not os.path.exists(eval_gt_path):
+            raise FileNotFoundError(
+                f"无法找到 eval_gt.json 文件: {eval_gt_path}。"
+                f"请确保已生成 eval_gt.json 文件。"
+            )
+        
+        from src.gt_formatter import GTFormatter
+        options_text, video_eval_data = GTFormatter.load_eval_gt(eval_gt_path)
+        
+        if not video_eval_data:
+            raise ValueError(
+                f"eval_gt.json 文件为空或格式错误: {eval_gt_path}。"
+                f"请检查文件内容。"
+            )
 
-        return dataset, options_text, answers_map
+        return dataset, options_text, video_eval_data
 
     @staticmethod
     def scan_data_root(data_root: str) -> Dict[str, List[Tuple[str, str, str]]]:

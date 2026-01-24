@@ -16,7 +16,7 @@ class VSIGPrompts:
         Args:
             task_template: 任务模板（指令1-6）
             coord_order: 坐标顺序，"xy" 表示 [x, y]（默认），"yx" 表示 [y, x]
-            options_text: 选项定义文本（从description.txt解析）
+            options_text: 选项定义文本（从 eval_gt.json 解析）
         """
         # 根据坐标顺序动态生成坐标说明
         if coord_order == "yx":
@@ -51,13 +51,13 @@ class VSIGPrompts:
             "type": "target_object",
             "description": "物体的外观描述",
             "point": [500, 500],
-            "timestamp": [1000, 2000]
+            "timestamp": 1500
         }},
         {{
             "type": "spatial_affordance",
             "description": "位置的描述",
             "point": [600, 600],
-            "timestamp": [2500, 3000]
+            "timestamp": 2750
         }}
     ],
     "reasoning": "一步步的简短推理过程"
@@ -70,7 +70,7 @@ class VSIGPrompts:
     - `type`: 点的类型，"target_object" 或 "spatial_affordance"。
     - `description`: 点的描述，如物体的描述或放置位置的描述。
     - `point`: {coord_field_desc}。最后一帧图像中的物体或放置区域位置的像素坐标。
-    - `timestamp`: [start_ms, end_ms] 整数毫秒。如果指令中未提及该物体（如静默指向），设为 null。
+    - `timestamp`: 整数毫秒，指用户手指动作最明确指向该物体那一瞬间的视频时间戳（根据视频总时长推算）。例如手已经稳定指在目标物体或者区域的时刻。
 """
         task_specific_guidance = ""
         if task_template == "指令1":
@@ -99,3 +99,43 @@ class VSIGPrompts:
             asr_info = f"\n**语音转录详细信息 (ASR)**：{json.dumps(asr_result, ensure_ascii=False)}"
 
         return "请分析视频内容和指令，输出符合上述 JSON 格式的结果。"
+
+    @staticmethod
+    def get_asr_matching_prompt(asr_result, object_space):
+        """
+        构建 ASR 物体匹配的 Prompt。
+        """
+        prompt = f"""你是一个 ASR 结果分析助手。你的任务是将 ASR 识别结果中的词语与给定的物体/空间区域进行匹配。
+
+**输入数据：**
+1. **ASR 识别结果 (asr_result)**: 包含全文和带有时间戳的词语列表。
+{json.dumps(asr_result, ensure_ascii=False, indent=2)}
+
+2. **物体/空间区域 (object_space)**: 视频中标注的物体或空间区域列表。
+{json.dumps(object_space, ensure_ascii=False, indent=2)}
+
+请注意asr_result和object_space中的前后顺序都是对应的，只不过分词的标准不一样，因此object_space中越靠前的物体的asr结果时间也越靠前。
+
+**任务要求：**
+- 对于 `object_space` 中的每一个元素，在 `asr_result["words"]` 中找到与其语义对应的词语。
+- 为该元素提取对应的 `asr_begin_time` 和 `asr_end_time`。
+- 如果发生object_space中的元素是"后面"，asr_result["words"]中的元素是“后”，“边”两个字，则应该合并“后”，“边”两个字的时间戳范围作为该元素的asr_begin_time和asr_end_time。
+- 如果发生以下情况，请设置 `"asr_match_error": true`：
+    - 语义冲突：例如 ASR 说是"左边"但 `object_space` 标注的是"右边"；ASR 说是"后面"但 `object_space` 标注的是"前面"。
+    - 无法匹配：ASR 中完全没有提到对应的物体或位置。
+    - ASR 识别错误：词语划分有问题，或者 ASR 结果为 null，无法准确匹配。
+- 对于匹配成功的元素，设置 `"asr_match_error": false` 或不设置。
+
+**输出格式：**
+请直接输出 JSON，格式如下（一个列表，长度与 object_space 一致）：
+[
+  {{
+    "index": 0,
+    "asr_begin_time": 3370,
+    "asr_end_time": 4530,
+    "asr_match_error": false
+  }},
+  ...
+]
+"""
+        return prompt

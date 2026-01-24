@@ -9,8 +9,9 @@ from src.utils.video_processor import VideoProcessor
 from src.eval.metrics import Evaluator
 from src.data_loader import DataLoader
 from src.gt_formatter import GTFormatter
+from src.utils.logger import setup_logger
 
-# Configure logger
+# Configure logger (will be configured with file output in __init__)
 logger = logging.getLogger("VSIG_Engine")
 logger.setLevel(logging.INFO)
 
@@ -25,6 +26,31 @@ class EvaluationEngine:
         self.status_callback = status_callback
         self.model = None
         self.eval_model = None
+        
+        # 配置logger，将日志保存到output_dir
+        output_dir = config.get("output_dir", "results/web_run")
+        log_dir = os.path.join(output_dir, "logs")
+        # 使用全局logger，但添加文件handler
+        global logger
+        if not any(isinstance(h, logging.FileHandler) for h in logger.handlers):
+            # 如果还没有文件handler，添加一个
+            os.makedirs(log_dir, exist_ok=True)
+            from datetime import datetime
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            log_file = os.path.join(log_dir, f"eval_{timestamp}.log")
+            file_handler = logging.FileHandler(log_file, encoding='utf-8')
+            formatter = logging.Formatter(
+                '[%(asctime)s] [%(levelname)s] %(message)s',
+                datefmt='%Y-%m-%d %H:%M:%S'
+            )
+            file_handler.setFormatter(formatter)
+            logger.addHandler(file_handler)
+            # 确保有控制台handler
+            if not any(isinstance(h, logging.StreamHandler) for h in logger.handlers):
+                console_handler = logging.StreamHandler()
+                console_handler.setFormatter(formatter)
+                logger.addHandler(console_handler)
+            logger.info(f"日志文件: {log_file}")
 
     def log(self, message, level="info"):
         if level == "info":
@@ -141,7 +167,8 @@ class EvaluationEngine:
         transcript = asr_result["text"] if (
             asr_result and isinstance(asr_result, dict) and "text" in asr_result) else formatted_gt.get("task_template")
 
-        if formatted_gt.get("task_template") == "指令1":
+        # 指令1 ASR text 有时候是 null 或 ""，统一处理
+        if formatted_gt.get("task_template") == "指令1" or not transcript:
             transcript = "用户没有说话，只是做出了指向性动作。"
 
         # Extract Input
@@ -296,29 +323,26 @@ class EvaluationEngine:
 
             # Evaluate
             if all_predictions:
-                self.log("Starting Evaluation (Acquiring Lock)...")
-                with evaluator_lock:
-                    self.log("Lock Acquired. Configuring Evaluator...")
-                    Evaluator.set_eval_model(self.eval_model)
+                self.log("Starting Evaluation...")
+                
+                self.log(
+                    f"Calculating metrics for {len(all_predictions)} samples...")
+                metrics = Evaluator.evaluate_batch(
+                    all_predictions, all_ground_truths, num_workers=10)
 
-                    self.log(
-                        f"Calculating metrics for {len(all_predictions)} samples...")
-                    metrics = Evaluator.evaluate_batch(
-                        all_predictions, all_ground_truths, num_workers=10)
-
-                    # 移除冗余的第二次并行评估，直接使用 metrics 中的 detailed_results
-                    is_web_run = "web_runs" in output_dir
-                    if not (self.config.get("test_mode", False) or is_web_run):
-                        # 如果不是测试模式或 Web 运行，为了节省空间可以删除详情
-                        if "detailed_results" in metrics:
-                            del metrics["detailed_results"]
+                # 移除冗余的第二次并行评估，直接使用 metrics 中的 detailed_results
+                is_web_run = "web_runs" in output_dir
+                if not (self.config.get("test_mode", False) or is_web_run):
+                    # 如果不是测试模式或 Web 运行，为了节省空间可以删除详情
+                    if "detailed_results" in metrics:
+                        del metrics["detailed_results"]
+                else:
+                    if is_web_run:
+                        self.log(
+                            "Web Run: Using pre-calculated detailed evaluation results.")
                     else:
-                        if is_web_run:
-                            self.log(
-                                "Web Run: Using pre-calculated detailed evaluation results.")
-                        else:
-                            self.log(
-                                "Test Mode: Using pre-calculated detailed evaluation results.")
+                        self.log(
+                            "Test Mode: Using pre-calculated detailed evaluation results.")
 
                 # Inject model metadata into metrics
                 metrics["model_name"] = self.config.get(
@@ -369,11 +393,10 @@ class EvaluationEngine:
         video_dir = instruction_path
 
         # 1. 使用 DataLoader 读取数据
-        description_path = os.path.join(video_dir, "description.txt")
-        dataset, options_text, answers_map = DataLoader.prepare_dataset(
+        # 现在 prepare_dataset 内部会自动寻找 eval_gt.json
+        dataset, options_text, video_eval_data = DataLoader.prepare_dataset(
             video_dir=video_dir,
-            annotation_path=meta_file,
-            description_path=description_path
+            annotation_path=meta_file
         )
 
         # Test mode: only take the first sample for each instruction
@@ -382,15 +405,15 @@ class EvaluationEngine:
 
         # 2. 使用 GTFormatter 格式化GT数据
         formatted_gt_list = GTFormatter.format_batch_gt_for_evaluation(
-            dataset, video_dir, answers_map
+            dataset, video_dir, video_eval_data
         )
 
-        # 如果 answers_map 不为空，说明会过滤掉不在 description.txt 中的视频
-        if answers_map and len(answers_map) > 0:
+        # 如果 video_eval_data 不为空，说明会过滤掉不在评估列表中的视频
+        if video_eval_data and len(video_eval_data) > 0:
             skipped_count = len(dataset) - len(formatted_gt_list)
             if skipped_count > 0:
                 self.log(
-                    f"已过滤掉 {skipped_count} 个不符合标准的视频（不在 description.txt 中）")
+                    f"已过滤掉 {skipped_count} 个不符合标准的视频（不在 eval_gt.json 中）")
 
         results_dir = os.path.join(output_dir, instruction_name)
         os.makedirs(results_dir, exist_ok=True)

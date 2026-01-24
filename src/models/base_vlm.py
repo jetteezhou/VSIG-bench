@@ -6,7 +6,11 @@ import logging
 from abc import ABC, abstractmethod
 import PIL.Image
 
+# 使用与 main.py 相同的 logger 名称，确保日志会被保存到文件
 logger = logging.getLogger("VSIG_Logger")
+# 确保 logger 有合适的级别（如果还没有设置）
+if logger.level == logging.NOTSET:
+    logger.setLevel(logging.INFO)
 
 
 class BaseVLM(ABC):
@@ -174,12 +178,12 @@ class OpenAIVLM(BaseVLM):
                 temperature=0.2
             )
             result_content = response.choices[0].message.content
-            logger.info(f"模型原始响应: {result_content}")
+            # logger.info(f"模型原始响应: {result_content}")
             parsed_result = self._parse_json_response(result_content)
             # 立即转换坐标格式：如果 coord_order="yx"，将 [y, x] 转换为 [x, y]
             parsed_result = self._convert_coordinates(
                 parsed_result, self.coord_order)
-            logger.info("模型推理成功")
+            # logger.info("模型推理成功")
             return parsed_result
 
         except Exception as e:
@@ -232,12 +236,12 @@ class OpenAIVLM(BaseVLM):
                 temperature=0.2
             )
             result_content = response.choices[0].message.content
-            logger.info(f"模型原始响应: {result_content}")
+            # logger.info(f"模型原始响应: {result_content}")
             parsed_result = self._parse_json_response(result_content)
             # 立即转换坐标格式：如果 coord_order="yx"，将 [y, x] 转换为 [x, y]
             parsed_result = self._convert_coordinates(
                 parsed_result, self.coord_order)
-            logger.info("模型推理成功")
+            # logger.info("模型推理成功")
             return parsed_result
 
         except Exception as e:
@@ -309,7 +313,7 @@ class GeminiVLM(BaseVLM):
             )
 
             result_content = response.text
-            logger.info(f"模型原始响应: {result_content}")
+            # logger.info(f"模型原始响应: {result_content}")
             parsed_result = self._parse_json_response(result_content)
             # 立即转换坐标格式：如果 coord_order="yx"，将 [y, x] 转换为 [x, y]
             parsed_result = self._convert_coordinates(
@@ -381,12 +385,12 @@ class GeminiVLM(BaseVLM):
             )
 
             result_content = response.text
-            logger.info(f"模型原始响应: {result_content}")
+            # logger.info(f"模型原始响应: {result_content}")
             parsed_result = self._parse_json_response(result_content)
             # 立即转换坐标格式：如果 coord_order="yx"，将 [y, x] 转换为 [x, y]
             parsed_result = self._convert_coordinates(
                 parsed_result, self.coord_order)
-            logger.info("模型推理成功")
+            # logger.info("模型推理成功")
             return parsed_result
 
         except Exception as e:

@@ -1,0 +1,77 @@
+[2026-01-22 20:30:21] [INFO] 样本 VID_20260106_182922.mp4 完成。指令: 把这个放到这里
+[2026-01-22 20:30:21] [INFO] [10/15] 处理样本: VID_20260106_183012.mp4
+[2026-01-22 20:30:21] [INFO] 使用直接视频输入模式: /home/tione/notebook/workspace/jetteezhou/code_space/VSIG-Bench/data_new/三楼铣工区域_场景b_陈扬_董洋_拍摄/指令3/VID_20260106_183012.mp4
+[2026-01-22 20:30:21] [INFO] 正在调用模型处理视频文件: /home/tione/notebook/workspace/jetteezhou/code_space/VSIG-Bench/data_new/三楼铣工区域_场景b_陈扬_董洋_拍摄/指令3/VID_20260106_182948.mp4
+[2026-01-22 20:30:21] [INFO] 正在调用模型处理视频文件: /home/tione/notebook/workspace/jetteezhou/code_space/VSIG-Bench/data_new/三楼铣工区域_场景b_陈扬_董洋_拍摄/指令3/VID_20260106_183012.mp4
+[2026-01-22 20:30:23] [INFO] 模型原始响应: ```json
+{
+    "explicit_command": "把这个放到这里",
+    "selected_options": ["A", "b"],
+    "point_list": [
+        {
+            "type": "target_object",
+            "description": "银白色长方体的金属工件",
+            "point": [500, 500],
+            "timestamp": [1000, 2000]
+        },
+        {
+            "type": "spatial_affordance",
+            "description": "置物架上的从左往右数第一个银白色长方体的金属工件的左边",
+            "point": [600, 600],
+            "timestamp": [2500, 3000]
+        }
+    ],
+    "reasoning": "视频中，操作者先指向一个银白色长方体的金属工件，然后指向置物架上的一个银白色长方体的金属工件。根据指令“把这个放到这里”，可以推断出操作者意图将前者（银白色长方体的金属工件）放到后者（置物架上的银白色长方体的金属工件）的位置上。因此，selected_options为["A", "b"]，point_list包含一个target_object和一个spatial_affordance。"
+}
+```
+[2026-01-22 20:30:23] [ERROR] 无法解析模型返回的 JSON: {
+    "explicit_command": "把这个放到这里",
+    "selected_options": ["A", "b"],
+    "point_list": [
+        {
+            "type": "target_object",
+            "description": "银白色长方体的金属工件",
+            "point": [500, 500],
+            "timestamp": [1000, 2000]
+        },
+        {
+            "type": "spatial_affordance",
+            "description": "置物架上的从左往右数第一个银白色长方体的金属工件的左边",
+            "point": [600, 600],
+            "timestamp": [2500, 3000]
+        }
+    ],
+    "reasoning": "视频中，操作者先指向一个银白色长方体的金属工件，然后指向置物架上的一个银白色长方体的金属工件。根据指令“把这个放到这里”，可以推断出操作者意图将前者（银白色长方体的金属工件）放到后者（置物架上的银白色长方体的金属工件）的位置上。因此，selected_options为["A", "b"]，point_list包含一个target_object和一个spatial_affordance。"
+}
+[2026-01-22 20:30:23] [INFO] 模型推理成功
+[2026-01-22 20:30:23] [WARNING] 样本 VID_20260106_182859.mp4 推理无结果，跳过
+[2026-01-22 20:30:23] [INFO] [11/15] 处理样本: VID_20260106_183023.mp4
+[2026-01-22 20:30:23] [INFO] 使用直接视频输入模式: /home/tione/notebook/workspace/jetteezhou/code_space/VSIG-Bench/data_new/三楼铣工区域_场景b_陈扬_董洋_拍摄/指令3/VID_20260106_183023.mp4
+[2026-01-22 20:30:23] [INFO] 模型原始响应: ```json
+{
+    "explicit_command": "把绿色铣床上的从左往右数第一个银白色圆柱形的金属工件放到置物架上的从左往右数第一个银白色长方体的金属工件的左边",
+    "selected_options": ["A", "a"],
+    "point_list": [
+        {
+            "type": "target_object",
+            "description": "绿色铣床上的从左往右数第一个银白色圆柱形的金属工件",
+            "point": [500, 500],
+            "timestamp": [1000, 2000]
+        },
+        {
+            "type": "spatial_affordance",
+            "description": "置物架上的从左往右数第一个银白色长方体的金属工件的左边",
+            "point": [600, 600],
+            "timestamp": [2500, 3000]
+        }
+    ],
+    "reasoning": "1. 识别指令中的目标物体，即绿色铣床上的银白色圆柱形金属工件。2. 识别指令中的目标空间位置，即置物架上第一个银白色长方体金属工件的左边。3. 根据指令的逻辑顺序，先选择目标物体，再选择目标空间位置。"
+}
+```
+[2026-01-22 20:30:23] [INFO] 模型推理成功
+[2026-01-22 20:30:23] [INFO] 可视化结果已保存: results/Qwen3-Omni-30B-A3B-Instruct/指令3/vis_VID_20260106_182911.mp4.jpg
+[2026-01-22 20:30:23] [INFO] 样本 VID_20260106_182911.mp4 完成。指令: 把绿色铣床上的从左往右数第一个银白色圆柱形的金属工件放到置物架上的从左往右数第一个银白色长方体的金属工件的左边
+[2026-01-22 20:30:23] [INFO] [12/15] 处理样本: VID_20260106_183036.mp4
+[2026-01-22 20:30:23] [INFO] 使用直接视频输入模式: /home/tione/notebook/workspace/jetteezhou/code_space/VSIG-Bench/data_new/三楼铣工区域_场景b_陈扬_董洋_拍摄/指令3/VID_20260106_183036.mp4
+[2026-01-22 20:30:23] [INFO] 正在调用模型处理视频文件: /home/tione/notebook/workspace/jetteezhou/code_space/VSIG-Bench/data_new/三楼铣工区域_场景b_陈扬_董洋_拍摄/指令3/VID_20260106_183023.mp4
+[2026-01-22 20:30:23] [INFO] 正在调用模型处理视频文件: /home/tione/notebook/workspace/jetteezhou/code_space/VSIG-Bench/data_new/三楼铣工区域_场景b_陈扬_董洋_拍摄/指令3/VID_20260106_183036.mp4
