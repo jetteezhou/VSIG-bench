@@ -25,13 +25,13 @@ class Config:
     #   - use_video_input: 是否使用视频输入（可选，默认使用全局配置）
     MODELS = [
         # # 示例配置：
-        # {
-        #     "provider": "gemini",
-        #     "name": "gemini-3-flash-preview",
-        #     "api_key": None,  # None表示使用全局GEMINI_API_KEY
-        #     "coord_order": "yx",
-        #     "use_video_input": True
-        # },
+        {
+            "provider": "gemini",
+            "name": "gemini-3-flash-preview",
+            "api_key": None,  # None表示使用全局GEMINI_API_KEY
+            "coord_order": "yx",
+            "use_video_input": True
+        },
         {
             "provider": "gemini",
             "name": "gemini-3-pro-preview",
@@ -70,11 +70,11 @@ class Config:
         "COORD_ORDER", "yx" if MODEL_PROVIDER == "gemini" else "xy")
 
     # --- 数据路径配置 ---
-    DATA_ROOT_DIR = "data_new"  # 数据根目录，会遍历其下所有子目录（支持多个数据集）
+    DATA_ROOT_DIR = "data_new-2"  # 数据根目录，会遍历其下所有子目录（支持多个数据集）
     # 如果设置为 "data"，会自动扫描 data/ 下所有包含指令文件夹的子目录
 
     # --- 输出配置 ---
-    OUTPUT_DIR = f"results/{MODEL_NAME}"  # 结果保存目录
+    OUTPUT_DIR = f"results-2/{MODEL_NAME}"  # 结果保存目录
     SAVE_LOG = False  # 是否保存日志文件
     NUM_FRAMES = 15  # 视频抽帧数量
 
@@ -84,7 +84,7 @@ class Config:
     USE_VIDEO_INPUT = True
 
     # --- 并行推理配置 ---
-    NUM_WORKERS = 20  # 并行推理的线程数，默认为4
+    NUM_WORKERS = 30  # 并行推理的线程数，默认为4
 
     # --- 并行评估配置 ---
     EVAL_NUM_WORKERS = 20  # 并行评估的线程数，None 表示单线程
@@ -92,7 +92,7 @@ class Config:
     # --- 评估模型配置（如果未配置，则使用推理模型进行评估）---
     # "openai" 或 "gemini"，None 表示使用推理模型
     EVAL_MODEL_PROVIDER = "gemini"
-    EVAL_MODEL_NAME = "gemini-3-pro-preview"
+    EVAL_MODEL_NAME = "gemini-3-flash-preview"
     EVAL_GEMINI_API_KEY = os.getenv(
         "GEMINI_API_KEY", "")
     EVAL_OPENAI_API_KEY = os.getenv(

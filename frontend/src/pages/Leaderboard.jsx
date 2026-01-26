@@ -61,7 +61,7 @@ export default function Leaderboard() {
                   <th className="px-6 py-4 text-xs font-bold text-zinc-500 uppercase tracking-wider text-center">Overall</th>
                   <th className="px-6 py-4 text-xs font-bold text-zinc-500 uppercase tracking-wider text-center">Intent</th>
                   <th className="px-6 py-4 text-xs font-bold text-zinc-500 uppercase tracking-wider text-center">Spatial</th>
-                  <th className="px-6 py-4 text-xs font-bold text-zinc-500 uppercase tracking-wider text-center">Temporal</th>
+                  <th className="px-6 py-4 text-xs font-bold text-zinc-500 uppercase tracking-wider text-center">Speech Temporal</th>
                   <th className="px-6 py-4 text-xs font-bold text-zinc-500 uppercase tracking-wider text-right">Date</th>
                 </tr>
               </thead>

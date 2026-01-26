@@ -122,7 +122,7 @@ def main():
         if "annotations.json" in files:
             json_files.append(os.path.join(root, "annotations.json"))
 
-    logger.info(f"正在扫描文件...")
+    logger.info(f"正在扫描文件...{args.data_dir}")
     for file_path in json_files:
         try:
             with open(file_path, 'r', encoding='utf-8') as f:

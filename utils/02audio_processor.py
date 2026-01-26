@@ -683,7 +683,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--video_dir",
         type=str,
-        default="data_new",
+        default="data_new-2",
         help="要扫描的根目录路径（递归扫描所有annotations.json文件）"
     )
     parser.add_argument(

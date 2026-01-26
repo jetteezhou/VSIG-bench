@@ -1,0 +1,3047 @@
+{
+  "overall": {
+    "overall_accuracy": 0.42328042328042326,
+    "intent_grounding_accuracy": 0.42328042328042326,
+    "spatial_grounding_accuracy": 0.17019400352733685,
+    "speech_temporal_grounding_accuracy": 0.22431865828092243,
+    "overall_score": 0.2725976950295608,
+    "instruction_breakdown": {
+      "指令1": {
+        "intent_accuracy": 0.6,
+        "spatial_grounding": 0.13333333333333333,
+        "speech_temporal_grounding": 0.0,
+        "overall": 0.36666666666666664,
+        "count": 30
+      },
+      "指令2": {
+        "intent_accuracy": 0.5333333333333333,
+        "spatial_grounding": 0.2,
+        "speech_temporal_grounding": 0.3333333333333333,
+        "overall": 0.35555555555555557,
+        "count": 30
+      },
+      "指令3": {
+        "intent_accuracy": 0.2,
+        "spatial_grounding": 0.1,
+        "speech_temporal_grounding": 0.06666666666666667,
+        "overall": 0.12222222222222223,
+        "count": 30
+      },
+      "指令4": {
+        "intent_accuracy": 0.5135135135135135,
+        "spatial_grounding": 0.21621621621621623,
+        "speech_temporal_grounding": 0.24324324324324326,
+        "overall": 0.32432432432432434,
+        "count": 37
+      },
+      "指令5": {
+        "intent_accuracy": 0.2558139534883721,
+        "spatial_grounding": 0.17829457364341084,
+        "speech_temporal_grounding": 0.24806201550387597,
+        "overall": 0.22739018087855298,
+        "count": 43
+      },
+      "指令6": {
+        "intent_accuracy": 0.5263157894736842,
+        "spatial_grounding": 0.18421052631578946,
+        "speech_temporal_grounding": 0.21052631578947367,
+        "overall": 0.30701754385964913,
+        "count": 19
+      }
+    },
+    "detailed_results": [
+      {
+        "video_name": "VID_20260110_172128.mp4",
+        "instruction": "指令1",
+        "pred_options": [
+          "N"
+        ],
+        "gt_options": [
+          "N"
+        ],
+        "match": true,
+        "spatial_grounding": 1.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_171950.mp4",
+        "instruction": "指令1",
+        "pred_options": [
+          "G"
+        ],
+        "gt_options": [
+          "H"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_171853.mp4",
+        "instruction": "指令1",
+        "pred_options": [
+          "B"
+        ],
+        "gt_options": [
+          "B"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_182625.mp4",
+        "instruction": "指令2",
+        "pred_options": [
+          "D"
+        ],
+        "gt_options": [
+          "G"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 1.0
+      },
+      {
+        "video_name": "VID_20260110_172015.mp4",
+        "instruction": "指令1",
+        "pred_options": [
+          "K"
+        ],
+        "gt_options": [
+          "K"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_180709.mp4",
+        "instruction": "指令1",
+        "pred_options": [
+          "C"
+        ],
+        "gt_options": [
+          "B"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_182654.mp4",
+        "instruction": "指令2",
+        "pred_options": [
+          "C"
+        ],
+        "gt_options": [
+          "J"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 1.0
+      },
+      {
+        "video_name": "VID_20260110_172006.mp4",
+        "instruction": "指令1",
+        "pred_options": [
+          "I"
+        ],
+        "gt_options": [
+          "J"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_171926.mp4",
+        "instruction": "指令1",
+        "pred_options": [
+          "E"
+        ],
+        "gt_options": [
+          "F"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_182734.mp4",
+        "instruction": "指令2",
+        "pred_options": [
+          "N"
+        ],
+        "gt_options": [
+          "N"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 1.0
+      },
+      {
+        "video_name": "VID_20260110_172055.mp4",
+        "instruction": "指令1",
+        "pred_options": [
+          "O"
+        ],
+        "gt_options": [
+          "O"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_171958.mp4",
+        "instruction": "指令1",
+        "pred_options": [
+          "H"
+        ],
+        "gt_options": [
+          "I"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_180811.mp4",
+        "instruction": "指令1",
+        "pred_options": [
+          "G"
+        ],
+        "gt_options": [
+          "I"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_182714.mp4",
+        "instruction": "指令2",
+        "pred_options": [
+          "L"
+        ],
+        "gt_options": [
+          "L"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_180935.mp4",
+        "instruction": "指令1",
+        "pred_options": [
+          "O"
+        ],
+        "gt_options": [
+          "O"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_171941.mp4",
+        "instruction": "指令1",
+        "pred_options": [
+          "G"
+        ],
+        "gt_options": [
+          "G"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_182606.mp4",
+        "instruction": "指令2",
+        "pred_options": [
+          "D"
+        ],
+        "gt_options": [
+          "E"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_182449.mp4",
+        "instruction": "指令2",
+        "pred_options": [
+          "A"
+        ],
+        "gt_options": [
+          "A"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_180802.mp4",
+        "instruction": "指令1",
+        "pred_options": [
+          "H"
+        ],
+        "gt_options": [
+          "H"
+        ],
+        "match": true,
+        "spatial_grounding": 1.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_171826.mp4",
+        "instruction": "指令1",
+        "pred_options": [
+          "A"
+        ],
+        "gt_options": [
+          "A"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_182635.mp4",
+        "instruction": "指令2",
+        "pred_options": [
+          "D"
+        ],
+        "gt_options": [
+          "H"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 1.0
+      },
+      {
+        "video_name": "VID_20260106_182644.mp4",
+        "instruction": "指令2",
+        "pred_options": [
+          "F"
+        ],
+        "gt_options": [
+          "I"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 1.0
+      },
+      {
+        "video_name": "VID_20260106_180718.mp4",
+        "instruction": "指令1",
+        "pred_options": [
+          "C"
+        ],
+        "gt_options": [
+          "C"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_180912.mp4",
+        "instruction": "指令1",
+        "pred_options": [
+          "M"
+        ],
+        "gt_options": [
+          "M"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_180735.mp4",
+        "instruction": "指令1",
+        "pred_options": [
+          "C"
+        ],
+        "gt_options": [
+          "E"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_180829.mp4",
+        "instruction": "指令1",
+        "pred_options": [
+          "K"
+        ],
+        "gt_options": [
+          "K"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_171918.mp4",
+        "instruction": "指令1",
+        "pred_options": [
+          "D"
+        ],
+        "gt_options": [
+          "E"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_182557.mp4",
+        "instruction": "指令2",
+        "pred_options": [
+          "D"
+        ],
+        "gt_options": [
+          "D"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 1.0
+      },
+      {
+        "video_name": "VID_20260110_172033.mp4",
+        "instruction": "指令1",
+        "pred_options": [
+          "M"
+        ],
+        "gt_options": [
+          "M"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_171901.mp4",
+        "instruction": "指令1",
+        "pred_options": [
+          "C"
+        ],
+        "gt_options": [
+          "C"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_180726.mp4",
+        "instruction": "指令1",
+        "pred_options": [
+          "D"
+        ],
+        "gt_options": [
+          "D"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_172024.mp4",
+        "instruction": "指令1",
+        "pred_options": [
+          "L"
+        ],
+        "gt_options": [
+          "L"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_180820.mp4",
+        "instruction": "指令1",
+        "pred_options": [
+          "K"
+        ],
+        "gt_options": [
+          "J"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_182616.mp4",
+        "instruction": "指令2",
+        "pred_options": [
+          "E"
+        ],
+        "gt_options": [
+          "F"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 1.0
+      },
+      {
+        "video_name": "VID_20260106_180921.mp4",
+        "instruction": "指令1",
+        "pred_options": [
+          "N"
+        ],
+        "gt_options": [
+          "N"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_172307.mp4",
+        "instruction": "指令2",
+        "pred_options": [
+          "H"
+        ],
+        "gt_options": [
+          "H"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_180701.mp4",
+        "instruction": "指令1",
+        "pred_options": [
+          "C"
+        ],
+        "gt_options": [
+          "A"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_182704.mp4",
+        "instruction": "指令2",
+        "pred_options": [
+          "K"
+        ],
+        "gt_options": [
+          "K"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_180839.mp4",
+        "instruction": "指令1",
+        "pred_options": [
+          "L"
+        ],
+        "gt_options": [
+          "L"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_172241.mp4",
+        "instruction": "指令2",
+        "pred_options": [
+          "A"
+        ],
+        "gt_options": [
+          "F"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 1.0
+      },
+      {
+        "video_name": "VID_20260106_180744.mp4",
+        "instruction": "指令1",
+        "pred_options": [
+          "G"
+        ],
+        "gt_options": [
+          "F"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_172431.mp4",
+        "instruction": "指令2",
+        "pred_options": [
+          "N"
+        ],
+        "gt_options": [
+          "O"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_172232.mp4",
+        "instruction": "指令2",
+        "pred_options": [
+          "D"
+        ],
+        "gt_options": [
+          "E"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_172324.mp4",
+        "instruction": "指令2",
+        "pred_options": [
+          "J"
+        ],
+        "gt_options": [
+          "J"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_172222.mp4",
+        "instruction": "指令2",
+        "pred_options": [
+          "D"
+        ],
+        "gt_options": [
+          "D"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 1.0
+      },
+      {
+        "video_name": "VID_20260110_172333.mp4",
+        "instruction": "指令2",
+        "pred_options": [
+          "J"
+        ],
+        "gt_options": [
+          "K"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_172255.mp4",
+        "instruction": "指令2",
+        "pred_options": [
+          "G"
+        ],
+        "gt_options": [
+          "G"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 1.0
+      },
+      {
+        "video_name": "VID_20260110_172422.mp4",
+        "instruction": "指令2",
+        "pred_options": [
+          "N"
+        ],
+        "gt_options": [
+          "N"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_172342.mp4",
+        "instruction": "指令2",
+        "pred_options": [
+          "L"
+        ],
+        "gt_options": [
+          "L"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_172203.mp4",
+        "instruction": "指令2",
+        "pred_options": [
+          "B"
+        ],
+        "gt_options": [
+          "B"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_172153.mp4",
+        "instruction": "指令2",
+        "pred_options": [
+          "B"
+        ],
+        "gt_options": [
+          "A"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_172352.mp4",
+        "instruction": "指令2",
+        "pred_options": [
+          "L"
+        ],
+        "gt_options": [
+          "M"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_182814.mp4",
+        "instruction": "指令3",
+        "pred_options": [
+          "A",
+          "a"
+        ],
+        "gt_options": [
+          "A",
+          "a"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_183103.mp4",
+        "instruction": "指令3",
+        "pred_options": [
+          "D",
+          "f"
+        ],
+        "gt_options": [
+          "D",
+          "h"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_182948.mp4",
+        "instruction": "指令3",
+        "pred_options": [
+          "C",
+          "a"
+        ],
+        "gt_options": [
+          "C",
+          "b"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_182758.mp4",
+        "instruction": "指令2",
+        "pred_options": [
+          "B"
+        ],
+        "gt_options": [
+          "O"
+        ],
+        "match": false,
+        "spatial_grounding": 1.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_183023.mp4",
+        "instruction": "指令3",
+        "pred_options": [
+          "D",
+          "c"
+        ],
+        "gt_options": [
+          "D",
+          "e"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_182935.mp4",
+        "instruction": "指令3",
+        "pred_options": [
+          "C",
+          "d"
+        ],
+        "gt_options": [
+          "B",
+          "d"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_182457.mp4",
+        "instruction": "指令2",
+        "pred_options": [
+          "B"
+        ],
+        "gt_options": [
+          "B"
+        ],
+        "match": true,
+        "spatial_grounding": 1.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_182848.mp4",
+        "instruction": "指令3",
+        "pred_options": [
+          "B",
+          "b"
+        ],
+        "gt_options": [
+          "B",
+          "d"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_180753.mp4",
+        "instruction": "指令1",
+        "pred_options": [
+          "D"
+        ],
+        "gt_options": [
+          "G"
+        ],
+        "match": false,
+        "spatial_grounding": 1.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_182922.mp4",
+        "instruction": "指令3",
+        "pred_options": [
+          "D",
+          "b"
+        ],
+        "gt_options": [
+          "D",
+          "b"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_171909.mp4",
+        "instruction": "指令1",
+        "pred_options": [
+          "D"
+        ],
+        "gt_options": [
+          "D"
+        ],
+        "match": true,
+        "spatial_grounding": 1.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_182836.mp4",
+        "instruction": "指令3",
+        "pred_options": [
+          "B",
+          "f"
+        ],
+        "gt_options": [
+          "C",
+          "c"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_182911.mp4",
+        "instruction": "指令3",
+        "pred_options": [
+          "B",
+          "h"
+        ],
+        "gt_options": [
+          "B",
+          "e"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_183115.mp4",
+        "instruction": "指令3",
+        "pred_options": [
+          "E",
+          "a"
+        ],
+        "gt_options": [
+          "E",
+          "i"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_182514.mp4",
+        "instruction": "指令2",
+        "pred_options": [
+          "C"
+        ],
+        "gt_options": [
+          "C"
+        ],
+        "match": true,
+        "spatial_grounding": 1.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_172540.mp4",
+        "instruction": "指令3",
+        "pred_options": [
+          "C",
+          "h"
+        ],
+        "gt_options": [
+          "C",
+          "a"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_172628.mp4",
+        "instruction": "指令3",
+        "pred_options": [
+          "A",
+          "l"
+        ],
+        "gt_options": [
+          "A",
+          "f"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_172604.mp4",
+        "instruction": "指令3",
+        "pred_options": [
+          "B",
+          "g"
+        ],
+        "gt_options": [
+          "E",
+          "d"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_172551.mp4",
+        "instruction": "指令3",
+        "pred_options": [
+          "D",
+          "a"
+        ],
+        "gt_options": [
+          "D",
+          "c"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_182859.mp4",
+        "instruction": "指令3",
+        "pred_options": [
+          "A",
+          "a"
+        ],
+        "gt_options": [
+          "A",
+          "b"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_172738.mp4",
+        "instruction": "指令3",
+        "pred_options": [
+          "B",
+          "j"
+        ],
+        "gt_options": [
+          "B",
+          "j"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_172801.mp4",
+        "instruction": "指令3",
+        "pred_options": [
+          "B",
+          "c"
+        ],
+        "gt_options": [
+          "F",
+          "k"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.5
+      },
+      {
+        "video_name": "VID_20260110_172516.mp4",
+        "instruction": "指令3",
+        "pred_options": [
+          "B",
+          "l"
+        ],
+        "gt_options": [
+          "B",
+          "b"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_172504.mp4",
+        "instruction": "指令3",
+        "pred_options": [
+          "A",
+          "g"
+        ],
+        "gt_options": [
+          "A",
+          "a"
+        ],
+        "match": false,
+        "spatial_grounding": 0.5,
+        "speech_temporal_grounding": 0.5
+      },
+      {
+        "video_name": "VID_20260106_183051.mp4",
+        "instruction": "指令3",
+        "pred_options": [
+          "A",
+          "g"
+        ],
+        "gt_options": [
+          "A",
+          "g"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_172615.mp4",
+        "instruction": "指令3",
+        "pred_options": [
+          "D",
+          "e"
+        ],
+        "gt_options": [
+          "F",
+          "e"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_183323.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "A",
+          "a"
+        ],
+        "gt_options": [
+          "A",
+          "a"
+        ],
+        "match": true,
+        "spatial_grounding": 0.5,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_183803.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "E",
+          "g"
+        ],
+        "gt_options": [
+          "D",
+          "g"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.5
+      },
+      {
+        "video_name": "VID_20260106_183719.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "D",
+          "j"
+        ],
+        "gt_options": [
+          "D",
+          "m"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_183527.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "D",
+          "h"
+        ],
+        "gt_options": [
+          "E",
+          "h"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.5
+      },
+      {
+        "video_name": "VID_20260110_172640.mp4",
+        "instruction": "指令3",
+        "pred_options": [
+          "C",
+          "g"
+        ],
+        "gt_options": [
+          "E",
+          "g"
+        ],
+        "match": false,
+        "spatial_grounding": 0.5,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_183400.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "B",
+          "c"
+        ],
+        "gt_options": [
+          "C",
+          "c"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_183707.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "E",
+          "c"
+        ],
+        "gt_options": [
+          "E",
+          "c"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.5
+      },
+      {
+        "video_name": "VID_20260110_172652.mp4",
+        "instruction": "指令3",
+        "pred_options": [
+          "C",
+          "d"
+        ],
+        "gt_options": [
+          "C",
+          "h"
+        ],
+        "match": false,
+        "spatial_grounding": 0.5,
+        "speech_temporal_grounding": 0.5
+      },
+      {
+        "video_name": "VID_20260106_182825.mp4",
+        "instruction": "指令3",
+        "pred_options": [
+          "B",
+          "b"
+        ],
+        "gt_options": [
+          "B",
+          "b"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_183540.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "A",
+          "a"
+        ],
+        "gt_options": [
+          "A",
+          "a"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.5
+      },
+      {
+        "video_name": "VID_20260106_183012.mp4",
+        "instruction": "指令3",
+        "pred_options": [
+          "B",
+          "f"
+        ],
+        "gt_options": [
+          "B",
+          "f"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_172812.mp4",
+        "instruction": "指令3",
+        "pred_options": [
+          "A",
+          "k"
+        ],
+        "gt_options": [
+          "A",
+          "c"
+        ],
+        "match": false,
+        "spatial_grounding": 0.5,
+        "speech_temporal_grounding": 0.5
+      },
+      {
+        "video_name": "VID_20260106_183428.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "E",
+          "e"
+        ],
+        "gt_options": [
+          "D",
+          "e"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 1.0
+      },
+      {
+        "video_name": "VID_20260110_172828.mp4",
+        "instruction": "指令3",
+        "pred_options": [
+          "B",
+          "j"
+        ],
+        "gt_options": [
+          "B",
+          "l"
+        ],
+        "match": false,
+        "spatial_grounding": 0.5,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_183503.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "E",
+          "f"
+        ],
+        "gt_options": [
+          "D",
+          "f"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_183553.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "D",
+          "f"
+        ],
+        "gt_options": [
+          "D",
+          "f"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_183515.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "B",
+          "b"
+        ],
+        "gt_options": [
+          "B",
+          "b"
+        ],
+        "match": true,
+        "spatial_grounding": 1.0,
+        "speech_temporal_grounding": 1.0
+      },
+      {
+        "video_name": "VID_20260106_183630.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "B",
+          "j"
+        ],
+        "gt_options": [
+          "B",
+          "j"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.5
+      },
+      {
+        "video_name": "VID_20260106_183413.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "C",
+          "d"
+        ],
+        "gt_options": [
+          "C",
+          "d"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_183604.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "E",
+          "i"
+        ],
+        "gt_options": [
+          "E",
+          "i"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_173255.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "A",
+          "k"
+        ],
+        "gt_options": [
+          "E",
+          "k"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_183451.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "A",
+          "g"
+        ],
+        "gt_options": [
+          "A",
+          "g"
+        ],
+        "match": true,
+        "spatial_grounding": 0.5,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_173041.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "A",
+          "d"
+        ],
+        "gt_options": [
+          "A",
+          "f"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 1.0
+      },
+      {
+        "video_name": "VID_20260110_173028.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "E",
+          "e"
+        ],
+        "gt_options": [
+          "E",
+          "e"
+        ],
+        "match": true,
+        "spatial_grounding": 1.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_173205.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "B",
+          "j"
+        ],
+        "gt_options": [
+          "E",
+          "j"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 1.0
+      },
+      {
+        "video_name": "VID_20260110_172930.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "B",
+          "k"
+        ],
+        "gt_options": [
+          "A",
+          "a"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.5
+      },
+      {
+        "video_name": "VID_20260110_172943.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "B",
+          "b"
+        ],
+        "gt_options": [
+          "B",
+          "b"
+        ],
+        "match": true,
+        "spatial_grounding": 0.5,
+        "speech_temporal_grounding": 1.0
+      },
+      {
+        "video_name": "VID_20260110_173347.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "A",
+          "i"
+        ],
+        "gt_options": [
+          "A",
+          "l"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_173216.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "B",
+          "d"
+        ],
+        "gt_options": [
+          "A",
+          "d"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_173230.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "A",
+          "k"
+        ],
+        "gt_options": [
+          "B",
+          "a"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_173138.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "C",
+          "i"
+        ],
+        "gt_options": [
+          "C",
+          "i"
+        ],
+        "match": true,
+        "spatial_grounding": 0.5,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_173052.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "D",
+          "g"
+        ],
+        "gt_options": [
+          "D",
+          "g"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_173103.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "C",
+          "d"
+        ],
+        "gt_options": [
+          "C",
+          "h"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_173005.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "A",
+          "d"
+        ],
+        "gt_options": [
+          "D",
+          "d"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.5
+      },
+      {
+        "video_name": "VID_20260110_173324.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "C",
+          "c"
+        ],
+        "gt_options": [
+          "D",
+          "l"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_172749.mp4",
+        "instruction": "指令3",
+        "pred_options": [
+          "E",
+          "k"
+        ],
+        "gt_options": [
+          "E",
+          "h"
+        ],
+        "match": false,
+        "spatial_grounding": 0.5,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_173312.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "B",
+          "g"
+        ],
+        "gt_options": [
+          "B",
+          "g"
+        ],
+        "match": true,
+        "spatial_grounding": 0.5,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_184025.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "E",
+          "g",
+          "B"
+        ],
+        "gt_options": [
+          "G",
+          "g",
+          "H"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.3333333333333333
+      },
+      {
+        "video_name": "VID_20260106_184039.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "A",
+          "b",
+          "F"
+        ],
+        "gt_options": [
+          "A",
+          "b",
+          "F"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.3333333333333333
+      },
+      {
+        "video_name": "VID_20260106_183642.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "C",
+          "b"
+        ],
+        "gt_options": [
+          "C",
+          "k"
+        ],
+        "match": false,
+        "spatial_grounding": 0.5,
+        "speech_temporal_grounding": 0.5
+      },
+      {
+        "video_name": "VID_20260106_184229.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "C",
+          "m",
+          "B"
+        ],
+        "gt_options": [
+          "C",
+          "e",
+          "B"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_173243.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "C",
+          "h"
+        ],
+        "gt_options": [
+          "C",
+          "h"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_182724.mp4",
+        "instruction": "指令2",
+        "pred_options": [
+          "M"
+        ],
+        "gt_options": [
+          "M"
+        ],
+        "match": true,
+        "spatial_grounding": 1.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_184054.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "C",
+          "h",
+          "B"
+        ],
+        "gt_options": [
+          "C",
+          "h",
+          "I"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_172727.mp4",
+        "instruction": "指令3",
+        "pred_options": [
+          "A",
+          "h"
+        ],
+        "gt_options": [
+          "A",
+          "i"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_183931.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "E",
+          "c",
+          "A"
+        ],
+        "gt_options": [
+          "F",
+          "e",
+          "C"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_184355.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "E",
+          "g",
+          "C"
+        ],
+        "gt_options": [
+          "E",
+          "g",
+          "A"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 1.0
+      },
+      {
+        "video_name": "VID_20260110_172213.mp4",
+        "instruction": "指令2",
+        "pred_options": [
+          "C"
+        ],
+        "gt_options": [
+          "C"
+        ],
+        "match": true,
+        "spatial_grounding": 1.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_183833.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "A",
+          "a",
+          "B"
+        ],
+        "gt_options": [
+          "A",
+          "a",
+          "B"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.3333333333333333
+      },
+      {
+        "video_name": "VID_20260106_183903.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "E",
+          "c",
+          "C"
+        ],
+        "gt_options": [
+          "E",
+          "c",
+          "A"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_183440.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "B",
+          "f"
+        ],
+        "gt_options": [
+          "B",
+          "f"
+        ],
+        "match": true,
+        "spatial_grounding": 0.5,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_184300.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "E",
+          "c",
+          "B"
+        ],
+        "gt_options": [
+          "E",
+          "k",
+          "B"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_183654.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "B",
+          "l"
+        ],
+        "gt_options": [
+          "B",
+          "l"
+        ],
+        "match": true,
+        "spatial_grounding": 0.5,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_184316.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "A",
+          "b",
+          "D"
+        ],
+        "gt_options": [
+          "A",
+          "h",
+          "D"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.3333333333333333
+      },
+      {
+        "video_name": "VID_20260106_183946.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "A",
+          "f",
+          "C"
+        ],
+        "gt_options": [
+          "A",
+          "f",
+          "C"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.3333333333333333
+      },
+      {
+        "video_name": "VID_20260106_183348.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "B",
+          "b"
+        ],
+        "gt_options": [
+          "B",
+          "b"
+        ],
+        "match": true,
+        "spatial_grounding": 0.5,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_183036.mp4",
+        "instruction": "指令3",
+        "pred_options": [
+          "C",
+          "a"
+        ],
+        "gt_options": [
+          "C",
+          "b"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_172954.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "C",
+          "c"
+        ],
+        "gt_options": [
+          "C",
+          "c"
+        ],
+        "match": true,
+        "spatial_grounding": 1.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_174532.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "I",
+          "h",
+          "H"
+        ],
+        "gt_options": [
+          "I",
+          "m",
+          "H"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.3333333333333333
+      },
+      {
+        "video_name": "VID_20260106_184110.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "C",
+          "i",
+          "E"
+        ],
+        "gt_options": [
+          "C",
+          "i",
+          "E"
+        ],
+        "match": true,
+        "spatial_grounding": 0.3333333333333333,
+        "speech_temporal_grounding": 0.3333333333333333
+      },
+      {
+        "video_name": "VID_20260110_174546.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "H",
+          "l",
+          "I"
+        ],
+        "gt_options": [
+          "B",
+          "i",
+          "A"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.6666666666666666
+      },
+      {
+        "video_name": "VID_20260106_183732.mp4",
+        "instruction": "指令4",
+        "pred_options": [
+          "A",
+          "a"
+        ],
+        "gt_options": [
+          "A",
+          "n"
+        ],
+        "match": false,
+        "spatial_grounding": 0.5,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_184140.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "F",
+          "g",
+          "E"
+        ],
+        "gt_options": [
+          "F",
+          "g",
+          "G"
+        ],
+        "match": false,
+        "spatial_grounding": 0.3333333333333333,
+        "speech_temporal_grounding": 0.3333333333333333
+      },
+      {
+        "video_name": "VID_20260110_173909.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "A",
+          "h",
+          "A"
+        ],
+        "gt_options": [
+          "C",
+          "h",
+          "A"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_184411.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "E",
+          "m",
+          "F"
+        ],
+        "gt_options": [
+          "G",
+          "m",
+          "F"
+        ],
+        "match": false,
+        "spatial_grounding": 0.3333333333333333,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_183917.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "C",
+          "g",
+          "E"
+        ],
+        "gt_options": [
+          "C",
+          "d",
+          "E"
+        ],
+        "match": false,
+        "spatial_grounding": 0.3333333333333333,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_173947.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "I",
+          "a",
+          "H"
+        ],
+        "gt_options": [
+          "I",
+          "a",
+          "B"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_173438.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "I",
+          "a",
+          "H"
+        ],
+        "gt_options": [
+          "A",
+          "a",
+          "B"
+        ],
+        "match": false,
+        "spatial_grounding": 0.3333333333333333,
+        "speech_temporal_grounding": 0.3333333333333333
+      },
+      {
+        "video_name": "VID_20260110_174459.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "I",
+          "j",
+          "H"
+        ],
+        "gt_options": [
+          "I",
+          "m",
+          "H"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.3333333333333333
+      },
+      {
+        "video_name": "VID_20260110_173744.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "C",
+          "g",
+          "A"
+        ],
+        "gt_options": [
+          "C",
+          "g",
+          "A"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_173601.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "A",
+          "d",
+          "D"
+        ],
+        "gt_options": [
+          "A",
+          "d",
+          "E"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_173547.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "C",
+          "c",
+          "D"
+        ],
+        "gt_options": [
+          "C",
+          "c",
+          "D"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.3333333333333333
+      },
+      {
+        "video_name": "VID_20260110_174444.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "A",
+          "l",
+          "C"
+        ],
+        "gt_options": [
+          "A",
+          "l",
+          "C"
+        ],
+        "match": true,
+        "spatial_grounding": 0.3333333333333333,
+        "speech_temporal_grounding": 1.0
+      },
+      {
+        "video_name": "VID_20260110_173845.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "B",
+          "k",
+          "I"
+        ],
+        "gt_options": [
+          "F",
+          "k",
+          "C"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.6666666666666666
+      },
+      {
+        "video_name": "VID_20260110_172315.mp4",
+        "instruction": "指令2",
+        "pred_options": [
+          "H"
+        ],
+        "gt_options": [
+          "I"
+        ],
+        "match": false,
+        "spatial_grounding": 1.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_173627.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "C",
+          "d",
+          "G"
+        ],
+        "gt_options": [
+          "F",
+          "d",
+          "G"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_173658.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "A",
+          "e",
+          "D"
+        ],
+        "gt_options": [
+          "A",
+          "e",
+          "D"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_173730.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "B",
+          "e",
+          "A"
+        ],
+        "gt_options": [
+          "A",
+          "f",
+          "B"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.3333333333333333
+      },
+      {
+        "video_name": "VID_20260110_174030.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "C",
+          "j",
+          "A"
+        ],
+        "gt_options": [
+          "C",
+          "j",
+          "B"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_173757.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "B",
+          "h",
+          "H"
+        ],
+        "gt_options": [
+          "C",
+          "h",
+          "H"
+        ],
+        "match": false,
+        "spatial_grounding": 0.3333333333333333,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_184957.mp4",
+        "instruction": "指令6",
+        "pred_options": [
+          "A",
+          "e",
+          "B",
+          "i"
+        ],
+        "gt_options": [
+          "A",
+          "e",
+          "D",
+          "m"
+        ],
+        "match": false,
+        "spatial_grounding": 0.25,
+        "speech_temporal_grounding": 0.5
+      },
+      {
+        "video_name": "VID_20260106_184245.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "A",
+          "j",
+          "F"
+        ],
+        "gt_options": [
+          "A",
+          "j",
+          "F"
+        ],
+        "match": true,
+        "spatial_grounding": 0.3333333333333333,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_184840.mp4",
+        "instruction": "指令6",
+        "pred_options": [
+          "E",
+          "b",
+          "B",
+          "j"
+        ],
+        "gt_options": [
+          "E",
+          "b",
+          "B",
+          "j"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.75
+      },
+      {
+        "video_name": "VID_20260110_174613.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "B",
+          "e",
+          "A"
+        ],
+        "gt_options": [
+          "B",
+          "a",
+          "A"
+        ],
+        "match": false,
+        "spatial_grounding": 0.3333333333333333,
+        "speech_temporal_grounding": 0.3333333333333333
+      },
+      {
+        "video_name": "VID_20260110_173922.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "I",
+          "e",
+          "A"
+        ],
+        "gt_options": [
+          "I",
+          "b",
+          "A"
+        ],
+        "match": false,
+        "spatial_grounding": 0.6666666666666666,
+        "speech_temporal_grounding": 0.3333333333333333
+      },
+      {
+        "video_name": "VID_20260106_184125.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "E",
+          "h",
+          "C"
+        ],
+        "gt_options": [
+          "E",
+          "h",
+          "A"
+        ],
+        "match": false,
+        "spatial_grounding": 0.6666666666666666,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_185249.mp4",
+        "instruction": "指令6",
+        "pred_options": [
+          "A",
+          "e",
+          "C",
+          "i"
+        ],
+        "gt_options": [
+          "B",
+          "a",
+          "C",
+          "i"
+        ],
+        "match": false,
+        "spatial_grounding": 0.5,
+        "speech_temporal_grounding": 0.25
+      },
+      {
+        "video_name": "VID_20260106_184214.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "G",
+          "a",
+          "F"
+        ],
+        "gt_options": [
+          "G",
+          "a",
+          "F"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.6666666666666666
+      },
+      {
+        "video_name": "VID_20260106_185231.mp4",
+        "instruction": "指令6",
+        "pred_options": [
+          "C",
+          "f",
+          "D",
+          "e"
+        ],
+        "gt_options": [
+          "C",
+          "f",
+          "D",
+          "e"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_184856.mp4",
+        "instruction": "指令6",
+        "pred_options": [
+          "E",
+          "k",
+          "B",
+          "g"
+        ],
+        "gt_options": [
+          "C",
+          "k",
+          "B",
+          "l"
+        ],
+        "match": false,
+        "spatial_grounding": 0.25,
+        "speech_temporal_grounding": 0.5
+      },
+      {
+        "video_name": "VID_20260106_185026.mp4",
+        "instruction": "指令6",
+        "pred_options": [
+          "A",
+          "e",
+          "D",
+          "f"
+        ],
+        "gt_options": [
+          "A",
+          "a",
+          "B",
+          "f"
+        ],
+        "match": false,
+        "spatial_grounding": 0.25,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_185132.mp4",
+        "instruction": "指令6",
+        "pred_options": [
+          "C",
+          "i",
+          "B",
+          "l"
+        ],
+        "gt_options": [
+          "C",
+          "i",
+          "B",
+          "l"
+        ],
+        "match": true,
+        "spatial_grounding": 0.25,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_174050.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "F",
+          "d",
+          "I"
+        ],
+        "gt_options": [
+          "F",
+          "m",
+          "C"
+        ],
+        "match": false,
+        "spatial_grounding": 0.3333333333333333,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_173831.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "A",
+          "h",
+          "H"
+        ],
+        "gt_options": [
+          "A",
+          "j",
+          "H"
+        ],
+        "match": false,
+        "spatial_grounding": 0.6666666666666666,
+        "speech_temporal_grounding": 0.6666666666666666
+      },
+      {
+        "video_name": "VID_20260110_174304.mp4",
+        "instruction": "指令6",
+        "pred_options": [
+          "D",
+          "e",
+          "E",
+          "a"
+        ],
+        "gt_options": [
+          "D",
+          "e",
+          "A",
+          "a"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.5
+      },
+      {
+        "video_name": "VID_20260106_184808.mp4",
+        "instruction": "指令6",
+        "pred_options": [
+          "C",
+          "g",
+          "D",
+          "h"
+        ],
+        "gt_options": [
+          "C",
+          "g",
+          "D",
+          "h"
+        ],
+        "match": true,
+        "spatial_grounding": 0.25,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_184720.mp4",
+        "instruction": "指令6",
+        "pred_options": [
+          "A",
+          "a",
+          "B",
+          "b"
+        ],
+        "gt_options": [
+          "A",
+          "a",
+          "B",
+          "b"
+        ],
+        "match": true,
+        "spatial_grounding": 0.5,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_184825.mp4",
+        "instruction": "指令6",
+        "pred_options": [
+          "A",
+          "e",
+          "C",
+          "i"
+        ],
+        "gt_options": [
+          "A",
+          "e",
+          "C",
+          "i"
+        ],
+        "match": true,
+        "spatial_grounding": 0.25,
+        "speech_temporal_grounding": 0.25
+      },
+      {
+        "video_name": "VID_20260110_173813.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "A",
+          "c",
+          "H"
+        ],
+        "gt_options": [
+          "A",
+          "i",
+          "H"
+        ],
+        "match": false,
+        "spatial_grounding": 0.3333333333333333,
+        "speech_temporal_grounding": 0.6666666666666666
+      },
+      {
+        "video_name": "VID_20260106_185115.mp4",
+        "instruction": "指令6",
+        "pred_options": [
+          "A",
+          "b",
+          "E",
+          "j"
+        ],
+        "gt_options": [
+          "B",
+          "b",
+          "E",
+          "j"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_183848.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "A",
+          "b",
+          "D"
+        ],
+        "gt_options": [
+          "C",
+          "b",
+          "D"
+        ],
+        "match": false,
+        "spatial_grounding": 0.3333333333333333,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_184736.mp4",
+        "instruction": "指令6",
+        "pred_options": [
+          "C",
+          "c",
+          "D",
+          "d"
+        ],
+        "gt_options": [
+          "C",
+          "c",
+          "D",
+          "d"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_173510.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "A",
+          "e",
+          "C"
+        ],
+        "gt_options": [
+          "A",
+          "b",
+          "C"
+        ],
+        "match": false,
+        "spatial_grounding": 0.3333333333333333,
+        "speech_temporal_grounding": 0.3333333333333333
+      },
+      {
+        "video_name": "VID_20260110_174321.mp4",
+        "instruction": "指令6",
+        "pred_options": [
+          "C",
+          "f",
+          "D",
+          "e"
+        ],
+        "gt_options": [
+          "A",
+          "f",
+          "E",
+          "g"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.25
+      },
+      {
+        "video_name": "VID_20260106_185058.mp4",
+        "instruction": "指令6",
+        "pred_options": [
+          "A",
+          "k",
+          "D",
+          "b"
+        ],
+        "gt_options": [
+          "A",
+          "h",
+          "D",
+          "f"
+        ],
+        "match": false,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.25
+      },
+      {
+        "video_name": "VID_20260110_174015.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "I",
+          "l",
+          "C"
+        ],
+        "gt_options": [
+          "I",
+          "l",
+          "C"
+        ],
+        "match": true,
+        "spatial_grounding": 0.6666666666666666,
+        "speech_temporal_grounding": 0.3333333333333333
+      },
+      {
+        "video_name": "VID_20260106_184331.mp4",
+        "instruction": "指令5",
+        "pred_options": [
+          "G",
+          "l",
+          "F"
+        ],
+        "gt_options": [
+          "E",
+          "l",
+          "F"
+        ],
+        "match": false,
+        "spatial_grounding": 0.6666666666666666,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_174229.mp4",
+        "instruction": "指令6",
+        "pred_options": [
+          "A",
+          "a",
+          "E",
+          "b"
+        ],
+        "gt_options": [
+          "A",
+          "a",
+          "B",
+          "b"
+        ],
+        "match": false,
+        "spatial_grounding": 0.25,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260106_184752.mp4",
+        "instruction": "指令6",
+        "pred_options": [
+          "D",
+          "e",
+          "C",
+          "f"
+        ],
+        "gt_options": [
+          "D",
+          "e",
+          "C",
+          "f"
+        ],
+        "match": true,
+        "spatial_grounding": 0.0,
+        "speech_temporal_grounding": 0.75
+      },
+      {
+        "video_name": "VID_20260106_185042.mp4",
+        "instruction": "指令6",
+        "pred_options": [
+          "C",
+          "d",
+          "B",
+          "j"
+        ],
+        "gt_options": [
+          "C",
+          "d",
+          "B",
+          "j"
+        ],
+        "match": true,
+        "spatial_grounding": 0.5,
+        "speech_temporal_grounding": 0.0
+      },
+      {
+        "video_name": "VID_20260110_174245.mp4",
+        "instruction": "指令6",
+        "pred_options": [
+          "C",
+          "c",
+          "D",
+          "d"
+        ],
+        "gt_options": [
+          "C",
+          "c",
+          "D",
+          "d"
+        ],
+        "match": true,
+        "spatial_grounding": 0.25,
+        "speech_temporal_grounding": 0.0
+      }
+    ]
+  },
+  "by_instruction": {
+    "指令1": {
+      "overall_accuracy": 0.6,
+      "intent_grounding_accuracy": 0.6,
+      "spatial_grounding_accuracy": 0.13333333333333333,
+      "speech_temporal_grounding_accuracy": 0.0,
+      "overall_score": 0.36666666666666664,
+      "instruction_breakdown": {
+        "指令1": {
+          "intent_accuracy": 0.6,
+          "spatial_grounding": 0.13333333333333333,
+          "speech_temporal_grounding": 0.0,
+          "overall": 0.36666666666666664,
+          "count": 30
+        }
+      },
+      "count": 30
+    },
+    "指令2": {
+      "overall_accuracy": 0.5333333333333333,
+      "intent_grounding_accuracy": 0.5333333333333333,
+      "spatial_grounding_accuracy": 0.2,
+      "speech_temporal_grounding_accuracy": 0.3333333333333333,
+      "overall_score": 0.35555555555555557,
+      "instruction_breakdown": {
+        "指令2": {
+          "intent_accuracy": 0.5333333333333333,
+          "spatial_grounding": 0.2,
+          "speech_temporal_grounding": 0.3333333333333333,
+          "overall": 0.35555555555555557,
+          "count": 30
+        }
+      },
+      "count": 30
+    },
+    "指令3": {
+      "overall_accuracy": 0.2,
+      "intent_grounding_accuracy": 0.2,
+      "spatial_grounding_accuracy": 0.1,
+      "speech_temporal_grounding_accuracy": 0.06666666666666667,
+      "overall_score": 0.12222222222222223,
+      "instruction_breakdown": {
+        "指令3": {
+          "intent_accuracy": 0.2,
+          "spatial_grounding": 0.1,
+          "speech_temporal_grounding": 0.06666666666666667,
+          "overall": 0.12222222222222223,
+          "count": 30
+        }
+      },
+      "count": 30
+    },
+    "指令4": {
+      "overall_accuracy": 0.5135135135135135,
+      "intent_grounding_accuracy": 0.5135135135135135,
+      "spatial_grounding_accuracy": 0.21621621621621623,
+      "speech_temporal_grounding_accuracy": 0.24324324324324326,
+      "overall_score": 0.32432432432432434,
+      "instruction_breakdown": {
+        "指令4": {
+          "intent_accuracy": 0.5135135135135135,
+          "spatial_grounding": 0.21621621621621623,
+          "speech_temporal_grounding": 0.24324324324324326,
+          "overall": 0.32432432432432434,
+          "count": 37
+        }
+      },
+      "count": 37
+    },
+    "指令5": {
+      "overall_accuracy": 0.2558139534883721,
+      "intent_grounding_accuracy": 0.2558139534883721,
+      "spatial_grounding_accuracy": 0.17829457364341084,
+      "speech_temporal_grounding_accuracy": 0.24806201550387597,
+      "overall_score": 0.22739018087855298,
+      "instruction_breakdown": {
+        "指令5": {
+          "intent_accuracy": 0.2558139534883721,
+          "spatial_grounding": 0.17829457364341084,
+          "speech_temporal_grounding": 0.24806201550387597,
+          "overall": 0.22739018087855298,
+          "count": 43
+        }
+      },
+      "count": 43
+    },
+    "指令6": {
+      "overall_accuracy": 0.5263157894736842,
+      "intent_grounding_accuracy": 0.5263157894736842,
+      "spatial_grounding_accuracy": 0.18421052631578946,
+      "speech_temporal_grounding_accuracy": 0.21052631578947367,
+      "overall_score": 0.30701754385964913,
+      "instruction_breakdown": {
+        "指令6": {
+          "intent_accuracy": 0.5263157894736842,
+          "spatial_grounding": 0.18421052631578946,
+          "speech_temporal_grounding": 0.21052631578947367,
+          "overall": 0.30701754385964913,
+          "count": 19
+        }
+      },
+      "count": 19
+    }
+  },
+  "statistics": {
+    "total_samples": 189,
+    "samples_by_instruction": {
+      "指令1": 30,
+      "指令2": 30,
+      "指令3": 30,
+      "指令4": 37,
+      "指令5": 43,
+      "指令6": 19
+    }
+  }
+}

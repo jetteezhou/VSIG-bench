@@ -360,7 +360,16 @@ def process_single_model(model_config, logger):
     data_root_dir = Config.DATA_ROOT_DIR
     # 使用模型名称构建输出目录
     model_name_safe = model_name.replace("/", "_").replace("\\", "_")
-    base_output_dir = f"results/{model_name_safe}"
+    
+    # 优先从 Config.OUTPUT_DIR 获取根目录
+    results_root = "results"
+    if Config.OUTPUT_DIR:
+        if "/" in Config.OUTPUT_DIR or "\\" in Config.OUTPUT_DIR:
+            results_root = os.path.dirname(Config.OUTPUT_DIR)
+        else:
+            results_root = Config.OUTPUT_DIR
+    
+    base_output_dir = os.path.join(results_root, model_name_safe)
 
     if not os.path.exists(data_root_dir):
         logger.critical(f"数据根目录不存在: {data_root_dir}")
@@ -638,13 +647,21 @@ def process_single_model(model_config, logger):
 
 def main():
     # 0. 初始化 Logger
-    # 创建日志目录：如果配置了多模型，使用results/logs；否则使用OUTPUT_DIR/logs
+    # 获取结果根目录
+    results_root = "results"
+    if Config.OUTPUT_DIR:
+        if "/" in Config.OUTPUT_DIR or "\\" in Config.OUTPUT_DIR:
+            results_root = os.path.dirname(Config.OUTPUT_DIR)
+        else:
+            results_root = Config.OUTPUT_DIR
+    
+    # 创建日志目录：如果配置了多模型，使用 results_root/logs；否则使用 base_output_dir/logs
     if hasattr(Config, 'MODELS') and Config.MODELS and len(Config.MODELS) > 0:
-        log_dir = "results/logs"
+        log_dir = os.path.join(results_root, "logs")
     else:
         model_name_safe = Config.MODEL_NAME.replace(
             "/", "_").replace("\\", "_")
-        log_dir = os.path.join("results", model_name_safe, "logs")
+        log_dir = os.path.join(results_root, model_name_safe, "logs")
 
     logger, log_file = setup_logger(output_dir=log_dir, log_to_file=True)
     if log_file:

@@ -7,7 +7,7 @@ import sys
 # Change this if your data structure is different relative to this script
 # Assuming script is in src/utils/
 # and data is in data_new/
-RELATIVE_DATA_PATH = "../data_new"
+RELATIVE_DATA_PATH = "../data_new-2"
 
 
 def get_upper_label(n):
@@ -64,13 +64,13 @@ def process_instruction_1_2(data, instruction_name):
     for entry in data:
         video_name = entry.get('video_name', 'Unknown Video')
         object_space = entry.get('object_space', [])
-        
+
         answers = []
         for obj in object_space:
             name = obj.get('name', 'Unknown Name').strip()
             if not name:
                 continue
-            
+
             label = get_upper_label(counter)
             answers.append({
                 "choice": label,
@@ -79,7 +79,7 @@ def process_instruction_1_2(data, instruction_name):
                 "mask": obj.get('mask')
             })
             counter += 1
-        
+
         if answers:
             video_eval_data[video_name] = {
                 "object_choices": object_choices,
@@ -118,9 +118,11 @@ def process_instruction_3(data):
                     unique_spaces[name] = get_lower_label(space_counter)
                     space_counter += 1
 
-    sorted_objects = sorted(unique_objects.items(), key=lambda x: (len(x[1]), x[1]))
-    sorted_spaces = sorted(unique_spaces.items(), key=lambda x: (len(x[1]), x[1]))
-    
+    sorted_objects = sorted(unique_objects.items(),
+                            key=lambda x: (len(x[1]), x[1]))
+    sorted_spaces = sorted(unique_spaces.items(),
+                           key=lambda x: (len(x[1]), x[1]))
+
     object_choices = [f"{label}. {name}" for name, label in sorted_objects]
     space_choices = [f"{label}. {name}" for name, label in sorted_spaces]
 
@@ -129,15 +131,17 @@ def process_instruction_3(data):
         video_name = entry.get('video_name', 'Unknown Video')
         object_space = entry.get('object_space', [])
 
-        obj_item = next((item for item in object_space if item.get('type') == 'object' and item.get('name', '').strip()), None)
-        space_item = next((item for item in object_space if item.get('type') == 'space' and item.get('name', '').strip()), None)
+        obj_item = next((item for item in object_space if item.get(
+            'type') == 'object' and item.get('name', '').strip()), None)
+        space_item = next((item for item in object_space if item.get(
+            'type') == 'space' and item.get('name', '').strip()), None)
 
         if not obj_item or not space_item:
             continue
 
         obj_name = obj_item.get('name', '').strip()
         space_name = space_item.get('name', '').strip()
-        
+
         obj_label = unique_objects[obj_name]
         space_label = unique_spaces[space_name]
 
@@ -178,8 +182,10 @@ def process_instruction_4(data):
 
     for entry in data:
         object_space = entry.get('object_space', [])
-        objects = [item for item in object_space if item.get('type') == 'object' and item.get('name', '').strip()]
-        spaces = [item for item in object_space if item.get('type') == 'space' and item.get('name', '').strip()]
+        objects = [item for item in object_space if item.get(
+            'type') == 'object' and item.get('name', '').strip()]
+        spaces = [item for item in object_space if item.get(
+            'type') == 'space' and item.get('name', '').strip()]
 
         if len(objects) < 2 or len(spaces) < 1:
             continue
@@ -196,9 +202,11 @@ def process_instruction_4(data):
             unique_combined[combined_name] = get_lower_label(combined_counter)
             combined_counter += 1
 
-    sorted_objects = sorted(unique_objects.items(), key=lambda x: (len(x[1]), x[1]))
-    sorted_combined = sorted(unique_combined.items(), key=lambda x: (len(x[1]), x[1]))
-    
+    sorted_objects = sorted(unique_objects.items(),
+                            key=lambda x: (len(x[1]), x[1]))
+    sorted_combined = sorted(unique_combined.items(),
+                             key=lambda x: (len(x[1]), x[1]))
+
     object_choices = [f"{label}. {name}" for name, label in sorted_objects]
     space_choices = [f"{label}. {name}" for name, label in sorted_combined]
 
@@ -207,8 +215,10 @@ def process_instruction_4(data):
         video_name = entry.get('video_name', 'Unknown Video')
         object_space = entry.get('object_space', [])
 
-        objects = [item for item in object_space if item.get('type') == 'object' and item.get('name', '').strip()]
-        spaces = [item for item in object_space if item.get('type') == 'space' and item.get('name', '').strip()]
+        objects = [item for item in object_space if item.get(
+            'type') == 'object' and item.get('name', '').strip()]
+        spaces = [item for item in object_space if item.get(
+            'type') == 'space' and item.get('name', '').strip()]
 
         if len(objects) < 2 or len(spaces) < 1:
             continue
@@ -222,8 +232,10 @@ def process_instruction_4(data):
         label2 = unique_combined[combined_name]
 
         # Merge ASR times for combined label
-        combined_start = min(get_time(objects[1], 'asr_begin_time'), get_time(spaces[0], 'asr_begin_time'))
-        combined_end = max(get_time(objects[1], 'asr_end_time'), get_time(spaces[0], 'asr_end_time'))
+        combined_start = min(get_time(objects[1], 'asr_begin_time'), get_time(
+            spaces[0], 'asr_begin_time'))
+        combined_end = max(get_time(objects[1], 'asr_end_time'), get_time(
+            spaces[0], 'asr_end_time'))
 
         answers = [
             {
@@ -262,8 +274,10 @@ def process_instruction_5(data):
 
     for entry in data:
         object_space = entry.get('object_space', [])
-        objects = [item for item in object_space if item.get('type') == 'object' and item.get('name', '').strip()]
-        spaces = [item for item in object_space if item.get('type') == 'space' and item.get('name', '').strip()]
+        objects = [item for item in object_space if item.get(
+            'type') == 'object' and item.get('name', '').strip()]
+        spaces = [item for item in object_space if item.get(
+            'type') == 'space' and item.get('name', '').strip()]
 
         if len(objects) < 3 or len(spaces) < 1:
             continue
@@ -285,9 +299,11 @@ def process_instruction_5(data):
             unique_objects[name3] = get_upper_label(obj_counter)
             obj_counter += 1
 
-    sorted_objects = sorted(unique_objects.items(), key=lambda x: (len(x[1]), x[1]))
-    sorted_combined = sorted(unique_combined.items(), key=lambda x: (len(x[1]), x[1]))
-    
+    sorted_objects = sorted(unique_objects.items(),
+                            key=lambda x: (len(x[1]), x[1]))
+    sorted_combined = sorted(unique_combined.items(),
+                             key=lambda x: (len(x[1]), x[1]))
+
     object_choices = [f"{label}. {name}" for name, label in sorted_objects]
     space_choices = [f"{label}. {name}" for name, label in sorted_combined]
 
@@ -296,8 +312,10 @@ def process_instruction_5(data):
         video_name = entry.get('video_name', 'Unknown Video')
         object_space = entry.get('object_space', [])
 
-        objects = [item for item in object_space if item.get('type') == 'object' and item.get('name', '').strip()]
-        spaces = [item for item in object_space if item.get('type') == 'space' and item.get('name', '').strip()]
+        objects = [item for item in object_space if item.get(
+            'type') == 'object' and item.get('name', '').strip()]
+        spaces = [item for item in object_space if item.get(
+            'type') == 'space' and item.get('name', '').strip()]
 
         if len(objects) < 3 or len(spaces) < 1:
             continue
@@ -312,13 +330,18 @@ def process_instruction_5(data):
         label2 = unique_combined[combined_name]
         label3 = unique_objects[name3]
 
-        combined_start = min(get_time(objects[1], 'asr_begin_time'), get_time(spaces[0], 'asr_begin_time'))
-        combined_end = max(get_time(objects[1], 'asr_end_time'), get_time(spaces[0], 'asr_end_time'))
+        combined_start = min(get_time(objects[1], 'asr_begin_time'), get_time(
+            spaces[0], 'asr_begin_time'))
+        combined_end = max(get_time(objects[1], 'asr_end_time'), get_time(
+            spaces[0], 'asr_end_time'))
 
         answers = [
-            {"choice": label1, "asr_begin_time": get_time(objects[0], 'asr_begin_time'), "asr_end_time": get_time(objects[0], 'asr_end_time'), "mask": objects[0].get('mask')},
-            {"choice": label2, "asr_begin_time": combined_start, "asr_end_time": combined_end, "points": spaces[0].get('points')},
-            {"choice": label3, "asr_begin_time": get_time(objects[2], 'asr_begin_time'), "asr_end_time": get_time(objects[2], 'asr_end_time'), "mask": objects[2].get('mask')}
+            {"choice": label1, "asr_begin_time": get_time(objects[0], 'asr_begin_time'), "asr_end_time": get_time(
+                objects[0], 'asr_end_time'), "mask": objects[0].get('mask')},
+            {"choice": label2, "asr_begin_time": combined_start,
+                "asr_end_time": combined_end, "points": spaces[0].get('points')},
+            {"choice": label3, "asr_begin_time": get_time(objects[2], 'asr_begin_time'), "asr_end_time": get_time(
+                objects[2], 'asr_end_time'), "mask": objects[2].get('mask')}
         ]
 
         video_eval_data[video_name] = {
@@ -343,8 +366,10 @@ def process_instruction_6(data):
 
     for entry in data:
         object_space = entry.get('object_space', [])
-        objects = [item for item in object_space if item.get('type') == 'object' and item.get('name', '').strip()]
-        spaces = [item for item in object_space if item.get('type') == 'space' and item.get('name', '').strip()]
+        objects = [item for item in object_space if item.get(
+            'type') == 'object' and item.get('name', '').strip()]
+        spaces = [item for item in object_space if item.get(
+            'type') == 'space' and item.get('name', '').strip()]
 
         if len(objects) < 4 or len(spaces) < 2:
             continue
@@ -360,12 +385,15 @@ def process_instruction_6(data):
             space = spaces[j].get('name', '').strip()
             combined_name = f"{name}{space}"
             if combined_name not in unique_combined:
-                unique_combined[combined_name] = get_lower_label(combined_counter)
+                unique_combined[combined_name] = get_lower_label(
+                    combined_counter)
                 combined_counter += 1
 
-    sorted_objects = sorted(unique_objects.items(), key=lambda x: (len(x[1]), x[1]))
-    sorted_combined = sorted(unique_combined.items(), key=lambda x: (len(x[1]), x[1]))
-    
+    sorted_objects = sorted(unique_objects.items(),
+                            key=lambda x: (len(x[1]), x[1]))
+    sorted_combined = sorted(unique_combined.items(),
+                             key=lambda x: (len(x[1]), x[1]))
+
     object_choices = [f"{label}. {name}" for name, label in sorted_objects]
     space_choices = [f"{label}. {name}" for name, label in sorted_combined]
 
@@ -374,8 +402,10 @@ def process_instruction_6(data):
         video_name = entry.get('video_name', 'Unknown Video')
         object_space = entry.get('object_space', [])
 
-        objects = [item for item in object_space if item.get('type') == 'object' and item.get('name', '').strip()]
-        spaces = [item for item in object_space if item.get('type') == 'space' and item.get('name', '').strip()]
+        objects = [item for item in object_space if item.get(
+            'type') == 'object' and item.get('name', '').strip()]
+        spaces = [item for item in object_space if item.get(
+            'type') == 'space' and item.get('name', '').strip()]
 
         if len(objects) < 4 or len(spaces) < 2:
             continue
@@ -383,21 +413,27 @@ def process_instruction_6(data):
         labels = []
         for i in [0, 2]:
             labels.append(unique_objects[objects[i].get('name', '').strip()])
-        
+
         combined_labels = []
         combined_asr = []
         for i, j in [(1, 0), (3, 1)]:
             combined_name = f"{objects[i].get('name', '').strip()}{spaces[j].get('name', '').strip()}"
             combined_labels.append(unique_combined[combined_name])
-            start = min(get_time(objects[i], 'asr_begin_time'), get_time(spaces[j], 'asr_begin_time'))
-            end = max(get_time(objects[i], 'asr_end_time'), get_time(spaces[j], 'asr_end_time'))
+            start = min(get_time(objects[i], 'asr_begin_time'), get_time(
+                spaces[j], 'asr_begin_time'))
+            end = max(get_time(objects[i], 'asr_end_time'), get_time(
+                spaces[j], 'asr_end_time'))
             combined_asr.append((start, end))
 
         answers = [
-            {"choice": labels[0], "asr_begin_time": get_time(objects[0], 'asr_begin_time'), "asr_end_time": get_time(objects[0], 'asr_end_time'), "mask": objects[0].get('mask')},
-            {"choice": combined_labels[0], "asr_begin_time": combined_asr[0][0], "asr_end_time": combined_asr[0][1], "points": spaces[0].get('points')},
-            {"choice": labels[1], "asr_begin_time": get_time(objects[2], 'asr_begin_time'), "asr_end_time": get_time(objects[2], 'asr_end_time'), "mask": objects[2].get('mask')},
-            {"choice": combined_labels[1], "asr_begin_time": combined_asr[1][0], "asr_end_time": combined_asr[1][1], "points": spaces[1].get('points')}
+            {"choice": labels[0], "asr_begin_time": get_time(objects[0], 'asr_begin_time'), "asr_end_time": get_time(
+                objects[0], 'asr_end_time'), "mask": objects[0].get('mask')},
+            {"choice": combined_labels[0], "asr_begin_time": combined_asr[0][0],
+                "asr_end_time": combined_asr[0][1], "points": spaces[0].get('points')},
+            {"choice": labels[1], "asr_begin_time": get_time(objects[2], 'asr_begin_time'), "asr_end_time": get_time(
+                objects[2], 'asr_end_time'), "mask": objects[2].get('mask')},
+            {"choice": combined_labels[1], "asr_begin_time": combined_asr[1][0],
+                "asr_end_time": combined_asr[1][1], "points": spaces[1].get('points')}
         ]
 
         video_eval_data[video_name] = {
@@ -459,7 +495,8 @@ def main():
                     data = deduplicated_data
 
                     if dirname in ["指令1", "指令2"]:
-                        video_eval_data, mode = process_instruction_1_2(data, dirname)
+                        video_eval_data, mode = process_instruction_1_2(
+                            data, dirname)
                         write_eval_gt(out_path, video_eval_data)
                     elif dirname == "指令3":
                         video_eval_data, mode = process_instruction_3(data)

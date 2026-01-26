@@ -217,7 +217,7 @@ async def get_leaderboard():
                         "overall": overall.get("overall_score", 0) * 100,
                         "intent": overall.get("intent_grounding_accuracy", 0) * 100,
                         "spatial": overall.get("spatial_grounding_accuracy", 0) * 100,
-                        "temporal": overall.get("temporal_grounding_accuracy", 0) * 100,
+                        "temporal": overall.get("speech_temporal_grounding_accuracy", 0) * 100,
                         "date": date_str
                     })
                 except Exception as e:

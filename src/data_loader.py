@@ -131,10 +131,10 @@ class DataLoader:
                 f"无法找到 eval_gt.json 文件: {eval_gt_path}。"
                 f"请确保已生成 eval_gt.json 文件。"
             )
-        
+
         from src.gt_formatter import GTFormatter
         options_text, video_eval_data = GTFormatter.load_eval_gt(eval_gt_path)
-        
+
         if not video_eval_data:
             raise ValueError(
                 f"eval_gt.json 文件为空或格式错误: {eval_gt_path}。"
@@ -158,8 +158,7 @@ class DataLoader:
 
         # 确定数据集目录列表
         dataset_dirs = []
-        if os.path.basename(data_root) in ["data", "data_new"] or \
-           data_root.endswith("/data") or data_root.endswith("/data_new"):
+        if os.path.basename(data_root).startswith("data"):
             # 扫描子目录作为数据集
             for dataset_name in os.listdir(data_root):
                 dataset_path = os.path.join(data_root, dataset_name)

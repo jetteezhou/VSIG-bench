@@ -239,15 +239,32 @@ class EvaluationEngine:
                 VideoProcessor.visualize_points(
                     last_frame_path, result, vis_path, gt_json=formatted_gt, gt_items=gt_items)
 
-                # Add relative path for frontend access (relative to 'results' directory)
-                if "results" in vis_path:
-                    rel_parts = vis_path.split("results/")
+                # Add relative path for frontend access (relative to the results root directory)
+                # 尝试根据 Config.OUTPUT_DIR 或常见结果目录名称提取相对路径
+                results_keyword = "results"
+                from config import Config
+                if hasattr(Config, 'OUTPUT_DIR') and Config.OUTPUT_DIR:
+                    results_keyword = Config.OUTPUT_DIR.split('/')[0]
+                
+                if results_keyword in vis_path:
+                    rel_parts = vis_path.split(f"{results_keyword}/")
                     if len(rel_parts) > 1:
                         result["visualization_rel_path"] = rel_parts[-1]
                     else:
                         result["visualization_rel_path"] = vis_path
                 else:
-                    result["visualization_rel_path"] = vis_path
+                    # 如果找不到关键字，尝试查找是否有带 -2, -3 等后缀的 results
+                    import re
+                    match = re.search(r'results[^/]*', vis_path)
+                    if match:
+                        keyword = match.group(0)
+                        rel_parts = vis_path.split(f"{keyword}/")
+                        if len(rel_parts) > 1:
+                            result["visualization_rel_path"] = rel_parts[-1]
+                        else:
+                            result["visualization_rel_path"] = vis_path
+                    else:
+                        result["visualization_rel_path"] = vis_path
             except Exception as e:
                 self.log(
                     f"Visualization failed for {video_id}: {e}", "warning")
@@ -258,12 +275,21 @@ class EvaluationEngine:
         try:
             self.init_models()
 
-            data_root = self.config.get("data_root_dir", "data_new")
-            output_dir = self.config.get("output_dir", "results/web_run")
+            data_root = self.config.get("data_root_dir", Config.DATA_ROOT_DIR)
+            
+            # 优先从 Config.OUTPUT_DIR 获取根目录
+            results_root = "results"
+            if Config.OUTPUT_DIR:
+                if "/" in Config.OUTPUT_DIR or "\\" in Config.OUTPUT_DIR:
+                    results_root = os.path.dirname(Config.OUTPUT_DIR)
+                else:
+                    results_root = Config.OUTPUT_DIR
+            
+            output_dir = self.config.get("output_dir", os.path.join(results_root, "web_run"))
 
             # Simple scan logic (simplified from main.py)
             dataset_dirs = []
-            if os.path.basename(data_root) in ["data_new", "data"] or data_root.endswith("/data_new"):
+            if os.path.basename(data_root).startswith("data"):
                 for d in os.listdir(data_root):
                     dp = os.path.join(data_root, d)
                     if os.path.isdir(dp):
